@@ -1,11 +1,11 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
-    'name': 'Calyx Odoo Module',
+    'name': 'Purchase Order Types',
     'summary': """
-        Summary of the module's purpose""",
+        This module add the option to assing a type to the Purchase Order.""",
 
-    'author': 'Calyx Servicios S.A., Odoo Community Association (OCA)',
-    'maintainers': ['<Github/Gitlab Username/s>'],
+    'author': 'Calyx Servicios S.A.',
+    'maintainers': ['FedericoGregori'],
 
     'website': 'http://odoo.calyx-cloud.com.ar/',
     'license': 'AGPL-3',
@@ -13,7 +13,7 @@
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/11.0/odoo/addons/base/module/module_data.xml
     # for the full list
-    'category': 'Technical Settings',
+    'category': 'Purchases',
     'version': '11.0.1.0.0',
     # see https://odoo-community.org/page/development-status
     'development_status': 'Production/Stable',
@@ -26,14 +26,20 @@
     },
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': [
+        'base',
+        'purchase'
+        ],
 
-    # always loaded
-    # 'data': [
-    #     'security/ir.model.access.csv',
-    #     'views/views.xml',
-    #     'views/templates.xml',
-    # ],
+
+    'data': [
+        'security/ir.model.access.csv',
+        'data/ir_sequence.xml',
+        'data/purchase_order_type.xml',
+        'views/res_partner_view.xml',
+        'views/purchase_order_view.xml',
+        'views/purchase_order_type_view.xml',
+    ],
 
     # only loaded in demonstration mode
     # 'demo': [

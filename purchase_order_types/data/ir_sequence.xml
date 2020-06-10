@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+    <record model="ir.sequence" id="purchase_order_external">
+        <field name="name">External Purchase Order</field>
+        <field name="implementation">no_gap</field>
+        <field name="prefix">POE</field>
+        <field name="padding">5</field>
+        <field name="number_increment">1</field>
+    </record>
+</odoo>
