@@ -7,6 +7,11 @@
         <field name="arch" type="xml">
             <field name="partner_id" position="after">
                 <field name="order_type" required="True"/>
+                <p class="text-warning">
+                    <strong>
+                        <i class="fa fa-bell-o"></i> Using the edit button at the right side of the field, we can assign a diferent numeration.
+                    </strong>
+                </p>
             </field>
         </field>
     </record>

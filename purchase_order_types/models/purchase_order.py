@@ -21,6 +21,11 @@ class PurchaseOrder(models.Model):
     @api.multi
     @api.onchange('partner_id')
     def onchange_partner_id(self):
+        """
+        When the partner changes, we get the order_type
+        from the partner purchase_type field if this has
+        a value
+        """
         super().onchange_partner_id()
         purchase_type = (self.partner_id.purchase_type or
                          self.partner_id.commercial_partner_id.purchase_type)
@@ -30,6 +35,11 @@ class PurchaseOrder(models.Model):
     @api.multi
     @api.onchange('order_type')
     def onchange_order_type(self):
+        """
+        When the order types changes, we get the payment_term_id
+        and incoterm from the order type record if this has
+        a value.
+        """
         for order in self:
             if order.order_type.payment_term_id:
                 order.payment_term_id = order.order_type.payment_term_id.id
@@ -38,6 +48,10 @@ class PurchaseOrder(models.Model):
 
     @api.model
     def create(self, vals):
+        """
+        Adding the prefix number of the sequence selected
+        in the purchase type.
+        """
         if vals.get('name', '/') == '/' and vals.get('order_type'):
             purchase_type = self.env['purchase.order.type'].browse(
                 vals['order_type'])
