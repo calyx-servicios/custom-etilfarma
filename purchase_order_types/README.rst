@@ -1,6 +1,6 @@
-=============
-New Module
-=============
+====================
+Purchase Order Types
+====================
 
 .. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
    !! This file is intended to be in every module    !!
@@ -15,15 +15,15 @@ New Module
 .. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
-.. |badge3| image:: https://img.shields.io/badge/gitlab-calyxservicios--group%2Fodoo%2Fodoo--calyx-lightgray.png?logo=gitlab
-    :target: https://gitlab.com/calyxservicios-group/odoo/odoo-calyx
+.. |badge3| image:: https://img.shields.io/badge/gitlab-calyxservicios--group%2Fodoo%2Fcustom--etilfarma-lightgray.png?logo=gitlab
+    :target: https://gitlab.com/calyxservicios-group/odoo/custom-etilfarma
     :alt: calyxservicios-group/odoo/odoo-calyx
 
 |badge1| |badge2| |badge3|
 
 .. !!! Description must be max 2-3 paragraphs, and is required.
 
-This module extends the functionality of ... to support ... and to allow you to ...
+This module extends the functionality of Purchase to support Purchase Order Type and to allow you to apply different functionalities.
 
 **Table of contents**
 
@@ -35,32 +35,31 @@ This module extends the functionality of ... to support ... and to allow you to 
 Install
 =======
 
-Do this ...
+Search in Applications for Purchase Order Type.
 
 .. !!! Configuration: This file is optional, it should explain how to configure the module before using it; it is aimed at advanced users. To configure this module, you need to:
 
 Configure
 =========
 
-Go to ...
+* Go to Purchases > Configuration > Purchase types
+* Modify / create the purchase order types
+
 
 Usage
 =====
 
-1. Go to ...
+* Select Purchase Type on Partner.
+* Select Order Type in Purchase Order.
+* Search by Order Type in Purchase Orders.
+* Group By Order Type in Purchase Orders.
 
-Known issues / Roadmap
-======================
-
-* Bugs or Roadmap
 
 Bug Tracker
 ===========
 
-* Help Contact
+* Help Contact: `<soporte_odoo@calyxservicios.com.ar>`_
 
-Credits
-=======
 
 Authors
 ~~~~~~~
@@ -72,9 +71,8 @@ Contributors
 
 * `Calyx Servicios S.A. <http://www.calyxservicios.com.ar/>`_
   
-  * Mario Moreno
-  * Jhone Mendez
   * Federico Gregori
+  * Jhone Mendez
 
 Maintainers
 ~~~~~~~~~~~
@@ -88,4 +86,4 @@ This module is maintained by the Calyx Servicios S.A.
 CALYX SERVICIOS S.A. It is part of the PGK Consultores economic group, member of an important global network, a world organization positioned among the 20 largest consultant-studios in the world.
 The PGK Consultores group is one of the 20 largest consultant-studios in Argentina with nearly 200 professionals.
 
-This module is part of the `Odoo-Calyx <https://gitlab.com/calyxservicios-group/odoo/odoo-calyx>`_ project on Gitlab.
+This module is part of the `Custom-Etilfarma <https://gitlab.com/calyxservicios-group/odoo/custom-etilfarma>`_ project on Gitlab.
