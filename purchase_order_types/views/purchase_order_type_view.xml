@@ -38,6 +38,11 @@
                     <group>
                         <group>
                             <field name="sequence_id" />
+                            <p class="text-warning">
+                                <strong>
+                                    <i class="fa fa-bell-o"></i> In case of creating a new Sequence, select 'Purchase Order Sequence'.
+                                </strong>
+                            </p>
                         </group>
                         <group>
                             <field name="payment_term_id" />

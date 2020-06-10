@@ -31,7 +31,6 @@
         'purchase'
         ],
 
-
     'data': [
         'security/ir.model.access.csv',
         'data/ir_sequence.xml',
@@ -39,6 +38,7 @@
         'views/res_partner_view.xml',
         'views/purchase_order_view.xml',
         'views/purchase_order_type_view.xml',
+        'views/ir_sequence_view.xml'
     ],
 
     # only loaded in demonstration mode
