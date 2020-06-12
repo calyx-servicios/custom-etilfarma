@@ -6,14 +6,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-10 21:26+0000\n"
-"PO-Revision-Date: 2020-06-10 21:26+0000\n"
+"POT-Creation-Date: 2020-06-12 20:14+0000\n"
+"PO-Revision-Date: 2020-06-12 20:14+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
+
+#. module: foreign_purchase_order
+#: model:ir.actions.act_window,help:foreign_purchase_order.action_incoterm_view
+msgid "Click to set a new incoterm."
+msgstr "Click to set a new incoterm."
 
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_customer_purchase_order
@@ -29,7 +34,13 @@ msgstr "Compras Exteriores"
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Incoterm"
-msgstr "Términos de Comercio Internacional"
+msgstr "Incoterm"
+
+#. module: foreign_purchase_order
+#: model:ir.actions.act_window,name:foreign_purchase_order.action_incoterm_view
+#: model:ir.ui.menu,name:foreign_purchase_order.menu_incoterms_view
+msgid "Incoterms"
+msgstr "Incoterms"
 
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_order_type_name
