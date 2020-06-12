@@ -21,7 +21,7 @@
                 <page string='Foreign Purchase' attrs="{'invisible': [('order_type_name','!=','OCE')]}">
                     <group>
                         <group>
-                            <field name="incoterm_id" string="Incoterm"/>
+                            <field name="incoterm_id" string="Incoterms"/>
                         </group>
                     </group>
                 </page>
@@ -49,4 +49,18 @@
             </field>
         </field>
     </record>
+
+    <record model="ir.actions.act_window" id="action_incoterm_view">
+        <field name="name">Incoterms</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">stock.incoterms</field>
+        <field name="view_mode">form,tree</field>
+        <field name="view_id" ref="stock.view_incoterms_tree"/>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Click to set a new incoterm.</p>
+        </field>
+    </record>
+
+
+    <menuitem id="menu_incoterms_view" parent="purchase.menu_purchase_config" sequence="40" action="action_incoterm_view"/>
 </odoo>
