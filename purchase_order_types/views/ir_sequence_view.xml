@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <record model="ir.ui.view" id="ir_sequence_purchase_seq_form_view">
+    <record model="ir.ui.view" id="res_partner_purchase_type_form_view">
         <field name="name">ir.sequence.form</field>
         <field name="model">ir.sequence</field>
         <field name="inherit_id" ref="base.sequence_view"/>
