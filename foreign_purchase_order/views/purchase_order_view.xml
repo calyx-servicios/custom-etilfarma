@@ -22,6 +22,7 @@
                     <group>
                         <group>
                             <field name="incoterm_id" string="Incoterm"/>
+                            <field name="packaging_id" string="Packaging"/>
                         </group>
                         <group>
                             <field name="place_of_delivery_id" string="Place of Delivery"/>

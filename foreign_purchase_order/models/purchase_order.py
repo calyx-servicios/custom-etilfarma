@@ -15,6 +15,8 @@ class PurchaseOrder(models.Model):
     customer_purchase_order = fields.Char(string="Customer Purchase Order")
     place_of_delivery_id = fields.Many2one(
         comodel_name='purchase.delivery' ,string="Place of Delivery")
+    packaging_id = fields.Many2one(
+        comodel_name='purchase.packaging' ,string="Packaging")
     
 
     @api.onchange("order_type")
