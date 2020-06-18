@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="purchase_order_form" model="ir.ui.view">
+            <field name="name">purchase.order.form</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <!-- Field Invoice To only Visible when the Order Type is OCT -->
+                <field name="partner_id" position="before">
+                    <field name="invoice_to"
+                           attrs="{'invisible': [('order_type', '!=', %(po_type_third_party)d)],
+                           'required':[('order_type', '=', %(po_type_third_party)d)]}"/>
+                </field>
+
+                <!-- Regular Button Confirm Not Visible when the Order Type is OCT (We want to avoid the
+                 regular flow of Purchase Order) -->
+                <xpath expr="//button[@name='button_confirm'][1]" position="attributes">
+                    <attribute name="attrs">{'invisible': ['|', ('order_type', '=', %(po_type_third_party)d)]}</attribute>
+                </xpath>
+
+                <!-- Button Box of Picking and Invoices Not Visible when the Order Type is OCT -->
+                <xpath expr="//div[@name='button_box']" position="attributes">
+                    <attribute name="attrs">{'invisible': ['|', ('order_type', '=', %(po_type_third_party)d)]}</attribute>
+                </xpath>
+
+                <!-- Button Confirm Third Party only Visible when the Order Type is OCT -->
+                <xpath expr="//button[@name='print_quotation']" position="after">
+                    <button name="button_confirm_third_party"
+                            type="object"
+                            states="draft"
+                            string="Confirm Third Party Order"
+                            id="draft_confirm_third_party"
+                            attrs="{'invisible': ['|', ('order_type', '!=', %(po_type_third_party)d)]}"
+                    />
+                </xpath>
+
+                <!-- Button Cancel only Visible when the state is Without Invoice to Receive -->
+                <xpath expr="//button[@name='print_quotation']" position="after">
+                    <button name="button_cancel_third_party"
+                            type="object"
+                            states="no_invoice"
+                            string="Cancel"
+                            id="draft_cancel_third_party"
+                    />
+                </xpath>
+            </field>
+        </record>
+
+</odoo>
