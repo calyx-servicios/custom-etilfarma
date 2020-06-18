@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+
+    <record model="ir.sequence" id="purchase_order_third_party">
+        <field name="name">Third Party Purchase Order</field>
+        <field name="implementation">no_gap</field>
+        <field name="prefix">OCT</field>
+        <field name="padding">5</field>
+        <field name="number_increment">1</field>
+        <field name="purchase_seq">True</field>
+    </record>
+
+</odoo>
