@@ -92,8 +92,8 @@ msgstr "Incoterm"
 
 #. module: purchase_order_types
 #: model:ir.model.fields,field_description:purchase_order_types.field_purchase_order_type_blanket
-msgid "Blaket?"
-msgstr "Blaket?"
+msgid "Blanket?"
+msgstr "¿Es una compra exterior?"
 
 #. module: purchase_order_types
 #: model:ir.model.fields,field_description:purchase_order_types.field_purchase_order_type___last_update

@@ -24,7 +24,7 @@ class PurchaseOrderLine(models.Model):
             ]
             packaging_ids = packaging_obj.search(domain)
 
-            self.available_packaging_ids = packaging_ids
+            record.available_packaging_ids = packaging_ids
 
     packaging = fields.Many2many(
         comodel_name="purchase.product.packaging", string="Packaging"
