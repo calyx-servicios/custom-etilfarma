@@ -52,8 +52,9 @@ class PurchaseOrder(models.Model):
         date plus the week number
         """
         for po in self:
-            date_fmt = '/'.join(reversed(po.date_planned.split(' ')[0].split('-')))
-            po.delivery_date_week = '{} - W{}'.format(
-                date_fmt,
-                datetime.strptime(po.date_planned, '%Y-%m-%d %H:%M:%S').isocalendar()[1]
-            )
+            if po.date_planned:
+                date_fmt = '/'.join(reversed(po.date_planned.split(' ')[0].split('-')))
+                po.delivery_date_week = '{} - W{}'.format(
+                    date_fmt,
+                    datetime.strptime(po.date_planned, '%Y-%m-%d %H:%M:%S').isocalendar()[1]
+                )
