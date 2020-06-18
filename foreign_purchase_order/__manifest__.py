@@ -21,7 +21,7 @@
     "depends": ["base", "purchase", "purchase_order_types"],
     # always loaded
     "data": [
-        # 'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
         "views/purchase_order_view.xml",
         # 'views/templates.xml',
     ],
