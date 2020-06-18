@@ -55,6 +55,6 @@
     </record>
 
 
-    <menuitem id="menu_packaging_type" parent="purchase_foreign_lines.menu_packaging_in_config_purchase" sequence="61" action="action_packaging_type_view"/>
+    <menuitem id="menu_packaging_type" parent="foreign_purchase_lines.menu_packaging_in_config_purchase" sequence="61" action="action_packaging_type_view"/>
 
 </odoo>
