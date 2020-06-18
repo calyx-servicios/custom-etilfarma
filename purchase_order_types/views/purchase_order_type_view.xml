@@ -4,8 +4,7 @@
     <record id="view_purchase_order_type_tree" model="ir.ui.view">
         <field name="model">purchase.order.type</field>
         <field name="arch" type="xml">
-            <tree string="Purchase Order Types"
-                  decoration-muted="active == False">
+            <tree string="Purchase Order Types" decoration-muted="active == False">
                 <field name="sequence" widget="handle" />
                 <field name="active" invisible="True" />
                 <field name="name"/>
@@ -23,10 +22,8 @@
             <form string="Type">
                 <sheet>
                     <div class="oe_button_box" name="button_box">
-                        <button name="toggle_active" type="object" groups="base.group_user"
-                                class="oe_stat_button" icon="fa-archive">
-                            <field name="active" widget="boolean_button"
-                                options='{"terminology": "archive"}'/>
+                        <button name="toggle_active" type="object" groups="base.group_user" class="oe_stat_button" icon="fa-archive">
+                            <field name="active" widget="boolean_button" options='{"terminology": "archive"}'/>
                         </button>
                     </div>
                     <div class="oe_title">
@@ -47,6 +44,7 @@
                         <group>
                             <field name="payment_term_id" />
                             <field name="incoterm_id" />
+                            <field name="blanket" />
                         </group>
                     </group>
                     <group>
@@ -66,12 +64,9 @@
                 <field name="payment_term_id" />
                 <field name="incoterm_id" />
                 <group expand="0" string="Group By">
-                    <filter string="Entry Sequence" name="entry_sequence" domain="[]"
-                            context="{'group_by':'sequence_id'}" />
-                    <filter string="Payment Term" name="pay_terms" domain="[]"
-                            context="{'group_by':'payment_term_id'}" />
-                    <filter string="Incoterm" name="incoterm" domain="[]"
-                            context="{'group_by':'incoterm_id'}" />
+                    <filter string="Entry Sequence" name="entry_sequence" domain="[]" context="{'group_by':'sequence_id'}" />
+                    <filter string="Payment Term" name="pay_terms" domain="[]" context="{'group_by':'payment_term_id'}" />
+                    <filter string="Incoterm" name="incoterm" domain="[]" context="{'group_by':'incoterm_id'}" />
                 </group>
             </search>
         </field>
@@ -90,9 +85,6 @@
     </record>
 
 
-    <menuitem id="menu_purchase_order_type"
-              parent="purchase.menu_purchase_config"
-              sequence="40"
-              action="action_purchase_order_type_view"/>
+    <menuitem id="menu_purchase_order_type" parent="purchase.menu_purchase_config" sequence="40" action="action_purchase_order_type_view"/>
 
 </odoo>

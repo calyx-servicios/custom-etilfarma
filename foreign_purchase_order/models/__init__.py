@@ -1,3 +1,3 @@
 from . import purchase_order
-from . import place_of_delivery
-from . import packaging
+from . import purchase_place_of_delivery
+from . import purchase_packaging

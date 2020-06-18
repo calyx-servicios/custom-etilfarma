@@ -5,11 +5,21 @@
         <field name="inherit_id" ref="purchase.purchase_order_form"/>
         <field name="arch" type="xml">
 
+            <field name="date_order" position="after">
+                <field name="purchase_sample"/>
+            </field>
+
             <field name="incoterm_id" position="replace">
                 <field name="order_type_name" invisible="1"/>
+                <field name="order_type_blanket" invisible="1"/>
             </field>
+
+            <field name="order_type" position="attributes">
+                <attribute name="attrs">{'readonly': [('purchase_sample' ,'=', True)]}</attribute>
+            </field>
+
             <xpath expr="//div[2]" position="after">
-                <div class="oe_title" attrs="{'invisible': [('order_type_name','!=','OCE')]}">
+                <div class="oe_title" attrs="{'invisible': [('order_type_blanket','=', False)]}">
                     <label string="Customer Purchase Order"/>
                     <h2>
                         <field name="customer_purchase_order"/>
@@ -18,7 +28,7 @@
             </xpath>
 
             <xpath expr="//notebook" position="inside">
-                <page string='Foreign Purchase' attrs="{'invisible': [('order_type_name','!=','OCE')]}">
+                <page string='Foreign Purchase' attrs="{'invisible': [('order_type_blanket','=',False)]}">
                     <group>
                         <group>
                             <field name="incoterm_id" string="Incoterm"/>
@@ -31,6 +41,7 @@
                     </group>
                 </page>
             </xpath>
+
         </field>
     </record>
 
@@ -54,4 +65,6 @@
             </field>
         </field>
     </record>
+
+    <menuitem id="menu_incoterms_in_purchase" parent="purchase.menu_purchase_config" sequence="48" action="stock.action_incoterms_tree"/>
 </odoo>
