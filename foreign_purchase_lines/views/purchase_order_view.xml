@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="purchase_order_line_foreign" model="ir.ui.view">
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <!-- <xpath expr="//field[@name='order_line']/form//field[@name='product_id']" position="after">
+                <field name="packaging" />
+            </xpath> -->
+            <xpath expr="//field[@name='order_line']/tree//field[@name='product_id']" position="after">
+                <field name="available_packaging_ids" invisible="1" />
+                <field name="packaging" widget="many2many_tags" options="{'no_create': True}" domain="[('id' , 'in', available_packaging_ids)]"/>
+                <field name="product_nmc"/>
+                <field name="country_id" options="{'no_create': True}"/>
+                <field name="observactions"/>
+            </xpath>
+
+        </field>
+    </record>
+
+    <menuitem id="menu_packaging_in_config_purchase" name="Packaging" parent="purchase.menu_purchase_config" sequence="60" groups="base.group_no_one"/>
+
+</odoo>

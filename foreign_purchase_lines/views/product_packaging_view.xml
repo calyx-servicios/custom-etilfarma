@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_packaging_product_tree" model="ir.ui.view">
+        <field name="model">purchase.product.packaging</field>
+        <field name="arch" type="xml">
+            <tree string="Product Packaging" decoration-muted="active == False">
+                <field name="sequence" widget="handle" />
+                <field name="name"/>
+                <field name="active" invisible="True"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_packaging_product_form" model="ir.ui.view">
+        <field name="model">purchase.product.packaging</field>
+        <field name="arch" type="xml">
+            <form string="Type">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="toggle_active" type="object" groups="base.group_user" class="oe_stat_button" icon="fa-archive">
+                            <field name="active" widget="boolean_button" options='{"terminology": "archive"}'/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="packaging_type_id" options="{'no_create': True}"/>
+                            <field name="qty" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="packaging" string="Packaging">
+                            <field name="packaging_lines" mode="tree">
+                                <form string="Packaging">
+                                    <group>
+                                        <group>
+                                            <field name="packaging_id" />
+                                        </group>
+                                    </group>
+                                </form>
+                                <tree string="Packaging" editable="bottom">
+                                    <field name="product_id" options="{'no_create': True}"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_packaging_product_search" model="ir.ui.view">
+        <field name="model">purchase.product.packaging</field>
+        <field name="arch" type="xml">
+            <search string="Product Packaging">
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_packaging_product_view">
+        <field name="name">Product Packaging</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">purchase.product.packaging</field>
+        <field name="view_mode">form,tree</field>
+        <field name="view_id" ref="view_packaging_product_tree"/>
+        <field name="search_view_id" ref="view_packaging_product_search"/>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Click to set a new product packing.</p>
+        </field>
+    </record>
+
+
+    <menuitem id="menu_packaging_product" parent="purchase_foreign_lines.menu_packaging_in_config_purchase" sequence="62" action="action_packaging_product_view"/>
+
+</odoo>
