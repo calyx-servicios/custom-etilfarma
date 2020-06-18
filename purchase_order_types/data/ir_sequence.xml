@@ -9,6 +9,15 @@
         <field name="purchase_seq">True</field>
     </record>
 
+    <record model="ir.sequence" id="purchase_order_sample">
+        <field name="name">Sample Purchase Order</field>
+        <field name="implementation">no_gap</field>
+        <field name="prefix">POM</field>
+        <field name="padding">5</field>
+        <field name="number_increment">1</field>
+        <field name="purchase_seq">True</field>
+    </record>
+
     <record model="ir.sequence" id="purchase.seq_purchase_order">
         <field name="purchase_seq">True</field>
     </record>

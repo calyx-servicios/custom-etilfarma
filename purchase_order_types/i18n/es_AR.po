@@ -88,7 +88,12 @@ msgstr "ID (identificación)"
 #: model:ir.model.fields,field_description:purchase_order_types.field_purchase_order_type_incoterm_id
 #: model:ir.ui.view,arch_db:purchase_order_types.view_purchase_order_type_search
 msgid "Incoterm"
-msgstr "Términos de Comercio Internacional"
+msgstr "Incoterm"
+
+#. module: purchase_order_types
+#: model:ir.model.fields,field_description:purchase_order_types.field_purchase_order_type_blanket
+msgid "Blaket?"
+msgstr "Blaket?"
 
 #. module: purchase_order_types
 #: model:ir.model.fields,field_description:purchase_order_types.field_purchase_order_type___last_update
