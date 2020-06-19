@@ -17,8 +17,7 @@ class PurchaseOrder(models.Model):
         comodel_name='purchase.delivery' ,string="Place of Delivery")
     packaging_id = fields.Many2one(
         comodel_name='purchase.packaging' ,string="Packaging")
-    
-
+   
     @api.onchange("order_type")
     def _onchange_order_type(self):
         """
