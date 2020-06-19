@@ -3,7 +3,7 @@
     <record model="ir.sequence" id="purchase_order_external">
         <field name="name">External Purchase Order</field>
         <field name="implementation">no_gap</field>
-        <field name="prefix">POE</field>
+        <field name="prefix">OCE</field>
         <field name="padding">5</field>
         <field name="number_increment">1</field>
         <field name="purchase_seq">True</field>
@@ -12,7 +12,7 @@
     <record model="ir.sequence" id="purchase_order_sample">
         <field name="name">Sample Purchase Order</field>
         <field name="implementation">no_gap</field>
-        <field name="prefix">POM</field>
+        <field name="prefix">OCM</field>
         <field name="padding">5</field>
         <field name="number_increment">1</field>
         <field name="purchase_seq">True</field>
