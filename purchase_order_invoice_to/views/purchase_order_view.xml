@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="purchase_order_form" model="ir.ui.view">
+        <field name="name">purchase.order.form</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <!-- Field Invoice To only Visible when the Order Type is OCT -->
+            <field name="partner_id" position="before">
+                <field name="invoice_to"
+                       attrs="{'invisible': [('order_type', '!=', %(po_type_third_party)d)],
+                           'required':[('order_type', '=', %(po_type_third_party)d)]}"/>
+            </field>
+
+            <!-- Regular Button Confirm Not Visible when the Order Type is OCT (We want to avoid the
+             regular flow of Purchase Order) -->
+            <xpath expr="//button[@name='button_confirm'][1]" position="attributes">
+                <attribute name="attrs">{'invisible': ['|', ('order_type', '=', %(po_type_third_party)d)]}</attribute>
+            </xpath>
+
+            <!-- Button Box of Picking and Invoices Not Visible when the Order Type is OCT -->
+            <xpath expr="//div[@name='button_box']" position="attributes">
+                <attribute name="attrs">{'invisible': ['|', ('order_type', '=', %(po_type_third_party)d)]}</attribute>
+            </xpath>
+
+            <!-- Button Confirm Third Party only Visible when the Order Type is OCT -->
+            <xpath expr="//button[@name='print_quotation']" position="after">
+                <button name="button_confirm_third_party"
+                        type="object"
+                        states="draft"
+                        string="Confirm Third Party Order"
+                        id="draft_confirm_third_party"
+                        attrs="{'invisible': ['|', ('order_type', '!=', %(po_type_third_party)d)]}"
+                />
+            </xpath>
+
+            <!-- Button Cancel only Visible when the state is Without Invoice to Receive -->
+            <xpath expr="//button[@name='print_quotation']" position="after">
+                <button name="button_cancel_third_party"
+                        type="object"
+                        states="no_invoice"
+                        string="Cancel"
+                        id="draft_cancel_third_party"
+                />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="purchase_order_tree" model="ir.ui.view">
+        <field name="name">purchase.order.tree</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_tree"/>
+        <field name="arch" type="xml">
+            <!-- Field Invoice To only Visible when the action used is purchase_third_party_action-->
+            <field name="name" position="after">
+                <field name="invoice_to" invisible="context.get('show_invoice_to') != 1"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- Actions -->
+    <!-- In this case the client request was to get the third party po's in a different
+    view then regular ones -->
+    <record id="purchase.purchase_rfq" model="ir.actions.act_window">
+        <field name="name">Requests for Quotation</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">purchase.order</field>
+        <field name="domain"
+               eval="[('state','in',('draft','sent','cancel', 'confirmed')), ('order_type','!=', ref('po_type_third_party'))]"/>
+    </record>
+
+    <record id="purchase.purchase_form_action" model="ir.actions.act_window">
+        <field name="domain"
+               eval="[('state','not in',('draft','sent', 'confirmed')), ('order_type','!=', ref('po_type_third_party'))]"/>
+    </record>
+
+    <!-- Third Party PO's Action, Menu Item and Search/Group By-->
+    <record id="purchase_third_party_action" model="ir.actions.act_window">
+        <field name="name">Third Party Purchase Orders</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">purchase.order</field>
+        <field name="view_mode">tree,kanban,form,pivot,graph,calendar</field>
+        <field name="context">{'search_default_todo':1, 'show_purchase': True, 'show_invoice_to': 1}</field>
+        <field name="domain" eval="[('order_type','=', ref('po_type_third_party'))]"/>
+        <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a quotation that will be converted into a purchase order.
+            </p>
+            <p>
+                Use this menu to search within your purchase orders by
+                references, vendor, products, etc. For each purchase order,
+                you can track the related discussion with the vendor, control
+                the products received and control the vendor bills.
+            </p>
+        </field>
+    </record>
+    <menuitem action="purchase_third_party_action" id="menu_purchase_third_party_action"
+              parent="purchase.menu_procurement_management"
+              sequence="10"/>
+
+    <record id="view_purchase_order_filter" model="ir.ui.view">
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
+        <field name="arch" type="xml">
+            <field name="name" position="before">
+                <field name="invoice_to" invisible="context.get('show_invoice_to') != 1"/>
+            </field>
+            <group position="inside">
+                <filter string="Invoice To" name="invoice_to"
+                        domain="[]" context="{'group_by': 'invoice_to'}"
+                        invisible="context.get('show_invoice_to') != 1"
+                />
+            </group>
+        </field>
+    </record>
+
+</odoo>
