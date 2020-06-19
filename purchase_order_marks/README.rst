@@ -23,7 +23,7 @@ New Module
 
 .. !!! Description must be max 2-3 paragraphs, and is required.
 
-This module extends the functionality of Purchase and add field in purchase order for the foreign fields.
+This module extends the functionality of Purchase and add a page in purchase order for the foreign fields.
 
 **Table of contents**
 

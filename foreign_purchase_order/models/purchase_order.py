@@ -23,7 +23,7 @@ class PurchaseOrder(models.Model):
     )
     packaging_id = fields.Many2one(
         comodel_name="purchase.packaging", string="Packaging"
-    )
+    ) 
     delivery_date_week = fields.Char(
         string="Delivery Date (Week)",
         compute="_compute_delivery_date_week",
