@@ -36,7 +36,7 @@
     'data': [
         'data/ir_sequence.xml',
         'data/purchase_order_type.xml',
-        'views/purchase_order.xml'
+        'views/purchase_order_view.xml'
     ],
 
     # only loaded in demonstration mode

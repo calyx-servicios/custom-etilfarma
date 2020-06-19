@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-18 23:14+0000\n"
-"PO-Revision-Date: 2020-06-18 23:14+0000\n"
+"POT-Creation-Date: 2020-06-19 16:02+0000\n"
+"PO-Revision-Date: 2020-06-19 16:02+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -21,9 +21,19 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #. module: purchase_order_invoice_to
+#: model:ir.actions.act_window,help:purchase_order_invoice_to.purchase_third_party_action
+msgid "Click to create a quotation that will be converted into a purchase order."
+msgstr "Haga clic para crear un presupuesto que se convertirá en un pedido de compra."
+
+#. module: purchase_order_invoice_to
 #: model:ir.ui.view,arch_db:purchase_order_invoice_to.purchase_order_form
 msgid "Confirm Third Party Order"
 msgstr "Confirmar Orden a Terceros"
+
+#. module: purchase_order_invoice_to
+#: model:ir.ui.view,arch_db:purchase_order_invoice_to.view_purchase_order_filter
+msgid "Invoice To"
+msgstr "Facturar a"
 
 #. module: purchase_order_invoice_to
 #: model:ir.model.fields,field_description:purchase_order_invoice_to.field_purchase_order_invoice_to
@@ -36,6 +46,25 @@ msgid "Purchase Order"
 msgstr "Orden de compra"
 
 #. module: purchase_order_invoice_to
-#: selection:purchase.order,state:0 selection:purchase.report,state:0
+#: model:ir.actions.act_window,name:purchase_order_invoice_to.purchase_third_party_action
+#: model:ir.ui.menu,name:purchase_order_invoice_to.menu_purchase_third_party_action
+msgid "Third Party Purchase Orders"
+msgstr "Pedidos de compra de terceros"
+
+#. module: purchase_order_invoice_to
+#: model:ir.actions.act_window,help:purchase_order_invoice_to.purchase_third_party_action
+msgid "Use this menu to search within your purchase orders by\n"
+"                references, vendor, products, etc. For each purchase order,\n"
+"                you can track the related discussion with the vendor, control\n"
+"                the products received and control the vendor bills."
+msgstr "Utilice este menú para buscar en sus pedidos de compra por\n"
+"referencia, proveedor, productos, etc. Para cada pedido de compra, \n"
+"puede seguir la conversación mantenida con el proveedor, controlar\n"
+"los productos recibidos y controlar las facturas de los proveedores."
+
+#. module: purchase_order_invoice_to
+#: code:addons/purchase_order_invoice_to/models/purchase_order.py:20
+#, python-format
 msgid "Without Invoice to Receive"
 msgstr "Sin Factura a Recibir"
+
