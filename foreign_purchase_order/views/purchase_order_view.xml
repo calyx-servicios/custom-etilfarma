@@ -10,7 +10,7 @@
             </field>
 
             <field name="incoterm_id" position="replace">
-                <field name="order_type_name" invisible="1"/>
+                <!-- <field name="order_type_name" invisible="1"/> -->
                 <field name="order_type_blanket" invisible="1"/>
             </field>
 

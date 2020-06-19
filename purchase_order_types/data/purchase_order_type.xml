@@ -17,7 +17,7 @@
         <field name="name">OCM</field>
         <field name="blanket">True</field>
         <field name="sequence_id" ref="purchase_order_types.purchase_order_sample" />
-        <field name="sequence">10</field>
+        <field name="sequence">15</field>
     </record>
 
 </odoo>

@@ -8,14 +8,14 @@ from odoo import fields, models, api
 class PurchaseOrder(models.Model):
     _inherit = "purchase.order"
 
-    order_type_name = fields.Char(
-        string="Order Type Name",
-        # related="order_type.name"
-    )
+    # order_type_name = fields.Char(
+    #     string="Order Type Name",
+    #     # related="order_type.name"
+    # )
 
     order_type_blanket = fields.Boolean(string="Blanket", default=False)
 
-    purchase_sample = fields.Boolean(string="Sample?")
+    purchase_sample = fields.Boolean(string="Sample?", default=False)
 
     customer_purchase_order = fields.Char(string="Customer Purchase Order")
     place_of_delivery_id = fields.Many2one(
@@ -81,9 +81,14 @@ class PurchaseOrder(models.Model):
          Set the order type in OCM
         """
         ocm = self.env.ref("purchase_order_types.po_type_sample")
+        ocl = self.env.ref("purchase_order_types.po_type_regular")
         for record in self:
             if ocm:
-                record.order_type = ocm.id
-                if ocm.blanket:
-                    record.order_type_blanket = True
-                # record.order_type_name = "OCM"
+                if record.purchase_sample:
+                    record.order_type = ocm.id
+                    if ocm.blanket:
+                        record.order_type_blanket = True
+                else:
+                    if ocl:
+                        record.order_type = ocl.id
+
