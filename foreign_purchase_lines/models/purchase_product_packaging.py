@@ -19,7 +19,7 @@ class PurchaseProductPackaging(models.Model):
         default=_default_order_type,
         required=True,
     )
-    qty = fields.Integer(string="Qty.", required=True)
+    qty = fields.Char(string="Qty.", required=True)
     packaging_lines = fields.One2many(
         comodel_name="purchase.product.packaging.line",
         inverse_name="packaging_id",
