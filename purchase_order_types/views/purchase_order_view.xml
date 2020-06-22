@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="purchase.purchase_order_form"/>
         <field name="arch" type="xml">
             <field name="partner_id" position="after">
-                <field name="order_type" required="True"/>
+                <field name="order_type" required="True" force_save="1"/>
                 <p class="text-warning">
                     <strong>
                         <i class="fa fa-bell-o"></i> Using the edit button at the right side of the field, we can assign a diferent numeration.
@@ -34,8 +34,7 @@
                 <field name="order_type"/>
             </field>
             <group position="inside">
-                <filter string="Type" name="order_type"
-                        domain="[]" context="{'group_by': 'order_type'}"/>
+                <filter string="Type" name="order_type" domain="[]" context="{'group_by': 'order_type'}"/>
             </group>
         </field>
     </record>
