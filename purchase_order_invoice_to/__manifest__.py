@@ -30,7 +30,7 @@
         'base',
         'purchase',
         'purchase_order_types',
-        'foreign_purchase_order'
+        'foreign_purchase_order',
         ],
 
     'data': [

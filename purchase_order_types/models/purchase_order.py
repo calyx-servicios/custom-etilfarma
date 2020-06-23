@@ -9,16 +9,9 @@ class PurchaseOrder(models.Model):
     _inherit = "purchase.order"
 
     def _default_order_type(self):
-        return self.env["purchase.order.type"].search(
-            [
-                (
-                    "id",
-                    "=",
-                    self.env.ref("purchase_order_types.po_type_regular").id,
-                )
-            ],
-            limit=1,
-        )
+        return self.env["purchase.order.type"].search([
+            ("name", "=", "OCL")
+        ], limit=1).id
 
     order_type = fields.Many2one(
         comodel_name="purchase.order.type",
