@@ -30,14 +30,16 @@ class PurchaseOrder(models.Model):
     def create(self, vals):
         new_po = super(PurchaseOrder, self).create(vals)
 
-        purchase_orders = self.env['purchase.order'].search([
-            ('invoice_to', '=', new_po.invoice_to.id),
-            ('state', '=', 'no_invoice')
-        ])
-        purchase_orders = len(purchase_orders.filtered(lambda po: po.date_order[:4] == new_po.date_order[:4])) + 1
+        if new_po.order_type.id == self.env.ref('purchase_order_invoice_to.po_type_third_party').id:
+            purchase_orders = self.env['purchase.order'].search([
+                ('invoice_to', '=', new_po.invoice_to.id),
+                ('state', 'in', ['draft', 'no_invoice', 'cancel']),
+                ('order_type', '=', self.env.ref('purchase_order_invoice_to.po_type_third_party').id)
+            ])
+            purchase_orders = len(purchase_orders.filtered(lambda po: po.date_order[:4] == new_po.date_order[:4]))
 
-        new_name = '{}-{}'.format(new_po.date_order.split('-')[0], purchase_orders)
-        new_po.write({'name': new_name})
+            new_name = '{}-{}'.format(new_po.date_order.split('-')[0], purchase_orders)
+            new_po.write({'name': new_name})
 
         return new_po
 
