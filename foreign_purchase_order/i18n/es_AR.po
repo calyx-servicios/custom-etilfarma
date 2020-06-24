@@ -16,8 +16,8 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: foreign_purchase_order
-#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_order_type_blanket
-msgid "Blanket"
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_type_foreign
+msgid "Foreign Order"
 msgstr "Compra exterior"
 
 #. module: foreign_purchase_order
