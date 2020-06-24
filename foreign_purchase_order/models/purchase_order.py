@@ -30,6 +30,8 @@ class PurchaseOrder(models.Model):
         store=True,
     )
 
+    extra_notes = fields.Text(string="Extra", size=150)
+
     @api.onchange("order_type")
     def _onchange_order_type(self):
         """
