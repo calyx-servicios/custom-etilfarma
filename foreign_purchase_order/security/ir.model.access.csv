@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_packaging,purchase.packaging,model_purchase_packaging,purchase.group_purchase_user,1,1,1,0
+access_packaging_manager,purchase.packaging manager,model_purchase_packaging,purchase.group_purchase_manager,1,1,1,1
+
+access_place_of_delivery,purchase.delivery,model_purchase_delivery,purchase.group_purchase_user,1,1,1,0
+access_place_of_delivery_manager,purchase.delivery manager,model_purchase_delivery,purchase.group_purchase_manager,1,1,1,1

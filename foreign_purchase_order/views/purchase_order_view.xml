@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="purchase_order_form_foreign_fields" model="ir.ui.view">
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+
+            <field name="date_order" position="after">
+                <field name="purchase_sample"/>
+            </field>
+
+            <field name="incoterm_id" position="replace">
+                <!-- <field name="order_type_name" invisible="1"/> -->
+                <field name="order_type_blanket" invisible="1"/>
+            </field>
+
+            <field name="order_type" position="attributes">
+                <attribute name="attrs">{'readonly': [('purchase_sample' ,'=', True)]}</attribute>
+            </field>
+
+            <xpath expr="//div[2]" position="after">
+                <div class="oe_title" attrs="{'invisible': [('order_type_blanket','=', False)]}">
+                    <label string="Customer Purchase Order"/>
+                    <h2>
+                        <field name="customer_purchase_order"/>
+                    </h2>
+                </div>
+            </xpath>
+
+            <xpath expr="//notebook" position="inside">
+                <page string='Foreign Purchase' attrs="{'invisible': [('order_type_blanket','=',False)]}">
+                    <group>
+                        <group>
+                            <field name="incoterm_id" string="Incoterm"/>
+                            <field name="packaging_id" string="Packaging"/>
+                            <field name="extra_notes" style=' max-width: 285px;  width: 285px;word-break: break-word' string="Extra"/>
+                        </group>
+                        <group>
+                            <field name="place_of_delivery_id" string="Place of Delivery"/>
+                            <field name="delivery_date_week" string="Delivery Date (Week)"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+
+
+    <record id="purchase_order_foreign_fields_tree" model="ir.ui.view">
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_tree"/>
+        <field name="arch" type="xml">
+            <field name="order_type" position="after">
+                <field name="customer_purchase_order"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_purchase_order_foreign_filter" model="ir.ui.view">
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
+        <field name="arch" type="xml">
+            <field name="order_type" position="after">
+                <field name="customer_purchase_order"/>
+            </field>
+        </field>
+    </record>
+
+    <menuitem id="menu_incoterms_in_purchase" parent="purchase.menu_purchase_config" sequence="48" action="stock.action_incoterms_tree"/>
+</odoo>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="model_name_view_form" model="ir.ui.view">
+        <field name="name">product.template.form.packaging</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <!-- <xpath expr="//page[@name='sales']" position="after">
+                <page name="packaging" string="Packaging">
+                    <field name="packaging_lines" mode="tree">
+                        <form string="Packaging">
+                            <group>
+                                <group>
+                                    <field name="packaging_id" />
+                                </group>
+                            </group>
+                        </form>
+                        <tree string="Packaging" editable="bottom">
+                            <field name="packaging_id"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath> -->
+
+            <field name="categ_id" position="after">
+                <field name="product_nmc"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>
