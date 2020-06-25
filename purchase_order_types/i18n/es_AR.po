@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-10 21:19+0000\n"
-"PO-Revision-Date: 2020-06-10 21:19+0000\n"
+"POT-Creation-Date: 2020-06-19 16:39+0000\n"
+"PO-Revision-Date: 2020-06-19 16:39+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -39,6 +39,11 @@ msgid "Active"
 msgstr "Activo"
 
 #. module: purchase_order_types
+#: model:ir.model.fields,field_description:purchase_order_types.field_purchase_order_type_blanket
+msgid "Blanket?"
+msgstr "¿Es una compra exterior?"
+
+#. module: purchase_order_types
 #: model:ir.actions.act_window,help:purchase_order_types.action_purchase_order_type_view
 msgid "Click to set a new type for purchase order."
 msgstr "Click para crear un nuevo tipo de Orden de Compra."
@@ -66,13 +71,13 @@ msgstr "Descripción"
 #. module: purchase_order_types
 #: model:ir.model.fields,field_description:purchase_order_types.field_purchase_order_type_display_name
 msgid "Display Name"
-msgstr "Nombre mostrado"
+msgstr "Mostrar Nombre"
 
 #. module: purchase_order_types
 #: model:ir.model.fields,field_description:purchase_order_types.field_purchase_order_type_sequence_id
 #: model:ir.ui.view,arch_db:purchase_order_types.view_purchase_order_type_search
 msgid "Entry Sequence"
-msgstr "Secuencia de Númeración"
+msgstr "Secuencia de Asiento"
 
 #. module: purchase_order_types
 #: model:ir.ui.view,arch_db:purchase_order_types.view_purchase_order_type_search
@@ -82,13 +87,13 @@ msgstr "Agrupar por"
 #. module: purchase_order_types
 #: model:ir.model.fields,field_description:purchase_order_types.field_purchase_order_type_id
 msgid "ID"
-msgstr "ID (identificación)"
+msgstr "ID"
 
 #. module: purchase_order_types
 #: model:ir.model.fields,field_description:purchase_order_types.field_purchase_order_type_incoterm_id
 #: model:ir.ui.view,arch_db:purchase_order_types.view_purchase_order_type_search
 msgid "Incoterm"
-msgstr "Términos de Comercio Internacional"
+msgstr "Incoterm"
 
 #. module: purchase_order_types
 #: model:ir.model.fields,field_description:purchase_order_types.field_purchase_order_type___last_update
@@ -98,12 +103,12 @@ msgstr "Última modificación en"
 #. module: purchase_order_types
 #: model:ir.model.fields,field_description:purchase_order_types.field_purchase_order_type_write_uid
 msgid "Last Updated by"
-msgstr "Última actualización de"
+msgstr "Última actualización realizada por"
 
 #. module: purchase_order_types
 #: model:ir.model.fields,field_description:purchase_order_types.field_purchase_order_type_write_date
 msgid "Last Updated on"
-msgstr "Última actualización en"
+msgstr "Última actualización el"
 
 #. module: purchase_order_types
 #: model:ir.model.fields,field_description:purchase_order_types.field_purchase_order_type_name
@@ -123,7 +128,7 @@ msgstr "Plazos de pago"
 #. module: purchase_order_types
 #: model:ir.model,name:purchase_order_types.model_purchase_order
 msgid "Purchase Order"
-msgstr "Pedido de compra"
+msgstr "Orden de compra"
 
 #. module: purchase_order_types
 #: model:ir.model.fields,field_description:purchase_order_types.field_ir_sequence_purchase_seq
@@ -133,6 +138,7 @@ msgstr "Secuencia de Orden de Compra"
 #. module: purchase_order_types
 #: model:ir.model.fields,field_description:purchase_order_types.field_res_partner_purchase_type
 #: model:ir.model.fields,field_description:purchase_order_types.field_res_users_purchase_type
+#: model:ir.ui.view,arch_db:purchase_order_types.res_partner_purchase_type_form_view
 msgid "Purchase Order Type"
 msgstr "Tipo de Orden de Compra"
 
