@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="purchase_order_form" model="ir.ui.view">
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <!-- Hide action to set PO date_planned to all lines as we do this with the onchange -->
+            <button name="action_set_date_planned" position="replace">
+            </button>
+            <!-- Hide PO line date_planned, as it's no longer needed -->
+            <xpath expr="//field[@name='order_line']/tree/field[@name='date_planned']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
