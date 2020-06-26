@@ -8,12 +8,7 @@ from odoo import fields, models, api
 class PurchaseOrder(models.Model):
     _inherit = "purchase.order"
 
-    # order_type_name = fields.Char(
-    #     string="Order Type Name",
-    #     # related="order_type.name"
-    # )
-
-    order_type_blanket = fields.Boolean(string="Blanket", default=False)
+    order_type_foreign = fields.Boolean(string="Foreign Order", default=False)
 
     purchase_sample = fields.Boolean(string="Sample?", default=False)
 
@@ -23,7 +18,7 @@ class PurchaseOrder(models.Model):
     )
     packaging_id = fields.Many2one(
         comodel_name="purchase.packaging", string="Packaging"
-    ) 
+    )
     delivery_date_week = fields.Char(
         string="Delivery Date (Week)",
         compute="_compute_delivery_date_week",
@@ -35,26 +30,22 @@ class PurchaseOrder(models.Model):
     @api.onchange("order_type")
     def _onchange_order_type(self):
         """
-        When the order type changes, check if that order is a blanket order
-        if it is, then set like True the variable order_type_blanket to show
-        some fields in
-        the purchase view.
+            When the order type changes, check if that order is a foreign order
+            if it is, then set like True the variable order_type_foreign to show
+            some fields in
+            the purchase view.
         """
-        # oce = self.env.ref("purchase_order_types.po_type_blanket")
         for record in self:
             if record.order_type:
-                # if record.order_type.id == oce.id:
-                # record.order_type_name = "OCE"
-                if record.order_type.blanket:
-                    record.order_type_blanket = True
+                if record.order_type.foreign_order:
+                    record.order_type_foreign = True
                 else:
                     record.customer_purchase_order = ""
-                    record.order_type_blanket = False
+                    record.order_type_foreign = False
 
-                    # record.order_type_name = ""
             else:
                 record.customer_purchase_order = ""
-                record.order_type_blanket = False
+                record.order_type_foreign = False
 
     @api.depends("date_planned")
     def _compute_delivery_date_week(self):
@@ -75,7 +66,6 @@ class PurchaseOrder(models.Model):
                         po.date_planned, "%Y-%m-%d %H:%M:%S"
                     ).isocalendar()[1],
                 )
-                # record.order_type_name = ""
 
     @api.onchange("purchase_sample")
     def _onchange_purchase_sample(self):
@@ -88,8 +78,8 @@ class PurchaseOrder(models.Model):
             if ocm:
                 if record.purchase_sample:
                     record.order_type = ocm.id
-                    if ocm.blanket:
-                        record.order_type_blanket = True
+                    if ocm.foreign_order:
+                        record.order_type_foreign = True
                 else:
                     if ocl:
                         record.order_type = ocl.id

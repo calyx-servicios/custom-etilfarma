@@ -10,30 +10,79 @@ _logger = logging.getLogger(__name__)
 class PurchaseOrderLine(models.Model):
     _inherit = "purchase.order.line"
 
-    @api.depends("product_id")
-    def _available_packaging_leads_ids(self):
+    @api.depends("product_tmpl_id")
+    def _available_product_attribute(self):
+        """
+            Set the attribute with packaging option in product_attr_id field.
+            This is for attribute values.
+        """
         for record in self:
-            product_id = record.product_id
-            packaging_obj = self.env["purchase.product.packaging"]
-            domain = [
-                (
-                    "packaging_lines.product_id",
-                    "=",
-                    product_id.product_tmpl_id.id,
-                )
-            ]
-            packaging_ids = packaging_obj.search(domain)
+            product_attr_obj = self.env["product.attribute"]
+            domain = [("packaging", "=", True)]
+            product_attr_id = product_attr_obj.search(domain, limit=1)
+            if product_attr_id:
+                record.update({"product_attr_id": product_attr_id.id})
 
-            record.available_packaging_ids = packaging_ids
+    @api.onchange("product_attr_value_id")
+    def _onchange_product_attr_value_id(self):
+        """
+            Set the product_id field based in variable option selected 
+            in the product_attr_value_id (packaging) field 
+            and in the product_tmpl_id field.
+        """
+        for record in self:
+            product_tmpl_id = record.product_tmpl_id
+            product_obj = self.env["product.product"]
+            domain = [("product_tmpl_id", "=", product_tmpl_id.id)]
+            product_ids = product_obj.search(domain)
+            for product in product_ids:
+                if (
+                    record.product_attr_value_id.id
+                    in product.attribute_value_ids.ids
+                ):
+                    record.update({"product_id": product.id})
+                    break
 
-    packaging = fields.Many2many(
-        comodel_name="purchase.product.packaging", string="Packaging"
+    @api.onchange("product_tmpl_id")
+    def _onchange_product_tmpl_id(self):
+        """
+            Check if the product has variants if doesn't 
+            set the normal product_id
+            Add a dinamic domain in the product_attr_value_id based in the
+            product template.
+            This only show attribute values set in the product.
+        """
+        for record in self:
+            values_ids = []
+            product_tmpl_id = record.product_tmpl_id.id
+            attri_value_line_obj = self.env["product.attribute.line"]
+            search_domain = [("product_tmpl_id", "=", product_tmpl_id)]
+            attr_value_ids = attri_value_line_obj.search(
+                search_domain, limit=1
+            )
+            if attr_value_ids:
+                for value in attr_value_ids.value_ids:
+                    values_ids.append(value.id)
+            else:
+                product_obj = self.env["product.product"]
+                produc_id = product_obj.search(search_domain, limit=1)
+                if produc_id:
+                    record.product_id = produc_id.id
+
+            domain = [("id", "in", values_ids)]
+
+        return {"domain": {"product_attr_value_id": domain}}
+
+    product_tmpl_id = fields.Many2one(
+        comodel_name="product.template", string="Product"
     )
-
-    available_packaging_ids = fields.Many2many(
-        comodel_name="purchase.product.packaging",
-        string="Packaging",
-        compute="_available_packaging_leads_ids",
+    product_attr_id = fields.Many2one(
+        comodel_name="product.attribute",
+        string="Attribute",
+        compute="_available_product_attribute",
+    )
+    product_attr_value_id = fields.Many2one(
+        comodel_name="product.attribute.value", string="Packaging"
     )
 
     product_nmc = fields.Char(string="NMC", related="product_id.product_nmc")
