@@ -23,7 +23,13 @@ New Module
 
 .. !!! Description must be max 2-3 paragraphs, and is required.
 
-This module extends the functionality of Purchase, add new fields in purchase order lines, add new packaging models.
+This module extends the functionality of Purchase, 
+add new fields in purchase order lines, 
+add new field to choose variants like packaging option
+based in a new product template.
+
+This module also prevents in a configurable way the creation
+of more that one variable in products to sell.
 
 **Table of contents**
 
@@ -35,11 +41,8 @@ This module extends the functionality of Purchase, add new fields in purchase or
 Install
 =======
 
-<<<<<<< HEAD
 * Go to Warehouse.
 * Configuration -> Activate Variants Options.
-=======
->>>>>>> 11.0_new_account_invoice_supplier_block
 Search in Applications for Foreign Purchase Lines.
 
 .. !!! Configuration: This file is optional, it should explain how to configure the module before using it; it is aimed at advanced users. To configure this module, you need to:
@@ -47,20 +50,11 @@ Search in Applications for Foreign Purchase Lines.
 Usage
 =====
 
-<<<<<<< HEAD
 * Go to Warehouse.
 * With admin mode -> create a new attribute and set "packaging" option.
 * Go to product -> Variants -> Select the new attribute and create the values like "packaging options".
 * Go to Purchase -> Quotation Order.
 * Select one product, and the type of packaging based in attribute variants value.
-=======
-* Go to Purchase.
-* Go Configuration -> Packaging -> Create type of packaging.
-* Go Configuration -> Packaging -> Product Packaging.
-* Select one type of packaging, qty and set the products.
-* Go to Purchase -> Quotation Order.
-* Select one product, and the type of packaging.
->>>>>>> 11.0_new_account_invoice_supplier_block
 * Complete the fields.
 
 Bug Tracker

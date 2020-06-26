@@ -29,4 +29,4 @@ class PurchaseOrderType(models.Model):
         comodel_name="stock.incoterms", string="Incoterm"
     )
     sequence = fields.Integer(default=10)
-    blanket = fields.Boolean(string="Blanket?")
+    foreign_order = fields.Boolean(string="Foreign Order?")
