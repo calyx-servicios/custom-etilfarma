@@ -11,7 +11,7 @@
 
             <field name="incoterm_id" position="replace">
                 <!-- <field name="order_type_name" invisible="1"/> -->
-                <field name="order_type_foreign" invisible="1"/>
+                <field name="order_type_blanket" invisible="1"/>
             </field>
 
             <field name="order_type" position="attributes">
@@ -19,7 +19,7 @@
             </field>
 
             <xpath expr="//div[2]" position="after">
-                <div class="oe_title" attrs="{'invisible': [('order_type_foreign','=', False)]}">
+                <div class="oe_title" attrs="{'invisible': [('order_type_blanket','=', False)]}">
                     <label string="Customer Purchase Order"/>
                     <h2>
                         <field name="customer_purchase_order"/>
@@ -28,7 +28,7 @@
             </xpath>
 
             <xpath expr="//notebook" position="inside">
-                <page string='Foreign Purchase' attrs="{'invisible': [('order_type_foreign','=',False)]}">
+                <page string='Foreign Purchase' attrs="{'invisible': [('order_type_blanket','=',False)]}">
                     <group>
                         <group>
                             <field name="incoterm_id" string="Incoterm"/>

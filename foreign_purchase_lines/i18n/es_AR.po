@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-24 21:49+0000\n"
-"PO-Revision-Date: 2020-06-24 21:49+0000\n"
+"POT-Creation-Date: 2020-06-18 22:43+0000\n"
+"PO-Revision-Date: 2020-06-18 22:43+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,18 +16,64 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: foreign_purchase_lines
-#: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_order_line_product_attr_id
-msgid "Attribute"
-msgstr "Atributo"
+#: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_packaging_type_active
+#: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_product_packaging_active
+msgid "Active"
+msgstr "Activo"
 
 #. module: foreign_purchase_lines
-#: code:addons/addons/addons-custom/custom-etilfarma/foreign_purchase_lines/models/product_template.py:22
-#: code:addons/addons/addons-custom/custom-etilfarma/foreign_purchase_lines/models/product_template.py:34
-#: code:addons/foreign_purchase_lines/models/product_template.py:22
-#: code:addons/foreign_purchase_lines/models/product_template.py:34
-#, python-format
-msgid "Limit to only 1 variant"
-msgstr "Solo se permite 1 variante de empaquetado por producto."
+#: model:ir.actions.act_window,help:foreign_purchase_lines.action_packaging_product_view
+msgid "Click to set a new product packing."
+msgstr "Click para crear un nuevo empaquetado de producto."
+
+#. module: foreign_purchase_lines
+#: model:ir.actions.act_window,help:foreign_purchase_lines.action_packaging_type_view
+msgid "Click to set a new type of packaging."
+msgstr "Click para crear un nuevo tipo de empaquetado."
+
+#. module: foreign_purchase_lines
+#: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_packaging_type_create_uid
+#: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_product_packaging_line_create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: foreign_purchase_lines
+#: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_packaging_type_create_date
+#: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_product_packaging_line_create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: foreign_purchase_lines
+#: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_packaging_type_display_name
+#: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_product_packaging_display_name
+#: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_product_packaging_line_display_name
+msgid "Display Name"
+msgstr "Mostrar Nombre"
+
+#. module: foreign_purchase_lines
+#: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_packaging_type_id
+#: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_product_packaging_line_id
+msgid "ID"
+msgstr "ID"
+
+#. module: foreign_purchase_lines
+#: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_packaging_type___last_update
+#: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_product_packaging___last_update
+#: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_product_packaging_line___last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: foreign_purchase_lines
+#: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_packaging_type_write_uid
+#: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_product_packaging_line_write_uid
+msgid "Last Updated by"
+msgstr "Última actualización realizada por"
+
+#. module: foreign_purchase_lines
+#: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_packaging_type_write_date
+#: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_product_packaging_line_write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
 
 #. module: foreign_purchase_lines
 #: model:ir.model.fields,field_description:foreign_purchase_lines.field_product_product_product_nmc
@@ -35,6 +81,13 @@ msgstr "Solo se permite 1 variante de empaquetado por producto."
 #: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_order_line_product_nmc
 msgid "NMC"
 msgstr "NMC"
+
+#. module: foreign_purchase_lines
+#: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_packaging_type_name
+#: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_product_packaging_line_name
+#: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_product_packaging_name
+msgid "Name"
+msgstr "Nombre"
 
 #. module: foreign_purchase_lines
 #: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_order_line_observactions
@@ -47,26 +100,49 @@ msgid "Origin"
 msgstr "Origen"
 
 #. module: foreign_purchase_lines
-#: model:ir.model.fields,field_description:foreign_purchase_lines.field_product_attribute_packaging
-#: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_order_line_product_attr_value_id
+#: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_order_line_available_packaging_ids
+#: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_order_line_packaging
+#: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_product_packaging_line_packaging_id
 #: model:ir.ui.menu,name:foreign_purchase_lines.menu_packaging_in_config_purchase
+#: model:ir.ui.view,arch_db:foreign_purchase_lines.view_packaging_product_form
 msgid "Packaging"
 msgstr "Empaquetado"
 
 #. module: foreign_purchase_lines
-#: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_order_line_product_tmpl_id
+#: model:ir.model,name:foreign_purchase_lines.model_product_packaging_line
+msgid "Packaging Lines"
+msgstr "Lineas de empaquetado"
+
+#. module: foreign_purchase_lines
+#: model:ir.actions.act_window,name:foreign_purchase_lines.action_packaging_type_view
+#: model:ir.ui.menu,name:foreign_purchase_lines.menu_packaging_type
+#: model:ir.ui.view,arch_db:foreign_purchase_lines.view_packaging_type_search
+#: model:ir.ui.view,arch_db:foreign_purchase_lines.view_packaging_type_tree
+msgid "Packaging Type"
+msgstr "Tipos de Empaquetado"
+
+#. module: foreign_purchase_lines
+#: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_product_packaging_line_product_id
 msgid "Product"
 msgstr "Producto"
 
 #. module: foreign_purchase_lines
-#: model:ir.model,name:foreign_purchase_lines.model_product_attribute
-msgid "Product Attribute"
-msgstr "Atributo de producto"
+#: model:ir.actions.act_window,name:foreign_purchase_lines.action_packaging_product_view
+#: model:ir.ui.menu,name:foreign_purchase_lines.menu_packaging_product
+#: model:ir.ui.view,arch_db:foreign_purchase_lines.view_packaging_product_search
+#: model:ir.ui.view,arch_db:foreign_purchase_lines.view_packaging_product_tree
+msgid "Product Packaging"
+msgstr "Empaquetado del producto"
 
 #. module: foreign_purchase_lines
 #: model:ir.model,name:foreign_purchase_lines.model_product_template
 msgid "Product Template"
 msgstr "Plantilla de producto"
+
+#. module: foreign_purchase_lines
+#: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_product_packaging_packaging_lines
+msgid "Products"
+msgstr "Productos"
 
 #. module: foreign_purchase_lines
 #: model:ir.model,name:foreign_purchase_lines.model_purchase_product_packaging_line
@@ -79,6 +155,24 @@ msgid "Purchase Order Line"
 msgstr "Línea de pedido de compra"
 
 #. module: foreign_purchase_lines
+#: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_product_packaging_qty
+msgid "Qty."
+msgstr "Cantidad"
+
+#. module: foreign_purchase_lines
+#: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_packaging_type_sequence
+#: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_product_packaging_sequence
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: foreign_purchase_lines
+#: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_product_packaging_packaging_type_id
+#: model:ir.ui.view,arch_db:foreign_purchase_lines.view_packaging_product_form
+#: model:ir.ui.view,arch_db:foreign_purchase_lines.view_packaging_type_form
+msgid "Type"
+msgstr "Tipo"
+
+#. module: foreign_purchase_lines
 #: model:ir.model,name:foreign_purchase_lines.model_purchase_packaging_type
 msgid "Type of packaging"
 msgstr "Tipo de Empaquetado"
@@ -87,11 +181,4 @@ msgstr "Tipo de Empaquetado"
 #: model:ir.model,name:foreign_purchase_lines.model_purchase_product_packaging
 msgid "Type of product's packaging"
 msgstr "Tipos de empaquetado para Productos"
-
-#. module: foreign_purchase_lines
-#: code:addons/addons/addons-custom/custom-etilfarma/foreign_purchase_lines/models/product_attribute.py:44
-#: code:addons/foreign_purchase_lines/models/product_attribute.py:44
-#, python-format
-msgid "You cannot delete a attribute with packaging option, please contact an admin."
-msgstr "No puede eliminar un atributo que tenga activa la opcion de empaquetado, contacte a un administrador."
 

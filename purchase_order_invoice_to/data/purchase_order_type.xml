@@ -4,7 +4,7 @@
     <record model="purchase.order.type" id="po_type_third_party">
         <field name="name">OCT</field>
         <field name="sequence">5</field>
-        <field name="foreign_order">True</field>
+        <field name="blanket">True</field>
         <field name="sequence_id" ref="purchase_order_third_party" />
     </record>
 

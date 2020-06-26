@@ -18,15 +18,17 @@
     "installable": True,
     "external_dependencies": {"python": [], "bin": []},
     # any module necessary for this one to work correctly
-    "depends": ["base", "purchase", "purchase_order_types", "web_notify"],
+    "depends": ["base", "purchase", "purchase_order_types"],
     # always loaded
     "data": [
         "security/ir.model.access.csv",
         "views/purchase_order_view.xml",
-        # "views/product_packaging_view.xml",
-        # "views/packaging_type_view.xml",
+        "views/product_packaging_view.xml",
         "views/product_template_view.xml",
-        "views/product_attribute_view.xml",
-        "views/product_attribute_value_view.xml",
+        "views/packaging_type_view.xml",
     ],
+    # only loaded in demonstration mode
+    # 'demo': [
+    #     'demo/demo.xml',
+    # ],
 }
