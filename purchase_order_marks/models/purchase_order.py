@@ -13,6 +13,6 @@ class PurchaseOrder(models.Model):
     def onchange_order_type_marks(self):
  
        for record in self:
-           record.marks = record.partner_id.marks
+           record.marks = record.env.user.marks
 
         
