@@ -5,3 +5,6 @@ access_packaging_manager,purchase.packaging manager,model_purchase_packaging,pur
 
 access_place_of_delivery,purchase.delivery,model_purchase_delivery,purchase.group_purchase_user,1,1,1,0
 access_place_of_delivery_manager,purchase.delivery manager,model_purchase_delivery,purchase.group_purchase_manager,1,1,1,1
+
+access_shipment,purchase.shipment,model_purchase_shipment,purchase.group_purchase_user,1,1,1,0
+access_shipment_manager,purchase.shipment manager,model_purchase_shipment,purchase.group_purchase_manager,1,1,1,1
