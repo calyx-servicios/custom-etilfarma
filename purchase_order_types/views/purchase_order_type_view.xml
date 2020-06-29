@@ -44,7 +44,7 @@
                         <group>
                             <field name="payment_term_id" />
                             <field name="incoterm_id" />
-                            <field name="blanket" />
+                            <field name="foreign_order" />
                         </group>
                     </group>
                     <group>

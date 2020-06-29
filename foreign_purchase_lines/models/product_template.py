@@ -1,10 +1,35 @@
 # Copyright 2015 Camptocamp SA
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-from odoo import fields, models
+from odoo import fields, models, api, _
+from odoo.exceptions import UserError
 
 
 class ProductProduct(models.Model):
     _inherit = "product.template"
 
     product_nmc = fields.Char(string="NMC")
+
+    @api.model
+    def create(self, vals):
+        """
+            Limit the number of attributes.
+        """
+        lines = vals.get("attribute_line_ids")
+        if lines:
+            lines = len(lines)
+            if lines > 1:
+                raise UserError(_("Limit to only 1 variant"))
+        return super().create(vals)
+
+    @api.multi
+    def write(self, vals):
+        """
+            Limit the number of attributes.
+        """
+        lines = vals.get("attribute_line_ids")
+        if lines:
+            lines = len(lines)
+            if lines > 1:
+                raise UserError(_("Limit to only 1 variant"))
+        return super().write(vals)
