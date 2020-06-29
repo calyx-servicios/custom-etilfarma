@@ -8,3 +8,6 @@ access_place_of_delivery_manager,purchase.delivery manager,model_purchase_delive
 
 access_shipment,purchase.shipment,model_purchase_shipment,purchase.group_purchase_user,1,1,1,0
 access_shipment_manager,purchase.shipment manager,model_purchase_shipment,purchase.group_purchase_manager,1,1,1,1
+
+access_packing_list,purchase.packing.list,model_purchase_packing_list,purchase.group_purchase_user,1,1,1,0
+access_packing_list_manager,purchase.packing.list manager,model_purchase_packing_list,purchase.group_purchase_manager,1,1,1,1

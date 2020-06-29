@@ -39,6 +39,7 @@
                         <group>
                             <field name="place_of_delivery_id" string="Place of Delivery"/>
                             <field name="delivery_date_week" string="Delivery Date (Week)"/>
+                            <field name="packing_list" string="Packing List"/>
                         </group>
                     </group>
                 </page>

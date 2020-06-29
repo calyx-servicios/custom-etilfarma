@@ -27,6 +27,9 @@ class PurchaseOrder(models.Model):
     shipment_id = fields.Many2one(
         comodel_name="purchase.shipment", string="Shipment"
     )
+    packing_list_id = fields.Many2one(
+        comodel_name="purchase.packing.list", string="Packing List"
+    )
     extra_notes = fields.Text(string="Extra", size=150)
 
     @api.onchange("order_type")
