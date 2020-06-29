@@ -29,7 +29,9 @@ class PurchaseOrder(models.Model):
         compute="_compute_delivery_date_week",
         store=True,
     )
-
+    shipment_id = fields.Many2one(
+        comodel_name="purchase.shipment", string="Shipment"
+    )
     extra_notes = fields.Text(string="Extra", size=150)
 
     @api.onchange("order_type")
