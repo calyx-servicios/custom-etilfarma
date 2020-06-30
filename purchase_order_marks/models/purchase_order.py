@@ -12,7 +12,7 @@ class PurchaseOrder(models.Model):
     @api.onchange("order_type")
     def onchange_order_type_marks(self):
         for record in self:
-            if record.order_type_blanket:
+            if record.order_type_foreign:
                 if record.env.user.marks:
                     record.marks = record.env.user.marks
 
@@ -21,4 +21,5 @@ class PurchaseOrder(models.Model):
         for record in self:
             if record.invoice_to.marks:
                 record.marks = record.invoice_to.marks
-        
+            else:
+                record.marks = ""
