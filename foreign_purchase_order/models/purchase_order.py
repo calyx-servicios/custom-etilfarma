@@ -41,7 +41,18 @@ class PurchaseOrder(models.Model):
     import_license_number = fields.Char(
         string="Import License Number"
     )
-
+    bill_landing_number = fields.Char(
+        string="Bill Landing Number"
+    )
+    bill_landing_issue_date = fields.Date(
+        string="Bill Landing Issue Date"
+    )
+    bill_landing_reception_date = fields.Date(
+        string="Bill Landing Reception Date"
+    )
+    bill_landing_description = fields.Date(
+        string="Bill Landing Description"
+    )
     @api.onchange("order_type")
     def _onchange_order_type(self):
         """

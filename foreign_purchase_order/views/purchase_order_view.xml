@@ -50,6 +50,11 @@
                             <field name="import_license_issue_date" string="Issue Date"/>
                             <field name="import_license_approval_date" string="Approval Date"/>
                         </group>
+                        <group name="bill_landing" string="Bill Landing">
+                            <field name="bill_landing_number" string="BL Number"/>
+                            <field name="bill_landing_issue_date" string="Issue Date"/>
+                            <field name="bill_landing_reception_date" string="Reception Date"/>
+                        </group>
                     </group>
                 </page>
             </xpath>
