@@ -11,8 +11,14 @@ class PurchaseOrder(models.Model):
 
     @api.onchange("order_type")
     def onchange_order_type_marks(self):
- 
-       for record in self:
-           record.marks = record.env.user.marks
+        for record in self:
+            if record.order_type_blanket:
+                if record.env.user.marks:
+                    record.marks = record.env.user.marks
 
+    @api.onchange("invoice_to")
+    def onchange_order_type_invoice_to(self):
+        for record in self:
+            if record.invoice_to.marks:
+                record.marks = record.invoice_to.marks
         
