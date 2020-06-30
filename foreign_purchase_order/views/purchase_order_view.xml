@@ -38,6 +38,7 @@
                         <group>
                             <field name="place_of_delivery_id" string="Place of Delivery"/>
                             <field name="delivery_date_week" string="Delivery Date (Week)"/>
+                            <field name="term_payments" string="Terms of Payment" options="{'no_open':True,'no_create':1,'no_create_edit':1}"/>
                         </group>
                     </group>
                 </page>
@@ -66,6 +67,8 @@
             </field>
         </field>
     </record>
+
+    <menuitem id="menu_payment_terms_in_purchase" name="Terms of Payments" parent="purchase_order_types.menu_purchase_order_in_config_purchase" sequence="30" action="account.action_payment_term_form"/>
 
     <menuitem id="menu_incoterms_in_purchase" parent="purchase.menu_purchase_config" sequence="48" action="stock.action_incoterms_tree"/>
 </odoo>
