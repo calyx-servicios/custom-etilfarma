@@ -24,9 +24,35 @@ class PurchaseOrder(models.Model):
         compute="_compute_delivery_date_week",
         store=True,
     )
-
+    shipment_id = fields.Many2one(
+        comodel_name="purchase.shipment", string="Shipment"
+    )
+    packing_list_id = fields.Many2one(
+        comodel_name="purchase.packing.list", string="Packing List"
+    )
     extra_notes = fields.Text(string="Extra", size=150)
 
+    import_license_approval_date = fields.Date(
+        string="Import License Approval Date"
+    )
+    import_license_issue_date = fields.Date(
+        string="Import License Issue Date"
+    )
+    import_license_number = fields.Char(
+        string="Import License Number"
+    )
+    bill_landing_number = fields.Char(
+        string="Bill Landing Number"
+    )
+    bill_landing_issue_date = fields.Date(
+        string="Bill Landing Issue Date"
+    )
+    bill_landing_reception_date = fields.Date(
+        string="Bill Landing Reception Date"
+    )
+    bill_landing_description = fields.Date(
+        string="Bill Landing Description"
+    )
     @api.onchange("order_type")
     def _onchange_order_type(self):
         """
@@ -84,3 +110,14 @@ class PurchaseOrder(models.Model):
                     if ocl:
                         record.order_type = ocl.id
 
+    @api.multi
+    def _get_default_special_indications(self):
+        """
+         Set the Special Indications based on the value of the
+         field in Purchase settings
+        """
+        icpsudo = self.env['ir.config_parameter'].sudo()  # icpsudo -> Ir.Config_Parameter access with sudo()
+        indications = icpsudo.get_param('foreign_purchase_order.special_indications')
+        return indications
+
+    special_indications = fields.Text(string="Special Indications", default=_get_default_special_indications)

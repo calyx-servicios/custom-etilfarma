@@ -1,8 +1,8 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
-    "name": "Foreign Purchase Order",
+    "name": "Marks",
     "summary": """
-        This module add a page in purchase order for the foreign fields.""",
+        This module add the field marks""",
     "author": "Calyx Servicios S.A.",
     "maintainers": ["Lolstalgia"],
     "website": "http://odoo.calyx-cloud.com.ar/",
@@ -18,12 +18,12 @@
     "installable": True,
     "external_dependencies": {"python": [], "bin": []},
     # any module necessary for this one to work correctly
-    "depends": ["base", "purchase", "purchase_order_types", "stock"],
+    "depends": ["base", "purchase", "purchase_order_types"],
     # always loaded
     "data": [
-        'security/ir.model.access.csv',
+        # 'security/ir.model.access.csv',
+        'views/res_partner_view.xml',
         "views/purchase_order_view.xml",
-        'views/res_config_settings_views.xml'
         # 'views/templates.xml',
     ],
     # only loaded in demonstration mode

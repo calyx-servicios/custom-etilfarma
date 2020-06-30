@@ -33,19 +33,40 @@
                         <group>
                             <field name="incoterm_id" string="Incoterm"/>
                             <field name="packaging_id" string="Packaging"/>
+                            <field name="special_indications" string="Special Indications" style=' min-height: 100px; word-break: break-word' />
                             <field name="extra_notes" style=' max-width: 285px;  width: 285px;word-break: break-word' string="Extra"/>
+                            <field name="shipment_id" string="Shipment"/>
                         </group>
                         <group>
                             <field name="place_of_delivery_id" string="Place of Delivery"/>
                             <field name="delivery_date_week" string="Delivery Date (Week)"/>
+                            <field name="packing_list_id" string="Packing List"/>
+                        </group>
+                    </group>
+                </page>
+                <page string='Import Documentation' attrs="{'invisible': [('order_type_foreign','=',False)]}">
+                    <group>
+                        <group name="import_license" string="Import License">
+                            <field name="import_license_number" string="Number"/>
+                            <field name="import_license_issue_date" string="Issue Date"/>
+                            <field name="import_license_approval_date" string="Approval Date"/>
+                        </group>
+                        <group name="bill_landing" string="Bill Landing">
+                            <field name="bill_landing_number" string="BL Number"/>
+                            <field name="bill_landing_issue_date" string="Issue Date"/>
+                            <field name="bill_landing_reception_date" string="Reception Date"/>
                         </group>
                     </group>
                 </page>
             </xpath>
 
+            <xpath expr="//sheet/div[@class='oe_title']" position="inside">
+                <p class="text-warning" attrs="{'invisible': ['|','|',['order_type_foreign','=',False],['state','!=','purchase'],'&amp;','&amp;',['import_license_number','!=',False],['import_license_issue_date','!=',False],['import_license_approval_date','!=',False]]}">
+                    <i class="fa fa-exclamation-triangle "></i> Action required: <strong>import license data not fully loaded.</strong>
+                </p>
+            </xpath>
         </field>
     </record>
-
 
     <record id="purchase_order_foreign_fields_tree" model="ir.ui.view">
         <field name="model">purchase.order</field>
@@ -64,6 +85,10 @@
             <field name="order_type" position="after">
                 <field name="customer_purchase_order"/>
             </field>
+            <filter name="activities_upcoming_all" position="after">
+                <separator/>
+                <filter name="incomplete_import_data" string="Incomplete Import Documentation" domain="['&amp;', '&amp;', ('order_type_foreign','=',True), ('state','=','purchase'), '|', '|', ('import_license_number','=',False), ('import_license_issue_date','=',False), ('import_license_approval_date','=',False)]"/>
+            </filter>
         </field>
     </record>
 
