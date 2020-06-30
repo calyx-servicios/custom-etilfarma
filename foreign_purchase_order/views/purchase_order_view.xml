@@ -33,6 +33,7 @@
                         <group>
                             <field name="incoterm_id" string="Incoterm"/>
                             <field name="packaging_id" string="Packaging"/>
+                            <field name="special_indications" string="Special Indications" style=' min-height: 100px; word-break: break-word' />
                             <field name="extra_notes" style=' max-width: 285px;  width: 285px;word-break: break-word' string="Extra"/>
                             <field name="shipment_id" string="Shipment"/>
                         </group>
