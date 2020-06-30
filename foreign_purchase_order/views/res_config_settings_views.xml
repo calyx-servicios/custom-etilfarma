@@ -11,7 +11,7 @@
                     <div class="text-muted">
                         Exclusive for Foreign Purchase Orders.
                     </div>
-                    <field name="special_indications"/>
+                    <field name="special_indications" style=' min-height: 100px;' placeholder="Write here your Special Indications to use as default."/>
                 </div>
             </xpath>
         </field>

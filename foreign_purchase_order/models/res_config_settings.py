@@ -11,13 +11,16 @@ class ResConfigSettings(models.TransientModel):
 
     @api.model
     def get_values(self):
-        res = super(ResConfigSettings, self).get_values()
-        IrDefault = self.env['ir.default'].sudo()
+        res = super().get_values()
+        icpsudo = self.env['ir.config_parameter'].sudo()  # icpsudo -> Ir.Config_Parameter access with sudo()
+        indications = icpsudo.get_param('foreign_purchase_order.special_indications')
         res.update(
+            special_indications=indications
         )
         return res
 
     @api.multi
     def set_values(self):
-        super(ResConfigSettings, self).set_values()
-        pass
+        res = super().set_values()
+        self.env['ir.config_parameter'].set_param('foreign_purchase_order.special_indications', self.special_indications)
+        return res
