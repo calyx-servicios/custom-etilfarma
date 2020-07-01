@@ -25,18 +25,18 @@ class PurchaseOrder(models.Model):
         store=True,
     )
 
-    send_documents_to = fields.Text(
-        string="Send documents to",
-    )
+    send_documents_to = fields.Text(string="Send documents to",)
 
     shipment_id = fields.Many2one(
         comodel_name="purchase.shipment", string="Shipment"
     )
     packing_list_id = fields.Many2one(
         comodel_name="purchase.packing.list", string="Packing List"
+    )
     term_payments = fields.Many2one(  # The base purchase.order model already has a m2o rel with account.payment.term
-                                      # but this correspond to a custom request by the client.
-        comodel_name="account.payment.term", string="Terms of Payment"
+        # but this correspond to a custom request by the client.
+        comodel_name="account.payment.term",
+        string="Terms of Payment",
     )
 
     extra_notes = fields.Text(string="Extra", size=150)
@@ -113,8 +113,15 @@ class PurchaseOrder(models.Model):
          Set the Special Indications based on the value of the
          field in Purchase settings
         """
-        icpsudo = self.env['ir.config_parameter'].sudo()  # icpsudo -> Ir.Config_Parameter access with sudo()
-        indications = icpsudo.get_param('foreign_purchase_order.special_indications')
+        icpsudo = self.env[
+            "ir.config_parameter"
+        ].sudo()  # icpsudo -> Ir.Config_Parameter access with sudo()
+        indications = icpsudo.get_param(
+            "foreign_purchase_order.special_indications"
+        )
         return indications
 
-    special_indications = fields.Text(string="Special Indications", default=_get_default_special_indications)
+    special_indications = fields.Text(
+        string="Special Indications", default=_get_default_special_indications
+    )
+
