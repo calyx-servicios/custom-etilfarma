@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-25 14:31+0000\n"
-"PO-Revision-Date: 2020-06-25 14:31+0000\n"
+"POT-Creation-Date: 2020-07-01 04:10+0000\n"
+"PO-Revision-Date: 2020-07-01 04:10+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -31,6 +31,14 @@ msgid "Confirm Third Party Order"
 msgstr "Confirmar Orden a Terceros"
 
 #. module: purchase_order_invoice_to
+#: code:addons/purchase_order_invoice_to/models/purchase_order.py:140
+#, python-format
+msgid "Country: %s\n"
+""
+msgstr "País: %s\n"
+""
+
+#. module: purchase_order_invoice_to
 #: model:ir.model.fields,help:purchase_order_invoice_to.field_purchase_order_third_party_number
 msgid "Enumeration for the Third Party Order by Client and by Year"
 msgstr "Numeración para ordenes a terceros por Cliente y Año."
@@ -46,9 +54,36 @@ msgid "Invoice to"
 msgstr "Facturar a"
 
 #. module: purchase_order_invoice_to
+#: code:addons/purchase_order_invoice_to/models/purchase_order.py:124
+#, python-format
+msgid "Please Select Client to Invoice, and check the option again."
+msgstr "Por favor elija un Cliente a Facturar, y vuelva a seleccionar la casilla."
+
+#. module: purchase_order_invoice_to
 #: model:ir.model,name:purchase_order_invoice_to.model_purchase_order
 msgid "Purchase Order"
 msgstr "Orden de compra"
+
+#. module: purchase_order_invoice_to
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_purchase_order_send_document_to_invoice_to
+msgid "Send Documents to Client"
+msgstr "Send Documents to Client"
+
+#. module: purchase_order_invoice_to
+#: code:addons/purchase_order_invoice_to/models/purchase_order.py:138
+#, python-format
+msgid "State: %s\n"
+""
+msgstr "Provincia: %s\n"
+""
+
+#. module: purchase_order_invoice_to
+#: code:addons/purchase_order_invoice_to/models/purchase_order.py:134
+#, python-format
+msgid "Street: %s\n"
+""
+msgstr "Calle: %s\n"
+""
 
 #. module: purchase_order_invoice_to
 #: model:ir.model.fields,field_description:purchase_order_invoice_to.field_purchase_order_third_party_number
@@ -77,4 +112,12 @@ msgstr "Utilice este menú para buscar en sus pedidos de compra por\n"
 #, python-format
 msgid "Without Invoice to Receive"
 msgstr "Sin Factura a Recibir"
+
+#. module: purchase_order_invoice_to
+#: code:addons/purchase_order_invoice_to/models/purchase_order.py:136
+#, python-format
+msgid "Zip Code: %s\n"
+""
+msgstr "Código Postal: %s\n"
+""
 

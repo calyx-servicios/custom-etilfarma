@@ -24,6 +24,11 @@ class PurchaseOrder(models.Model):
         compute="_compute_delivery_date_week",
         store=True,
     )
+
+    send_documents_to = fields.Text(
+        string="Send documents to",
+    )
+
     shipment_id = fields.Many2one(
         comodel_name="purchase.shipment", string="Shipment"
     )
@@ -33,6 +38,7 @@ class PurchaseOrder(models.Model):
                                       # but this correspond to a custom request by the client.
         comodel_name="account.payment.term", string="Terms of Payment"
     )
+
     extra_notes = fields.Text(string="Extra", size=150)
 
     @api.onchange("order_type")
