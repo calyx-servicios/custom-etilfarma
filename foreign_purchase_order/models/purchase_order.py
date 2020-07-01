@@ -24,12 +24,13 @@ class PurchaseOrder(models.Model):
         compute="_compute_delivery_date_week",
         store=True,
     )
-
+    shipment_id = fields.Many2one(
+        comodel_name="purchase.shipment", string="Shipment"
+    )
     term_payments = fields.Many2one(  # The base purchase.order model already has a m2o rel with account.payment.term
                                       # but this correspond to a custom request by the client.
         comodel_name="account.payment.term", string="Terms of Payment"
     )
-
     extra_notes = fields.Text(string="Extra", size=150)
 
     @api.onchange("order_type")
