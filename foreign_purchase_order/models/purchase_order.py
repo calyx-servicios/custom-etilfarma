@@ -25,6 +25,10 @@ class PurchaseOrder(models.Model):
         store=True,
     )
 
+    send_documents_to = fields.Text(
+        string="Send documents to",
+    )
+
     extra_notes = fields.Text(string="Extra", size=150)
 
     @api.onchange("order_type")

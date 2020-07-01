@@ -37,6 +37,7 @@
                         </group>
                         <group>
                             <field name="place_of_delivery_id" string="Place of Delivery"/>
+                            <field name="send_documents_to" string="Send documents to" style='min-height: 130px; word-break: break-word'/>
                             <field name="delivery_date_week" string="Delivery Date (Week)"/>
                         </group>
                     </group>
