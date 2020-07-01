@@ -42,13 +42,10 @@ class PurchaseOrder(models.Model):
     @api.onchange("order_type")
     def onchange_order_type(self):
         """
-        When the order types changes, we get the payment_term_id
-        and incoterm from the order type record if this has
-        a value.
+        When the order types changes, we get the incoterm from
+        the order type record if this has a value.
         """
         for order in self:
-            if order.order_type.payment_term_id:
-                order.payment_term_id = order.order_type.payment_term_id.id
             if order.order_type.incoterm_id:
                 order.incoterm_id = order.order_type.incoterm_id.id
 
