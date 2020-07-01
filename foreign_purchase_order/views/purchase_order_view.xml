@@ -50,6 +50,15 @@
                             <field name="import_license_issue_date" string="Issue Date"/>
                             <field name="import_license_approval_date" string="Approval Date"/>
                         </group>
+                        <group name="bill_landing" string="Bill Landing">
+                            <field name="bill_landing_number" string="Number"/>
+                            <field name="bill_landing_issue_date" string="Issue Date"/>
+                            <field name="bill_landing_reception_date" string="Reception Date"/>
+                        </group>
+                        <group name="delivery" string="Delivery">
+                            <field name="delivery_number" string="Number"/>
+                            <field name="delivery_date" string="Date"/>
+                        </group>                        
                     </group>
                 </page>
             </xpath>
@@ -81,7 +90,20 @@
             </field>
             <filter name="activities_upcoming_all" position="after">
                 <separator/>
-                <filter name="incomplete_import_data" string="Incomplete Import Documentation" domain="['&amp;', '&amp;', ('order_type_foreign','=',True), ('state','=','purchase'), '|', '|', ('import_license_number','=',False), ('import_license_issue_date','=',False), ('import_license_approval_date','=',False)]"/>
+                <filter name="incomplete_import_data" string="Incomplete Import Documentation" 
+                domain="['&amp;', '&amp;', 
+                ('order_type_foreign','=',True), 
+                ('state','=','purchase'), '|', '|', 
+                ('import_license_number','=',False), 
+                ('import_license_issue_date','=',False), 
+                ('import_license_approval_date','=',False),
+                ('bill_landing_number','=',False),
+                ('bill_landing_issue_date','=',False),
+                ('bill_landing_reception_date','=',False),
+                ('bill_landing_description','=',False),
+                ('delivery_number','=',False),
+                ('delivery_date','=',False)
+                ]"/>
             </filter>
         </field>
     </record>
