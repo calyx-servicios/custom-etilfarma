@@ -36,6 +36,10 @@ class PurchaseOrder(models.Model):
         comodel_name="account.payment.term", string="Terms of Payment"
     )
 
+    send_documents_to = fields.Text(
+        string="Send documents to",
+    )
+
     extra_notes = fields.Text(string="Extra", size=150)
 
     import_license_approval_date = fields.Date(

@@ -26,6 +26,10 @@ class PurchaseOrder(models.Model):
         help='Enumeration for the Third Party Order by Client and by Year',
         )
 
+    send_document_to_invoice_to = fields.Boolean(
+        string='Send Documents to Client'
+    )
+
     @staticmethod
     def _get_date_range(date_order_str):
         """
@@ -103,3 +107,38 @@ class PurchaseOrder(models.Model):
     def onchange_partner_id(self):
         res = super(PurchaseOrder, self).onchange_partner_id()
         return res
+
+    @api.onchange("send_document_to_invoice_to", "invoice_to")
+    def _onchange_send_document_to_invoice_to(self):
+        """
+            We check if send_document_to_invoice_to boolean field is selected.
+            If it is, send_document_to takes the invoice_to partner values.
+            If it is not, send_document_to is written with the company values.
+            - We also rewrite the field if the invoice_to partner is changed.
+        """
+        for record in self:
+            if record.send_document_to_invoice_to:
+                if record.invoice_to:
+                    self._write_send_document_to(record.invoice_to)
+                else:
+                    raise Warning(_('Please Select Client to Invoice, and check the option again.'))
+            else:
+                self._write_send_document_to(self.company_id)
+
+    def _write_send_document_to(self, record):
+        info_to_write = ""
+
+        if record.name:
+            info_to_write += _("%s\n==========\n") % record.name
+        if record.street:
+            info_to_write += _("Street: %s\n") % record.street
+        if record.zip:
+            info_to_write += _("Zip Code: %s\n") % record.zip
+        if record.state_id:
+            info_to_write += _("State: %s\n") % record.state_id.name
+        if record.country_id:
+            info_to_write += _("Country: %s\n") % record.country_id.name
+        if record.main_id_number:
+            info_to_write += "CUIT: {}\n".format(record.main_id_number)
+
+        self.send_documents_to = info_to_write
