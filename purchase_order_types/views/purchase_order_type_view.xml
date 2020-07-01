@@ -9,7 +9,6 @@
                 <field name="active" invisible="True" />
                 <field name="name"/>
                 <field name="sequence_id" />
-                <field name="payment_term_id" />
                 <field name="incoterm_id" />
                 <field name="description" />
             </tree>
@@ -37,12 +36,11 @@
                             <field name="sequence_id" />
                             <p class="text-warning">
                                 <strong>
-                                    <i class="fa fa-bell-o"></i> In case of creating a new Sequence, select 'Purchase Order Sequence'.
+                                    <i class="fa fa-bell-o"/> In case of creating a new Sequence, select 'Purchase Order Sequence'.
                                 </strong>
                             </p>
                         </group>
                         <group>
-                            <field name="payment_term_id" />
                             <field name="incoterm_id" />
                             <field name="foreign_order" />
                         </group>
@@ -61,11 +59,9 @@
             <search string="Purchase Order Types">
                 <field name="name"/>
                 <field name="sequence_id" />
-                <field name="payment_term_id" />
                 <field name="incoterm_id" />
                 <group expand="0" string="Group By">
                     <filter string="Entry Sequence" name="entry_sequence" domain="[]" context="{'group_by':'sequence_id'}" />
-                    <filter string="Payment Term" name="pay_terms" domain="[]" context="{'group_by':'payment_term_id'}" />
                     <filter string="Incoterm" name="incoterm" domain="[]" context="{'group_by':'incoterm_id'}" />
                 </group>
             </search>
@@ -84,7 +80,6 @@
         </field>
     </record>
 
-
-    <menuitem id="menu_purchase_order_type" parent="purchase.menu_purchase_config" sequence="40" action="action_purchase_order_type_view"/>
+    <menuitem id="menu_purchase_order_type" parent="purchase_order_types.menu_purchase_order_in_config_purchase" sequence="20" action="action_purchase_order_type_view" groups="base.group_no_one"/>
 
 </odoo>

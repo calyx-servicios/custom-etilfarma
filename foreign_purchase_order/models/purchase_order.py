@@ -25,6 +25,20 @@ class PurchaseOrder(models.Model):
         store=True,
     )
 
+    send_documents_to = fields.Text(string="Send documents to",)
+
+    shipment_id = fields.Many2one(
+        comodel_name="purchase.shipment", string="Shipment"
+    )
+    packing_list_id = fields.Many2one(
+        comodel_name="purchase.packing.list", string="Packing List"
+    )
+    term_payments = fields.Many2one(  # The base purchase.order model already has a m2o rel with account.payment.term
+        # but this correspond to a custom request by the client.
+        comodel_name="account.payment.term",
+        string="Terms of Payment",
+    )
+
     extra_notes = fields.Text(string="Extra", size=150)
 
     import_license_approval_date = fields.Date(
@@ -93,4 +107,31 @@ class PurchaseOrder(models.Model):
                 else:
                     if ocl:
                         record.order_type = ocl.id
+
+    def _get_invoiced(self):
+        """
+         Inherit to force sample POs to be in 'Nothing to Bill' state
+        """
+        super(PurchaseOrder, self)._get_invoiced()
+        for order in self.filtered(lambda po: po.purchase_sample and
+                                    po.invoice_status == 'to invoice'):
+            order.invoice_status = 'no'
+
+    @api.multi
+    def _get_default_special_indications(self):
+        """
+         Set the Special Indications based on the value of the
+         field in Purchase settings
+        """
+        icpsudo = self.env[
+            "ir.config_parameter"
+        ].sudo()  # icpsudo -> Ir.Config_Parameter access with sudo()
+        indications = icpsudo.get_param(
+            "foreign_purchase_order.special_indications"
+        )
+        return indications
+
+    special_indications = fields.Text(
+        string="Special Indications", default=_get_default_special_indications
+    )
 

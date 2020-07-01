@@ -58,6 +58,11 @@ msgid "Display Name"
 msgstr "Mostrar Nombre"
 
 #. module: foreign_purchase_order
+#: model:ir.ui.view,arch_db:foreign_purchase_order.res_config_settings_view_form_purchase
+msgid "Exclusive for Foreign Purchase Orders."
+msgstr "Exclusivo para Ordenes de Compra Extranjeras."
+
+#. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_extra_notes
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Extra"
@@ -66,7 +71,7 @@ msgstr "Extra"
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_order_type_foreign
 msgid "Foreign Order"
-msgstr "Foreign Order"
+msgstr "Orden Extranjera"
 
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
@@ -172,6 +177,22 @@ msgid "Sample?"
 msgstr "¿Es una muestra?"
 
 #. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_special_indications
+#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
+msgid "Special Indications"
+msgstr "Special Indications"
+
+#. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_res_config_settings_special_indications
+msgid "Special Indications Default"
+msgstr "Special Indications Default"
+
+#. module: foreign_purchase_order
+#: model:ir.ui.view,arch_db:foreign_purchase_order.res_config_settings_view_form_purchase
+msgid "Write here your Special Indications to use as default."
+msgstr "Escriba aquí sus 'Special Indications' a usar como predeterminado. El campo no tiene límite de extensión."
+
+#. module: foreign_purchase_order
 #: model:ir.model,name:foreign_purchase_order.model_purchase_delivery
 msgid "purchase.delivery"
 msgstr "purchase.delivery"
@@ -180,3 +201,9 @@ msgstr "purchase.delivery"
 #: model:ir.model,name:foreign_purchase_order.model_purchase_packaging
 msgid "purchase.packaging"
 msgstr "purchase.packaging"
+
+#. module: foreign_purchase_order
+#: model:ir.model,name:foreign_purchase_order.model_res_config_settings
+msgid "res.config.settings"
+msgstr "res.config.settings"
+

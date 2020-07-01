@@ -1,8 +1,1 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_purchase_order_packaging_type,purchase.packaging.type,model_purchase_packaging_type,purchase.group_purchase_user,1,1,1,0
-access_purchase_order_packaging_type_manager,purchase.packaging.type manager,model_purchase_packaging_type,purchase.group_purchase_manager,1,1,1,1
-
-access_purchase_product_packaging,purchase.product.packaging,model_purchase_product_packaging,purchase.group_purchase_user,1,1,1,0
-access_purchase_product_packaging_manager,purchase.product.packaging manager,model_purchase_product_packaging,purchase.group_purchase_manager,1,1,1,1
-
-access_purchase_product_packaging_line,purchase.product.packaging.line,model_purchase_product_packaging_line,purchase.group_purchase_user,1,1,1,1

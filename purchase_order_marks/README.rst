@@ -23,7 +23,7 @@ New Module
 
 .. !!! Description must be max 2-3 paragraphs, and is required.
 
-This module extends the functionality of Purchase and add field in purchase order for the foreign fields.
+This module extends the functionality of Purchase and add a page in purchase order for the foreign fields.
 
 **Table of contents**
 
@@ -38,12 +38,6 @@ Install
 Search in Applications for Foreign Purchase Order.
 
 .. !!! Configuration: This file is optional, it should explain how to configure the module before using it; it is aimed at advanced users. To configure this module, you need to:
-
-Configure
-=========
-
-* Settings -> Purchase
-* Write a default text for Special Indications (Exclusive for Foreign Orders)
 
 Usage
 =====
@@ -70,7 +64,6 @@ Contributors
   
   * Jhone Mendez
   * Federico Gregori
-  * Lucas Soto
 
 Maintainers
 ~~~~~~~~~~~
