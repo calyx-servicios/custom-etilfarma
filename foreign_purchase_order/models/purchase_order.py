@@ -84,3 +84,14 @@ class PurchaseOrder(models.Model):
                     if ocl:
                         record.order_type = ocl.id
 
+    @api.multi
+    def _get_default_special_indications(self):
+        """
+         Set the Special Indications based on the value of the
+         field in Purchase settings
+        """
+        icpsudo = self.env['ir.config_parameter'].sudo()  # icpsudo -> Ir.Config_Parameter access with sudo()
+        indications = icpsudo.get_param('foreign_purchase_order.special_indications')
+        return indications
+
+    special_indications = fields.Text(string="Special Indications", default=_get_default_special_indications)
