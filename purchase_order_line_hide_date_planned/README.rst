@@ -1,6 +1,6 @@
-=============
-New Module
-=============
+=====================================
+Purchase Order Line Hide Date Planned
+=====================================
 
 .. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
    !! This file is intended to be in every module    !!
@@ -15,21 +15,15 @@ New Module
 .. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
-.. |badge3| image:: https://img.shields.io/badge/gitlab-calyxservicios--group%2Fodoo%2Fodoo--calyx-lightgray.png?logo=gitlab
-    :target: https://gitlab.com/calyxservicios-group/odoo/odoo-calyx
+.. |badge3| image:: https://img.shields.io/badge/gitlab-calyxservicios--group%2Fodoo%2Fcustom--etilfarma-lightgray.png?logo=gitlab
+    :target: https://gitlab.com/calyxservicios-group/odoo/custom-etilfarma
     :alt: calyxservicios-group/odoo/odoo-calyx
 
 |badge1| |badge2| |badge3|
 
 .. !!! Description must be max 2-3 paragraphs, and is required.
 
-This module extends the functionality of Purchase, 
-add new fields in purchase order lines, 
-add new field to choose variants like packaging option
-based in a new product template.
-
-This module also prevents in a configurable way the creation
-of more that one variable in products to sell.
+This module hides the purchase order lines "Scheduled Date" field and the supplier info delay, changing the default behaviour to make the Purchase Order "Scheduled Date" apply to the entire order.
 
 **Table of contents**
 
@@ -41,21 +35,21 @@ of more that one variable in products to sell.
 Install
 =======
 
-* Go to Warehouse.
-* Configuration -> Activate Variants Options.
-Search in Applications for Foreign Purchase Lines.
+Search in Applications for Purchase Order Line Hide Date Planned.
 
 .. !!! Configuration: This file is optional, it should explain how to configure the module before using it; it is aimed at advanced users. To configure this module, you need to:
+
+Configure
+=========
+
+* N/A.
+
 
 Usage
 =====
 
-* Go to Warehouse.
-* With admin mode -> create a new attribute and set "packaging" option.
-* Go to product -> Variants -> Select the new attribute and create the values like "packaging options".
-* Go to Purchase -> Quotation Order.
-* Select one product, and the type of packaging based in attribute variants value.
-* Complete the fields.
+* Instead of using delay days of supplier info, the following orders, will take in count only the 'Scheduled Date' from the Purchase Order.
+
 
 Bug Tracker
 ===========
@@ -71,12 +65,9 @@ Authors
 Contributors
 ~~~~~~~~~~~~
 
-* `Calyx Servicios S.A. <http://www.calyxservicios.com.ar/>`_
-  
-  * Jhone Mendez
-  * Federico Gregori
-  * Cristian Paradiso
+* `Calyx Servicios S.A. <http://odoo.calyx-cloud.com.ar/>`_
 
+  * Lucas Soto
 
 Maintainers
 ~~~~~~~~~~~
@@ -85,7 +76,7 @@ This module is maintained by the Calyx Servicios S.A.
 
 .. image:: https://ss-static-01.esmsv.com/id/13290/galeriaimagenes/obtenerimagen/?width=120&height=40&id=sitio_logo&ultimaModificacion=2020-05-25+21%3A45%3A05
    :alt: Odoo Calyx Servicios S.A.
-   :target: http://www.calyxservicios.com.ar/
+   :target: http://odoo.calyx-cloud.com.ar/
 
 CALYX SERVICIOS S.A. It is part of the PGK Consultores economic group, member of an important global network, a world organization positioned among the 20 largest consultant-studios in the world.
 The PGK Consultores group is one of the 20 largest consultant-studios in Argentina with nearly 200 professionals.

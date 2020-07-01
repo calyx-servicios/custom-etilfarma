@@ -22,11 +22,9 @@ class PurchaseOrderType(models.Model):
         default=_default_sequence_id,
         required=True,
     )
-    payment_term_id = fields.Many2one(
-        comodel_name="account.payment.term", string="Payment Terms"
-    )
+
     incoterm_id = fields.Many2one(
         comodel_name="stock.incoterms", string="Incoterm"
     )
     sequence = fields.Integer(default=10)
-    blanket = fields.Boolean(string="Blanket?")
+    foreign_order = fields.Boolean(string="Foreign Order?")
