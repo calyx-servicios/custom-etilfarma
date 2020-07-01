@@ -137,3 +137,12 @@ class PurchaseOrder(models.Model):
         return indications
 
     special_indications = fields.Text(string="Special Indications", default=_get_default_special_indications)
+    def _get_invoiced(self):
+        """
+         Inherit to force sample POs to be in 'Nothing to Bill' state
+        """
+        super(PurchaseOrder, self)._get_invoiced()
+        for order in self.filtered(lambda po: po.purchase_sample and
+                                    po.invoice_status == 'to invoice'):
+            order.invoice_status = 'no'
+

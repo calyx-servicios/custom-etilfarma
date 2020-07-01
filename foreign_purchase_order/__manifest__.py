@@ -4,14 +4,17 @@
     "summary": """
         This module add a page in purchase order for the foreign fields.""",
     "author": "Calyx Servicios S.A.",
-    "maintainers": ["Lolstalgia"],
+    "maintainers": [
+        "Lolstalgia",
+        "LucasSoto"
+    ],
     "website": "http://odoo.calyx-cloud.com.ar/",
     "license": "AGPL-3",
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/11.0/odoo/addons/base/module/module_data.xml
     # for the full list
     "category": "Purchase",
-    "version": "11.0.1.0.0",
+    "version": "11.0.2.0.0",
     # see https://odoo-community.org/page/development-status
     "development_status": "Production/Stable",
     "application": False,

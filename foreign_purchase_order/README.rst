@@ -70,6 +70,7 @@ Contributors
   
   * Jhone Mendez
   * Federico Gregori
+  * Lucas Soto
 
 Maintainers
 ~~~~~~~~~~~
