@@ -1,7 +1,7 @@
 from odoo import fields, models
 
 
-class PlaceOfDeliver(models.Model):
+class Shipment(models.Model):
     _name = "purchase.shipment"
     _rec_name = "shipment"
 

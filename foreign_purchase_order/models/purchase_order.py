@@ -27,6 +27,8 @@ class PurchaseOrder(models.Model):
     shipment_id = fields.Many2one(
         comodel_name="purchase.shipment", string="Shipment"
     )
+    packing_list_id = fields.Many2one(
+        comodel_name="purchase.packing.list", string="Packing List"
     term_payments = fields.Many2one(  # The base purchase.order model already has a m2o rel with account.payment.term
                                       # but this correspond to a custom request by the client.
         comodel_name="account.payment.term", string="Terms of Payment"

@@ -40,6 +40,7 @@
                         <group>
                             <field name="place_of_delivery_id" string="Place of Delivery"/>
                             <field name="delivery_date_week" string="Delivery Date (Week)"/>
+                            <field name="packing_list_id" string="Packing List"/>
                             <field name="term_payments" string="Terms of Payment" options="{'no_open':True,'no_create':1,'no_create_edit':1}"/>
                         </group>
                     </group>
