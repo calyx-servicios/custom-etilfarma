@@ -9,7 +9,7 @@
                 <field name="order_type" required="True" force_save="1"/>
                 <p class="text-warning">
                     <strong>
-                        <i class="fa fa-bell-o"></i> Using the edit button at the right side of the field, we can assign a diferent numeration.
+                        <i class="fa fa-bell-o"/> Using the edit button at the right side of the field, we can assign a diferent numeration.
                     </strong>
                 </p>
             </field>
@@ -38,5 +38,9 @@
             </group>
         </field>
     </record>
+
+    <menuitem
+    id="menu_purchase_order_in_config_purchase" name="Purchase Orders"
+    parent="purchase.menu_purchase_config" sequence="40" />
 
 </odoo>
