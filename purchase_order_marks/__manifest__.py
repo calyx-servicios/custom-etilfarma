@@ -18,12 +18,18 @@
     "installable": True,
     "external_dependencies": {"python": [], "bin": []},
     # any module necessary for this one to work correctly
-    "depends": ["base", "purchase", "purchase_order_types"],
+    "depends": [
+        "base",
+        "purchase",
+        "foreign_purchase_order",
+        "purchase_order_invoice_to",
+    ],
     # always loaded
     "data": [
         # 'security/ir.model.access.csv',
-        'views/res_partner_view.xml',
+        "views/res_partner_view.xml",
         "views/purchase_order_view.xml",
+        "views/res_company_view.xml"
         # 'views/templates.xml',
     ],
     # only loaded in demonstration mode
