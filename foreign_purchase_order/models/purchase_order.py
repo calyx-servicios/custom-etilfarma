@@ -84,3 +84,12 @@ class PurchaseOrder(models.Model):
                     if ocl:
                         record.order_type = ocl.id
 
+    def _get_invoiced(self):
+        """
+         Inherit to force sample POs to be in 'Nothing to Bill' state
+        """
+        super(PurchaseOrder, self)._get_invoiced()
+        for order in self.filtered(lambda po: po.purchase_sample and
+                                    po.invoice_status == 'to invoice'):
+            order.invoice_status = 'no'
+
