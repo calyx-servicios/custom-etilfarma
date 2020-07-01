@@ -7,14 +7,22 @@ from odoo import fields, models, api
 class PurchaseOrder(models.Model):
     _inherit = "purchase.order"
 
-    marks = fields.Char(string="Marks") 
+    marks = fields.Char(string="Marks")
 
     @api.onchange("order_type")
     def onchange_order_type_marks(self):
         for record in self:
-            if record.order_type_foreign:
-                if record.env.user.marks:
-                    record.marks = record.env.user.marks
+            if (
+                record.order_type.id
+                == self.env.ref(
+                    "purchase_order_invoice_to.po_type_third_party"
+                ).id
+            ):
+                record.marks = ""
+            else:
+                if record.order_type_foreign:
+                    if record.env.user.company_id:
+                        record.marks = record.env.user.company_id.marks or ""
 
     @api.onchange("invoice_to")
     def onchange_order_type_invoice_to(self):
