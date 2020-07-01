@@ -36,7 +36,7 @@
                             <field name="sequence_id" />
                             <p class="text-warning">
                                 <strong>
-                                    <i class="fa fa-bell-o"></i> In case of creating a new Sequence, select 'Purchase Order Sequence'.
+                                    <i class="fa fa-bell-o"/> In case of creating a new Sequence, select 'Purchase Order Sequence'.
                                 </strong>
                             </p>
                         </group>
@@ -80,10 +80,6 @@
         </field>
     </record>
 
-    <menuitem
-        id="menu_purchase_order_in_config_purchase" name="Purchase Orders"
-        parent="purchase.menu_purchase_config" sequence="40" groups="base.group_no_one"/>
-
-    <menuitem id="menu_purchase_order_type" parent="purchase_order_types.menu_purchase_order_in_config_purchase" sequence="20" action="action_purchase_order_type_view"/>
+    <menuitem id="menu_purchase_order_type" parent="purchase_order_types.menu_purchase_order_in_config_purchase" sequence="20" action="action_purchase_order_type_view" groups="base.group_no_one"/>
 
 </odoo>
