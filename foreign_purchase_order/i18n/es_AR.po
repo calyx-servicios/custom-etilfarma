@@ -1,19 +1,31 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* foreign_purchase_order
+# 	* foreign_purchase_order
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-30 18:16+0000\n"
-"PO-Revision-Date: 2020-06-30 18:16+0000\n"
+"POT-Creation-Date: 2020-07-01 16:14+0000\n"
+"PO-Revision-Date: 2020-07-01 13:17-0300\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: \n"
+"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
+"Language: es_AR\n"
+"X-Generator: Poedit 2.0.6\n"
+
+#. module: foreign_purchase_order
+#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
+msgid "<i class=\"fa fa-exclamation-triangle \"/> Action required: <strong>import license data not fully loaded.</strong>"
+msgstr "<i class=\"fa fa-exclamation-triangle \"/> Acción requerida: <strong>datos de licencia de importación no cargados completamente.</strong>"
+
+#. module: foreign_purchase_order
+#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
+msgid "Approval Date"
+msgstr "Fecha de Aprobación"
 
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_create_uid
@@ -70,7 +82,37 @@ msgstr "Compras Exteriores"
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_id
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packaging_id
 msgid "ID"
-msgstr "ID"
+msgstr "ID (identificación)"
+
+#. module: foreign_purchase_order
+#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
+msgid "Import Documentation"
+msgstr "Documentación de importación"
+
+#. module: foreign_purchase_order
+#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
+msgid "Import License"
+msgstr "Licencia de Importación"
+
+#. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_import_license_approval_date
+msgid "Import License Approval Date"
+msgstr "Fecha de Aprobación de la Licencia de Importación"
+
+#. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_import_license_issue_date
+msgid "Import License Issue Date"
+msgstr "Fecha de Expedición de la Licencia de Importación"
+
+#. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_import_license_number
+msgid "Import License Number"
+msgstr "Número de Licencia de Importación"
+
+#. module: foreign_purchase_order
+#: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_order_foreign_filter
+msgid "Incomplete Import Documentation"
+msgstr "Documentación de Importación Incompleta"
 
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
@@ -83,6 +125,11 @@ msgid "Incoterms"
 msgstr "Incoterms"
 
 #. module: foreign_purchase_order
+#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
+msgid "Issue Date"
+msgstr "Fecha de Expedición"
+
+#. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery___last_update
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packaging___last_update
 msgid "Last Modified on"
@@ -92,13 +139,18 @@ msgstr "Última modificación en"
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_write_uid
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packaging_write_uid
 msgid "Last Updated by"
-msgstr "Última actualización realizada por"
+msgstr "Última actualización de"
 
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_write_date
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packaging_write_date
 msgid "Last Updated on"
-msgstr "Última actualización el"
+msgstr "Última actualización en"
+
+#. module: foreign_purchase_order
+#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
+msgid "Number"
+msgstr "Número"
 
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_packaging_id

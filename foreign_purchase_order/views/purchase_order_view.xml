@@ -50,11 +50,24 @@
                         </group>
                     </group>
                 </page>
+                <page string='Import Documentation' attrs="{'invisible': [('order_type_foreign','=',False)]}">
+                    <group>
+                        <group name="import_license" string="Import License">
+                            <field name="import_license_number" string="Number"/>
+                            <field name="import_license_issue_date" string="Issue Date"/>
+                            <field name="import_license_approval_date" string="Approval Date"/>
+                        </group>
+                    </group>
+                </page>
             </xpath>
 
+            <xpath expr="//sheet/div[@class='oe_title']" position="inside">
+                <p class="text-warning" attrs="{'invisible': ['|','|',['order_type_foreign','=',False], ['state','not in',('purchase', 'no_invoice')],'&amp;','&amp;',['import_license_number','!=',False],['import_license_issue_date','!=',False],['import_license_approval_date','!=',False]]}">
+                    <i class="fa fa-exclamation-triangle "></i> Action required: <strong>import license data not fully loaded.</strong>
+                </p>
+            </xpath>
         </field>
     </record>
-
 
     <record id="purchase_order_foreign_fields_tree" model="ir.ui.view">
         <field name="model">purchase.order</field>
@@ -62,6 +75,7 @@
         <field name="arch" type="xml">
             <field name="order_type" position="after">
                 <field name="customer_purchase_order"/>
+                <field name="import_license_number"/>
             </field>
         </field>
     </record>
@@ -73,6 +87,10 @@
             <field name="order_type" position="after">
                 <field name="customer_purchase_order"/>
             </field>
+            <filter name="activities_upcoming_all" position="after">
+                <separator/>
+                <filter name="incomplete_import_data" string="Incomplete Import Documentation" domain="['&amp;', '&amp;', ('order_type_foreign','=',True), ('state','in',['purchase', 'no_invoice']), '|', '|', ('import_license_number','=',False), ('import_license_issue_date','=',False), ('import_license_approval_date','=',False)]"/>
+            </filter>
         </field>
     </record>
 
