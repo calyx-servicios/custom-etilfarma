@@ -23,6 +23,8 @@
         "purchase",
         "purchase_order_types",
         "foreign_purchase_order",
+        "foreign_purchase_lines",
+        "purchase_order_marks",
     ],
     # always loaded
     "data": [

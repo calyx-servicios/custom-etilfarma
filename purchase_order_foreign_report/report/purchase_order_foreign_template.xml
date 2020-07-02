@@ -75,9 +75,7 @@
             <div class="col-xs-6 text-right">
                 <div class="row">
                     <div class="col-xs-12">
-                         <t t-foreach="doc.get_date_format_english()" t-as="data">                                        
-                            <span t-esc="data[0]"/>                               
-                        </t>
+                        <span t-esc="doc.get_date_format_english()"/>                               
                     </div>
                 </div>
                 <div class="row">
@@ -175,7 +173,7 @@
                         <t t-else="">
                             <span style="font-size:18px;font-weight:bold" t-esc="doc.company_id.name"/><br/>
                         </t>
-                        <pre style="border: none;background: transparent;"> <span t-esc="doc.send_documents_to"/> </pre>
+                        <pre style="border: none;background: transparent;font-size: 14px;font-family: helvetica;"> <span t-esc="doc.send_documents_to"/> </pre>
                     </td>
                 </tr>
                 <tr style="margin-top: 25px">

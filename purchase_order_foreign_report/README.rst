@@ -1,5 +1,5 @@
 =============
-New Module
+Purchase Order Foreign Report
 =============
 
 .. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -23,7 +23,7 @@ New Module
 
 .. !!! Description must be max 2-3 paragraphs, and is required.
 
-This module extends the functionality of ... to support ... and to allow you to ...
+This module extends the functionality of purchase order and to allow you to print a new report for foreign orders 
 
 **Table of contents**
 
@@ -35,19 +35,19 @@ This module extends the functionality of ... to support ... and to allow you to 
 Install
 =======
 
-Do this ...
 
-.. !!! Configuration: This file is optional, it should explain how to configure the module before using it; it is aimed at advanced users. To configure this module, you need to:
+Go to app menu and install.
+ 1.- [purchase_order_types] by Calyx.
+ 2.- [foreign_purchase_order] by Calyx.
+ 3.- [foreign_purchase_lines] by Calyx.
+ 5.- [purchase_order_marks] by Calyx.
+ 6.- [purchase_order_foreign_report] by Calyx.
 
-Configure
-=========
-
-Go to ...
 
 Usage
 =====
 
-1. Go to ...
+1. Go to purchase, print one foreign order.
 
 Known issues / Roadmap
 ======================
@@ -72,9 +72,10 @@ Contributors
 
 * `Calyx Servicios S.A. <http://www.calyxservicios.com.ar/>`_
   
-  * Mario Moreno
+  * Lucas Soto
   * Jhone Mendez
   * Federico Gregori
+  * Cris Paradiso
 
 Maintainers
 ~~~~~~~~~~~
@@ -88,4 +89,4 @@ This module is maintained by the Calyx Servicios S.A.
 CALYX SERVICIOS S.A. It is part of the PGK Consultores economic group, member of an important global network, a world organization positioned among the 20 largest consultant-studios in the world.
 The PGK Consultores group is one of the 20 largest consultant-studios in Argentina with nearly 200 professionals.
 
-This module is part of the `Odoo-Calyx <https://gitlab.com/calyxservicios-group/odoo/odoo-calyx>`_ project on Gitlab.
+This module is part of the `Custom-Etilfarma <https://gitlab.com/calyxservicios-group/odoo/custom-etilfarma>`_ project on Gitlab.
