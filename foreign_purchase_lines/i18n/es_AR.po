@@ -37,7 +37,7 @@ msgid "NMC"
 msgstr "NMC"
 
 #. module: foreign_purchase_lines
-#: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_order_line_observactions
+#: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_order_line_observations
 msgid "Observation"
 msgstr "Observacion"
 

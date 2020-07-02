@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="paperformat_purchase_foreign_report" model="report.paperformat">
+        <field name="name">Purchase Foreign Report</field>
+        <field name="default" eval="True"/>
+        <field name="format">custom</field>
+        <field name="page_height">297</field>
+        <field name="page_width">210</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">20</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_left">20</field>
+        <field name="margin_right">10</field>
+        <field name="header_line" eval="True"/>
+        <field name="header_spacing">25</field>
+        <field name="dpi">90</field>
+    </record>
+    
+    <report 
+        id="action_report_purchase_foreign"
+        string="Purchase Order Foreign Report"
+        model="purchase.order" 
+        report_type="qweb-pdf"
+        file="purchase_order_foreign_report.report_purchase_order_foreign" 
+        name="purchase_order_foreign_report.report_purchase_order_foreign"
+        paperformat="purchase_order_foreign_report.paperformat_purchase_foreign_report"
+        menu="False"
+        print_report_name="'Purchase Order - %s' % (object.name)"
+    /> 
+</odoo>
