@@ -59,7 +59,7 @@ class PurchaseOrder(models.Model):
     bill_landing_reception_date = fields.Date(
         string="Bill Landing Reception Date"
     )
-    bill_landing_description = fields.Date(
+    bill_landing_description = fields.Char(
         string="Bill Landing Description"
     )
     delivery_number = fields.Char(

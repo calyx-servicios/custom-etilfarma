@@ -61,6 +61,7 @@
                             <field name="bill_landing_number" string="Number"/>
                             <field name="bill_landing_issue_date" string="Issue Date"/>
                             <field name="bill_landing_reception_date" string="Reception Date"/>
+                            <field name="bill_landing_description" string="Description"/>
                         </group>
                         <group name="delivery" string="Delivery">
                             <field name="delivery_number" string="Number"/>
@@ -74,6 +75,12 @@
                 <p class="text-warning" attrs="{'invisible': ['|','|',['order_type_foreign','=',False], ['state','not in',('purchase', 'no_invoice')],'&amp;','&amp;',['import_license_number','!=',False],['import_license_issue_date','!=',False],['import_license_approval_date','!=',False]]}">
                     <i class="fa fa-exclamation-triangle "></i> Action required: <strong>import license data not fully loaded.</strong>
                 </p>
+                <p class="text-warning" attrs="{'invisible': ['|','|',['order_type_foreign','=',False], ['state','not in',('purchase', 'no_invoice')],'&amp;','&amp;','&amp;',['bill_landing_number','!=',False],['bill_landing_issue_date','!=',False],['bill_landing_reception_date','!=',False],['bill_landing_description','!=',False]]}">
+                    <i class="fa fa-exclamation-triangle "></i> Action required: <strong>bill landing data not fully loaded.</strong>
+                </p>
+                <p class="text-warning" attrs="{'invisible': ['|','|',['order_type_foreign','=',False], ['state','not in',('purchase', 'no_invoice')],'&amp;',['delivery_number','!=',False],['delivery_date','!=',False]]}">
+                    <i class="fa fa-exclamation-triangle "></i> Action required: <strong>delivery data not fully loaded.</strong>
+                </p>
             </xpath>
         </field>
     </record>
@@ -85,6 +92,8 @@
             <field name="order_type" position="after">
                 <field name="customer_purchase_order"/>
                 <field name="import_license_number"/>
+                <field name="bill_landing_number"/>
+                <field name="delivery_number"/>
             </field>
         </field>
     </record>
@@ -101,7 +110,7 @@
                 <filter name="incomplete_import_data" 
                     string="Incomplete Import Documentation" 
                         domain="['&amp;', '&amp;', ('order_type_foreign','=',True), 
-                        ('state','in',['purchase', 'no_invoice']), '|', '|', 
+                        ('state','in',['purchase', 'no_invoice']), '|', '|', '|', '|', '|', '|', '|', '|',
                         ('import_license_number','=',False), 
                         ('import_license_issue_date','=',False), 
                         ('import_license_approval_date','=',False),
