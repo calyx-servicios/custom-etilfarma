@@ -66,16 +66,16 @@
                             <span t-if="doc.invoice_to.zip" t-esc="doc.invoice_to.zip"/> <span t-if="doc.invoice_to.state_id" t-esc="doc.invoice_to.state_id.name"/><br/>
                             <span t-esc="doc.invoice_to.country_id.name"/><br/>
                             <t t-if="doc.invoice_to.main_id_number">
-                                <span t-esc="doc.invoice_to.main_id_category_id.name"/>: <span t-esc="doc.invoice_to.main_id_number"/>
+                                <span t-esc="doc.invoice_to.main_id_category_id.code"/>: <span t-esc="doc.invoice_to.main_id_number"/>
                             </t> 
                         </t>
                         <t t-else="">
-                            <span style="font-size:18px;font-weight:bold" t-esc="doc.company_id.name"/><br/>
+                            Invoice to: <span style="font-size:18px;font-weight:bold" t-esc="doc.company_id.name"/><br/>
                             <span t-if="doc.company_id.street" t-esc="doc.company_id.street"/><br/>
                             <span t-if="doc.company_id.zip" t-esc="doc.company_id.zip"/> <span t-if="doc.company_id.state_id" t-esc="doc.company_id.state_id.name"/><br/>
                             <span t-esc="doc.company_id.country_id.name"/><br/>
                             <t t-if="doc.company_id.main_id_number">
-                                <span t-esc="doc.company_id.main_id_category_id.name"/>: <span t-esc="doc.company_id.main_id_number"/>
+                                <span t-esc="doc.company_id.main_id_category_id.code"/>: <span t-esc="doc.company_id.main_id_number"/>
                             </t>
                         </t>
                     </div>
@@ -144,25 +144,25 @@
         <div class="col-xs-6 text-left">
             <table class="table" style="width: 100%">
                 <tr>
-                    <td style="border: none;padding:2px">Port of delivery: <span t-esc="doc.place_of_delivery_id.place_of_delivery"/></td>
+                    <td style="border: none;">Port of delivery: <span t-esc="doc.place_of_delivery_id.place_of_delivery"/></td>
                 </tr>
                 <tr>
-                    <td style="border: none;padding:2px">Packaging: <span t-esc="doc.packaging_id.packaging"/></td>
+                    <td style="border: none;">Packaging: <span t-esc="doc.packaging_id.packaging"/></td>
                 </tr>
                 <tr>
-                    <td style="border: none;padding:2px">Delivery Date: <span t-esc="doc.delivery_date_week"/></td>
+                    <td style="border: none;">Delivery Date: <span t-esc="doc.delivery_date_week"/></td>
                 </tr>
                 <tr>
-                    <td style="border: none;padding:2px">Shipment: <span t-esc="doc.shipment_id.shipment"/></td>
+                    <td style="border: none;">Shipment: <span t-esc="doc.shipment_id.shipment"/></td>
                 </tr>
                 <tr>
-                    <td style="border: none;padding:2px">Marks: <span t-esc="doc.marks"/></td>
+                    <td style="border: none;">Marks: <span t-esc="doc.marks"/></td>
                 </tr>
                 <tr>
-                    <td style="border: none;padding:2px">Packaging List: <span t-esc="doc.packing_list_id.packing_list"/></td>
+                    <td style="border: none;">Packaging List: <span t-esc="doc.packing_list_id.packing_list"/></td>
                 </tr>
                 <tr>
-                    <td colspan="2" style="border: none;padding:2px">Special Indications: <br/>
+                    <td colspan="2" style="border: none;">Special Indications: <br/>
                     <span t-esc="doc.special_indications"/></td>
                 </tr>
             </table>
