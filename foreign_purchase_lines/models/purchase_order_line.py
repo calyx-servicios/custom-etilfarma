@@ -87,4 +87,4 @@ class PurchaseOrderLine(models.Model):
 
     product_nmc = fields.Char(string="NMC", related="product_id.product_nmc")
     country_id = fields.Many2one(comodel_name="res.country", string="Origin")
-    observactions = fields.Char(string="Observation")
+    observations = fields.Char(string="Observation")

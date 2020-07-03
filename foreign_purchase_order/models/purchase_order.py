@@ -112,10 +112,17 @@ class PurchaseOrder(models.Model):
     @api.onchange("purchase_sample")
     def _onchange_purchase_sample(self):
         """
-         Set the order type in OCM
+        When the purchase_sample is True, we get the purchase sample type
+        and set in the purchase_type field,
+        however if the purchase_sample is false, we get the purchase type
+        in the partner and set in purchase_type field.
         """
         ocm = self.env.ref("purchase_order_types.po_type_sample")
         ocl = self.env.ref("purchase_order_types.po_type_regular")
+        purchase_type = (
+            self.partner_id.purchase_type
+            or self.partner_id.commercial_partner_id.purchase_type
+        )
         for record in self:
             if ocm:
                 if record.purchase_sample:
@@ -123,17 +130,32 @@ class PurchaseOrder(models.Model):
                     if ocm.foreign_order:
                         record.order_type_foreign = True
                 else:
-                    if ocl:
+                    if purchase_type:
+                        record.order_type = purchase_type
+                    else:
                         record.order_type = ocl.id
+
+    @api.multi
+    @api.onchange("partner_id")
+    def onchange_partner_id(self):
+        """
+        When the partner change and if purchase_sample it is true
+        then the order_type keeps in ocm
+        """
+        super().onchange_partner_id()
+        ocm = self.env.ref("purchase_order_types.po_type_sample")
+        if self.purchase_sample:
+            self.order_type = ocm.id
 
     def _get_invoiced(self):
         """
          Inherit to force sample POs to be in 'Nothing to Bill' state
         """
         super(PurchaseOrder, self)._get_invoiced()
-        for order in self.filtered(lambda po: po.purchase_sample and
-                                    po.invoice_status == 'to invoice'):
-            order.invoice_status = 'no'
+        for order in self.filtered(
+            lambda po: po.purchase_sample and po.invoice_status == "to invoice"
+        ):
+            order.invoice_status = "no"
 
     @api.multi
     def _get_default_special_indications(self):
