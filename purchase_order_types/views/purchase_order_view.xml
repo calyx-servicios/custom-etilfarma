@@ -23,6 +23,8 @@
             <field name="state" position="before">
                 <field name="order_type" invisible="context.get('group_by') == 'order_type'"/>
             </field>
+            <field name="origin" position="replace">
+            </field>
         </field>
     </record>
 
