@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-01 16:14+0000\n"
-"PO-Revision-Date: 2020-07-01 13:17-0300\n"
+"POT-Creation-Date: 2020-07-03 12:14+0000\n"
+"PO-Revision-Date: 2020-07-03 09:18-0300\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,6 +16,16 @@ msgstr ""
 "Plural-Forms: \n"
 "Language: es_AR\n"
 "X-Generator: Poedit 2.0.6\n"
+
+#. module: foreign_purchase_order
+#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
+msgid "<i class=\"fa fa-exclamation-triangle \"/> Action required: <strong>bill landing data not fully loaded.</strong>"
+msgstr "<i class=\"fa fa-exclamation-triangle \"/> Action required: <strong>bill landing data not fully loaded.</strong>"
+
+#. module: foreign_purchase_order
+#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
+msgid "<i class=\"fa fa-exclamation-triangle \"/> Action required: <strong>delivery data not fully loaded.</strong>"
+msgstr "<i class=\"fa fa-exclamation-triangle \"/> Action required: <strong>delivery data not fully loaded.</strong>"
 
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
@@ -28,14 +38,43 @@ msgid "Approval Date"
 msgstr "Fecha de Aprobación"
 
 #. module: foreign_purchase_order
+#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
+msgid "Bill Landing"
+msgstr "Conocimiento de Embarque"
+
+#. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_bill_landing_description
+msgid "Bill Landing Description"
+msgstr "Conocimiento de Embarque Descripción"
+
+#. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_bill_landing_issue_date
+msgid "Bill Landing Issue Date"
+msgstr "Fecha de Aprobacion de el Conocimiento de Embarque"
+
+#. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_bill_landing_number
+msgid "Bill Landing Number"
+msgstr "Numero de Conocimiento de Embarque"
+
+#. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_bill_landing_reception_date
+msgid "Bill Landing Reception Date"
+msgstr "Fecha de Recepción de Conocimiento de Embarque"
+
+#. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_create_uid
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packaging_create_uid
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packing_list_create_uid
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_shipment_create_uid
 msgid "Created by"
 msgstr "Creado por"
 
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_create_date
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packaging_create_date
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packing_list_create_date
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_shipment_create_date
 msgid "Created on"
 msgstr "Creado en"
 
@@ -46,14 +85,26 @@ msgid "Customer Purchase Order"
 msgstr "Nro Orden del Cliente"
 
 #. module: foreign_purchase_order
+#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
+msgid "Date"
+msgstr "Fecha"
+
+#. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_delivery_date_week
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Delivery Date (Week)"
 msgstr "Fecha Entrega (Semana)"
 
 #. module: foreign_purchase_order
+#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
+msgid "Description"
+msgstr "Descripción"
+
+#. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_display_name
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packaging_display_name
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packing_list_display_name
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_shipment_display_name
 msgid "Display Name"
 msgstr "Mostrar Nombre"
 
@@ -81,8 +132,25 @@ msgstr "Compras Exteriores"
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_id
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packaging_id
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packing_list_id
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_shipment_id
 msgid "ID"
-msgstr "ID (identificación)"
+msgstr "ID"
+
+#. module: foreign_purchase_order
+#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
+msgid "Import Delivery"
+msgstr "Despacho de Importación"
+
+#. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_delivery_date
+msgid "Import Delivery Date"
+msgstr "Fecha de Despacho de Importación"
+
+#. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_delivery_number
+msgid "Import Delivery Number"
+msgstr "Numero de Despacho de Importación"
 
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
@@ -127,25 +195,31 @@ msgstr "Incoterms"
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Issue Date"
-msgstr "Fecha de Expedición"
+msgstr "Fecha de Emisión"
 
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery___last_update
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packaging___last_update
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packing_list___last_update
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_shipment___last_update
 msgid "Last Modified on"
 msgstr "Última modificación en"
 
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_write_uid
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packaging_write_uid
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packing_list_write_uid
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_shipment_write_uid
 msgid "Last Updated by"
-msgstr "Última actualización de"
+msgstr "Última actualización realizada por"
 
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_write_date
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packaging_write_date
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packing_list_write_date
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_shipment_write_date
 msgid "Last Updated on"
-msgstr "Última actualización en"
+msgstr "Última actualización el"
 
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
@@ -160,6 +234,13 @@ msgid "Packaging"
 msgstr "Empaquetado"
 
 #. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_packing_list_id
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packing_list_packing_list
+#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
+msgid "Packing List"
+msgstr "Packing List"
+
+#. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_place_of_delivery
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_place_of_delivery_id
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
@@ -172,9 +253,27 @@ msgid "Purchase Order"
 msgstr "Orden de compra"
 
 #. module: foreign_purchase_order
+#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
+msgid "Reception Date"
+msgstr "Reception Date"
+
+#. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_purchase_sample
 msgid "Sample?"
 msgstr "¿Es una muestra?"
+
+#. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_send_documents_to
+#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
+msgid "Send documents to"
+msgstr "Send documents to"
+
+#. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_shipment_id
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_shipment_shipment
+#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
+msgid "Shipment"
+msgstr "Envío"
 
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_special_indications
@@ -186,6 +285,17 @@ msgstr "Special Indications"
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_res_config_settings_special_indications
 msgid "Special Indications Default"
 msgstr "Special Indications Default"
+
+#. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_term_payments
+#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
+msgid "Terms of Payment"
+msgstr "Terms of Payment"
+
+#. module: foreign_purchase_order
+#: model:ir.ui.menu,name:foreign_purchase_order.menu_payment_terms_in_purchase
+msgid "Terms of Payments"
+msgstr "Terms of Payments"
 
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.res_config_settings_view_form_purchase
@@ -203,7 +313,16 @@ msgid "purchase.packaging"
 msgstr "purchase.packaging"
 
 #. module: foreign_purchase_order
+#: model:ir.model,name:foreign_purchase_order.model_purchase_packing_list
+msgid "purchase.packing.list"
+msgstr "purchase.packing.list"
+
+#. module: foreign_purchase_order
+#: model:ir.model,name:foreign_purchase_order.model_purchase_shipment
+msgid "purchase.shipment"
+msgstr "purchase.shipment"
+
+#. module: foreign_purchase_order
 #: model:ir.model,name:foreign_purchase_order.model_res_config_settings
 msgid "res.config.settings"
 msgstr "res.config.settings"
-
