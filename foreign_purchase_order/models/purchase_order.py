@@ -44,8 +44,30 @@ class PurchaseOrder(models.Model):
     import_license_approval_date = fields.Date(
         string="Import License Approval Date"
     )
-    import_license_issue_date = fields.Date(string="Import License Issue Date")
-    import_license_number = fields.Char(string="Import License Number")
+    import_license_issue_date = fields.Date(
+        string="Import License Issue Date"
+    )
+    import_license_number = fields.Char(
+        string="Import License Number"
+    )
+    bill_landing_number = fields.Char(
+        string="Bill Landing Number"
+    )
+    bill_landing_issue_date = fields.Date(
+        string="Bill Landing Issue Date"
+    )
+    bill_landing_reception_date = fields.Date(
+        string="Bill Landing Reception Date"
+    )
+    bill_landing_description = fields.Char(
+        string="Bill Landing Description"
+    )
+    delivery_number = fields.Char(
+        string="Import Delivery Number"
+    )
+    delivery_date = fields.Date(
+        string="Import Delivery Date"
+    )
 
     @api.onchange("order_type")
     def _onchange_order_type(self):
@@ -104,6 +126,15 @@ class PurchaseOrder(models.Model):
                     if ocl:
                         record.order_type = ocl.id
 
+    def _get_invoiced(self):
+        """
+         Inherit to force sample POs to be in 'Nothing to Bill' state
+        """
+        super(PurchaseOrder, self)._get_invoiced()
+        for order in self.filtered(lambda po: po.purchase_sample and
+                                    po.invoice_status == 'to invoice'):
+            order.invoice_status = 'no'
+
     @api.multi
     def _get_default_special_indications(self):
         """
@@ -121,14 +152,4 @@ class PurchaseOrder(models.Model):
     special_indications = fields.Text(
         string="Special Indications", default=_get_default_special_indications
     )
-
-    def _get_invoiced(self):
-        """
-         Inherit to force sample POs to be in 'Nothing to Bill' state
-        """
-        super(PurchaseOrder, self)._get_invoiced()
-        for order in self.filtered(
-            lambda po: po.purchase_sample and po.invoice_status == "to invoice"
-        ):
-            order.invoice_status = "no"
 
