@@ -69,6 +69,15 @@
                                 <span t-esc="doc.invoice_to.main_id_category_id.name"/>: <span t-esc="doc.invoice_to.main_id_number"/>
                             </t> 
                         </t>
+                        <t t-else="">
+                            <span style="font-size:18px;font-weight:bold" t-esc="doc.company_id.name"/><br/>
+                            <span t-if="doc.company_id.street" t-esc="doc.company_id.street"/><br/>
+                            <span t-if="doc.company_id.zip" t-esc="doc.company_id.zip"/> <span t-if="doc.company_id.state_id" t-esc="doc.company_id.state_id.name"/><br/>
+                            <span t-esc="doc.company_id.country_id.name"/><br/>
+                            <t t-if="doc.company_id.main_id_number">
+                                <span t-esc="doc.company_id.main_id_category_id.name"/>: <span t-esc="doc.company_id.main_id_number"/>
+                            </t>
+                        </t>
                     </div>
                 </div>
             </div>
