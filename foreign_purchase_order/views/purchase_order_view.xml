@@ -50,11 +50,40 @@
                         </group>
                     </group>
                 </page>
+                <page string='Import Documentation' attrs="{'invisible': [('order_type_foreign','=',False)]}">
+                    <group>
+                        <group name="import_license" string="Import License">
+                            <field name="import_license_number" string="Number"/>
+                            <field name="import_license_issue_date" string="Issue Date"/>
+                            <field name="import_license_approval_date" string="Approval Date"/>
+                        </group>
+                        <group name="bill_landing" string="Bill Landing">
+                            <field name="bill_landing_number" string="Number"/>
+                            <field name="bill_landing_issue_date" string="Issue Date"/>
+                            <field name="bill_landing_reception_date" string="Reception Date"/>
+                            <field name="bill_landing_description" string="Description"/>
+                        </group>
+                        <group name="delivery" string="Import Delivery">
+                            <field name="delivery_number" string="Number"/>
+                            <field name="delivery_date" string="Date"/>
+                        </group>                        
+                    </group>
+                </page>
             </xpath>
 
+            <xpath expr="//sheet/div[@class='oe_title']" position="inside">
+                <p class="text-warning" attrs="{'invisible': ['|','|',['order_type_foreign','=',False], ['state','not in',('purchase', 'no_invoice')],'&amp;','&amp;',['import_license_number','!=',False],['import_license_issue_date','!=',False],['import_license_approval_date','!=',False]]}">
+                    <i class="fa fa-exclamation-triangle "></i> Action required: <strong>import license data not fully loaded.</strong>
+                </p>
+                <p class="text-warning" attrs="{'invisible': ['|','|',['order_type_foreign','=',False], ['state','not in',('purchase', 'no_invoice')],'&amp;','&amp;','&amp;',['bill_landing_number','!=',False],['bill_landing_issue_date','!=',False],['bill_landing_reception_date','!=',False],['bill_landing_description','!=',False]]}">
+                    <i class="fa fa-exclamation-triangle "></i> Action required: <strong>bill landing data not fully loaded.</strong>
+                </p>
+                <p class="text-warning" attrs="{'invisible': ['|','|',['order_type_foreign','=',False], ['state','not in',('purchase', 'no_invoice')],'&amp;',['delivery_number','!=',False],['delivery_date','!=',False]]}">
+                    <i class="fa fa-exclamation-triangle "></i> Action required: <strong>delivery data not fully loaded.</strong>
+                </p>
+            </xpath>
         </field>
     </record>
-
 
     <record id="purchase_order_foreign_fields_tree" model="ir.ui.view">
         <field name="model">purchase.order</field>
@@ -62,6 +91,9 @@
         <field name="arch" type="xml">
             <field name="order_type" position="after">
                 <field name="customer_purchase_order"/>
+                <field name="import_license_number"/>
+                <field name="bill_landing_number"/>
+                <field name="delivery_number"/>
             </field>
         </field>
     </record>
@@ -73,6 +105,22 @@
             <field name="order_type" position="after">
                 <field name="customer_purchase_order"/>
             </field>
+            <filter name="activities_upcoming_all" position="after">
+                <separator/>
+                <filter name="incomplete_import_data" 
+                    string="Incomplete Import Documentation" 
+                        domain="['&amp;', '&amp;', ('order_type_foreign','=',True), 
+                        ('state','in',['purchase', 'no_invoice']), '|', '|', '|', '|', '|', '|', '|', '|',
+                        ('import_license_number','=',False), 
+                        ('import_license_issue_date','=',False), 
+                        ('import_license_approval_date','=',False),
+                        ('bill_landing_number','=',False),
+                        ('bill_landing_issue_date','=',False),
+                        ('bill_landing_reception_date','=',False),
+                        ('bill_landing_description','=',False),
+                        ('delivery_number','=',False),
+                        ('delivery_date','=',False)]"/>
+            </filter>
         </field>
     </record>
 

@@ -41,6 +41,34 @@ class PurchaseOrder(models.Model):
 
     extra_notes = fields.Text(string="Extra", size=150)
 
+    import_license_approval_date = fields.Date(
+        string="Import License Approval Date"
+    )
+    import_license_issue_date = fields.Date(
+        string="Import License Issue Date"
+    )
+    import_license_number = fields.Char(
+        string="Import License Number"
+    )
+    bill_landing_number = fields.Char(
+        string="Bill Landing Number"
+    )
+    bill_landing_issue_date = fields.Date(
+        string="Bill Landing Issue Date"
+    )
+    bill_landing_reception_date = fields.Date(
+        string="Bill Landing Reception Date"
+    )
+    bill_landing_description = fields.Char(
+        string="Bill Landing Description"
+    )
+    delivery_number = fields.Char(
+        string="Import Delivery Number"
+    )
+    delivery_date = fields.Date(
+        string="Import Delivery Date"
+    )
+
     @api.onchange("order_type")
     def _onchange_order_type(self):
         """
