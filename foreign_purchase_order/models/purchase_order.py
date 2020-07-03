@@ -63,10 +63,10 @@ class PurchaseOrder(models.Model):
         string="Bill Landing Description"
     )
     delivery_number = fields.Char(
-        string="Delivery Number"
+        string="Import Delivery Number"
     )
     delivery_date = fields.Date(
-        string="Delivery Date"
+        string="Import Delivery Date"
     )
 
     @api.onchange("order_type")

@@ -6,13 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-02 18:54+0000\n"
-"PO-Revision-Date: 2020-07-02 16:09-0300\n"
+"POT-Creation-Date: 2020-07-03 12:14+0000\n"
+"PO-Revision-Date: 2020-07-03 09:18-0300\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
 "Language: es_AR\n"
 "X-Generator: Poedit 2.0.6\n"
 
@@ -89,25 +90,10 @@ msgid "Date"
 msgstr "Fecha"
 
 #. module: foreign_purchase_order
-#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
-msgid "Delivery"
-msgstr "Entrega"
-
-#. module: foreign_purchase_order
-#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_delivery_date
-msgid "Delivery Date"
-msgstr "Fecha de entrega"
-
-#. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_delivery_date_week
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Delivery Date (Week)"
 msgstr "Fecha Entrega (Semana)"
-
-#. module: foreign_purchase_order
-#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_delivery_number
-msgid "Delivery Number"
-msgstr "Numero de Entrega"
 
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
@@ -150,6 +136,21 @@ msgstr "Compras Exteriores"
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_shipment_id
 msgid "ID"
 msgstr "ID"
+
+#. module: foreign_purchase_order
+#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
+msgid "Import Delivery"
+msgstr "Despacho de Importación"
+
+#. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_delivery_date
+msgid "Import Delivery Date"
+msgstr "Fecha de Despacho de Importación"
+
+#. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_delivery_number
+msgid "Import Delivery Number"
+msgstr "Numero de Despacho de Importación"
 
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields

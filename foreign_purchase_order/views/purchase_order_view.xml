@@ -63,7 +63,7 @@
                             <field name="bill_landing_reception_date" string="Reception Date"/>
                             <field name="bill_landing_description" string="Description"/>
                         </group>
-                        <group name="delivery" string="Delivery">
+                        <group name="delivery" string="Import Delivery">
                             <field name="delivery_number" string="Number"/>
                             <field name="delivery_date" string="Date"/>
                         </group>                        
