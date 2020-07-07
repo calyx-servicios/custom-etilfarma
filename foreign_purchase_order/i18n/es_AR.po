@@ -108,7 +108,7 @@ msgstr "Delivery Date (Week)"
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_delivery_number
 msgid "Delivery Number"
-msgstr "Número de Entrega"
+msgstr "Número de Despacho"
 
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
