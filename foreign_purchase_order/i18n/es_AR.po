@@ -6,31 +6,31 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-03 12:14+0000\n"
-"PO-Revision-Date: 2020-07-03 09:18-0300\n"
+"POT-Creation-Date: 2020-07-02 18:54+0000\n"
+"PO-Revision-Date: 2020-07-07 08:58-0300\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: es_AR\n"
 "X-Generator: Poedit 2.0.6\n"
 
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "<i class=\"fa fa-exclamation-triangle \"/> Action required: <strong>bill landing data not fully loaded.</strong>"
-msgstr "<i class=\"fa fa-exclamation-triangle \"/> Action required: <strong>bill landing data not fully loaded.</strong>"
+msgstr "<i class=\"fa fa-exclamation-triangle \"/> Acción requerida: <strong>Datos de conocimiento de embarque no cargados completamente.</strong>"
 
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "<i class=\"fa fa-exclamation-triangle \"/> Action required: <strong>delivery data not fully loaded.</strong>"
-msgstr "<i class=\"fa fa-exclamation-triangle \"/> Action required: <strong>delivery data not fully loaded.</strong>"
+msgstr "<i class=\"fa fa-exclamation-triangle \"/> Acción requerida: <strong>Datos de despacho de importación no cargados completamente.</strong>"
 
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "<i class=\"fa fa-exclamation-triangle \"/> Action required: <strong>import license data not fully loaded.</strong>"
-msgstr "<i class=\"fa fa-exclamation-triangle \"/> Acción requerida: <strong>datos de licencia de importación no cargados completamente.</strong>"
+msgstr "<i class=\"fa fa-exclamation-triangle \"/> Acción requerida: <strong>Datos de licencia de importación no cargados completamente.</strong>"
 
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
@@ -50,12 +50,12 @@ msgstr "Conocimiento de Embarque Descripción"
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_bill_landing_issue_date
 msgid "Bill Landing Issue Date"
-msgstr "Fecha de Aprobacion de el Conocimiento de Embarque"
+msgstr "Fecha de Aprobación de el Conocimiento de Embarque"
 
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_bill_landing_number
 msgid "Bill Landing Number"
-msgstr "Numero de Conocimiento de Embarque"
+msgstr "Número de Conocimiento de Embarque"
 
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_bill_landing_reception_date
@@ -90,10 +90,25 @@ msgid "Date"
 msgstr "Fecha"
 
 #. module: foreign_purchase_order
+#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
+msgid "Delivery"
+msgstr "Entrega"
+
+#. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_delivery_date
+msgid "Delivery Date"
+msgstr "Fecha de entrega"
+
+#. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_delivery_date_week
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Delivery Date (Week)"
-msgstr "Fecha Entrega (Semana)"
+msgstr "Delivery Date (Week)"
+
+#. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_delivery_number
+msgid "Delivery Number"
+msgstr "Número de Despacho"
 
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
@@ -136,21 +151,6 @@ msgstr "Compras Exteriores"
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_shipment_id
 msgid "ID"
 msgstr "ID"
-
-#. module: foreign_purchase_order
-#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
-msgid "Import Delivery"
-msgstr "Despacho de Importación"
-
-#. module: foreign_purchase_order
-#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_delivery_date
-msgid "Import Delivery Date"
-msgstr "Fecha de Despacho de Importación"
-
-#. module: foreign_purchase_order
-#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_delivery_number
-msgid "Import Delivery Number"
-msgstr "Numero de Despacho de Importación"
 
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
@@ -231,7 +231,7 @@ msgstr "Número"
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packaging_packaging
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Packaging"
-msgstr "Empaquetado"
+msgstr "Packaging"
 
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_packing_list_id
@@ -245,7 +245,7 @@ msgstr "Packing List"
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_place_of_delivery_id
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Place of Delivery"
-msgstr "Lugar de Entrega"
+msgstr "Place of Delivery"
 
 #. module: foreign_purchase_order
 #: model:ir.model,name:foreign_purchase_order.model_purchase_order
@@ -255,7 +255,7 @@ msgstr "Orden de compra"
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Reception Date"
-msgstr "Reception Date"
+msgstr "Fecha de Recepción"
 
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_purchase_sample
@@ -273,7 +273,7 @@ msgstr "Send documents to"
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_shipment_shipment
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Shipment"
-msgstr "Envío"
+msgstr "Shipment"
 
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_special_indications
