@@ -50,7 +50,7 @@ msgstr "Conocimiento de Embarque Descripción"
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_bill_landing_issue_date
 msgid "Bill Landing Issue Date"
-msgstr "Fecha de Aprobacion de el Conocimiento de Embarque"
+msgstr "Fecha de Aprobación de el Conocimiento de Embarque"
 
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_bill_landing_number
