@@ -65,7 +65,7 @@ msgstr "Order #:"
 #. module: purchase_order_foreign_report
 #: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_foreign_page
 msgid "Origin"
-msgstr "Origen"
+msgstr "Origin"
 
 #. module: purchase_order_foreign_report
 #: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_foreign_page
