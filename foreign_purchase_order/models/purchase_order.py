@@ -13,11 +13,16 @@ class PurchaseOrder(models.Model):
     purchase_sample = fields.Boolean(string="Sample?", default=False)
 
     customer_purchase_order = fields.Char(string="Customer Purchase Order")
+
     place_of_delivery_id = fields.Many2one(
-        comodel_name="purchase.delivery", string="Place of Delivery"
+        comodel_name="purchase.delivery",
+        string="Place of Delivery",
+        ondelete="restrict",
     )
     packaging_id = fields.Many2one(
-        comodel_name="purchase.packaging", string="Packaging"
+        comodel_name="purchase.packaging",
+        string="Packaging",
+        ondelete="restrict",
     )
     delivery_date_week = fields.Char(
         string="Delivery Date (Week)",
@@ -28,12 +33,18 @@ class PurchaseOrder(models.Model):
     send_documents_to = fields.Text(string="Send documents to",)
 
     shipment_id = fields.Many2one(
-        comodel_name="purchase.shipment", string="Shipment"
+        comodel_name="purchase.shipment",
+        string="Shipment",
+        ondelete="restrict",
     )
     packing_list_id = fields.Many2one(
-        comodel_name="purchase.packing.list", string="Packing List"
+        comodel_name="purchase.packing.list",
+        string="Packing List",
+        ondelete="restrict",
     )
-    term_payments = fields.Many2one(  # The base purchase.order model already has a m2o rel with account.payment.term
+    term_payments = fields.Many2one(
+        # The base purchase.order model already has a m2o rel
+        # with account.payment.term
         # but this correspond to a custom request by the client.
         comodel_name="account.payment.term",
         string="Terms of Payment",
@@ -44,38 +55,23 @@ class PurchaseOrder(models.Model):
     import_license_approval_date = fields.Date(
         string="Import License Approval Date"
     )
-    import_license_issue_date = fields.Date(
-        string="Import License Issue Date"
-    )
-    import_license_number = fields.Char(
-        string="Import License Number"
-    )
-    bill_landing_number = fields.Char(
-        string="Bill Landing Number"
-    )
-    bill_landing_issue_date = fields.Date(
-        string="Bill Landing Issue Date"
-    )
+    import_license_issue_date = fields.Date(string="Import License Issue Date")
+    import_license_number = fields.Char(string="Import License Number")
+    bill_landing_number = fields.Char(string="Bill Landing Number")
+    bill_landing_issue_date = fields.Date(string="Bill Landing Issue Date")
     bill_landing_reception_date = fields.Date(
         string="Bill Landing Reception Date"
     )
-    bill_landing_description = fields.Char(
-        string="Bill Landing Description"
-    )
-    delivery_number = fields.Char(
-        string="Import Delivery Number"
-    )
-    delivery_date = fields.Date(
-        string="Import Delivery Date"
-    )
+    bill_landing_description = fields.Char(string="Bill Landing Description")
+    delivery_number = fields.Char(string="Import Delivery Number")
+    delivery_date = fields.Date(string="Import Delivery Date")
 
     @api.onchange("order_type")
     def _onchange_order_type(self):
         """
             When the order type changes, check if that order is a foreign order
-            if it is, then set like True the variable order_type_foreign to show
-            some fields in
-            the purchase view.
+            if it is, then set like True the variable order_type_foreign 
+            to show some fields in the purchase view.
         """
         for record in self:
             if record.order_type:

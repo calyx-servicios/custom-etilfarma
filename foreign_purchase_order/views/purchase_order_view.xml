@@ -35,18 +35,18 @@
                 <page string='Foreign Purchase' attrs="{'invisible': [('order_type_foreign','=',False)]}">
                     <group>
                         <group>
-                            <field name="incoterm_id" string="Incoterm"/>
-                            <field name="packaging_id" string="Packaging"/>
+                            <field name="incoterm_id" string="Incoterm" options="{'no_open':True,'no_create': True,'no_create_edit':1}"/>
+                            <field name="packaging_id" string="Packaging" options="{'no_open':True,'no_create': True,'no_create_edit':1}"/>
                             <field name="special_indications" string="Special Indications" style=' min-height: 100px; word-break: break-word' />
                             <field name="extra_notes" style=' max-width: 285px;  width: 285px;word-break: break-word' string="Extra"/>
-                            <field name="shipment_id" string="Shipment"/>
+                            <field name="shipment_id" string="Shipment" options="{'no_open':True,'no_create': True,'no_create_edit':1}"/>
                         </group>
                         <group>
-                            <field name="place_of_delivery_id" string="Place of Delivery"/>
+                            <field name="place_of_delivery_id" string="Place of Delivery" options="{'no_open':True,'no_create': True,'no_create_edit':1}"/>
                             <field name="send_documents_to" string="Send documents to" style='min-height: 130px; word-break: break-word'/>
                             <field name="delivery_date_week" string="Delivery Date (Week)"/>
                             <field name="term_payments" string="Terms of Payment" options="{'no_open':True,'no_create':1,'no_create_edit':1}"/>
-                            <field name="packing_list_id" string="Packing List"/>
+                            <field name="packing_list_id" string="Packing List" options="{'no_open':True,'no_create': True,'no_create_edit':1}"/>
                         </group>
                     </group>
                 </page>
@@ -66,7 +66,7 @@
                         <group name="delivery" string="Import Delivery">
                             <field name="delivery_number" string="Number"/>
                             <field name="delivery_date" string="Date"/>
-                        </group>                        
+                        </group>
                     </group>
                 </page>
             </xpath>
@@ -107,24 +107,17 @@
             </field>
             <filter name="activities_upcoming_all" position="after">
                 <separator/>
-                <filter name="incomplete_import_data" 
-                    string="Incomplete Import Documentation" 
-                        domain="['&amp;', '&amp;', ('order_type_foreign','=',True), 
-                        ('state','in',['purchase', 'no_invoice']), '|', '|', '|', '|', '|', '|', '|', '|',
-                        ('import_license_number','=',False), 
-                        ('import_license_issue_date','=',False), 
-                        ('import_license_approval_date','=',False),
-                        ('bill_landing_number','=',False),
-                        ('bill_landing_issue_date','=',False),
-                        ('bill_landing_reception_date','=',False),
-                        ('bill_landing_description','=',False),
-                        ('delivery_number','=',False),
-                        ('delivery_date','=',False)]"/>
+                <filter name="incomplete_import_data" string="Incomplete Import Documentation" domain="['&amp;', '&amp;', ('order_type_foreign','=',True), 
+                        ('state','in',['purchase', 'no_invoice']), '|', '|', '|', '|', '|', '|', '|', '|', ('import_license_number','=',False), ('import_license_issue_date','=',False), ('import_license_approval_date','=',False), ('bill_landing_number','=',False), ('bill_landing_issue_date','=',False), ('bill_landing_reception_date','=',False), ('bill_landing_description','=',False), ('delivery_number','=',False), ('delivery_date','=',False)]"/>
             </filter>
         </field>
     </record>
 
     <menuitem id="menu_payment_terms_in_purchase" name="Terms of Payments" parent="purchase_order_types.menu_purchase_order_in_config_purchase" sequence="30" action="account.action_payment_term_form"/>
 
-    <menuitem id="menu_incoterms_in_purchase" parent="purchase.menu_purchase_config" sequence="48" action="stock.action_incoterms_tree"/>
+    <menuitem id="menu_purchase_order_foreign_in_config_purchase" name="Foreign Fields Configuration" parent="purchase.menu_purchase_config" sequence="50" />
+
+    <menuitem id="menu_incoterms_in_purchase" parent="foreign_purchase_order.menu_purchase_order_foreign_in_config_purchase" sequence="10" action="stock.action_incoterms_tree"/>
+
+
 </odoo>
