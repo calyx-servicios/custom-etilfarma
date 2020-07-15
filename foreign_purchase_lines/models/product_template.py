@@ -8,7 +8,7 @@ from odoo.exceptions import UserError
 class ProductProduct(models.Model):
     _inherit = "product.template"
 
-    product_nmc = fields.Char(string="NMC")
+    product_nmc = fields.Char(string="HS Code")
 
     @api.model
     def create(self, vals):
