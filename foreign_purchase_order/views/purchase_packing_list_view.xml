@@ -47,6 +47,6 @@
         </field>
     </record>
 
-    <menuitem id="menu_purchase_packing_list" parent="foreign_purchase_order.menu_purchase_order_foreign_in_config_purchase" sequence="20" action="action_purchase_packing_list_view" groups="base.group_no_one"/>
+    <menuitem id="menu_purchase_packing_list" parent="foreign_purchase_order.menu_purchase_order_foreign_in_config_purchase" sequence="20" action="action_purchase_packing_list_view"/>
 
 </odoo>
