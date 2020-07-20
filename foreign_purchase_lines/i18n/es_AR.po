@@ -6,14 +6,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-24 21:49+0000\n"
-"PO-Revision-Date: 2020-07-07 09:07-0300\n"
+"POT-Creation-Date: 2020-07-15 13:43+0000\n"
+"PO-Revision-Date: 2020-07-15 10:46-0300\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Content-Transfer-Encoding: 8bit\n"
 "Language: es_AR\n"
 "X-Generator: Poedit 2.0.6\n"
 
@@ -23,8 +22,6 @@ msgid "Attribute"
 msgstr "Atributo"
 
 #. module: foreign_purchase_lines
-#: code:addons/addons/addons-custom/custom-etilfarma/foreign_purchase_lines/models/product_template.py:22
-#: code:addons/addons/addons-custom/custom-etilfarma/foreign_purchase_lines/models/product_template.py:34
 #: code:addons/foreign_purchase_lines/models/product_template.py:22
 #: code:addons/foreign_purchase_lines/models/product_template.py:34
 #, python-format
@@ -35,8 +32,8 @@ msgstr "Solo se permite 1 variante de empaquetado por producto."
 #: model:ir.model.fields,field_description:foreign_purchase_lines.field_product_product_product_nmc
 #: model:ir.model.fields,field_description:foreign_purchase_lines.field_product_template_product_nmc
 #: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_order_line_product_nmc
-msgid "NMC"
-msgstr "NMC"
+msgid "HS Code"
+msgstr "HS Code"
 
 #. module: foreign_purchase_lines
 #: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_order_line_observations
@@ -53,7 +50,7 @@ msgstr "Origen"
 #: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_order_line_product_attr_value_id
 #: model:ir.ui.menu,name:foreign_purchase_lines.menu_packaging_in_config_purchase
 msgid "Packaging"
-msgstr "Empaquetado"
+msgstr "Presentación"
 
 #. module: foreign_purchase_lines
 #: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_order_line_product_tmpl_id
@@ -91,7 +88,6 @@ msgid "Type of product's packaging"
 msgstr "Tipos de empaquetado para Productos"
 
 #. module: foreign_purchase_lines
-#: code:addons/addons/addons-custom/custom-etilfarma/foreign_purchase_lines/models/product_attribute.py:44
 #: code:addons/foreign_purchase_lines/models/product_attribute.py:44
 #, python-format
 msgid "You cannot delete a attribute with packaging option, please contact an admin."
