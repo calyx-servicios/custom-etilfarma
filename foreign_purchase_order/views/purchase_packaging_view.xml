@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_purchase_packaging_tree" model="ir.ui.view">
+        <field name="model">purchase.packaging</field>
+        <field name="arch" type="xml">
+            <tree string="Purchase Packaging" decoration-muted="active == False">
+                <field name="sequence" widget="handle" />
+                <field name="active" invisible="True" />
+                <field name="packaging" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_purchase_packaging_form" model="ir.ui.view">
+        <field name="model">purchase.packaging</field>
+        <field name="arch" type="xml">
+            <form string="Type">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="packaging" required="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_purchase_packaging_search" model="ir.ui.view">
+        <field name="model">purchase.packaging</field>
+        <field name="arch" type="xml">
+            <search string="Purchase Packaging">
+                <field name="packaging" />
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_purchase_packaging_view">
+        <field name="name">Purchase Packaging</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">purchase.packaging</field>
+        <field name="view_mode">form,tree</field>
+        <field name="view_id" ref="view_purchase_packaging_tree"/>
+        <field name="search_view_id" ref="view_purchase_packaging_search"/>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Click to set a new purchase packaging.</p>
+        </field>
+    </record>
+
+    <menuitem id="menu_purchase_packaging" parent="foreign_purchase_order.menu_purchase_order_foreign_in_config_purchase" sequence="15" action="action_purchase_packaging_view"/>
+
+</odoo>

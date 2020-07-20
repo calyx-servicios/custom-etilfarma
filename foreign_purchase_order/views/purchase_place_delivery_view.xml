@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_purchase_place_delivery_tree" model="ir.ui.view">
+        <field name="model">purchase.delivery</field>
+        <field name="arch" type="xml">
+            <tree string="Purchase Place of Delivery" decoration-muted="active == False">
+                <field name="sequence" widget="handle" />
+                <field name="active" invisible="True" />
+                <field name="place_of_delivery" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_purchase_place_delivery_form" model="ir.ui.view">
+        <field name="model">purchase.delivery</field>
+        <field name="arch" type="xml">
+            <form string="Type">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="place_of_delivery" required="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_purchase_place_delivery_search" model="ir.ui.view">
+        <field name="model">purchase.delivery</field>
+        <field name="arch" type="xml">
+            <search string="Purchase Place of Delivery">
+                <field name="place_of_delivery" />
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_purchase_place_delivery_view">
+        <field name="name">Purchase Place of Delivery</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">purchase.delivery</field>
+        <field name="view_mode">form,tree</field>
+        <field name="view_id" ref="view_purchase_place_delivery_tree"/>
+        <field name="search_view_id" ref="view_purchase_place_delivery_search"/>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Click to set a new Purchase Place of Delivery.</p>
+        </field>
+    </record>
+
+    <menuitem id="menu_purchase_place_delivery" parent="foreign_purchase_order.menu_purchase_order_foreign_in_config_purchase" sequence="25" action="action_purchase_place_delivery_view"/>
+
+</odoo>
