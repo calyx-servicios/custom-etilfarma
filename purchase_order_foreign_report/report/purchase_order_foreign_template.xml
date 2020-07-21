@@ -162,6 +162,12 @@
                     <td style="border: none;">Packaging List: <span t-esc="doc.packing_list_id.packing_list"/></td>
                 </tr>
                 <tr>
+                    <td style="border: none;">Import License: <span t-esc="doc.import_license_id.import_license"/></td>
+                </tr>
+                <tr>
+                    <td style="border: none;">Certificate of Analysis / COA: <span t-esc="doc.certificate_of_analysis_id.certificate_of_analysis"/></td>
+                </tr>
+                <tr>
                     <td colspan="2" style="border: none;">Special Indications: <br/>
                     <span t-esc="doc.special_indications"/></td>
                 </tr>

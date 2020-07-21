@@ -27,6 +27,9 @@
         "views/purchase_packing_list_view.xml",
         "views/purchase_place_delivery_view.xml",
         "views/purchase_shipment_view.xml",
+        "views/purchase_certificate_of_analysis_view.xml",
+        "views/purchase_import_license_view.xml",
         "views/res_config_settings_views.xml",
+        
     ],
 }
