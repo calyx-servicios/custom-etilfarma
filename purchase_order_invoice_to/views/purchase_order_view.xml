@@ -82,7 +82,7 @@
 
     <!-- Third Party PO's Action, Menu Item and Search/Group By-->
     <record id="purchase_third_party_action" model="ir.actions.act_window">
-        <field name="name">Third Party Purchase Orders</field>
+        <field name="name">IMA</field> <!-- Original name: Third Party Purchase Orders -->
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">purchase.order</field>
         <field name="view_mode">tree,kanban,form,pivot,graph,calendar</field>
