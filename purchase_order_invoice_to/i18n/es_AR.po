@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-01 04:10+0000\n"
-"PO-Revision-Date: 2020-07-01 04:10+0000\n"
+"POT-Creation-Date: 2020-07-22 14:13+0000\n"
+"PO-Revision-Date: 2020-07-22 14:13+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -42,6 +42,12 @@ msgstr "País: %s\n"
 #: model:ir.model.fields,help:purchase_order_invoice_to.field_purchase_order_third_party_number
 msgid "Enumeration for the Third Party Order by Client and by Year"
 msgstr "Numeración para ordenes a terceros por Cliente y Año."
+
+#. module: purchase_order_invoice_to
+#: model:ir.actions.act_window,name:purchase_order_invoice_to.purchase_third_party_action
+#: model:ir.ui.menu,name:purchase_order_invoice_to.menu_purchase_third_party_action
+msgid "IMA"
+msgstr "IMA"
 
 #. module: purchase_order_invoice_to
 #: model:ir.ui.view,arch_db:purchase_order_invoice_to.view_purchase_order_filter
@@ -89,12 +95,6 @@ msgstr "Calle: %s\n"
 #: model:ir.model.fields,field_description:purchase_order_invoice_to.field_purchase_order_third_party_number
 msgid "Third Party Number"
 msgstr "Número de Orden a Terceros"
-
-#. module: purchase_order_invoice_to
-#: model:ir.actions.act_window,name:purchase_order_invoice_to.purchase_third_party_action
-#: model:ir.ui.menu,name:purchase_order_invoice_to.menu_purchase_third_party_action
-msgid "Third Party Purchase Orders"
-msgstr "Pedidos de compra de terceros"
 
 #. module: purchase_order_invoice_to
 #: model:ir.actions.act_window,help:purchase_order_invoice_to.purchase_third_party_action
