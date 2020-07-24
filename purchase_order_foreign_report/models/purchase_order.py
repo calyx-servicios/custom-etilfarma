@@ -10,7 +10,8 @@ class PurchaseOrder(models.Model):
 
     @api.multi
     def print_purchase_foreign_report(self):
-        self.write({"state": "sent"})
+        if self.state == "draft":
+            self.write({"state": "sent"})
         return self.env.ref(
             "purchase_order_foreign_report.action_report_purchase_foreign"
         ).report_action(self)
