@@ -16,6 +16,68 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: purchase_order_foreign_report
+#: model:mail.template,body_html:purchase_order_foreign_report.email_template_foreign_purchase
+msgid "\n"
+"<p>Dear\n"
+"% if object.partner_id.is_company and object.partner_id.child_ids:\n"
+"    ${object.partner_id.child_ids[0].name}\n"
+"% else :\n"
+"    ${object.partner_id.name}\n"
+"% endif\n"
+",</p><p>\n"
+"Here is, in attachment, a ${object.state in ('draft', 'sent') and 'request for quotation' or 'purchase order confirmation'} <strong>${object.name}</strong>\n"
+"% if object.partner_ref:\n"
+"    with reference: ${object.partner_ref}\n"
+"% endif\n"
+"% if object.origin:\n"
+"    (RFQ origin: ${object.origin})\n"
+"% endif\n"
+"amounting in <strong>${format_amount(object.amount_total, object.currency_id)}</strong>\n"
+"from ${object.company_id.name}.\n"
+"</p>\n"
+"\n"
+"<p>Do not hesitate to contact us if you have any further question.</p>\n"
+"<p>Best regards,</p>\n"
+"<p style=\"color:#888888;\">\n"
+"% if object.sudo().create_uid and object.sudo().create_uid.signature:\n"
+"    ${object.sudo().create_uid.signature | safe}\n"
+"% endif\n"
+"</p>\n"
+"            "
+msgstr ""
+"\n"
+"<p>Estimado/a\n"
+"% if object.partner_id.is_company and object.partner_id.child_ids:\n"
+"    ${object.partner_id.child_ids[0].name}\n"
+"% else :\n"
+"    ${object.partner_id.name}\n"
+"% endif\n"
+",</p><p>\n"
+"Aquí se encuentra, en adjunto, una ${object.state in ('draft', 'sent') and 'solicitud de presupuesto' or 'confirmación de orden de compra'} <strong>${object.name}</strong>\n"
+"% if object.partner_ref:\n"
+"    con referencia: ${object.partner_ref}\n"
+"% endif\n"
+"% if object.origin:\n"
+"    (SdP origen: ${object.origin})\n"
+"% endif\n"
+"con un importe de <strong>${format_amount(object.amount_total, object.currency_id)}</strong>\n"
+"de ${object.company_id.name}.\n"
+"</p>\n"
+"\n"
+"<p>Puede responder a este correo para cualquier pregunta.</p>\n"
+"<p>Saludos cordiales,</p>\n"
+"<p style=\"color:#888888;\">\n"
+"% if object.sudo().create_uid and object.sudo().create_uid.signature:\n"
+"${object.sudo().create_uid.signature | safe}\n"
+"% endif\n"
+"</p>\n"
+
+#. module: purchase_order_foreign_report
+#: model:mail.template,subject:purchase_order_foreign_report.email_template_foreign_purchase
+msgid "${object.company_id.name} Purchase Foreign Order (Ref ${object.name or 'n/a' })"
+msgstr "${object.company_id.name} Orden de Compra Exterior (Ref ${object.name or 'n/a' })"
+
+#. module: purchase_order_foreign_report
 #: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_foreign_header
 msgid "<br/>\n"
 "                    Email:"
@@ -31,6 +93,13 @@ msgstr "<span style=\"font-size:18px;font-weight:bold\"> Direct to customer</spa
 #: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_foreign_page
 msgid "Ask to transmit to the supplier: <br/>"
 msgstr "Ask to transmit to the supplier: <br/>"
+
+#. module: purchase_order_foreign_report
+#: code:addons/addons/addons-custom/custom-etilfarma/purchase_order_foreign_report/models/purchase_order.py:54
+#: code:addons/purchase_order_foreign_report/models/purchase_order.py:54
+#, python-format
+msgid "Compose Email"
+msgstr "Compose Email"
 
 #. module: purchase_order_foreign_report
 #: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_foreign_page
@@ -105,7 +174,7 @@ msgstr "Price"
 #. module: purchase_order_foreign_report
 #: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_order_foreign_report
 msgid "Print Foreign Report"
-msgstr "Imprimir Reporte"
+msgstr "Imprimir ROE"
 
 #. module: purchase_order_foreign_report
 #: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_foreign_page
@@ -138,6 +207,11 @@ msgstr "Send Documents to: \n"
 #: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_foreign_page
 msgid "Shipment:"
 msgstr "Shipment:"
+
+#. module: purchase_order_foreign_report
+#: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_order_foreign_report
+msgid "Send PFR"
+msgstr "Enviar ROE"
 
 #. module: purchase_order_foreign_report
 #: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_foreign_page
