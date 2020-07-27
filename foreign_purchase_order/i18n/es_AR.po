@@ -191,6 +191,11 @@ msgstr "Documentación de importación"
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Import License"
+msgstr "Import License"
+
+#. module: foreign_purchase_order
+#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
+msgid "Import Licenses"
 msgstr "Licencia de Importación"
 
 #. module: foreign_purchase_order

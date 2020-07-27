@@ -7,7 +7,7 @@ class PurchaseImportLicense(models.Model):
     _rec_name = "import_license"
     _order = "sequence"
 
-    import_license = fields.Char("Import license")
+    import_license = fields.Char("Import License")
     active = fields.Boolean(default=True)
     sequence = fields.Integer(default=10)
 

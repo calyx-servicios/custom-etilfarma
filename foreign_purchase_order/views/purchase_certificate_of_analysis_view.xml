@@ -3,7 +3,7 @@
     <record id="view_purchase_certificate_of_analysis_tree" model="ir.ui.view">
         <field name="model">purchase.certificate.analysis</field>
         <field name="arch" type="xml">
-            <tree string="Certificate of Analysis / COA" decoration-muted="active == False">
+            <tree string="Certificate of Analysis" decoration-muted="active == False">
                 <field name="sequence" widget="handle" />
                 <field name="active" invisible="True" />
                 <field name="certificate_of_analysis" />
@@ -29,21 +29,21 @@
     <record id="view_purchase_certificate_of_analysis_search" model="ir.ui.view">
         <field name="model">purchase.certificate.analysis</field>
         <field name="arch" type="xml">
-            <search string="Certificate of Analysis / COA">
+            <search string="Certificate of Analysis">
                 <field name="certificate_of_analysis" />
             </search>
         </field>
     </record>
 
     <record model="ir.actions.act_window" id="action_purchase_certificate_of_analysis_view">
-        <field name="name">Certificate of Analysis / COA</field>
+        <field name="name">Certificate of Analysis</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">purchase.certificate.analysis</field>
         <field name="view_mode">form,tree</field>
         <field name="view_id" ref="view_purchase_certificate_of_analysis_tree"/>
         <field name="search_view_id" ref="view_purchase_certificate_of_analysis_search"/>
         <field name="help" type="html">
-            <p class="oe_view_nocontent_create">Click to set a new Certificate of Analysis / COA.</p>
+            <p class="oe_view_nocontent_create">Click to set a new Certificate of Analysis.</p>
         </field>
     </record>
 

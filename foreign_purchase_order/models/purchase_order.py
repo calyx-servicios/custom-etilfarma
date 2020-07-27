@@ -46,7 +46,7 @@ class PurchaseOrder(models.Model):
     )
     certificate_of_analysis_id = fields.Many2one(
         comodel_name="purchase.certificate.analysis",
-        string="Certificate of Analysis / COA",
+        string="Certificate of Analysis",
         ondelete="restrict",
     )
     packing_list_id = fields.Many2one(

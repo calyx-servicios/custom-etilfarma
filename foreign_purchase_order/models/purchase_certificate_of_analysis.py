@@ -7,7 +7,7 @@ class PurchaseCertificateOfAnalysis(models.Model):
     _rec_name = "certificate_of_analysis"
     _order = "sequence"
 
-    certificate_of_analysis = fields.Char("Certificate of Analysis / COA")
+    certificate_of_analysis = fields.Char("Certificate of Analysis")
     active = fields.Boolean(default=True)
     sequence = fields.Integer(default=10)
 
