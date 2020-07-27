@@ -11,11 +11,10 @@ class PurchaseOrder(models.Model):
     _inherit = 'purchase.order'
 
     invoice_to = fields.Many2one(
-        'res.partner',
+        'res.partner.oct',
         string='Invoice to',
         index=True,
-        track_visibility='onchange',
-        domain=[('customer', '=', True)]
+        track_visibility='onchange'
     )
 
     state = fields.Selection(

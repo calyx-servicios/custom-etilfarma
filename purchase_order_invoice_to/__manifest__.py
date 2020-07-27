@@ -31,12 +31,14 @@
         'purchase',
         'purchase_order_types',
         'foreign_purchase_order',
+        'l10n_ar_account'
         ],
 
     'data': [
         'data/ir_sequence.xml',
         'data/purchase_order_type.xml',
-        'views/purchase_order_view.xml'
+        'views/purchase_order_view.xml',
+        'views/partner_oct_view.xml'
     ],
 
     # only loaded in demonstration mode
