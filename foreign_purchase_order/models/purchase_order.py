@@ -15,11 +15,17 @@ class PurchaseOrder(models.Model):
     customer_purchase_order = fields.Char(string="Customer Purchase Order")
 
     place_of_delivery_id = fields.Many2one(
-        comodel_name="purchase.delivery", string="Place of Delivery",
+        comodel_name="purchase.delivery",
+        string="Place of Delivery",
+        ondelete="restrict",
     )
+
     packaging_id = fields.Many2one(
-        comodel_name="purchase.packaging", string="Packaging",
+        comodel_name="purchase.packaging",
+        string="Packaging",
+        ondelete="restrict",
     )
+
     delivery_date_week = fields.Char(
         string="Delivery Date (Week)",
         compute="_compute_delivery_date_week",
@@ -29,10 +35,24 @@ class PurchaseOrder(models.Model):
     send_documents_to = fields.Text(string="Send documents to",)
 
     shipment_id = fields.Many2one(
-        comodel_name="purchase.shipment", string="Shipment",
+        comodel_name="purchase.shipment",
+        string="Shipment",
+        ondelete="restrict",
+    )
+    import_license_id = fields.Many2one(
+        comodel_name="purchase.import.license",
+        string="Import License",
+        ondelete="restrict",
+    )
+    certificate_of_analysis_id = fields.Many2one(
+        comodel_name="purchase.certificate.analysis",
+        string="Certificate of Analysis",
+        ondelete="restrict",
     )
     packing_list_id = fields.Many2one(
-        comodel_name="purchase.packing.list", string="Packing List",
+        comodel_name="purchase.packing.list",
+        string="Packing List",
+        ondelete="restrict",
     )
     term_payments = fields.Many2one(
         # The base purchase.order model already has a m2o rel
