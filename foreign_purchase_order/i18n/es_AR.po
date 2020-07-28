@@ -111,6 +111,22 @@ msgid "Customer Purchase Order"
 msgstr "Nro Orden del Cliente"
 
 #. module: foreign_purchase_order
+#: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_order_foreign_filter
+msgid "Incomplete Bill Landing"
+msgstr "Conocimiento de embarque incompleto"
+
+#. module: foreign_purchase_order
+#: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_order_foreign_filter
+msgid "Incomplete Import Delivery"
+msgstr "Despacho de Importación incompleto"
+
+#. module: foreign_purchase_order
+#: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_order_foreign_filter
+msgid "Incomplete Import License"
+msgstr "Licencia de importación incompleta"
+
+
+#. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Date"
 msgstr "Fecha"
@@ -191,6 +207,11 @@ msgstr "Documentación de importación"
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Import License"
+msgstr "Import License"
+
+#. module: foreign_purchase_order
+#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
+msgid "Import Licenses"
 msgstr "Licencia de Importación"
 
 #. module: foreign_purchase_order
