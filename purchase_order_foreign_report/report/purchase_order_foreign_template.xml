@@ -140,57 +140,62 @@
             </div>
        </div>
 
-       <div class="row" style="margin-top:25px">
-        <div class="col-xs-6 text-left">
-            <table class="table" style="width: 100%">
-                <tr>
-                    <td style="border: none;">Port of delivery: <span t-esc="doc.place_of_delivery_id.place_of_delivery"/></td>
-                </tr>
-                <tr>
-                    <td style="border: none;">Packaging: <span t-esc="doc.packaging_id.packaging"/></td>
-                </tr>
-                <tr>
-                    <td style="border: none;">Delivery Date: <span t-esc="doc.delivery_date_week"/></td>
-                </tr>
-                <tr>
-                    <td style="border: none;">Shipment: <span t-esc="doc.shipment_id.shipment"/></td>
-                </tr>
-                <tr>
-                    <td style="border: none;">Marks: <span t-esc="doc.marks"/></td>
-                </tr>
-                <tr>
-                    <td style="border: none;">Packaging List: <span t-esc="doc.packing_list_id.packing_list"/></td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="border: none;">Special Indications: <br/>
-                    <span t-esc="doc.special_indications"/></td>
-                </tr>
-            </table>
+        <div class="row" style="margin-top:5px">
+            <div class="col-xs-6 text-left">
+                <table class="table" style="width: 100%">
+                    <tr>
+                        <td style="border: none;padding-bottom: 5px;">Port of delivery: <span t-esc="doc.place_of_delivery_id.place_of_delivery"/></td>
+                    </tr>
+                    <tr>
+                        <td style="border: none;padding-bottom: 5px;">Packaging: <span t-esc="doc.packaging_id.packaging"/></td>
+                    </tr>
+                    <tr>
+                        <td style="border: none;padding-bottom: 5px;">Delivery Date: <span t-esc="doc.delivery_date_week"/></td>
+                    </tr>
+                    <tr>
+                        <td style="border: none;padding-bottom: 5px;">Shipment: <span t-esc="doc.shipment_id.shipment"/></td>
+                    </tr>
+                    <tr>
+                        <td style="border: none;padding-bottom: 5px;">Marks: <span t-esc="doc.marks"/></td>
+                    </tr>
+                    <tr>
+                        <td style="border: none;padding-bottom: 5px;">Packaging List: <span t-esc="doc.packing_list_id.packing_list"/></td>
+                    </tr>
+                    <tr>
+                        <td style="border: none;">Import License: <span t-esc="doc.import_license_id.import_license"/></td>
+                    </tr>
+                    <tr>
+                        <td style="border: none;">Certificate of Analysis: <span t-esc="doc.certificate_of_analysis_id.certificate_of_analysis"/></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="border: none;padding-bottom: 5px;">Special Indications: <br/>
+                        <span t-esc="doc.special_indications"/></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-xs-6 text-left">
+                <table class="table" style="width: 100%">
+                    <tr style="margin-top: 25px">
+                        <td style="border: none;">Term of Payment: <span t-esc="doc.term_payments.name"/></td>
+                    </tr>
+                    <tr style="margin-top: 25px">
+                        <td style="border: none;">Send Documents to: 
+                            <br/>
+                            <t t-if="doc.send_document_to_invoice_to">
+                                <span style="font-size:18px;font-weight:bold"> Direct to customer</span> <br/>                       
+                            </t>
+                            <t t-else="">
+                                <span style="font-size:18px;font-weight:bold" t-esc="doc.company_id.name"/><br/>
+                            </t>
+                            <pre style="border: none;background: transparent;font-size: 14px;font-family: helvetica;"> <span t-esc="doc.send_documents_to"/> </pre>
+                        </td>
+                    </tr>
+                    <tr style="margin-top: 25px">
+                        <td style="border: none;">ETD week: <span t-esc="doc.extra_notes"/></td>
+                    </tr>
+                </table>
+            </div>
         </div>
-        <div class="col-xs-6 text-left">
-            <table class="table" style="width: 100%">
-                <tr style="margin-top: 25px">
-                    <td style="border: none;">Term of Payment: <span t-esc="doc.term_payments.name"/></td>
-                </tr>
-
-                <tr style="margin-top: 25px">
-                    <td style="border: none;">Send Documents to: 
-                        <br/>
-                        <t t-if="doc.send_document_to_invoice_to">
-                            <span style="font-size:18px;font-weight:bold"> Direct to customer</span> <br/>                       
-                        </t>
-                        <t t-else="">
-                            <span style="font-size:18px;font-weight:bold" t-esc="doc.company_id.name"/><br/>
-                        </t>
-                        <pre style="border: none;background: transparent;font-size: 14px;font-family: helvetica;"> <span t-esc="doc.send_documents_to"/> </pre>
-                    </td>
-                </tr>
-                <tr style="margin-top: 25px">
-                    <td style="border: none;">ETD week: <span t-esc="doc.extra_notes"/></td>
-                </tr>
-            </table>
-        </div>
-       </div>
     </template>
 
     <template id="purchase_order_foreign_document">

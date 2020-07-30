@@ -17,9 +17,11 @@ class PurchaseOrder(models.Model):
     place_of_delivery_id = fields.Many2one(
         comodel_name="purchase.delivery", string="Place of Delivery",
     )
+
     packaging_id = fields.Many2one(
         comodel_name="purchase.packaging", string="Packaging",
     )
+
     delivery_date_week = fields.Char(
         string="Delivery Date (Week)",
         compute="_compute_delivery_date_week",
@@ -30,6 +32,13 @@ class PurchaseOrder(models.Model):
 
     shipment_id = fields.Many2one(
         comodel_name="purchase.shipment", string="Shipment",
+    )
+    import_license_id = fields.Many2one(
+        comodel_name="purchase.import.license", string="Import License",
+    )
+    certificate_of_analysis_id = fields.Many2one(
+        comodel_name="purchase.certificate.analysis",
+        string="Certificate of Analysis",
     )
     packing_list_id = fields.Many2one(
         comodel_name="purchase.packing.list", string="Packing List",

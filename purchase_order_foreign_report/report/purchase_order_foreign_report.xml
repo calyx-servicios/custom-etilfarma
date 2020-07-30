@@ -8,7 +8,7 @@
         <field name="page_width">210</field>
         <field name="orientation">Landscape</field>
         <field name="margin_top">35</field>
-        <field name="margin_bottom">10</field>
+        <field name="margin_bottom">8</field>
         <field name="margin_left">20</field>
         <field name="margin_right">10</field>
         <field name="header_line" eval="False"/>
@@ -25,6 +25,6 @@
         name="purchase_order_foreign_report.report_purchase_order_foreign"
         paperformat="purchase_order_foreign_report.paperformat_purchase_foreign_report"
         menu="False"
-        print_report_name="'Purchase Order - %s' % (object.name)"
+        print_report_name="'%s' % (object.name)"
     /> 
 </odoo>
