@@ -35,6 +35,7 @@
         ],
 
     'data': [
+        'security/ir.model.access.csv',
         'data/ir_sequence.xml',
         'data/purchase_order_type.xml',
         'views/purchase_order_view.xml',

@@ -55,7 +55,6 @@ class Partner(models.Model):
     lang = fields.Selection(_lang_get, string='Language', default=lambda self: self.env.lang,
                             help="If the selected language is loaded in the system, all documents related to "
                                  "this contact will be printed in this language. If not, it will be English.")
-    marks = fields.Char(string="Marks")
 
     comment = fields.Text(string='Notes')
     active = fields.Boolean(default=True)

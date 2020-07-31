@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <record model="ir.ui.view" id="res_partner_marks_form_view">
-        <field name="name">res.partner.mark.form</field>
-        <field name="model">res.partner</field>
-        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="name">res.partner.oct.mark.form</field>
+        <field name="model">res.partner.oct</field>
+        <field name="inherit_id" ref="purchase_order_invoice_to.view_partner_oct_form"/>
         <field name="arch" type="xml">
             <field name="lang" position="after">
                 <field name="marks"/>
