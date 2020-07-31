@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-22 14:13+0000\n"
-"PO-Revision-Date: 2020-07-22 14:13+0000\n"
+"POT-Creation-Date: 2020-07-27 03:57+0000\n"
+"PO-Revision-Date: 2020-07-27 03:57+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,9 +16,47 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: purchase_order_invoice_to
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_afip_responsability_type_id
+msgid "AFIP Responsability"
+msgstr "Responsabilidad AFIP"
+
+#. module: purchase_order_invoice_to
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_active
+msgid "Active"
+msgstr "Activo"
+
+#. module: purchase_order_invoice_to
+#: model:ir.ui.view,arch_db:purchase_order_invoice_to.view_partner_oct_form
+msgid "Address"
+msgstr "Dirección"
+
+#. module: purchase_order_invoice_to
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_addresses_address_name
+msgid "Address Name"
+msgstr "Nombre de dirección"
+
+#. module: purchase_order_invoice_to
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_addresses_type
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_type
+msgid "Address Type"
+msgstr "Tipo de dirección"
+
+#. module: purchase_order_invoice_to
 #: model:ir.ui.view,arch_db:purchase_order_invoice_to.purchase_order_form
 msgid "Cancel"
 msgstr "Cancelar"
+
+#. module: purchase_order_invoice_to
+#: model:ir.ui.view,arch_db:purchase_order_invoice_to.view_partner_oct_form
+msgid "Category"
+msgstr "Categoría"
+
+#. module: purchase_order_invoice_to
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_addresses_city
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_city
+#: model:ir.ui.view,arch_db:purchase_order_invoice_to.view_partner_oct_form
+msgid "City"
+msgstr "Ciudad"
 
 #. module: purchase_order_invoice_to
 #: model:ir.actions.act_window,help:purchase_order_invoice_to.purchase_third_party_action
@@ -26,12 +64,30 @@ msgid "Click to create a quotation that will be converted into a purchase order.
 msgstr "Haga clic para crear un presupuesto que se convertirá en un pedido de compra."
 
 #. module: purchase_order_invoice_to
+#: model:ir.actions.act_window,help:purchase_order_invoice_to.partner_oct_action
+msgid "Click to create an IMA Clients."
+msgstr "Click para crear un Cliente IMA."
+
+#. module: purchase_order_invoice_to
 #: model:ir.ui.view,arch_db:purchase_order_invoice_to.purchase_order_form
 msgid "Confirm Third Party Order"
 msgstr "Confirmar Orden a Terceros"
 
 #. module: purchase_order_invoice_to
-#: code:addons/purchase_order_invoice_to/models/purchase_order.py:140
+#: selection:res.partner.oct,type:0
+#: selection:res.partner.oct.addresses,type:0
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: purchase_order_invoice_to
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_addresses_country_id
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_country_id
+#: model:ir.ui.view,arch_db:purchase_order_invoice_to.view_partner_oct_form
+msgid "Country"
+msgstr "País"
+
+#. module: purchase_order_invoice_to
+#: code:addons/purchase_order_invoice_to/models/purchase_order.py:139
 #, python-format
 msgid "Country: %s\n"
 ""
@@ -39,9 +95,39 @@ msgstr "País: %s\n"
 ""
 
 #. module: purchase_order_invoice_to
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_addresses_create_uid
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: purchase_order_invoice_to
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_addresses_create_date
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: purchase_order_invoice_to
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_addresses_display_name
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_display_name
+msgid "Display Name"
+msgstr "Mostrar Nombre"
+
+#. module: purchase_order_invoice_to
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_addresses_email
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_email
+msgid "Email"
+msgstr "Correo electrónico"
+
+#. module: purchase_order_invoice_to
 #: model:ir.model.fields,help:purchase_order_invoice_to.field_purchase_order_third_party_number
 msgid "Enumeration for the Third Party Order by Client and by Year"
 msgstr "Numeración para ordenes a terceros por Cliente y Año."
+
+#. module: purchase_order_invoice_to
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_addresses_id
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_id
+msgid "ID"
+msgstr "ID"
 
 #. module: purchase_order_invoice_to
 #: model:ir.actions.act_window,name:purchase_order_invoice_to.purchase_third_party_action
@@ -50,9 +136,47 @@ msgid "IMA"
 msgstr "IMA"
 
 #. module: purchase_order_invoice_to
+#: model:ir.actions.act_window,name:purchase_order_invoice_to.partner_oct_action
+#: model:ir.ui.menu,name:purchase_order_invoice_to.menu_partner_oct_action
+msgid "IMA Clients"
+msgstr "Clientes IMA"
+
+#. module: purchase_order_invoice_to
+#: model:ir.model.fields,help:purchase_order_invoice_to.field_res_partner_oct_lang
+msgid "If the selected language is loaded in the system, all documents related to this contact will be printed in this language. If not, it will be English."
+msgstr "Si el idioma seleccionado está cargado en el sistema, todos los documentos relacionados con el contacto se imprimirán en este idioma. Si no, se imprimirán en inglés."
+
+#. module: purchase_order_invoice_to
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_image
+msgid "Image"
+msgstr "Imagen"
+
+#. module: purchase_order_invoice_to
+#: model:ir.ui.view,arch_db:purchase_order_invoice_to.view_partner_oct_form
+msgid "Internal Notes"
+msgstr "Notas internas"
+
+#. module: purchase_order_invoice_to
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_ref
+msgid "Internal Reference"
+msgstr "Referencia interna"
+
+#. module: purchase_order_invoice_to
+#: model:ir.ui.view,arch_db:purchase_order_invoice_to.view_partner_oct_form
+msgid "Internal note..."
+msgstr "Nota Interna..."
+
+#. module: purchase_order_invoice_to
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_invoice_to
 #: model:ir.ui.view,arch_db:purchase_order_invoice_to.view_purchase_order_filter
 msgid "Invoice To"
 msgstr "Facturar a"
+
+#. module: purchase_order_invoice_to
+#: selection:res.partner.oct,type:0
+#: selection:res.partner.oct.addresses,type:0
+msgid "Invoice address"
+msgstr "Invoice address"
 
 #. module: purchase_order_invoice_to
 #: model:ir.model.fields,field_description:purchase_order_invoice_to.field_purchase_order_invoice_to
@@ -60,10 +184,124 @@ msgid "Invoice to"
 msgstr "Facturar a"
 
 #. module: purchase_order_invoice_to
-#: code:addons/purchase_order_invoice_to/models/purchase_order.py:124
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_lang
+msgid "Language"
+msgstr "Idioma"
+
+#. module: purchase_order_invoice_to
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct___last_update
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_addresses___last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: purchase_order_invoice_to
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_addresses_write_uid
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_write_uid
+msgid "Last Updated by"
+msgstr "Última actualización realizada por"
+
+#. module: purchase_order_invoice_to
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_addresses_write_date
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: purchase_order_invoice_to
+#: model:ir.ui.view,arch_db:purchase_order_invoice_to.view_partner_oct_form
+msgid "Main Identification"
+msgstr "Tipo de Documento"
+
+#. module: purchase_order_invoice_to
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_main_id_category_id
+msgid "Main Identification Category"
+msgstr "Categoría de identificación principal"
+
+#. module: purchase_order_invoice_to
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_main_id_number
+msgid "Main Identification Number"
+msgstr "Número de identificación principal"
+
+#. module: purchase_order_invoice_to
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_marks
+msgid "Marks"
+msgstr "Marks"
+
+#. module: purchase_order_invoice_to
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_addresses_mobile
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_mobile
+msgid "Mobile"
+msgstr "Móvil"
+
+#. module: purchase_order_invoice_to
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_name
+#: model:ir.ui.view,arch_db:purchase_order_invoice_to.view_partner_oct_form
+msgid "Name"
+msgstr "Nombre"
+
+#. module: purchase_order_invoice_to
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_addresses_comment
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_comment
+msgid "Notes"
+msgstr "Notas"
+
+#. module: purchase_order_invoice_to
+#: model:ir.ui.view,arch_db:purchase_order_invoice_to.view_partner_oct_form
+msgid "Number"
+msgstr "Número"
+
+#. module: purchase_order_invoice_to
+#: model:ir.model,name:purchase_order_invoice_to.model_res_partner_oct
+msgid "OCT Contact"
+msgstr "Contacto OCT"
+
+#. module: purchase_order_invoice_to
+#: model:ir.model,name:purchase_order_invoice_to.model_res_partner_oct_addresses
+msgid "OCT Contact Optional Addresses"
+msgstr "Dirección opcional Cliente IMA"
+
+#. module: purchase_order_invoice_to
+#: model:ir.ui.view,arch_db:purchase_order_invoice_to.view_partner_oct_form
+msgid "OCT Partners"
+msgstr "Clientes OCT"
+
+#. module: purchase_order_invoice_to
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_optional_address
+msgid "Optional Address"
+msgstr "Dirección opcional"
+
+#. module: purchase_order_invoice_to
+#: model:ir.ui.view,arch_db:purchase_order_invoice_to.view_partner_oct_form
+msgid "Optionals Addresses"
+msgstr "Direcciones opcionales"
+
+#. module: purchase_order_invoice_to
+#: selection:res.partner.oct,type:0
+#: selection:res.partner.oct.addresses,type:0
+msgid "Other address"
+msgstr "Otra dirección"
+
+#. module: purchase_order_invoice_to
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_addresses_partner_oct
+msgid "Partner Oct"
+msgstr "Cliente OCT"
+
+#. module: purchase_order_invoice_to
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_addresses_phone
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_phone
+msgid "Phone"
+msgstr "Teléfono"
+
+#. module: purchase_order_invoice_to
+#: code:addons/purchase_order_invoice_to/models/purchase_order.py:123
 #, python-format
 msgid "Please Select Client to Invoice, and check the option again."
 msgstr "Por favor elija un Cliente a Facturar, y vuelva a seleccionar la casilla."
+
+#. module: purchase_order_invoice_to
+#: selection:res.partner.oct,type:0
+#: selection:res.partner.oct.addresses,type:0
+msgid "Private Address"
+msgstr "Dirección privada"
 
 #. module: purchase_order_invoice_to
 #: model:ir.model,name:purchase_order_invoice_to.model_purchase_order
@@ -76,7 +314,20 @@ msgid "Send Documents to Client"
 msgstr "Send Documents to Client"
 
 #. module: purchase_order_invoice_to
-#: code:addons/purchase_order_invoice_to/models/purchase_order.py:138
+#: selection:res.partner.oct,type:0
+#: selection:res.partner.oct.addresses,type:0
+msgid "Shipping address"
+msgstr "Dirección de envío"
+
+#. module: purchase_order_invoice_to
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_addresses_state_id
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_state_id
+#: model:ir.ui.view,arch_db:purchase_order_invoice_to.view_partner_oct_form
+msgid "State"
+msgstr "Provincia"
+
+#. module: purchase_order_invoice_to
+#: code:addons/purchase_order_invoice_to/models/purchase_order.py:137
 #, python-format
 msgid "State: %s\n"
 ""
@@ -84,7 +335,29 @@ msgstr "Provincia: %s\n"
 ""
 
 #. module: purchase_order_invoice_to
-#: code:addons/purchase_order_invoice_to/models/purchase_order.py:134
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_addresses_street
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_street
+msgid "Street"
+msgstr "Calle"
+
+#. module: purchase_order_invoice_to
+#: model:ir.ui.view,arch_db:purchase_order_invoice_to.view_partner_oct_form
+msgid "Street 2..."
+msgstr "Calle 2..."
+
+#. module: purchase_order_invoice_to
+#: model:ir.ui.view,arch_db:purchase_order_invoice_to.view_partner_oct_form
+msgid "Street..."
+msgstr "Calle..."
+
+#. module: purchase_order_invoice_to
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_addresses_street2
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_street2
+msgid "Street2"
+msgstr "Calle2"
+
+#. module: purchase_order_invoice_to
+#: code:addons/purchase_order_invoice_to/models/purchase_order.py:133
 #, python-format
 msgid "Street: %s\n"
 ""
@@ -95,6 +368,21 @@ msgstr "Calle: %s\n"
 #: model:ir.model.fields,field_description:purchase_order_invoice_to.field_purchase_order_third_party_number
 msgid "Third Party Number"
 msgstr "Número de Orden a Terceros"
+
+#. module: purchase_order_invoice_to
+#: model:ir.model.fields,help:purchase_order_invoice_to.field_res_partner_oct_image
+msgid "This field holds the image used as avatar for this contact, limited to 1024x1024px"
+msgstr "Este campo contiene la imagen utilizada como avatar para este contacto, limitada a 1024x1024px"
+
+#. module: purchase_order_invoice_to
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_title
+msgid "Title"
+msgstr "Título"
+
+#. module: purchase_order_invoice_to
+#: model:ir.actions.act_window,help:purchase_order_invoice_to.partner_oct_action
+msgid "Use this menu to create or search IMA Clients."
+msgstr "Use este menú para crear o buscar Clientes IMA."
 
 #. module: purchase_order_invoice_to
 #: model:ir.actions.act_window,help:purchase_order_invoice_to.purchase_third_party_action
@@ -108,16 +396,48 @@ msgstr "Utilice este menú para buscar en sus pedidos de compra por\n"
 "los productos recibidos y controlar las facturas de los proveedores."
 
 #. module: purchase_order_invoice_to
-#: code:addons/purchase_order_invoice_to/models/purchase_order.py:22
+#: model:ir.model.fields,help:purchase_order_invoice_to.field_res_partner_oct_addresses_type
+#: model:ir.model.fields,help:purchase_order_invoice_to.field_res_partner_oct_type
+msgid "Used to select automatically the right address according to the context in sales and purchases documents."
+msgstr "﻿Utilizado para seleccionar automáticamente la dirección correcta según el contexto en documentos de ventas y compras."
+
+#. module: purchase_order_invoice_to
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_website
+msgid "Website"
+msgstr "Sitio web"
+
+#. module: purchase_order_invoice_to
+#: model:ir.model.fields,help:purchase_order_invoice_to.field_res_partner_oct_website
+msgid "Website of Partner or Company"
+msgstr "Web de la empresa o de la compañía"
+
+#. module: purchase_order_invoice_to
+#: code:addons/purchase_order_invoice_to/models/purchase_order.py:21
 #, python-format
 msgid "Without Invoice to Receive"
 msgstr "Sin Factura a Recibir"
 
 #. module: purchase_order_invoice_to
-#: code:addons/purchase_order_invoice_to/models/purchase_order.py:136
+#: model:ir.ui.view,arch_db:purchase_order_invoice_to.view_partner_oct_form
+msgid "ZIP"
+msgstr "C.P."
+
+#. module: purchase_order_invoice_to
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_addresses_zip
+#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_zip
+msgid "Zip"
+msgstr "C.P."
+
+#. module: purchase_order_invoice_to
+#: code:addons/purchase_order_invoice_to/models/purchase_order.py:135
 #, python-format
 msgid "Zip Code: %s\n"
 ""
 msgstr "Código Postal: %s\n"
 ""
+
+#. module: purchase_order_invoice_to
+#: model:ir.ui.view,arch_db:purchase_order_invoice_to.view_partner_oct_form
+msgid "e.g. www.website.com"
+msgstr "por ej. www.website.com"
 
