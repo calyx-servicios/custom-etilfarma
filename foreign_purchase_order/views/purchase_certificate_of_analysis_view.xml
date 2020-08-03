@@ -36,7 +36,7 @@
     </record>
 
     <record model="ir.actions.act_window" id="action_purchase_certificate_of_analysis_view">
-        <field name="name">Certificate of Analysis</field>
+        <field name="name">Purchase Certificate of Analysis</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">purchase.certificate.analysis</field>
         <field name="view_mode">form,tree</field>
