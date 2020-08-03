@@ -12,8 +12,8 @@ access_packing_list_manager,purchase.packing.list manager,model_purchase_packing
 access_shipment,purchase.shipment,model_purchase_shipment,purchase.group_purchase_user,1,1,1,0
 access_shipment_manager,purchase.shipment manager,model_purchase_shipment,purchase.group_purchase_manager,1,1,1,1
 
-access_certificate_of_analysis,purchase.certificate.of.analysis,model_purchase_certificate_of_analysis,purchase.group_purchase_user,1,1,1,0
-access_certificate_of_analysis_manager,purchase.certificate.of.analysis manager,model_purchase_certificate_of_analysis,purchase.group_purchase_manager,1,1,1,1
+access_certificate_of_analysis,purchase.purchase.certificate.analysis,model_purchase_certificate_analysis,purchase.group_purchase_user,1,1,1,0
+access_certificate_of_analysis_manager,purchase.certificate.analysis manager,model_purchase_certificate_analysis,purchase.group_purchase_manager,1,1,1,1
 
 access_import_license,purchase.import.license,model_purchase_import_license,purchase.group_purchase_user,1,1,1,0
 access_import_license_manager,purchase.import.license manager,model_purchase_import_license,purchase.group_purchase_manager,1,1,1,1

@@ -29,7 +29,7 @@
     <record id="view_purchase_certificate_of_analysis_search" model="ir.ui.view">
         <field name="model">purchase.certificate.analysis</field>
         <field name="arch" type="xml">
-            <search string="Certificate of Analysis">
+            <search string="Purchase Certificate of Analysis">
                 <field name="certificate_of_analysis" />
             </search>
         </field>

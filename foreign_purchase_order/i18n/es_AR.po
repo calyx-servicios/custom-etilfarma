@@ -300,6 +300,19 @@ msgid "Place of Delivery"
 msgstr "Place of Delivery"
 
 #. module: foreign_purchase_order
+#: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_certificate_of_analysis_tree
+msgid "Purchase Certificate of Analysis"
+msgstr "Certificado de análisis"
+
+#. module: foreign_purchase_order
+#: model:ir.actions.act_window,name:foreign_purchase_order.action_purchase_import_license_view
+#: model:ir.ui.menu,name:foreign_purchase_order.menu_purchase_import_license
+#: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_import_license_search
+#: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_import_license_tree
+msgid "Purchase Import License"
+msgstr "Licencia de importación"
+
+#. module: foreign_purchase_order
 #: model:ir.model,name:foreign_purchase_order.model_purchase_order
 msgid "Purchase Order"
 msgstr "Orden de compra"
@@ -318,7 +331,7 @@ msgstr "Empaquetado"
 #: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_packing_list_search
 #: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_packing_list_tree
 msgid "Purchase Packing List"
-msgstr "Lista de Empaquetado"
+msgstr "Lista de empaquetado"
 
 #. module: foreign_purchase_order
 #: model:ir.actions.act_window,name:foreign_purchase_order.action_purchase_place_delivery_view
@@ -326,7 +339,7 @@ msgstr "Lista de Empaquetado"
 #: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_place_delivery_search
 #: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_place_delivery_tree
 msgid "Purchase Place of Delivery"
-msgstr "Lugar de Entrega"
+msgstr "Lugar de entrega"
 
 #. module: foreign_purchase_order
 #: model:ir.actions.act_window,name:foreign_purchase_order.action_purchase_shipment_view
