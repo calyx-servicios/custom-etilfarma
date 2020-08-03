@@ -52,7 +52,7 @@
                         </group>
                     </group>
                 </page>
-                <page string='Import Documentation' attrs="{'invisible': [('order_type_foreign','=',False)]}">
+                <page string='Traking Order' attrs="{'invisible': [('order_type_foreign','=',False)]}">
                     <group>
                         <group name="import_license" string="Import Licenses">
                             <field name="import_license_number" string="Number"/>

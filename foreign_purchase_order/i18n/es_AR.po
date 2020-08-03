@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-14 16:15+0000\n"
-"PO-Revision-Date: 2020-07-14 16:15+0000\n"
+"POT-Creation-Date: 2020-08-03 10:42+0000\n"
+"PO-Revision-Date: 2020-08-03 10:42+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -31,7 +31,9 @@ msgid "<i class=\"fa fa-exclamation-triangle \"/> Action required: <strong>impor
 msgstr "<i class=\"fa fa-exclamation-triangle \"/> Acción requerida: <strong>Datos de licencia de importación no cargados completamente.</strong>"
 
 #. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_certificate_analysis_active
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_active
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_import_license_active
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packaging_active
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packing_list_active
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_shipment_active
@@ -69,9 +71,30 @@ msgid "Bill Landing Reception Date"
 msgstr "Fecha de Recepción de Conocimiento de Embarque"
 
 #. module: foreign_purchase_order
+#: model:ir.actions.act_window,name:foreign_purchase_order.action_purchase_certificate_of_analysis_view
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_certificate_analysis_certificate_of_analysis
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_certificate_of_analysis_id
+#: model:ir.ui.menu,name:foreign_purchase_order.menu_purchase_certificate_of_analysis
+#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
+#: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_certificate_of_analysis_search
+#: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_certificate_of_analysis_tree
+msgid "Certificate of Analysis"
+msgstr "Certificate of Analysis"
+
+#. module: foreign_purchase_order
+#: model:ir.actions.act_window,help:foreign_purchase_order.action_purchase_certificate_of_analysis_view
+msgid "Click to set a new Certificate of Analysis."
+msgstr "Click to set a new Certificate of Analysis."
+
+#. module: foreign_purchase_order
+#: model:ir.actions.act_window,help:foreign_purchase_order.action_purchase_import_license_view
+msgid "Click to set a new Import License."
+msgstr "Click to set a new Import License."
+
+#. module: foreign_purchase_order
 #: model:ir.actions.act_window,help:foreign_purchase_order.action_purchase_place_delivery_view
 msgid "Click to set a new Purchase Place of Delivery."
-msgstr "Haga click para crear un nuevo Lugar de Entrega"
+msgstr "Haga click para crear un nuevo Lugar de Entrega."
 
 #. module: foreign_purchase_order
 #: model:ir.actions.act_window,help:foreign_purchase_order.action_purchase_shipment_view
@@ -89,7 +112,9 @@ msgid "Click to set a new purchase packaging."
 msgstr "Haga click para crear un nuevo Empaquetado."
 
 #. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_certificate_analysis_create_uid
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_create_uid
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_import_license_create_uid
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packaging_create_uid
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packing_list_create_uid
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_shipment_create_uid
@@ -97,7 +122,9 @@ msgid "Created by"
 msgstr "Creado por"
 
 #. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_certificate_analysis_create_date
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_create_date
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_import_license_create_date
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packaging_create_date
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packing_list_create_date
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_shipment_create_date
@@ -109,22 +136,6 @@ msgstr "Creado en"
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Customer Purchase Order"
 msgstr "Nro Orden del Cliente"
-
-#. module: foreign_purchase_order
-#: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_order_foreign_filter
-msgid "Incomplete Bill Landing"
-msgstr "Conocimiento de embarque incompleto"
-
-#. module: foreign_purchase_order
-#: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_order_foreign_filter
-msgid "Incomplete Import Delivery"
-msgstr "Despacho de Importación incompleto"
-
-#. module: foreign_purchase_order
-#: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_order_foreign_filter
-msgid "Incomplete Import License"
-msgstr "Licencia de importación incompleta"
-
 
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
@@ -143,7 +154,9 @@ msgid "Description"
 msgstr "Descripción"
 
 #. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_certificate_analysis_display_name
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_display_name
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_import_license_display_name
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packaging_display_name
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packing_list_display_name
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_shipment_display_name
@@ -177,7 +190,9 @@ msgid "Foreign Purchase"
 msgstr "Compras Exteriores"
 
 #. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_certificate_analysis_id
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_id
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_import_license_id
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packaging_id
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packing_list_id
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_shipment_id
@@ -187,7 +202,7 @@ msgstr "ID"
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Import Delivery"
-msgstr "Import Delivery"
+msgstr "Despacho de Importación"
 
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_delivery_date
@@ -200,19 +215,15 @@ msgid "Import Delivery Number"
 msgstr "Import Delivery Number"
 
 #. module: foreign_purchase_order
+#: model:ir.actions.act_window,name:foreign_purchase_order.action_purchase_import_license_view
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_import_license_import_license
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_import_license_id
+#: model:ir.ui.menu,name:foreign_purchase_order.menu_purchase_import_license
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
-msgid "Import Documentation"
-msgstr "Documentación de importación"
-
-#. module: foreign_purchase_order
-#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
+#: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_import_license_search
+#: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_import_license_tree
 msgid "Import License"
-msgstr "Import License"
-
-#. module: foreign_purchase_order
-#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
-msgid "Import Licenses"
-msgstr "Licencia de Importación"
+msgstr "Licencia de importación"
 
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_import_license_approval_date
@@ -230,9 +241,29 @@ msgid "Import License Number"
 msgstr "Número de Licencia de Importación"
 
 #. module: foreign_purchase_order
+#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
+msgid "Import Licenses"
+msgstr "Licencia de Importación"
+
+#. module: foreign_purchase_order
+#: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_order_foreign_filter
+msgid "Incomplete Bill Landing"
+msgstr "Conocimiento de embarque incompleto"
+
+#. module: foreign_purchase_order
+#: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_order_foreign_filter
+msgid "Incomplete Import Delivery"
+msgstr "Despacho de Importación incompleto"
+
+#. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_order_foreign_filter
 msgid "Incomplete Import Documentation"
-msgstr "Documentación de Importación Incompleta"
+msgstr "Seguimiento de Pedido Incompleta"
+
+#. module: foreign_purchase_order
+#: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_order_foreign_filter
+msgid "Incomplete Import License"
+msgstr "Licencia de importación incompleta"
 
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
@@ -250,7 +281,9 @@ msgid "Issue Date"
 msgstr "Fecha de Emisión"
 
 #. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_certificate_analysis___last_update
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery___last_update
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_import_license___last_update
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packaging___last_update
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packing_list___last_update
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_shipment___last_update
@@ -258,7 +291,9 @@ msgid "Last Modified on"
 msgstr "Última modificación en"
 
 #. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_certificate_analysis_write_uid
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_write_uid
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_import_license_write_uid
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packaging_write_uid
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packing_list_write_uid
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_shipment_write_uid
@@ -266,7 +301,9 @@ msgid "Last Updated by"
 msgstr "Última actualización realizada por"
 
 #. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_certificate_analysis_write_date
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_write_date
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_import_license_write_date
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packaging_write_date
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packing_list_write_date
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_shipment_write_date
@@ -283,7 +320,7 @@ msgstr "Número"
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packaging_packaging
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Packaging"
-msgstr "Packaging"
+msgstr "Empaquetado"
 
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_packing_list_id
@@ -297,7 +334,7 @@ msgstr "Packing List"
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_place_of_delivery_id
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Place of Delivery"
-msgstr "Place of Delivery"
+msgstr "Lugar de Entrega"
 
 #. module: foreign_purchase_order
 #: model:ir.model,name:foreign_purchase_order.model_purchase_order
@@ -353,7 +390,9 @@ msgid "Send documents to"
 msgstr "Send documents to"
 
 #. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_certificate_analysis_sequence
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_sequence
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_import_license_sequence
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packaging_sequence
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packing_list_sequence
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_shipment_sequence
@@ -365,7 +404,7 @@ msgstr "Secuencia"
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_shipment_shipment
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Shipment"
-msgstr "Shipment"
+msgstr "Envío"
 
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_special_indications
@@ -390,6 +429,13 @@ msgid "Terms of Payments"
 msgstr "Terms of Payments"
 
 #. module: foreign_purchase_order
+#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
+msgid "Traking Order"
+msgstr "Seguimiento de Pedido"
+
+#. module: foreign_purchase_order
+#: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_certificate_of_analysis_form
+#: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_import_license_form
 #: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_packaging_form
 #: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_packing_list_form
 #: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_place_delivery_form
@@ -403,22 +449,30 @@ msgid "Write here your Special Indications to use as default."
 msgstr "Escriba aquí sus 'Special Indications' a usar como predeterminado. El campo no tiene límite de extensión."
 
 #. module: foreign_purchase_order
-#: code:addons/addons/addons-custom/custom-etilfarma/foreign_purchase_order/models/purchase_packaging.py:19
-#: code:addons/addons/addons-custom/custom-etilfarma/foreign_purchase_order/models/purchase_packing_list.py:19
-#: code:addons/addons/addons-custom/custom-etilfarma/foreign_purchase_order/models/purchase_place_of_delivery.py:21
-#: code:addons/addons/addons-custom/custom-etilfarma/foreign_purchase_order/models/purchase_shipment.py:19
+#: code:addons/foreign_purchase_order/models/purchase_certificate_of_analysis.py:19
+#: code:addons/foreign_purchase_order/models/purchase_import_license.py:19
 #: code:addons/foreign_purchase_order/models/purchase_packaging.py:19
 #: code:addons/foreign_purchase_order/models/purchase_packing_list.py:19
 #: code:addons/foreign_purchase_order/models/purchase_place_of_delivery.py:21
 #: code:addons/foreign_purchase_order/models/purchase_shipment.py:19
 #, python-format
 msgid "You are trying to delete a record that is still referenced in one o more purchase, try to archive it."
-msgstr "La operación no se puede completar: otro modelo necesita el registro que está siendo eliminado. Si es posible, archívelo en su lugar."
+msgstr "You are trying to delete a record that is still referenced in one o more purchase, try to archive it."
+
+#. module: foreign_purchase_order
+#: model:ir.model,name:foreign_purchase_order.model_purchase_certificate_analysis
+msgid "purchase.certificate.analysis"
+msgstr "purchase.certificate.analysis"
 
 #. module: foreign_purchase_order
 #: model:ir.model,name:foreign_purchase_order.model_purchase_delivery
 msgid "purchase.delivery"
 msgstr "purchase.delivery"
+
+#. module: foreign_purchase_order
+#: model:ir.model,name:foreign_purchase_order.model_purchase_import_license
+msgid "purchase.import.license"
+msgstr "purchase.import.license"
 
 #. module: foreign_purchase_order
 #: model:ir.model,name:foreign_purchase_order.model_purchase_packaging
@@ -439,3 +493,4 @@ msgstr "purchase.shipment"
 #: model:ir.model,name:foreign_purchase_order.model_res_config_settings
 msgid "res.config.settings"
 msgstr "res.config.settings"
+
