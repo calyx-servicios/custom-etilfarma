@@ -3,7 +3,7 @@
     <record id="view_purchase_import_license_tree" model="ir.ui.view">
         <field name="model">purchase.import.license</field>
         <field name="arch" type="xml">
-            <tree string="Import License" decoration-muted="active == False">
+            <tree string="Purchase Import License" decoration-muted="active == False">
                 <field name="sequence" widget="handle" />
                 <field name="active" invisible="True" />
                 <field name="import_license" />
@@ -29,21 +29,21 @@
     <record id="view_purchase_import_license_search" model="ir.ui.view">
         <field name="model">purchase.import.license</field>
         <field name="arch" type="xml">
-            <search string="Import License">
+            <search string="Purchase Import License">
                 <field name="import_license" />
             </search>
         </field>
     </record>
 
     <record model="ir.actions.act_window" id="action_purchase_import_license_view">
-        <field name="name">Import License</field>
+        <field name="name">Purchase Import License</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">purchase.import.license</field>
         <field name="view_mode">form,tree</field>
         <field name="view_id" ref="view_purchase_import_license_tree"/>
         <field name="search_view_id" ref="view_purchase_import_license_search"/>
         <field name="help" type="html">
-            <p class="oe_view_nocontent_create">Click to set a new Import License.</p>
+            <p class="oe_view_nocontent_create">Click to set a new Purchase Import License.</p>
         </field>
     </record>
 
