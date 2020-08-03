@@ -110,7 +110,14 @@
             <filter name="activities_upcoming_all" position="after">
                 <separator/>
                 <filter name="incomplete_import_data" string="Incomplete Import Documentation" domain="['&amp;', '&amp;', ('order_type_foreign','=',True), 
-                        ('state','in',['purchase', 'no_invoice']), '|', '|', '|', '|', '|', '|', '|', '|', ('import_license_number','=',False), ('import_license_issue_date','=',False), ('import_license_approval_date','=',False), ('bill_landing_number','=',False), ('bill_landing_issue_date','=',False), ('bill_landing_reception_date','=',False), ('bill_landing_description','=',False), ('delivery_number','=',False), ('delivery_date','=',False)]"/>
+                        ('state','in',['purchase', 'no_invoice']), '|', '|', '|', '|', '|', '|', '|', '|', ('import_license_number','=',False), ('import_license_issue_date','=',False), ('import_license_approval_date','=',False), ('bill_landing_number','=',False), ('bill_landing_issue_date','=',False), ('bill_landing_reception_date','=',False), ('bill_landing_description','=',False), ('delivery_number','=',False), ('delivery_date','=',False)]"/>        
+                <filter name="incomplete_import_data" string="Incomplete Import License" domain="['&amp;', '&amp;', ('order_type_foreign','=',True), 
+                        ('state','in',['purchase', 'no_invoice']), '|', '|', ('import_license_number','=',False), ('import_license_issue_date','=',False), ('import_license_approval_date','=',False)]"/>        
+                <filter name="incomplete_import_data" string="Incomplete Bill Landing " domain="['&amp;', '&amp;', ('order_type_foreign','=',True), 
+                        ('state','in',['purchase', 'no_invoice']), '|', '|', '|', ('bill_landing_number','=',False), ('bill_landing_issue_date','=',False), ('bill_landing_reception_date','=',False), ('bill_landing_description','=',False)]"/>        
+                <filter name="incomplete_import_data" string="Incomplete Import Delivery" domain="['&amp;', '&amp;', ('order_type_foreign','=',True), 
+                        ('state','in',['purchase', 'no_invoice']), '|',('delivery_number','=',False), ('delivery_date','=',False)]"/>        
+                
             </filter>
         </field>
     </record>

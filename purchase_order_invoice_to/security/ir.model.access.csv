@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_purchase_invoice_to_user,purchase.invoice.to.user,model_res_partner_oct,purchase.group_purchase_user,1,1,1,0
+access_purchase_invoice_to_user_addresses,purchase.invoice.to.user,model_res_partner_oct_addresses,purchase.group_purchase_user,1,1,1,0
+access_purchase_invoice_to_manager,purchase.invoice.to.manager,model_res_partner_oct,purchase.group_purchase_manager,1,1,1,1
+access_purchase_invoice_to_manager_addresses,purchase.invoice.to.manager,model_res_partner_oct_addresses,purchase.group_purchase_manager,1,1,1,1

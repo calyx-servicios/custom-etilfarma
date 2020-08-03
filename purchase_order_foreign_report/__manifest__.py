@@ -31,6 +31,7 @@
         "view/purchase_order_view.xml",
         "report/purchase_order_foreign_template.xml",
         "report/purchase_order_foreign_report.xml",
+        "data/mail_template_data.xml",
     ],
     # only loaded in demonstration mode
     # 'demo': [

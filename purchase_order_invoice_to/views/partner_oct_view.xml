@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- IMA Form -->
+    <record id="view_partner_oct_form" model="ir.ui.view">
+        <field name="name">res.partner.oct.form</field>
+        <field name="model">res.partner.oct</field>
+        <field name="arch" type="xml">
+            <form string="OCT Partners">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="toggle_active" type="object"
+                                class="oe_stat_button" icon="fa-archive">
+                            <field name="active" widget="boolean_button"
+                                   options='{"terminology": "archive"}'/>
+                        </button>
+                    </div>
+                    <field name="image" widget='image' class="oe_avatar"/>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" default_focus="1" placeholder="Name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="type" invisible="1"/>
+                            <label for="street" string="Address"/>
+                            <div class="o_address_format">
+                                <field name="country_id" placeholder="Country" class="o_address_country"
+                                       options='{"no_open": True, "no_create": True}'
+                                       attrs="{'readonly': [('type', '=', 'contact')]}"/>
+                                <field name="state_id" class="o_address_state" placeholder="State"
+                                       options='{"no_open": True, "no_create": True}'
+                                       attrs="{'readonly': [('type', '=', 'contact')]}"
+                                       context="{'country_id': country_id, 'zip': zip}"/>
+                                <field name="city" placeholder="City" class="o_address_city"
+                                       attrs="{'readonly': [('type', '=', 'contact')]}"/>
+                                <field name="zip" placeholder="ZIP" class="o_address_zip"
+                                       attrs="{'readonly': [('type', '=', 'contact')]}"/>
+                                <field name="street" placeholder="Street..." class="o_address_street"
+                                       attrs="{'readonly': [('type', '=', 'contact')]}"/>
+                                <field name="street2" placeholder="Street 2..." class="o_address_street"
+                                       attrs="{'readonly': [('type', '=', 'contact')]}"/>
+                            </div>
+                            <field name="afip_responsability_type_id"/>
+                            <label for="main_id_number" string="Main Identification"/>
+                            <div>
+                                <field name="main_id_category_id" options="{'no_open': True, 'no_create': True}"
+                                       placeholder="Category" class="oe_inline"/>-
+                                <field name="main_id_number" placeholder="Number" class="oe_inline"/>
+                            </div>
+                        </group>
+                        <group>
+                            <field name="phone" widget="phone"/>
+                            <field name="mobile" widget="phone"/>
+                            <field name="email" widget="email"/>
+                            <field name="website" widget="url" placeholder="e.g. www.website.com"/>
+                            <field name="title" options='{"no_open": True}'/>
+                            <field name="lang"/>
+                        </group>
+                    </group>
+
+                    <notebook colspan="4">
+                        <page string="Optionals Addresses" autofocus="autofocus">
+                            <field name="optional_address" force_save="1">
+                                <tree>
+                                    <field name="address_name"/>
+                                    <field name="state_id"/>
+                                    <field name="city"/>
+                                    <field name="street"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <field name="address_name" required="1"/>
+                                    </group>
+                                    <group>
+                                        <field name="type" invisible="1"/>
+                                        <label for="street" string="Address"/>
+                                        <field name="country_id" placeholder="Country" class="o_address_country"
+                                               options='{"no_open": True, "no_create": True}'
+                                               attrs="{'readonly': [('type', '=', 'contact')]}"/>
+                                        <field name="state_id" class="o_address_state" placeholder="State"
+                                               options='{"no_open": True, "no_create": True}'
+                                               attrs="{'readonly': [('type', '=', 'contact')]}"
+                                               context="{'country_id': country_id, 'zip': zip}"/>
+                                        <field name="city" placeholder="City" class="o_address_city"
+                                               attrs="{'readonly': [('type', '=', 'contact')]}"/>
+                                        <field name="zip" placeholder="ZIP" class="o_address_zip"
+                                               attrs="{'readonly': [('type', '=', 'contact')]}"/>
+                                        <field name="street" placeholder="Street..." class="o_address_street"
+                                               attrs="{'readonly': [('type', '=', 'contact')]}" required="1"/>
+                                        <field name="street2" placeholder="Street 2..." class="o_address_street"
+                                               attrs="{'readonly': [('type', '=', 'contact')]}"/>
+                                    </group>
+                                    <group>
+                                        <field name="phone" widget="phone"/>
+                                        <field name="mobile" widget="phone"/>
+                                        <field name="email" widget="email"/>
+                                    </group>
+                                    <group>
+                                        <field name="comment"/>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                        <page name='internal_notes' string="Internal Notes">
+                            <field name="comment" placeholder="Internal note..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- IMA List -->
+    <record id="view_partner_oct_list" model="ir.ui.view">
+        <field name="name">res.partner.oct.list</field>
+        <field name="model">res.partner.oct</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="email"/>
+                <field name="phone"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action and Menu -->
+    <record id="partner_oct_action" model="ir.actions.act_window">
+        <field name="name">IMA Clients</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner.oct</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create an IMA Clients.
+            </p>
+            <p>
+                Use this menu to create or search IMA Clients.
+            </p>
+        </field>
+    </record>
+
+    <menuitem action="partner_oct_action" id="menu_partner_oct_action"
+              parent="purchase_order_types.menu_purchase_order_in_config_purchase"
+              sequence="25"/>
+
+</odoo>
