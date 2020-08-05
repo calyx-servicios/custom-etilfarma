@@ -55,9 +55,11 @@ class PurchaseOrder(models.Model):
 
     confirmation_number = fields.Char(string="Confirmation Number")
     confirmation_date = fields.Date(string="Confirmation Date")
+    confirmation_required = fields.Boolean(string="Confirmation Required")
 
     proforma_number = fields.Char(string="Proforma Number")
     proforma_date = fields.Date(string="Proforma Date")
+    proforma_required = fields.Boolean(string="Proforma Required")
 
     payment_bank = fields.Text(string="Payment Bank")
     payment_account = fields.Char(string="Payment Account")
@@ -67,41 +69,49 @@ class PurchaseOrder(models.Model):
     payment_concept = fields.Text(string="Payment Concept")
     payment_TTE_amount = fields.Char(string="Payment TTE Amount")
     payment_TC = fields.Char(string="Payment TC")
+    payment_required = fields.Boolean(string="Payment Required")
     
-    dispacher_reference = fields.Char(string="Dispacher Reference")
+    dispatcher_reference = fields.Char(string="Dispatcher Reference")
+    dispatcher_required = fields.Boolean(string="Dispatcher Required")
 
     intervention_reference = fields.Char(string="Intervention Reference")
     intervention_VPE_amount = fields.Char(string="Intervention VPE Amount")
     intervention_application_date = fields.Date(string="Intervention Application Date")
     intervention_approval_date = fields.Date(string="Intervention Approval Date")
+    intervention_required = fields.Boolean(string="Intervention Required")
 
     import_license_reference = fields.Char(string="Import License Reference")
     import_license_approval_date = fields.Date(
         string="Import License Approval Date"
     )
     import_license_official_date = fields.Date(string="Import License Approval Date")
+    import_license_required = fields.Boolean(string="Import License Required")
     
     booking_conveyance = fields.Char(string="Booking Conveyance")
     booking_origin = fields.Char(string="Booking Origin")
     booking_ETD_date = fields.Date(string="Booking ETD Date")
     booking_ETA_date = fields.Date(string="Booking ETA Date")
     booking_transport_company = fields.Char(string="Booking Transport Company")
-    
+    booking_required = fields.Boolean(string="Booking Required")
+
     documents_commercial_invoice_number = fields.Char(string="Documents Comercial Invoice Number")
     documents_FC_date = fields.Date(string="Documents FC Date")
     documents_quality_certificate_approval_date = fields.Date(string="Documents Quality Certificate Approval Date")
     documents_shipping_document = fields.Char(string="Documents Shipping Document")
     documents_shipping_date = fields.Date(string="Documents Shipping Date")
+    documents_required = fields.Boolean(string="Documents Required")
 
     delivery_number = fields.Char(string="Import Delivery Number")
     delivery_official_date = fields.Date(string="Import Official Delivery Date")
     delivery_chanel = fields.Char(string="Delivery Chanel")
+    delivery_required = fields.Boolean(string="Delivery Required")
 
     original_documentation_original_receipt_date = fields.Date(string="Original Documentation Original Receipt Date")
+    original_documentation_required = fields.Boolean(string="Original Documentation Required")
 
-    expenses_dispacher_fees = fields.Char(string="Expenses Dispacher Fees")
+    expenses_dispatcher_fees = fields.Char(string="Expenses dispatcher Fees")
     expenses_expenses = fields.Char(string="Expenses")
-    
+    expenses_required = fields.Boolean(string="Expenses Required")
 
     @api.onchange("order_type")
     def _onchange_order_type(self):

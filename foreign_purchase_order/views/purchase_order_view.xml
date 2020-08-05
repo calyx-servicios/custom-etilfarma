@@ -55,14 +55,17 @@
                 <page string='Tracking Order' attrs="{'invisible': [('order_type_foreign','=',False)]}">
                     <group>
                         <group name="confirmation" string="Confirmation">
+                            <field name="confirmation_required" type="checkbox" string="Required"/>
                             <field name="confirmation_number" string="Number"/>
                             <field name="confirmation_date" string="Date"/>
                         </group>
                         <group name="proforma" string="Proforma">
+                            <field name="proforma_required" type="checkbox" string="Required"/>
                             <field name="proforma_number" string="Number"/>
                             <field name="proforma_date" string="Date"/>
                         </group>
                         <group name="payment" string="Payment">
+                            <field name="payment_required" type="checkbox" string="Required"/> 
                             <field name="payment_bank" string="Bank"/>
                             <field name="payment_account" string="Account"/>
                             <field name="payment_application_number" string="Application Number"/>
@@ -73,20 +76,24 @@
                             <field name="payment_TC" string="TC"/>
                         </group>
                         <group name="dispatcher" string="Dispatcher">
-                            <field name="dispacher_reference" string="Reference"/>
+                            <field name="dispatcher_required" type="checkbox" string="Required"/>
+                            <field name="dispatcher_reference" string="Reference"/>
                         </group>
                         <group name="interventions" string="Interventions">
+                            <field name="intervention_required" type="checkbox" string="Required"/>
                             <field name="intervention_reference" string="Reference"/>
                             <field name="intervention_VPE_amount" string="VPE Amount"/>
                             <field name="intervention_application_date" string="Application Date"/>
                             <field name="intervention_approval_date" string="Approval Date"/>
                         </group>
                         <group name="import_license" string="Import License Id">
+                            <field name="import_license_required" type="checkbox" string="Required"/>
                             <field name="import_license_reference" string="Reference"/>
                             <field name="import_license_approval_date" string="Official Date"/>
                             <field name="import_license_official_date" string="Approval Date"/>
                         </group>
                         <group name="booking" string="Booking(Ship Reserve)">
+                            <field name="booking_required" type="checkbox" string="Required"/>
                             <field name="booking_conveyance" string="Conveyance"/>
                             <field name="booking_origin" string="Origin"/>
                             <field name="booking_ETD_date" string="ETD Date"/>
@@ -94,6 +101,7 @@
                             <field name="booking_transport_company" string="Transport Company"/>
                         </group>
                         <group name="documents" string="Documents">
+                            <field name="documents_required" type="checkbox" string="Required"/>
                             <field name="documents_commercial_invoice_number" string="Commercial Invoice Number"/>
                             <field name="documents_FC_date" string="FC Date"/>
                             <field name="documents_quality_certificate_approval_date" string="Quality Certificate Approval Date"/>
@@ -101,15 +109,18 @@
                             <field name="documents_shipping_date" string="Shipping Date"/>
                         </group>
                         <group name="import_delivery" string="Import Delivery">
+                            <field name="delivery_required" type="checkbox" string="Required"/>
                             <field name="delivery_number" string="Delivery Number"/>
                             <field name="delivery_official_date" string="Official Date"/>
                             <field name="delivery_chanel" string="Chanel"/>
                         </group>
                         <group name="original_documentation" string="Original Documentation">
+                            <field name="original_documentation_required" type="checkbox" string="Required"/>
                             <field name="original_documentation_original_receipt_date" string="Original Receipt Date"/>
                         </group>
                         <group name="expenses" string="Expenses">
-                            <field name="expenses_dispacher_fees" string="Dispatcher Fees"/>
+                            <field name="expenses_required" type="checkbox" string="Required"/>
+                            <field name="expenses_dispatcher_fees" string="Dispatcher Fees"/>
                             <field name="expenses_expenses" string="Expenses"/>
                         </group>                    
                     </group>
