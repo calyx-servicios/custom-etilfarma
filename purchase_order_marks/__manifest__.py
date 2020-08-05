@@ -27,7 +27,7 @@
     # always loaded
     "data": [
         # 'security/ir.model.access.csv',
-        "views/res_partner_view.xml",
+        "views/res_partner_oct_view.xml",
         "views/purchase_order_view.xml",
         "views/res_company_view.xml"
         # 'views/templates.xml',

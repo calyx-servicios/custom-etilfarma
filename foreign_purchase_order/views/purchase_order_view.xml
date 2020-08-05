@@ -52,29 +52,72 @@
                         </group>
                     </group>
                 </page>
-                <page string='Import Documentation' attrs="{'invisible': [('order_type_foreign','=',False)]}">
+                <page string='Tracking Order' attrs="{'invisible': [('order_type_foreign','=',False)]}">
                     <group>
-                        <group name="import_license" string="Import Licenses">
-                            <field name="import_license_number" string="Number"/>
-                            <field name="import_license_issue_date" string="Issue Date"/>
-                            <field name="import_license_approval_date" string="Approval Date"/>
+                        <group name="confirmation" string="Confirmation">
+                            <field name="confirmation_number" string="Number"/>
+                            <field name="confirmation_date" string="Date"/>
                         </group>
-                        <group name="bill_landing" string="Bill Landing">
-                            <field name="bill_landing_number" string="Number"/>
-                            <field name="bill_landing_issue_date" string="Issue Date"/>
-                            <field name="bill_landing_reception_date" string="Reception Date"/>
-                            <field name="bill_landing_description" string="Description"/>
+                        <group name="proforma" string="Proforma">
+                            <field name="proforma_number" string="Number"/>
+                            <field name="proforma_date" string="Date"/>
                         </group>
-                        <group name="delivery" string="Import Delivery">
-                            <field name="delivery_number" string="Number"/>
-                            <field name="delivery_date" string="Date"/>
+                        <group name="payment" string="Payment">
+                            <field name="payment_bank" string="Bank"/>
+                            <field name="payment_account" string="Account"/>
+                            <field name="payment_application_number" string="Application Number"/>
+                            <field name="payment_date" string="Date"/>
+                            <field name="payment_reference" string="Reference"/>
+                            <field name="payment_concept" string="Concept"/>
+                            <field name="payment_TTE_amount" string="Add Payment Value Of The TTE 'Amount'"/>
+                            <field name="payment_TC" string="TC"/>
                         </group>
+                        <group name="dispatcher" string="Dispatcher">
+                            <field name="dispacher_reference" string="Reference"/>
+                        </group>
+                        <group name="interventions" string="Interventions">
+                            <field name="intervention_reference" string="Reference"/>
+                            <field name="intervention_VPE_amount" string="VPE Amount"/>
+                            <field name="intervention_application_date" string="Application Date"/>
+                            <field name="intervention_approval_date" string="Approval Date"/>
+                        </group>
+                        <group name="import_license" string="Import License Id">
+                            <field name="import_license_reference" string="Reference"/>
+                            <field name="import_license_approval_date" string="Official Date"/>
+                            <field name="import_license_official_date" string="Approval Date"/>
+                        </group>
+                        <group name="booking" string="Booking(Ship Reserve)">
+                            <field name="booking_conveyance" string="Conveyance"/>
+                            <field name="booking_origin" string="Origin"/>
+                            <field name="booking_ETD_date" string="ETD Date"/>
+                            <field name="booking_ETA_date" string="ETA Date"/>
+                            <field name="booking_transport_company" string="Transport Company"/>
+                        </group>
+                        <group name="documents" string="Documents">
+                            <field name="documents_commercial_invoice_number" string="Commercial Invoice Number"/>
+                            <field name="documents_FC_date" string="FC Date"/>
+                            <field name="documents_quality_certificate_approval_date" string="Quality Certificate Approval Date"/>
+                            <field name="documents_shipping_document" string="Shipping Document"/>
+                            <field name="documents_shipping_date" string="Shipping Date"/>
+                        </group>
+                        <group name="import_delivery" string="Import Delivery">
+                            <field name="delivery_number" string="Delivery Number"/>
+                            <field name="delivery_official_date" string="Official Date"/>
+                            <field name="delivery_chanel" string="Chanel"/>
+                        </group>
+                        <group name="original_documentation" string="Original Documentation">
+                            <field name="original_documentation_original_receipt_date" string="Original Receipt Date"/>
+                        </group>
+                        <group name="expenses" string="Expenses">
+                            <field name="expenses_dispacher_fees" string="Dispatcher Fees"/>
+                            <field name="expenses_expenses" string="Expenses"/>
+                        </group>                    
                     </group>
                 </page>
             </xpath>
 
             <xpath expr="//sheet/div[@class='oe_title']" position="inside">
-                <p class="text-warning" attrs="{'invisible': ['|','|',['order_type_foreign','=',False], ['state','not in',('purchase', 'no_invoice')],'&amp;','&amp;',['import_license_number','!=',False],['import_license_issue_date','!=',False],['import_license_approval_date','!=',False]]}">
+                <!-- <p class="text-warning" attrs="{'invisible': ['|','|',['order_type_foreign','=',False], ['state','not in',('purchase', 'no_invoice')],'&amp;','&amp;',['import_license_reference','!=',False],['import_license_approval_date','!=',False],['import_license_official_date','!=',False]]}">
                     <i class="fa fa-exclamation-triangle "></i> Action required: <strong>import license data not fully loaded.</strong>
                 </p>
                 <p class="text-warning" attrs="{'invisible': ['|','|',['order_type_foreign','=',False], ['state','not in',('purchase', 'no_invoice')],'&amp;','&amp;','&amp;',['bill_landing_number','!=',False],['bill_landing_issue_date','!=',False],['bill_landing_reception_date','!=',False],['bill_landing_description','!=',False]]}">
@@ -82,7 +125,7 @@
                 </p>
                 <p class="text-warning" attrs="{'invisible': ['|','|',['order_type_foreign','=',False], ['state','not in',('purchase', 'no_invoice')],'&amp;',['delivery_number','!=',False],['delivery_date','!=',False]]}">
                     <i class="fa fa-exclamation-triangle "></i> Action required: <strong>delivery data not fully loaded.</strong>
-                </p>
+                </p> -->
             </xpath>
         </field>
     </record>
@@ -92,10 +135,10 @@
         <field name="inherit_id" ref="purchase.purchase_order_tree"/>
         <field name="arch" type="xml">
             <field name="order_type" position="after">
-                <field name="customer_purchase_order"/>
-                <field name="import_license_number"/>
+                <!-- <field name="customer_purchase_order"/>
+                <field name="import_license_reference"/>
                 <field name="bill_landing_number"/>
-                <field name="delivery_number"/>
+                <field name="delivery_number"/> -->
             </field>
         </field>
     </record>
@@ -110,9 +153,9 @@
             <filter name="activities_upcoming_all" position="after">
                 <separator/>
                 <filter name="incomplete_import_data" string="Incomplete Import Documentation" domain="['&amp;', '&amp;', ('order_type_foreign','=',True), 
-                        ('state','in',['purchase', 'no_invoice']), '|', '|', '|', '|', '|', '|', '|', '|', ('import_license_number','=',False), ('import_license_issue_date','=',False), ('import_license_approval_date','=',False), ('bill_landing_number','=',False), ('bill_landing_issue_date','=',False), ('bill_landing_reception_date','=',False), ('bill_landing_description','=',False), ('delivery_number','=',False), ('delivery_date','=',False)]"/>        
+                        ('state','in',['purchase', 'no_invoice']), '|', '|', '|', '|', '|', '|', '|', '|', ('import_license_reference','=',False), ('import_license_issue_date','=',False), ('import_license_approval_date','=',False), ('bill_landing_number','=',False), ('bill_landing_issue_date','=',False), ('bill_landing_reception_date','=',False), ('bill_landing_description','=',False), ('delivery_number','=',False), ('delivery_date','=',False)]"/>        
                 <filter name="incomplete_import_data" string="Incomplete Import License" domain="['&amp;', '&amp;', ('order_type_foreign','=',True), 
-                        ('state','in',['purchase', 'no_invoice']), '|', '|', ('import_license_number','=',False), ('import_license_issue_date','=',False), ('import_license_approval_date','=',False)]"/>        
+                        ('state','in',['purchase', 'no_invoice']), '|', '|', ('import_license_reference','=',False), ('import_license_issue_date','=',False), ('import_license_approval_date','=',False)]"/>        
                 <filter name="incomplete_import_data" string="Incomplete Bill Landing " domain="['&amp;', '&amp;', ('order_type_foreign','=',True), 
                         ('state','in',['purchase', 'no_invoice']), '|', '|', '|', ('bill_landing_number','=',False), ('bill_landing_issue_date','=',False), ('bill_landing_reception_date','=',False), ('bill_landing_description','=',False)]"/>        
                 <filter name="incomplete_import_data" string="Incomplete Import Delivery" domain="['&amp;', '&amp;', ('order_type_foreign','=',True), 
