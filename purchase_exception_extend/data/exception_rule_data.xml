@@ -3,6 +3,7 @@
   <record id="po_exep_confirmation_fields" model="exception.rule">
     <field name="name">Confirmation Fields Empty</field>
     <field name="description">The confirmation fields (number or date) are empty.</field>
+    <field name="block_oct">True</field>
     <field name="sequence">50</field>
     <field name="rule_group">purchase</field>
     <field name="model">purchase.order</field>

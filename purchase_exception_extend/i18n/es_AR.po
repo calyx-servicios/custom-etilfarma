@@ -20,6 +20,16 @@ msgstr ""
 msgid "Blocked in draft"
 msgstr "Bloqueado en borrador"
 
+#. module: purchase_exception_extend
+#: model:ir.model.fields,field_description:purchase_exception_extend.field_exception_rule_block_oct
+msgid "Block OCT"
+msgstr "Aplicar a OCT"
+
+#. module: purchase_exception_extend
+#: model:ir.model.fields,field_description:purchase_exception_extend.field_purchase_order_ignore_exception_oct
+msgid "Ignore Exceptions OCT"
+msgstr "Ignorar execepciones OCT"
+
 #. module: purchase_exception
 #: model:ir.model.fields,field_description:purchase_exception.field_purchase_exception_confirm_create_uid
 msgid "Created by"
