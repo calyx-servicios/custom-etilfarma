@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020 Calyx Servicios S.A.
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl-3.0) -->
+<odoo>
+
+    <record id="view_purchase_request_line_make_purchase_order" model="ir.ui.view">
+        <field name="name">Purchase Request Line Make Purchase Order</field>
+        <field name="model">purchase.request.line.make.purchase.order</field>
+        <field name="type">form</field>
+        <field name="inherit_id"
+               ref="purchase_request.view_purchase_request_line_make_purchase_order"/>
+        <field name="arch" type="xml">
+            <!-- Remove possibility to link PR line with existing PO. -->
+            <xpath expr="//form/separator[1]" position="replace"/>
+            <xpath expr="//form/newline[1]" position="replace"/>
+            <xpath expr="//form/group[1]" position="replace"/>
+            <xpath expr="//form/newline[2]" position="replace"/>
+            <!-- Add PO type, and currency -->
+            <field name="supplier_id" position="after">
+                <field name="order_type"/>
+                <field name="currency_id"/>
+                <field name="invoice_to"
+                       attrs="{'invisible':[('order_type', '!=', %(purchase_order_invoice_to.po_type_third_party)d)]}"/>
+            </field>
+            <!-- Adapt fields to foreign_purchase_line -->
+            <xpath expr="//field[@name='item_ids']/tree/field[@name='product_id']" position="replace">
+                <field name="product_tmpl_id" readonly="1"/>
+                <field name="product_attr_value_id" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
+
