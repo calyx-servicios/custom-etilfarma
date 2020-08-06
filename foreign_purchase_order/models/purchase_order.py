@@ -55,11 +55,11 @@ class PurchaseOrder(models.Model):
 
     confirmation_number = fields.Char(string="Confirmation Number")
     confirmation_date = fields.Date(string="Confirmation Date")
-    confirmation_required = fields.Boolean(string="Confirmation Required")
+    confirmation_not_required = fields.Boolean(string="Confirmation Not Required")
 
     proforma_number = fields.Char(string="Proforma Number")
     proforma_date = fields.Date(string="Proforma Date")
-    proforma_required = fields.Boolean(string="Proforma Required")
+    proforma_not_required = fields.Boolean(string="Proforma Not Required")
 
     payment_bank = fields.Text(string="Payment Bank")
     payment_account = fields.Char(string="Payment Account")
@@ -69,49 +69,118 @@ class PurchaseOrder(models.Model):
     payment_concept = fields.Text(string="Payment Concept")
     payment_TTE_amount = fields.Char(string="Payment TTE Amount")
     payment_TC = fields.Char(string="Payment TC")
-    payment_required = fields.Boolean(string="Payment Required")
+    payment_not_required = fields.Boolean(string="Payment Not Required")
     
     dispatcher_reference = fields.Char(string="Dispatcher Reference")
-    dispatcher_required = fields.Boolean(string="Dispatcher Required")
+    dispatcher_not_required = fields.Boolean(string="Dispatcher Not Required")
 
     intervention_reference = fields.Char(string="Intervention Reference")
     intervention_VPE_amount = fields.Char(string="Intervention VPE Amount")
     intervention_application_date = fields.Date(string="Intervention Application Date")
     intervention_approval_date = fields.Date(string="Intervention Approval Date")
-    intervention_required = fields.Boolean(string="Intervention Required")
+    intervention_not_required = fields.Boolean(string="Intervention Not Required")
 
     import_license_reference = fields.Char(string="Import License Reference")
-    import_license_approval_date = fields.Date(
-        string="Import License Approval Date"
-    )
-    import_license_official_date = fields.Date(string="Import License Approval Date")
-    import_license_required = fields.Boolean(string="Import License Required")
+    import_license_approval_date = fields.Date(string="Import License Approval Date")
+    import_license_official_date = fields.Date(string="Import License Official Date")
+    import_license_not_required = fields.Boolean(string="Import License Not Required")
     
     booking_conveyance = fields.Char(string="Booking Conveyance")
     booking_origin = fields.Char(string="Booking Origin")
     booking_ETD_date = fields.Date(string="Booking ETD Date")
     booking_ETA_date = fields.Date(string="Booking ETA Date")
     booking_transport_company = fields.Char(string="Booking Transport Company")
-    booking_required = fields.Boolean(string="Booking Required")
+    booking_not_required = fields.Boolean(string="Booking Not Required")
 
     documents_commercial_invoice_number = fields.Char(string="Documents Comercial Invoice Number")
     documents_FC_date = fields.Date(string="Documents FC Date")
     documents_quality_certificate_approval_date = fields.Date(string="Documents Quality Certificate Approval Date")
     documents_shipping_document = fields.Char(string="Documents Shipping Document")
     documents_shipping_date = fields.Date(string="Documents Shipping Date")
-    documents_required = fields.Boolean(string="Documents Required")
+    documents_not_required = fields.Boolean(string="Documents Not Required")
 
     delivery_number = fields.Char(string="Import Delivery Number")
     delivery_official_date = fields.Date(string="Import Official Delivery Date")
     delivery_chanel = fields.Char(string="Delivery Chanel")
-    delivery_required = fields.Boolean(string="Delivery Required")
+    delivery_not_required = fields.Boolean(string="Delivery Not Required")
 
     original_documentation_original_receipt_date = fields.Date(string="Original Documentation Original Receipt Date")
-    original_documentation_required = fields.Boolean(string="Original Documentation Required")
+    original_documentation_not_required = fields.Boolean(string="Original Documentation Not Required")
 
     expenses_dispatcher_fees = fields.Char(string="Expenses dispatcher Fees")
     expenses_expenses = fields.Char(string="Expenses")
-    expenses_required = fields.Boolean(string="Expenses Required")
+    expenses_not_required = fields.Boolean(string="Expenses Not Required")
+
+    @api.onchange("confirmation_not_required")
+    def _onchange_confirmation_not_required(self):
+        self.confirmation_number = ""
+        self.confirmation_date = ""
+
+    @api.onchange("proforma_not_required")
+    def _onchange_proforma_not_required(self):
+        self.proforma_number = ""
+        self.proforma_date = ""
+
+    @api.onchange("payment_not_required")
+    def _onchange_payment_not_required(self):
+        self.payment_bank = ""
+        self.payment_concept = ""
+        self.payment_application_number = ""
+        self.payment_account = ""
+        self.payment_date = ""
+        self.payment_reference = ""
+        self.payment_TC = ""
+        self.payment_TTE_amount = ""
+
+    @api.onchange("dispatcher_not_required")
+    def _onchange_dispatcher_not_required(self):
+        self.dispatcher_reference = ""
+
+    @api.onchange("intervention_not_required")
+    def _onchange_intervention_not_required(self):
+        self.intervention_application_date = ""
+        self.intervention_approval_date = ""
+        self.intervention_reference = ""
+        self.intervention_VPE_amount = ""
+    
+    @api.onchange("import_license_not_required")
+    def _onchange_import_license_not_required(self):
+        self.import_license_approval_date = ""
+        self.import_license_id = ""
+        self.import_license_official_date = ""
+        self.import_license_reference = ""
+
+    @api.onchange("booking_not_required")
+    def _onchange_booking_not_required(self):
+        self.booking_conveyance = ""
+        self.booking_ETA_date = ""
+        self.booking_ETD_date = ""
+        self.booking_origin = ""
+        self.booking_transport_company = ""
+
+    @api.onchange("documents_not_required")
+    def _onchange_documents_not_required(self):
+        self.documents_commercial_invoice_number = ""
+        self.documents_FC_date = ""
+        self.documents_quality_certificate_approval_date = ""
+        self.documents_shipping_date = ""
+        self.documents_shipping_document = ""
+
+    @api.onchange("delivery_not_required")
+    def _onchange_delivery_not_required(self):
+        self.delivery_chanel = ""
+        self.delivery_date_week = ""
+        self.delivery_number = ""
+        self.delivery_official_date = ""
+
+    @api.onchange("original_documentation_not_required")
+    def _onchange_original_documentation_not_required(self):
+        self.original_documentation_original_receipt_date = ""
+
+    @api.onchange("expenses_not_required")
+    def _onchange_expenses_not_required(self):
+        self.expenses_dispatcher_fees = ""
+        self.expenses_expenses = ""
 
     @api.onchange("order_type")
     def _onchange_order_type(self):
