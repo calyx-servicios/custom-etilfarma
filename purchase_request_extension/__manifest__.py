@@ -16,7 +16,8 @@
     "depends": [
         "purchase_request",
         "purchase_order_types",
-        "purchase_order_invoice_to"
+        "purchase_order_invoice_to",
+        "purchase_order_marks"
     ],
     "data": [
         "views/purchase_request_view.xml",
