@@ -18,6 +18,8 @@ class PurchaseRequestLineMakePurchaseOrder(models.TransientModel):
     order_type = fields.Many2one('purchase.order.type', string="Type")
     currency_id = fields.Many2one('res.currency', string="Currency")
     invoice_to = fields.Many2one('res.partner.oct', string='Invoice to')
+    send_documents_to = fields.Text(string="Send documents to",)
+    marks = fields.Char(string="Marks")
 
     @api.model
     def _prepare_item(self, line):
@@ -33,6 +35,23 @@ class PurchaseRequestLineMakePurchaseOrder(models.TransientModel):
         res['product_attr_value_id'] = item.product_attr_value_id.id
         return res
 
+    def _write_send_document_to(self):
+        info_to_write = ""
+        company_id = self.env.user.company_id
+        if company_id.name:
+            info_to_write += _("%s\n==========\n") % company_id.name
+        if company_id.street:
+            info_to_write += _("Street: %s\n") % company_id.street
+        if company_id.zip:
+            info_to_write += _("Zip Code: %s\n") % company_id.zip
+        if company_id.state_id:
+            info_to_write += _("State: %s\n") % company_id.state_id.name
+        if company_id.country_id:
+            info_to_write += _("Country: %s\n") % company_id.country_id.name
+        if company_id.main_id_number:
+            info_to_write += "CUIT: {}\n".format(company_id.main_id_number)
+        self.send_documents_to = info_to_write
+
     @api.model
     def _prepare_purchase_order(
         self, picking_type, group_id, company, origin, date_planned):
@@ -40,6 +59,11 @@ class PurchaseRequestLineMakePurchaseOrder(models.TransientModel):
             raise UserError(
                 _('Enter a supplier.'))
         supplier = self.supplier_id
+        if self.invoice_to:
+            self.marks = self.invoice_to.marks
+        else:
+            self.marks = self.env.user.company_id.marks
+        self._write_send_document_to()
         data = {
             'origin': origin,
             'partner_id': self.supplier_id.id,
@@ -52,7 +76,9 @@ class PurchaseRequestLineMakePurchaseOrder(models.TransientModel):
             'order_type': self.order_type.id,
             'currency_id': self.currency_id.id,
             'order_type_foreign': self.order_type.foreign_order,
-            'invoice_to': self.invoice_to.id
+            'invoice_to': self.invoice_to.id,
+            'marks': self.marks,
+            'send_documents_to': self.send_documents_to
             }
         return data
 
