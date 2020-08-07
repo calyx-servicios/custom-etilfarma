@@ -63,7 +63,7 @@ class PurchaseOrder(models.Model):
 
     payment_bank = fields.Text(string="Payment Bank")
     payment_account = fields.Char(string="Payment Account")
-    payment_application_number = fields.Integer(string="Payment Application number")
+    payment_application_number = fields.Char(string="Payment Application number")
     payment_date = fields.Date(string="Payment Date")
     payment_reference = fields.Char(string="Payment Reference")
     payment_concept = fields.Text(string="Payment Concept")
