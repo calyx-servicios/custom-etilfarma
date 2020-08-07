@@ -286,4 +286,3 @@ class PurchaseOrder(models.Model):
     special_indications = fields.Text(
         string="Special Indications", default=_get_default_special_indications
     )
-

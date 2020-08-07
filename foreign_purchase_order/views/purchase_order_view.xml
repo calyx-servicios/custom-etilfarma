@@ -56,72 +56,72 @@
                     <group>
                         <group name="confirmation" string="Confirmation">
                             <field name="confirmation_not_required" type="checkbox" string="Not Required"/>
-                            <field name="confirmation_number" string="Number" attrs="{'readonly': [('confirmation_not_required','=',True)]}"/>
-                            <field name="confirmation_date" string="Date" attrs="{'readonly': [('confirmation_not_required','=',True)]}"/>
+                            <field name="confirmation_number" string="Number" attrs="{'readonly': [('confirmation_not_required','=',True)]}" force_save="1"/>
+                            <field name="confirmation_date" string="Date" attrs="{'readonly': [('confirmation_not_required','=',True)]}" force_save="1"/>
                         </group>
                         <group name="proforma" string="Proforma">
                             <field name="proforma_not_required" type="checkbox" string="Not Required"/>
-                            <field name="proforma_number" string="Number" attrs="{'readonly': [('proforma_not_required','=',True)]}"/>
-                            <field name="proforma_date" string="Date" attrs="{'readonly': [('proforma_not_required','=',True)]}"/>
+                            <field name="proforma_number" string="Number" attrs="{'readonly': [('proforma_not_required','=',True)]}" force_save="1"/>
+                            <field name="proforma_date" string="Date" attrs="{'readonly': [('proforma_not_required','=',True)]}" force_save="1"/>
                         </group>
                         <group name="payment" string="Payment">
                             <field name="payment_not_required" type="checkbox" string="Not Required"/> 
-                            <field name="payment_bank" string="Bank" attrs="{'readonly': [('payment_not_required','=',True)]}"/>
-                            <field name="payment_account" string="Account" attrs="{'readonly': [('payment_not_required','=',True)]}"/>
-                            <field name="payment_application_number" string="Application Number" attrs="{'readonly': [('payment_not_required','=',True)]}"/>
-                            <field name="payment_date" string="Date" attrs="{'readonly': [('payment_not_required','=',True)]}"/>
-                            <field name="payment_reference" string="Reference" attrs="{'readonly': [('payment_not_required','=',True)]}"/>
-                            <field name="payment_concept" string="Concept" attrs="{'readonly': [('payment_not_required','=',True)]}"/>
-                            <field name="payment_TTE_amount" string="Add Payment Value Of The TTE 'Amount'" attrs="{'readonly': [('payment_not_required','=',True)]}"/>
-                            <field name="payment_TC" string="TC" attrs="{'readonly': [('payment_not_required','=',True)]}"/>
+                            <field name="payment_bank" string="Bank" attrs="{'readonly': [('payment_not_required','=',True)]}" force_save="1"/>
+                            <field name="payment_account" string="Account" attrs="{'readonly': [('payment_not_required','=',True)]}" force_save="1"/>
+                            <field name="payment_application_number" string="Application Number" attrs="{'readonly': [('payment_not_required','=',True)]}" force_save="1"/>
+                            <field name="payment_date" string="Date" attrs="{'readonly': [('payment_not_required','=',True)]}" force_save="1"/>
+                            <field name="payment_reference" string="Reference" attrs="{'readonly': [('payment_not_required','=',True)]}" force_save="1"/>
+                            <field name="payment_concept" string="Concept" attrs="{'readonly': [('payment_not_required','=',True)]}" force_save="1"/>
+                            <field name="payment_TTE_amount" string="Add Payment Value Of The TTE 'Amount'" attrs="{'readonly': [('payment_not_required','=',True)]}" force_save="1"/>
+                            <field name="payment_TC" string="TC" attrs="{'readonly': [('payment_not_required','=',True)]}" force_save="1"/>
                         </group>
                         <group name="dispatcher" string="Dispatcher">
                             <field name="dispatcher_not_required" type="checkbox" string="Not Required"/>
-                            <field name="dispatcher_reference" string="Reference" attrs="{'readonly': [('dispatcher_not_required','=',True)]}"/>
+                            <field name="dispatcher_reference" string="Reference" attrs="{'readonly': [('dispatcher_not_required','=',True)]}" force_save="1"/>
                         </group>
                         <group name="interventions" string="Interventions">
                             <field name="intervention_not_required" type="checkbox" string="Not Required"/>
-                            <field name="intervention_reference" string="Reference" attrs="{'readonly': [('intervention_not_required','=',True)]}"/>
-                            <field name="intervention_VPE_amount" string="VPE Amount" attrs="{'readonly': [('intervention_not_required','=',True)]}"/>
-                            <field name="intervention_application_date" string="Application Date" attrs="{'readonly': [('intervention_not_required','=',True)]}"/>
-                            <field name="intervention_approval_date" string="Approval Date" attrs="{'readonly': [('intervention_not_required','=',True)]}"/>
+                            <field name="intervention_reference" string="Reference" attrs="{'readonly': [('intervention_not_required','=',True)]}" force_save="1"/>
+                            <field name="intervention_VPE_amount" string="VPE Amount" attrs="{'readonly': [('intervention_not_required','=',True)]}" force_save="1"/>
+                            <field name="intervention_application_date" string="Application Date" attrs="{'readonly': [('intervention_not_required','=',True)]}" force_save="1"/>
+                            <field name="intervention_approval_date" string="Approval Date" attrs="{'readonly': [('intervention_not_required','=',True)]}" force_save="1"/>
                         </group>
                         <group name="import_license" string="Import License Id">
                             <field name="import_license_not_required" type="checkbox" string="Not Required"/>
-                            <field name="import_license_reference" string="Reference" attrs="{'readonly': [('import_license_not_required','=',True)]}"/>
-                            <field name="import_license_approval_date" string="Official Date" attrs="{'readonly': [('import_license_not_required','=',True)]}"/>
-                            <field name="import_license_official_date" string="Approval Date" attrs="{'readonly': [('import_license_not_required','=',True)]}"/>
+                            <field name="import_license_reference" string="Reference" attrs="{'readonly': [('import_license_not_required','=',True)]}" force_save="1"/>
+                            <field name="import_license_approval_date" string="Official Date" attrs="{'readonly': [('import_license_not_required','=',True)]}" force_save="1"/>
+                            <field name="import_license_official_date" string="Approval Date" attrs="{'readonly': [('import_license_not_required','=',True)]}" force_save="1"/>
                         </group>
                         <group name="booking" string="Booking(Ship Reserve)">
                             <field name="booking_not_required" type="checkbox" string="Not Required"/>
-                            <field name="booking_conveyance" string="Conveyance" attrs="{'readonly': [('booking_not_required','=',True)]}"/>
-                            <field name="booking_origin" string="Origin" attrs="{'readonly': [('booking_not_required','=',True)]}"/>
-                            <field name="booking_ETD_date" string="ETD Date" attrs="{'readonly': [('booking_not_required','=',True)]}"/>
-                            <field name="booking_ETA_date" string="ETA Date" attrs="{'readonly': [('booking_not_required','=',True)]}"/>
-                            <field name="booking_transport_company" string="Transport Company" attrs="{'readonly': [('booking_not_required','=',True)]}"/>
+                            <field name="booking_conveyance" string="Conveyance" attrs="{'readonly': [('booking_not_required','=',True)]}" force_save="1"/>
+                            <field name="booking_origin" string="Origin" attrs="{'readonly': [('booking_not_required','=',True)]}" force_save="1"/>
+                            <field name="booking_ETD_date" string="ETD Date" attrs="{'readonly': [('booking_not_required','=',True)]}" force_save="1"/>
+                            <field name="booking_ETA_date" string="ETA Date" attrs="{'readonly': [('booking_not_required','=',True)]}" force_save="1"/>
+                            <field name="booking_transport_company" string="Transport Company" attrs="{'readonly': [('booking_not_required','=',True)]}" force_save="1"/>
                         </group>
                         <group name="documents" string="Documents">
                             <field name="documents_not_required" type="checkbox" string="Not Required"/>
-                            <field name="documents_commercial_invoice_number" string="Commercial Invoice Number" attrs="{'readonly': [('documents_not_required','=',True)]}"/>
-                            <field name="documents_FC_date" string="FC Date" attrs="{'readonly': [('documents_not_required','=',True)]}"/>
-                            <field name="documents_quality_certificate_approval_date" string="Quality Certificate Approval Date" attrs="{'readonly': [('documents_not_required','=',True)]}"/>
-                            <field name="documents_shipping_document" string="Shipping Document" attrs="{'readonly': [('documents_not_required','=',True)]}"/>
-                            <field name="documents_shipping_date" string="Shipping Date" attrs="{'readonly': [('documents_not_required','=',True)]}"/>
+                            <field name="documents_commercial_invoice_number" string="Commercial Invoice Number" attrs="{'readonly': [('documents_not_required','=',True)]}" force_save="1"/>
+                            <field name="documents_FC_date" string="FC Date" attrs="{'readonly': [('documents_not_required','=',True)]}" force_save="1"/>
+                            <field name="documents_quality_certificate_approval_date" string="Quality Certificate Approval Date" attrs="{'readonly': [('documents_not_required','=',True)]}" force_save="1"/>
+                            <field name="documents_shipping_document" string="Shipping Document" attrs="{'readonly': [('documents_not_required','=',True)]}" force_save="1"/>
+                            <field name="documents_shipping_date" string="Shipping Date" attrs="{'readonly': [('documents_not_required','=',True)]}" force_save="1"/>
                         </group>
                         <group name="import_delivery" string="Import Delivery">
                             <field name="delivery_not_required" type="checkbox" string="Not Required"/>
-                            <field name="delivery_number" string="Delivery Number" attrs="{'readonly': [('delivery_not_required','=',True)]}"/>
-                            <field name="delivery_official_date" string="Official Date" attrs="{'readonly': [('delivery_not_required','=',True)]}"/>
-                            <field name="delivery_chanel" string="Chanel" attrs="{'readonly': [('delivery_not_required','=',True)]}"/>
+                            <field name="delivery_number" string="Delivery Number" attrs="{'readonly': [('delivery_not_required','=',True)]}" force_save="1"/>
+                            <field name="delivery_official_date" string="Official Date" attrs="{'readonly': [('delivery_not_required','=',True)]}" force_save="1"/>
+                            <field name="delivery_chanel" string="Chanel" attrs="{'readonly': [('delivery_not_required','=',True)]}" force_save="1"/>
                         </group>
                         <group name="original_documentation" string="Original Documentation">
                             <field name="original_documentation_not_required" type="checkbox" string="Not Required"/>
-                            <field name="original_documentation_original_receipt_date" string="Original Receipt Date" attrs="{'readonly': [('original_documentation_not_required','=',True)]}"/>
+                            <field name="original_documentation_original_receipt_date" string="Original Receipt Date" attrs="{'readonly': [('original_documentation_not_required','=',True)]}" force_save="1"/>
                         </group>
                         <group name="expenses" string="Expenses">
                             <field name="expenses_not_required" type="checkbox" string="Not Required"/>
-                            <field name="expenses_dispatcher_fees" string="Dispatcher Fees" attrs="{'readonly': [('expenses_not_required','=',True)]}"/>
-                            <field name="expenses_expenses" string="Expenses" attrs="{'readonly': [('expenses_not_required','=',True)]}"/>
+                            <field name="expenses_dispatcher_fees" string="Dispatcher Fees" attrs="{'readonly': [('expenses_not_required','=',True)]}" force_save="1"/>
+                            <field name="expenses_expenses" string="Expenses" attrs="{'readonly': [('expenses_not_required','=',True)]}" force_save="1"/>
                         </group>                    
                     </group>
                 </page>
@@ -165,13 +165,18 @@
                 <separator/>
                 <filter name="incomplete_import_data" string="Incomplete Import Documentation" domain="['&amp;', '&amp;', ('order_type_foreign','=',True), 
                         ('state','in',['purchase', 'no_invoice']), '|', '|', '|', '|', '|', '|', '|', '|', ('import_license_reference','=',False), ('import_license_issue_date','=',False), ('import_license_approval_date','=',False), ('bill_landing_number','=',False), ('bill_landing_issue_date','=',False), ('bill_landing_reception_date','=',False), ('bill_landing_description','=',False), ('delivery_number','=',False), ('delivery_date','=',False)]"/>        
-                <filter name="incomplete_import_data" string="Incomplete Import License" domain="['&amp;', '&amp;', ('order_type_foreign','=',True), 
-                        ('state','in',['purchase', 'no_invoice']), '|', '|', ('import_license_reference','=',False), ('import_license_issue_date','=',False), ('import_license_approval_date','=',False)]"/>        
-                <filter name="incomplete_import_data" string="Incomplete Bill Landing " domain="['&amp;', '&amp;', ('order_type_foreign','=',True), 
-                        ('state','in',['purchase', 'no_invoice']), '|', '|', '|', ('bill_landing_number','=',False), ('bill_landing_issue_date','=',False), ('bill_landing_reception_date','=',False), ('bill_landing_description','=',False)]"/>        
-                <filter name="incomplete_import_data" string="Incomplete Import Delivery" domain="['&amp;', '&amp;', ('order_type_foreign','=',True), 
-                        ('state','in',['purchase', 'no_invoice']), '|',('delivery_number','=',False), ('delivery_date','=',False)]"/>        
-                
+                <filter name="incomplete_confirmation_data" string="Incomplete confirmation" domain="['&amp;', '&amp;', '&amp;', ('order_type_foreign','=',True), 
+                        ('state','in',['purchase', 'no_invoice']),('confirmation_not_required','=',False), '|',('confirmation_number','=',False), ('confirmation_date','=',False)]"/>        
+                <filter name="incomplete_proforma_data" string="Incomplete proforma" domain="['&amp;', '&amp;', '&amp;', ('order_type_foreign','=',True), 
+                        ('state','in',['purchase', 'no_invoice']),('proforma_not_required','=',False), '|',('proforma_number','=',False), ('proforma_date','=',False)]"/>        
+                <filter name="incomplete_payment_data" string="Incomplete payment" domain="['&amp;', '&amp;', '&amp;', ('order_type_foreign','=',True), 
+                        ('state','in',['purchase', 'no_invoice']),('payment_not_required','=',False), '|', '|', '|', '|', '|', '|', '|',('payment_bank','=',False), ('payment_account','=',False), ('payment_application_number','=',False), ('payment_date','=',False), ('payment_reference','=',False), ('payment_concept','=',False), ('payment_TTE_amount','=',False), ('payment_TC','=',False)]"/> 
+                <filter name="incomplete_dispatcher_data" string="Incomplete dispatcher" domain="['&amp;', '&amp;', '&amp;', ('order_type_foreign','=',True), 
+                        ('state','in',['purchase', 'no_invoice']),('dispatcher_not_required','=',False), ('dispatcher_reference','=',False)]"/>        
+                <filter name="incomplete_interventions_data" string="Incomplete interventions" domain="['&amp;', '&amp;', '&amp;', ('order_type_foreign','=',True), 
+                        ('state','in',['purchase', 'no_invoice']),('intervention_not_required','=',False), '|', '|', '|',('intervention_reference','=',False), ('intervention_VPE_amount','=',False), ('intervention_application_date','=',False), ('intervention_approval_date','=',False)]"/> 
+
+
             </filter>
         </field>
     </record>
