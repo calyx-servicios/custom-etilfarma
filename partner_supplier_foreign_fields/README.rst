@@ -40,7 +40,7 @@ Go to app menu and install.
  1.- [purchase_order_types] by Calyx.
  2.- [foreign_purchase_order] by Calyx.
  3.- [foreign_purchase_lines] by Calyx.
- 4.- [res_partner_supplier_foreign_fields] by Calyx.
+ 4.- [partner_supplier_foreign_fields] by Calyx.
 
 
 Usage
