@@ -36,8 +36,6 @@ class PurchaseOrder(models.Model):
                     record.original_documentation_not_required = True
                 if supplier.purchase_expenses_not_required:
                     record.expenses_not_required = True
-            else:
-                self._clean_tracking_order_fields()
 
     def _clean_tracking_order_fields(self):
         for record in self:
