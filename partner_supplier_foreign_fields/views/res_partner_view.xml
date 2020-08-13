@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="supplier_purchase_foreign_fields_view" model="ir.ui.view">
+        <field name="name">Supplier Purchase Foreign Fields</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string='Purchase Tracking Order' attrs="{'invisible': [('supplier','=',False)]}">
+                    <group>
+                        <group name="confirmation" string="Confirmation">
+                            <field name="purchase_confirmation_not_required" type="checkbox" string="Not Required"/>
+                        </group>
+                        <group name="proforma" string="Proforma">
+                            <field name="purchase_proforma_not_required" type="checkbox" string="Not Required"/>
+                        </group>
+                        <group name="payment" string="Payment">
+                            <field name="purchase_payment_not_required" type="checkbox" string="Not Required"/>
+                        </group>
+                        <group name="dispatcher" string="Dispatcher">
+                            <field name="purchase_dispatcher_not_required" type="checkbox" string="Not Required"/>
+                        </group>
+                        <group name="interventions" string="Interventions">
+                            <field name="purchase_intervention_not_required" type="checkbox" string="Not Required"/>
+                        </group>
+                        <group name="import_license" string="Import License Id">
+                            <field name="purchase_import_license_not_required" type="checkbox" string="Not Required"/>
+                        </group>
+                        <group name="booking" string="Booking(Ship Reserve)">
+                            <field name="purchase_booking_not_required" type="checkbox" string="Not Required"/>
+                        </group>
+                        <group name="documents" string="Documents">
+                            <field name="purchase_documents_not_required" type="checkbox" string="Not Required"/>
+                        </group>
+                        <group name="import_delivery" string="Import Delivery">
+                            <field name="purchase_delivery_not_required" type="checkbox" string="Not Required"/>
+                        </group>
+                        <group name="original_documentation" string="Original Documentation">
+                            <field name="purchase_original_documentation_not_required" type="checkbox" string="Not Required"/>
+                        </group>
+                        <group name="expenses" string="Expenses">
+                            <field name="purchase_expenses_not_required" type="checkbox" string="Not Required"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

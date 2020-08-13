@@ -1,0 +1,158 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* partner_supplier_foreign_fields
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-10 17:10+0000\n"
+"PO-Revision-Date: 2020-08-10 17:10+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: partner_supplier_foreign_fields
+#: model:ir.model.fields,field_description:partner_supplier_foreign_fields.field_res_partner_purchase_booking_not_required
+#: model:ir.model.fields,field_description:partner_supplier_foreign_fields.field_res_users_purchase_booking_not_required
+msgid "Booking Not Required"
+msgstr "Booking No requerido"
+
+#. module: partner_supplier_foreign_fields
+#: model:ir.ui.view,arch_db:partner_supplier_foreign_fields.supplier_purchase_foreign_fields_view
+msgid "Booking(Ship Reserve)"
+msgstr "Booking(Reserva de buque)"
+
+#. module: partner_supplier_foreign_fields
+#: model:ir.ui.view,arch_db:partner_supplier_foreign_fields.supplier_purchase_foreign_fields_view
+msgid "Confirmation"
+msgstr "Confirmación"
+
+#. module: partner_supplier_foreign_fields
+#: model:ir.model.fields,field_description:partner_supplier_foreign_fields.field_res_partner_purchase_confirmation_not_required
+#: model:ir.model.fields,field_description:partner_supplier_foreign_fields.field_res_users_purchase_confirmation_not_required
+msgid "Confirmation Not Required"
+msgstr "Confirmación No requerido"
+
+#. module: partner_supplier_foreign_fields
+#: model:ir.model,name:partner_supplier_foreign_fields.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: partner_supplier_foreign_fields
+#: model:ir.model.fields,field_description:partner_supplier_foreign_fields.field_res_partner_purchase_delivery_not_required
+#: model:ir.model.fields,field_description:partner_supplier_foreign_fields.field_res_users_purchase_delivery_not_required
+msgid "Delivery Not Required"
+msgstr "Despacho No requerido"
+
+#. module: partner_supplier_foreign_fields
+#: model:ir.ui.view,arch_db:partner_supplier_foreign_fields.supplier_purchase_foreign_fields_view
+msgid "Dispatcher"
+msgstr "Despachante"
+
+#. module: partner_supplier_foreign_fields
+#: model:ir.model.fields,field_description:partner_supplier_foreign_fields.field_res_partner_purchase_dispatcher_not_required
+#: model:ir.model.fields,field_description:partner_supplier_foreign_fields.field_res_users_purchase_dispatcher_not_required
+msgid "Dispatcher Not Required"
+msgstr "Despachante No requerido"
+
+#. module: partner_supplier_foreign_fields
+#: model:ir.ui.view,arch_db:partner_supplier_foreign_fields.supplier_purchase_foreign_fields_view
+msgid "Documents"
+msgstr "Documentos"
+
+#. module: partner_supplier_foreign_fields
+#: model:ir.model.fields,field_description:partner_supplier_foreign_fields.field_res_partner_purchase_documents_not_required
+#: model:ir.model.fields,field_description:partner_supplier_foreign_fields.field_res_users_purchase_documents_not_required
+msgid "Documents Not Required"
+msgstr "Documentos No requerido"
+
+#. module: partner_supplier_foreign_fields
+#: model:ir.ui.view,arch_db:partner_supplier_foreign_fields.supplier_purchase_foreign_fields_view
+msgid "Expenses"
+msgstr "Gastos"
+
+#. module: partner_supplier_foreign_fields
+#: model:ir.model.fields,field_description:partner_supplier_foreign_fields.field_res_partner_purchase_expenses_not_required
+#: model:ir.model.fields,field_description:partner_supplier_foreign_fields.field_res_users_purchase_expenses_not_required
+msgid "Expenses Not Required"
+msgstr "Gastos No requerido"
+
+#. module: partner_supplier_foreign_fields
+#: model:ir.ui.view,arch_db:partner_supplier_foreign_fields.supplier_purchase_foreign_fields_view
+msgid "Import Delivery"
+msgstr "Despacho de importación"
+
+#. module: partner_supplier_foreign_fields
+#: model:ir.ui.view,arch_db:partner_supplier_foreign_fields.supplier_purchase_foreign_fields_view
+msgid "Import License Id"
+msgstr "Licencia de Importación"
+
+#. module: partner_supplier_foreign_fields
+#: model:ir.model.fields,field_description:partner_supplier_foreign_fields.field_res_partner_purchase_import_license_not_required
+#: model:ir.model.fields,field_description:partner_supplier_foreign_fields.field_res_users_purchase_import_license_not_required
+msgid "Import License Not Required"
+msgstr "Licencia de importación No requerido"
+
+#. module: partner_supplier_foreign_fields
+#: model:ir.model.fields,field_description:partner_supplier_foreign_fields.field_res_partner_purchase_intervention_not_required
+#: model:ir.model.fields,field_description:partner_supplier_foreign_fields.field_res_users_purchase_intervention_not_required
+msgid "Intervention Not Required"
+msgstr "Intervenciones No requerido"
+
+#. module: partner_supplier_foreign_fields
+#: model:ir.ui.view,arch_db:partner_supplier_foreign_fields.supplier_purchase_foreign_fields_view
+msgid "Interventions"
+msgstr "Intervenciones"
+
+#. module: partner_supplier_foreign_fields
+#: model:ir.ui.view,arch_db:partner_supplier_foreign_fields.supplier_purchase_foreign_fields_view
+msgid "Not Required"
+msgstr "No Requerido"
+
+#. module: partner_supplier_foreign_fields
+#: model:ir.model.fields,field_description:partner_supplier_foreign_fields.field_res_partner_purchase_original_documentation_not_required
+#: model:ir.model.fields,field_description:partner_supplier_foreign_fields.field_res_users_purchase_original_documentation_not_required
+msgid "Original Documentaion Not Required"
+msgstr "Documentación original No requerido"
+
+#. module: partner_supplier_foreign_fields
+#: model:ir.ui.view,arch_db:partner_supplier_foreign_fields.supplier_purchase_foreign_fields_view
+msgid "Original Documentation"
+msgstr "Documentación Original"
+
+#. module: partner_supplier_foreign_fields
+#: model:ir.ui.view,arch_db:partner_supplier_foreign_fields.supplier_purchase_foreign_fields_view
+msgid "Payment"
+msgstr "Pago"
+
+#. module: partner_supplier_foreign_fields
+#: model:ir.model.fields,field_description:partner_supplier_foreign_fields.field_res_partner_purchase_payment_not_required
+#: model:ir.model.fields,field_description:partner_supplier_foreign_fields.field_res_users_purchase_payment_not_required
+msgid "Payment Not Required"
+msgstr "Pago No requerido"
+
+#. module: partner_supplier_foreign_fields
+#: model:ir.ui.view,arch_db:partner_supplier_foreign_fields.supplier_purchase_foreign_fields_view
+msgid "Proforma"
+msgstr "Proforma"
+
+#. module: partner_supplier_foreign_fields
+#: model:ir.model.fields,field_description:partner_supplier_foreign_fields.field_res_partner_purchase_proforma_not_required
+#: model:ir.model.fields,field_description:partner_supplier_foreign_fields.field_res_users_purchase_proforma_not_required
+msgid "Proforma Not Required"
+msgstr "Proforma No requerido"
+
+#. module: partner_supplier_foreign_fields
+#: model:ir.model,name:partner_supplier_foreign_fields.model_purchase_order
+msgid "Purchase Order"
+msgstr "Orden de compra"
+
+#. module: partner_supplier_foreign_fields
+#: model:ir.ui.view,arch_db:partner_supplier_foreign_fields.supplier_purchase_foreign_fields_view
+msgid "Purchase Tracking Order"
+msgstr "Seguimiento de pedido en compras"
+
