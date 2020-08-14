@@ -35,7 +35,7 @@ msgstr "Activo"
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Add Payment Value Of The TTE 'Amount'"
-msgstr "Agregar valor del pago de la TTE \"monto\""
+msgstr "Monto"
 
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
@@ -321,7 +321,7 @@ msgstr "Extra"
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "FC Date"
-msgstr "Fecha FC"
+msgstr "Fecha de factura"
 
 #. module: foreign_purchase_order
 #: model:ir.ui.menu,name:foreign_purchase_order.menu_purchase_order_foreign_in_config_purchase
@@ -721,7 +721,7 @@ msgstr "Special Indications Default"
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "TC"
-msgstr "TC"
+msgstr "Tipo de Cambio"
 
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_term_payments
