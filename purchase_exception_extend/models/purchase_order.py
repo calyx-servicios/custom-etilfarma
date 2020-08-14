@@ -15,13 +15,16 @@ class PurchaseOrder(models.Model):
         if not self.order_type.foreign_order:
             return True
         else:
-            if (
-                not self.confirmation_number
-                or not self.confirmation_date
-            ):
-                return False
-            else:
+            if self.confirmation_not_required:
                 return True
+            else:
+                if (
+                    not self.confirmation_number
+                    or not self.confirmation_date
+                ):
+                    return False
+                else:
+                    return True
 
     @api.multi
     def button_confirm_third_party(self):
