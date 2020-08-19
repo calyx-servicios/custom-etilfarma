@@ -359,13 +359,9 @@ msgid "Import Delivery Number"
 msgstr "Import Delivery Number"
 
 #. module: foreign_purchase_order
-#: model:ir.actions.act_window,name:foreign_purchase_order.action_purchase_import_license_view
-#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_import_license_import_license
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_import_license_id
-#: model:ir.ui.menu,name:foreign_purchase_order.menu_purchase_import_license
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_import_license_id
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
-#: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_import_license_search
-#: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_import_license_tree
 msgid "Import License"
 msgstr "Import License"
 
@@ -525,7 +521,7 @@ msgstr "Fecha recepción de originales"
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packaging_packaging
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Packaging"
-msgstr "Empaquetado"
+msgstr "Packaging"
 
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_packing_list_id
@@ -589,7 +585,7 @@ msgstr "Payment TTE Amount"
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_place_of_delivery_id
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Place of Delivery"
-msgstr "Lugar de Entrega"
+msgstr "Place of Delivery"
 
 #. module: foreign_purchase_order
 #: model:ir.actions.act_window,name:foreign_purchase_order.action_purchase_certificate_of_analysis_view
@@ -633,7 +629,7 @@ msgstr "Orden de compra"
 #: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_packaging_search
 #: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_packaging_tree
 msgid "Purchase Packaging"
-msgstr "Purchase Packaging"
+msgstr "Empaquetado"
 
 #. module: foreign_purchase_order
 #: model:ir.actions.act_window,name:foreign_purchase_order.action_purchase_packing_list_view
@@ -657,7 +653,7 @@ msgstr "Lugar de entrega"
 #: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_shipment_search
 #: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_shipment_tree
 msgid "Purchase Shipment"
-msgstr "Purchase Shipment"
+msgstr "Envío"
 
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
