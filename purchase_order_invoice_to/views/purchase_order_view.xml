@@ -18,6 +18,14 @@
                        attrs="{'invisible': [('order_type', '!=', %(po_type_third_party)d)]}"/>
             </field>
 
+            <xpath expr="//field[@name='use_other_company_address']" position="attributes">
+                <attribute name="attrs">{'invisible': [('send_document_to_invoice_to','=',True)]}</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='send_documents_to']" position="after">
+                <field name="use_other_invoice_to_address" attrs="{'invisible': [('send_document_to_invoice_to','=',False)]}" options="{'no_create': True, 'no_create_edit':True, 'no_open': True}"/>
+            </xpath>
+
             <!-- Regular Button Confirm Not Visible when the Order Type is OCT (We want to avoid the
              regular flow of Purchase Order) -->
             <xpath expr="//button[@name='button_confirm'][1]" position="attributes">

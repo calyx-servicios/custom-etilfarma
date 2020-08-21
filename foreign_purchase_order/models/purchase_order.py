@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 from datetime import datetime
 
-from odoo import fields, models, api
+from odoo import fields, models, api, _
 
 
 class PurchaseOrder(models.Model):
@@ -29,6 +29,20 @@ class PurchaseOrder(models.Model):
     )
 
     send_documents_to = fields.Text(string="Send documents to",)
+
+    def _get_company_child_ids(self):
+        company_child_ids = self.env.user.company_id.partner_id.child_ids.ids
+        return [('id', 'in', company_child_ids)]
+
+    # @api.model
+    # def _get_domain_sequence_id(self):
+    #     seq_type = self.env.ref('purchase.seq_purchase_order')
+    #     return [('code', '=', seq_type.code)]
+
+    use_other_company_address = fields.Many2one(
+        string="Use another company Address?",
+        comodel_name="res.partner",
+        domain=_get_company_child_ids)
 
     shipment_id = fields.Many2one(
         comodel_name="purchase.shipment", string="Shipment",
@@ -200,6 +214,35 @@ class PurchaseOrder(models.Model):
             else:
                 record.customer_purchase_order = ""
                 record.order_type_foreign = False
+
+    @api.onchange("use_other_company_address")
+    def _onchange_use_other_company_address(self):
+        """
+
+        """
+        for record in self:
+            if self.use_other_company_address:
+                self._write_other_company_document_to(record.use_other_company_address)
+            if not self.use_other_company_address:
+                self._write_other_company_document_to(record.company_id)
+
+    def _write_other_company_document_to(self, record):
+        info_to_write = ""
+
+        if record.name:
+            info_to_write += _("%s\n==========\n") % record.name
+        if record.street:
+            info_to_write += _("Street: %s\n") % record.street
+        if record.zip:
+            info_to_write += _("Zip Code: %s\n") % record.zip
+        if record.state_id:
+            info_to_write += _("State: %s\n") % record.state_id.name
+        if record.country_id:
+            info_to_write += _("Country: %s\n") % record.country_id.name
+        if record.main_id_number:
+            info_to_write += "CUIT: {}\n".format(record.main_id_number)
+
+        self.send_documents_to = info_to_write
 
     @api.depends("date_planned")
     def _compute_delivery_date_week(self):

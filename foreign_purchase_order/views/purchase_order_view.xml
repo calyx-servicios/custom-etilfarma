@@ -45,6 +45,7 @@
                         <group>
                             <field name="place_of_delivery_id" string="Place of Delivery" options="{'no_open':True,'no_create': True,'no_create_edit':1}"/>
                             <field name="send_documents_to" string="Send documents to" style='min-height: 130px; word-break: break-word'/>
+                            <field name="use_other_company_address" string="Use another company Address?" options="{'no_open':True,'no_create': True,'no_create_edit':1}"/>
                             <field name="delivery_date_week" string="Delivery Date (Week)"/>
                             <field name="term_payments" string="Terms of Payment" options="{'no_open':True,'no_create':1,'no_create_edit':1}"/>
                             <field name="packing_list_id" string="Packing List" options="{'no_open':True,'no_create': True,'no_create_edit':1}"/>
@@ -128,15 +129,17 @@
             </xpath>
 
             <xpath expr="//sheet/div[@class='oe_title']" position="inside">
+
                 <!-- <p class="text-warning" attrs="{'invisible': ['|','|',['order_type_foreign','=',False], ['state','not in',('purchase', 'no_invoice')],'&amp;','&amp;',['import_license_reference','!=',False],['import_license_approval_date','!=',False],['import_license_official_date','!=',False]]}">
                     <i class="fa fa-exclamation-triangle "></i> Action required: <strong>import license data not fully loaded.</strong>
                 </p>
                 <p class="text-warning" attrs="{'invisible': ['|','|',['order_type_foreign','=',False], ['state','not in',('purchase', 'no_invoice')],'&amp;','&amp;','&amp;',['bill_landing_number','!=',False],['bill_landing_issue_date','!=',False],['bill_landing_reception_date','!=',False],['bill_landing_description','!=',False]]}">
-                    <i class="fa fa-exclamation-triangle "></i> Action required: <strong>bill landing data not fully loaded.</strong>
+                    <i class="fa fa-exclamation-triangle "/> Action required: <strong>bill landing data not fully loaded.</strong>
                 </p>
                 <p class="text-warning" attrs="{'invisible': ['|','|',['order_type_foreign','=',False], ['state','not in',('purchase', 'no_invoice')],'&amp;',['delivery_number','!=',False],['delivery_date','!=',False]]}">
                     <i class="fa fa-exclamation-triangle "></i> Action required: <strong>delivery data not fully loaded.</strong>
                 </p> -->
+
             </xpath>
         </field>
     </record>

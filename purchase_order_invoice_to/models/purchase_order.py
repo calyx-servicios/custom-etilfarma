@@ -29,6 +29,11 @@ class PurchaseOrder(models.Model):
         string='Send Documents to Client'
     )
 
+    use_other_invoice_to_address = fields.Many2one(
+        string="Use another Client Address?",
+        comodel_name="res.partner.oct.addresses",
+    )
+
     @staticmethod
     def _get_date_range(date_order_str):
         """
@@ -107,7 +112,16 @@ class PurchaseOrder(models.Model):
         res = super(PurchaseOrder, self).onchange_partner_id()
         return res
 
-    @api.onchange("send_document_to_invoice_to", "invoice_to")
+    @api.onchange('invoice_to')
+    def _invoice_to_for_opt_address(self):
+        res = {
+            'domain': {
+                'use_other_invoice_to_address': [('id', 'in', self.invoice_to.optional_address.ids)],
+            }
+        }
+        return res
+
+    @api.onchange("send_document_to_invoice_to", "invoice_to", "use_other_invoice_to_address")
     def _onchange_send_document_to_invoice_to(self):
         """
             We check if send_document_to_invoice_to boolean field is selected.
@@ -117,7 +131,9 @@ class PurchaseOrder(models.Model):
         """
         for record in self:
             if record.send_document_to_invoice_to:
-                if record.invoice_to:
+                if record.invoice_to and record.use_other_invoice_to_address:
+                    self._write_send_document_to(record.use_other_invoice_to_address)
+                elif record.invoice_to:
                     self._write_send_document_to(record.invoice_to)
                 else:
                     raise Warning(_('Please Select Client to Invoice, and check the option again.'))
