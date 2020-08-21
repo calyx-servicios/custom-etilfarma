@@ -75,7 +75,7 @@ class PartnerOptionalAddresses(models.Model):
     _description = 'OCT Contact Optional Addresses'
     _name = "res.partner.oct.addresses"
 
-    address_name = fields.Char()
+    name = fields.Char()
     type = fields.Selection(
         [('contact', 'Contact'),
          ('invoice', 'Invoice address'),
@@ -100,3 +100,5 @@ class PartnerOptionalAddresses(models.Model):
     partner_oct = fields.Many2one(
         comodel_name="res.partner.oct",
     )
+
+    main_id_number = fields.Char(related='partner_oct.main_id_number')
