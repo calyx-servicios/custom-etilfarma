@@ -177,6 +177,11 @@ msgid "Print Foreign Report"
 msgstr "Imprimir OE"
 
 #. module: purchase_order_foreign_report
+#: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_order_foreign_report
+msgid "Print RFQ"
+msgstr "Imprimir SdP"
+
+#. module: purchase_order_foreign_report
 #: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_foreign_page
 msgid "Product"
 msgstr "Product"
@@ -212,6 +217,11 @@ msgstr "Shipment:"
 #: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_order_foreign_report
 msgid "Send PFR"
 msgstr "Enviar OE"
+
+#. module: purchase_order_foreign_report
+#: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_order_foreign_report
+msgid "Send RFQ by Email"
+msgstr "Enviar SdP por correo electrónico"
 
 #. module: purchase_order_foreign_report
 #: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_foreign_page
