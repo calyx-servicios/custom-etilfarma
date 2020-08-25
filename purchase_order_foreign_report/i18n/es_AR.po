@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-02 20:20+0000\n"
-"PO-Revision-Date: 2020-07-02 20:20+0000\n"
+"POT-Creation-Date: 2020-08-25 20:42+0000\n"
+"PO-Revision-Date: 2020-08-25 20:42+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -90,21 +90,51 @@ msgid "<span style=\"font-size:18px;font-weight:bold\"> Direct to customer</span
 msgstr "<span style=\"font-size:18px;font-weight:bold\"> Direct to customer</span> <br/>"
 
 #. module: purchase_order_foreign_report
+#: model:ir.ui.view,arch_db:purchase_order_foreign_report.view_po_foreign_report_header_parameters_form
+msgid "<strong>\n"
+"                                    <i class=\"fa fa-bell-o\"/> All fields are required for the foreign report.\n"
+"                                </strong>"
+msgstr "<strong>\n"
+"                                    <i class=\"fa fa-bell-o\"/> Es necesario completar todos los campos para el reporte de orden exterior.\n"
+"                                </strong>"
+
+#. module: purchase_order_foreign_report
 #: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_foreign_page
 msgid "Ask to transmit to the supplier: <br/>"
 msgstr "Ask to transmit to the supplier: <br/>"
 
 #. module: purchase_order_foreign_report
-#: code:addons/addons/addons-custom/custom-etilfarma/purchase_order_foreign_report/models/purchase_order.py:54
-#: code:addons/purchase_order_foreign_report/models/purchase_order.py:54
+#: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_foreign_page
+msgid "Certificate of Analysis:"
+msgstr "Certificate of Analysis:"
+
+#. module: purchase_order_foreign_report
+#: code:addons/addons/addons-custom/custom-etilfarma/purchase_order_foreign_report/models/purchase_order.py:55
+#: code:addons/purchase_order_foreign_report/models/purchase_order.py:55
 #, python-format
 msgid "Compose Email"
 msgstr "Compose Email"
 
 #. module: purchase_order_foreign_report
+#: model:ir.model.fields,field_description:purchase_order_foreign_report.field_purchase_report_header_parameter_create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: purchase_order_foreign_report
+#: model:ir.model.fields,field_description:purchase_order_foreign_report.field_purchase_report_header_parameter_create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: purchase_order_foreign_report
 #: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_foreign_page
 msgid "Delivery Date:"
 msgstr "Delivery Date:"
+
+#. module: purchase_order_foreign_report
+#: model:ir.model.fields,field_description:purchase_order_foreign_report.field_purchase_report_header_parameter_display_name
+#: model:ir.model.fields,field_description:purchase_order_foreign_report.field_report_purchase_order_foreign_report_po_foreign_r_display_name
+msgid "Display Name"
+msgstr "Mostrar Nombre"
 
 #. module: purchase_order_foreign_report
 #: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_foreign_page
@@ -113,8 +143,50 @@ msgstr "ETD week:"
 
 #. module: purchase_order_foreign_report
 #: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_foreign_page
+msgid "HS Code"
+msgstr "HS Code"
+
+#. module: purchase_order_foreign_report
+#: model:ir.actions.act_window,help:purchase_order_foreign_report.action_po_foreign_report_header_parameters_view
+msgid "Header Paremeters"
+msgstr "Parametros de Cabecera"
+
+#. module: purchase_order_foreign_report
+#: model:ir.model.fields,field_description:purchase_order_foreign_report.field_purchase_report_header_parameter_id
+#: model:ir.model.fields,field_description:purchase_order_foreign_report.field_report_purchase_order_foreign_report_po_foreign_r_id
+msgid "ID"
+msgstr "ID"
+
+#. module: purchase_order_foreign_report
+#: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_foreign_page
+msgid "Import License:"
+msgstr "Import License:"
+
+#. module: purchase_order_foreign_report
+#: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_foreign_page
 msgid "Invoice to:"
 msgstr "Invoice to:"
+
+#. module: purchase_order_foreign_report
+#: model:ir.model.fields,field_description:purchase_order_foreign_report.field_purchase_report_header_parameter___last_update
+#: model:ir.model.fields,field_description:purchase_order_foreign_report.field_report_purchase_order_foreign_report_po_foreign_r___last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: purchase_order_foreign_report
+#: model:ir.model.fields,field_description:purchase_order_foreign_report.field_purchase_report_header_parameter_write_uid
+msgid "Last Updated by"
+msgstr "Última actualización realizada por"
+
+#. module: purchase_order_foreign_report
+#: model:ir.model.fields,field_description:purchase_order_foreign_report.field_purchase_report_header_parameter_write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: purchase_order_foreign_report
+#: model:ir.model.fields,field_description:purchase_order_foreign_report.field_purchase_report_header_parameter_mail
+msgid "Mail"
+msgstr "Mail"
 
 #. module: purchase_order_foreign_report
 #: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_foreign_page
@@ -122,9 +194,9 @@ msgid "Marks:"
 msgstr "Marks:"
 
 #. module: purchase_order_foreign_report
-#: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_foreign_page
-msgid "NMC"
-msgstr "NMC"
+#: model:ir.model.fields,field_description:purchase_order_foreign_report.field_purchase_report_header_parameter_name
+msgid "Name"
+msgstr "Nombre"
 
 #. module: purchase_order_foreign_report
 #: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_foreign_page
@@ -135,6 +207,19 @@ msgstr "Order #:"
 #: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_foreign_page
 msgid "Origin"
 msgstr "Origin"
+
+#. module: purchase_order_foreign_report
+#: model:mail.template,report_name:purchase_order_foreign_report.email_template_foreign_purchase
+msgid "PFO_${(object.name or '').replace('/','_')}"
+msgstr "PFO_${(object.name or '').replace('/','_')}"
+
+#. module: purchase_order_foreign_report
+#: model:ir.actions.act_window,name:purchase_order_foreign_report.action_po_foreign_report_header_parameters_view
+#: model:ir.ui.menu,name:purchase_order_foreign_report.menu_po_foreign_report_header_parameters
+#: model:ir.ui.view,arch_db:purchase_order_foreign_report.view_po_foreign_report_header_parameters_form
+#: model:ir.ui.view,arch_db:purchase_order_foreign_report.view_po_foreign_report_header_parameters_tree
+msgid "PO Foreign Report Header Parameters"
+msgstr "Configuracion: Cabecera de reporte"
 
 #. module: purchase_order_foreign_report
 #: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_foreign_page
@@ -157,6 +242,11 @@ msgid "Partial"
 msgstr "Partial"
 
 #. module: purchase_order_foreign_report
+#: model:ir.model.fields,field_description:purchase_order_foreign_report.field_purchase_report_header_parameter_phone
+msgid "Phone"
+msgstr "Teléfono"
+
+#. module: purchase_order_foreign_report
 #: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_foreign_header
 msgid "Phone:"
 msgstr "Phone:"
@@ -177,11 +267,6 @@ msgid "Print Foreign Report"
 msgstr "Imprimir OE"
 
 #. module: purchase_order_foreign_report
-#: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_order_foreign_report
-msgid "Print RFQ"
-msgstr "Imprimir SdP"
-
-#. module: purchase_order_foreign_report
 #: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_foreign_page
 msgid "Product"
 msgstr "Product"
@@ -189,7 +274,7 @@ msgstr "Product"
 #. module: purchase_order_foreign_report
 #: model:ir.model,name:purchase_order_foreign_report.model_purchase_order
 msgid "Purchase Order"
-msgstr "Purchase Order"
+msgstr "Orden de compra"
 
 #. module: purchase_order_foreign_report
 #: model:ir.actions.report,name:purchase_order_foreign_report.action_report_purchase_foreign
@@ -204,14 +289,9 @@ msgstr "Quantity"
 #. module: purchase_order_foreign_report
 #: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_foreign_page
 msgid "Send Documents to: \n"
-"                        <br/>"
+"                            <br/>"
 msgstr "Send Documents to: \n"
-"                        <br/>"
-
-#. module: purchase_order_foreign_report
-#: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_foreign_page
-msgid "Shipment:"
-msgstr "Shipment:"
+"                            <br/>"
 
 #. module: purchase_order_foreign_report
 #: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_order_foreign_report
@@ -219,9 +299,9 @@ msgid "Send PFR"
 msgstr "Enviar OE"
 
 #. module: purchase_order_foreign_report
-#: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_order_foreign_report
-msgid "Send RFQ by Email"
-msgstr "Enviar SdP por correo electrónico"
+#: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_foreign_page
+msgid "Shipment:"
+msgstr "Shipment:"
 
 #. module: purchase_order_foreign_report
 #: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_foreign_page
@@ -242,4 +322,26 @@ msgstr "Term of Payment:"
 #: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_foreign_page
 msgid "Unit"
 msgstr "Unit"
+
+#. module: purchase_order_foreign_report
+#: code:addons/addons/addons-custom/custom-etilfarma/purchase_order_foreign_report/report/purchase_order_foreign_report.py:19
+#: code:addons/purchase_order_foreign_report/report/purchase_order_foreign_report.py:19
+#, python-format
+msgid "You try to print this reportwithout header parameters, please try adding them first"
+msgstr "Esta intentando imprimir este reporte sin parametros configuradores, por favor agregelos e intente nuevamente."
+
+#. module: purchase_order_foreign_report
+#: model:ir.model,name:purchase_order_foreign_report.model_purchase_report_header_parameter
+msgid "purchase.report.header.parameter"
+msgstr "purchase.report.header.parameter"
+
+#. module: purchase_order_foreign_report
+#: model:ir.model,name:purchase_order_foreign_report.model_report_purchase_order_foregin_report_po_foreign_r
+msgid "report.purchase_order_foregin_report.po_foreign_r"
+msgstr "report.purchase_order_foregin_report.po_foreign_r"
+
+#. module: purchase_order_foreign_report
+#: model:ir.model,name:purchase_order_foreign_report.model_report_purchase_order_foreign_report_po_foreign_r
+msgid "report.purchase_order_foreign_report.po_foreign_r"
+msgstr "report.purchase_order_foreign_report.po_foreign_r"
 
