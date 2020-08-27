@@ -17,10 +17,11 @@
         "purchase_request",
         "purchase_order_types",
         "purchase_order_invoice_to",
-        "purchase_order_marks"
+        "purchase_order_marks",
     ],
     "data": [
+        "data/purchase_request_data.xml",
         "views/purchase_request_view.xml",
-        "wizard/purchase_request_line_make_purchase_order_view.xml"
+        "wizard/purchase_request_line_make_purchase_order_view.xml",
     ],
 }

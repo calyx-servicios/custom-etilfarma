@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 from odoo import models, fields, api
+from odoo.http import request
 
 
 class PurchaseRequest(models.Model):
@@ -28,6 +29,7 @@ class PurchaseRequest(models.Model):
         string="Purchase Order",
         compute="_compute_purchase_order_name",
     )
+    url = fields.Char(string="URL", compute="_compute_url")
 
     @api.depends('line_ids')
     def _compute_purchase_order_name(self):
@@ -38,6 +40,30 @@ class PurchaseRequest(models.Model):
                 purchases = line.purchase_lines
                 for purchase in purchases:
                     record.purchase_order_name += ' ' + purchase.order_id.name
+
+    @api.depends('url')
+    def _compute_url(self):
+        for record in self:
+            record.url = request.env['ir.config_parameter'].get_param('web.base.url')
+            record.url += '/web#id=%d&view_type=form&model=%s' % (record.id, self._name)
+
+    @api.multi
+    def send_email(self):
+        template = self.env.ref('purchase_request_extension.new_purchase_request')
+        self.env['mail.template'].browse(template.id).send_mail(self.id)
+
+    @api.multi
+    def button_to_approve(self):
+        self.to_approve_allowed_check()
+        self.send_email()
+        return self.write({'state': 'to_approve'})
+
+    @api.model
+    def get_email_to(self):
+        user_group = self.env.ref("purchase.group_purchase_manager")
+        email_list = [
+            usr.partner_id.email for usr in user_group.users if usr.partner_id.email]
+        return ",".join(email_list)
 
 
 class PurchaseRequestLine(models.Model):
