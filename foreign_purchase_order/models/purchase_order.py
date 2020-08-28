@@ -54,6 +54,12 @@ class PurchaseOrder(models.Model):
         comodel_name="purchase.certificate.analysis",
         string="Certificate of Analysis",
     )
+
+    p_o = fields.Char(
+        string="P/O",
+        related="customer_purchase_order"
+    )
+
     packing_list_id = fields.Many2one(
         comodel_name="purchase.packing.list", string="Packing List",
     )
