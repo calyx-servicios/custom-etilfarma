@@ -305,6 +305,11 @@ msgstr "Shipment:"
 
 #. module: purchase_order_foreign_report
 #: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_foreign_page
+msgid "Shipment:"
+msgstr "Shipment:"
+
+#. module: purchase_order_foreign_report
+#: model:ir.ui.view,arch_db:purchase_order_foreign_report.purchase_foreign_page
 msgid "Special Indications: <br/>"
 msgstr "Special Indications: <br/>"
 
