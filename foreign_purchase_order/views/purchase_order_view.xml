@@ -104,7 +104,7 @@
                         <group name="documents" string="Documents">
                             <field name="documents_not_required" type="checkbox" string="Not Required"/>
                             <field name="documents_commercial_invoice_number" string="Commercial Invoice Number" attrs="{'readonly': [('documents_not_required','=',True)]}" force_save="1"/>
-                            <field name="documents_FC_date" string="FC Date" attrs="{'readonly': [('documents_not_required','=',True)]}" force_save="1"/>
+                            <field name="documents_FC_date" string="FC Date" attrs="{'readonly': [('documents_not_required','=',True)]}"/>
                             <field name="documents_quality_certificate_approval_date" string="Quality Certificate Approval Date" attrs="{'readonly': [('documents_not_required','=',True)]}" force_save="1"/>
                             <field name="documents_shipping_document" string="Shipping Document" attrs="{'readonly': [('documents_not_required','=',True)]}" force_save="1"/>
                             <field name="documents_shipping_date" string="Shipping Date" attrs="{'readonly': [('documents_not_required','=',True)]}" force_save="1"/>

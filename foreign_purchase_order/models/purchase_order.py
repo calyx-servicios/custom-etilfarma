@@ -34,11 +34,6 @@ class PurchaseOrder(models.Model):
         company_child_ids = self.env.user.company_id.partner_id.child_ids.ids
         return [('id', 'in', company_child_ids)]
 
-    # @api.model
-    # def _get_domain_sequence_id(self):
-    #     seq_type = self.env.ref('purchase.seq_purchase_order')
-    #     return [('code', '=', seq_type.code)]
-
     use_other_company_address = fields.Many2one(
         string="Use another company Address?",
         comodel_name="res.partner",
@@ -106,8 +101,12 @@ class PurchaseOrder(models.Model):
     booking_transport_company = fields.Char(string="Booking Transport Company")
     booking_not_required = fields.Boolean(string="Booking Not Required")
 
-    documents_commercial_invoice_number = fields.Char(string="Documents Comercial Invoice Number")
-    documents_FC_date = fields.Date(string="Documents FC Date")
+    documents_commercial_invoice_number = fields.Char(string="Documents Comercial Invoice Number",
+                                                      compute='_compute_commercial_invoice_number',
+                                                      store=True)
+    documents_FC_date = fields.Date(string="Documents FC Date",
+                                    compute='_compute_documents_fc_date',
+                                    store=True)
     documents_quality_certificate_approval_date = fields.Date(string="Documents Quality Certificate Approval Date")
     documents_shipping_document = fields.Char(string="Documents Shipping Document")
     documents_shipping_date = fields.Date(string="Documents Shipping Date")
@@ -196,11 +195,31 @@ class PurchaseOrder(models.Model):
         self.expenses_dispatcher_fees = ""
         self.expenses_expenses = ""
 
+    @api.depends('invoice_ids')
+    def _compute_commercial_invoice_number(self):
+        """
+            In case Document Commercial Invoice Number is empty
+            we write the Invoice Number of the First (index -1) Invoice
+            related created.
+            Same for Document FC Date.
+        """
+        for record in self:
+            if not record.documents_commercial_invoice_number:
+                if record.invoice_ids:
+                    record.documents_commercial_invoice_number = record.invoice_ids[-1].document_number
+
+    @api.depends('invoice_ids')
+    def _compute_documents_fc_date(self):
+        for record in self:
+            if not record.documents_FC_date:
+                if record.invoice_ids:
+                    record.documents_FC_date = record.invoice_ids[-1].date_invoice
+
     @api.onchange("order_type")
     def _onchange_order_type(self):
         """
             When the order type changes, check if that order is a foreign order
-            if it is, then set like True the variable order_type_foreign 
+            if it is, then set like True the variable order_type_foreign
             to show some fields in the purchase view.
         """
         for record in self:
