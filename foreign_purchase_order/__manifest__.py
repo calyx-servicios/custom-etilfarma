@@ -30,6 +30,6 @@
         "views/purchase_certificate_of_analysis_view.xml",
         "views/purchase_import_license_view.xml",
         "views/res_config_settings_views.xml",
-        
+        "views/product_product_view.xml"
     ],
 }

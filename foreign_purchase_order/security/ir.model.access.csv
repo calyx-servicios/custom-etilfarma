@@ -17,3 +17,6 @@ access_certificate_of_analysis_manager,purchase.certificate.analysis manager,mod
 
 access_import_license,purchase.import.license,model_purchase_import_license,purchase.group_purchase_user,1,1,1,0
 access_import_license_manager,purchase.import.license manager,model_purchase_import_license,purchase.group_purchase_manager,1,1,1,1
+
+access_intervention_types,purchase.intervention.types,model_purchase_order_interventions,purchase.group_purchase_user,1,1,1,0
+access_intervention_types_manager,purchase.intervention.types.manager,model_purchase_order_interventions,purchase.group_purchase_manager,1,1,1,1

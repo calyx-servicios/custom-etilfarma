@@ -90,7 +90,7 @@ class PurchaseOrder(models.Model):
     payment_TTE_amount = fields.Char(string="Payment TTE Amount")
     payment_TC = fields.Char(string="Payment TC")
     payment_not_required = fields.Boolean(string="Payment Not Required")
-    
+
     dispatcher_reference = fields.Char(string="Dispatcher Reference")
     dispatcher_not_required = fields.Boolean(string="Dispatcher Not Required")
 
@@ -104,7 +104,7 @@ class PurchaseOrder(models.Model):
     import_license_approval_date = fields.Date(string="Import License Approval Date")
     import_license_official_date = fields.Date(string="Import License Official Date")
     import_license_not_required = fields.Boolean(string="Import License Not Required")
-    
+
     booking_conveyance = fields.Char(string="Booking Conveyance")
     booking_origin = fields.Char(string="Booking Origin")
     booking_ETD_date = fields.Date(string="Booking ETD Date")
@@ -160,9 +160,9 @@ class PurchaseOrder(models.Model):
     def _onchange_intervention_not_required(self):
         self.intervention_application_date = ""
         self.intervention_approval_date = ""
-        self.intervention_reference = ""
+        # self.intervention_reference = "" # Line commented because of autocomplete Interventions Type behavior.
         self.intervention_VPE_amount = ""
-    
+
     @api.onchange("import_license_not_required")
     def _onchange_import_license_not_required(self):
         self.import_license_approval_date = ""
@@ -220,6 +220,18 @@ class PurchaseOrder(models.Model):
             else:
                 record.customer_purchase_order = ""
                 record.order_type_foreign = False
+
+    @api.onchange('order_line')
+    def _onchange_order_line(self):
+        interventions = []
+        for record in self:
+            for line in record.order_line:
+                for intervention in line.product_id.intervention_types:
+                    if intervention.name not in interventions:
+                        interventions.append(intervention.name)
+
+            interventions_to_write = " "
+            record.intervention_reference = interventions_to_write.join(interventions)
 
     @api.onchange("use_other_company_address")
     def _onchange_use_other_company_address(self):
@@ -335,3 +347,8 @@ class PurchaseOrder(models.Model):
     special_indications = fields.Text(
         string="Special Indications", default=_get_default_special_indications
     )
+
+class InterventionReferences(models.Model):
+    _name = "purchase.order.interventions"
+
+    name = fields.Char(string='Name', required=True)
