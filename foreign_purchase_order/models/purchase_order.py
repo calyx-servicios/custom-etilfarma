@@ -214,7 +214,7 @@ class PurchaseOrder(models.Model):
                 if record.invoice_ids:
                     record.documents_commercial_invoice_number = record.invoice_ids[-1].document_number
 
-    @api.depends('invoice_ids')
+    @api.depends('invoice_ids.date_invoice')
     def _compute_documents_fc_date(self):
         for record in self:
             if not record.documents_FC_date:
