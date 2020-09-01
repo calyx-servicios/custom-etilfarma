@@ -41,6 +41,7 @@
                             <field name="extra_notes" style=' max-width: 285px;  width: 285px;word-break: break-word' string="Extra"/>
                             <field name="shipment_id" string="Shipment" options="{'no_open':True,'no_create': True,'no_create_edit':1}"/>
                             <field name="certificate_of_analysis_id" string="Certificate of Analysis" options="{'no_open':True,'no_create': True,'no_create_edit':1}"/>
+                            <field name="p_o" />
                         </group>
                         <group>
                             <field name="place_of_delivery_id" string="Place of Delivery" options="{'no_open':True,'no_create': True,'no_create_edit':1}"/>
@@ -210,6 +211,18 @@
     <menuitem id="menu_purchase_order_foreign_in_config_purchase" name="Foreign Fields Configuration" parent="purchase.menu_purchase_config" sequence="50" />
 
     <menuitem id="menu_incoterms_in_purchase" parent="foreign_purchase_order.menu_purchase_order_foreign_in_config_purchase" sequence="10" action="stock.action_incoterms_tree"/>
+
+    <record model="ir.actions.act_window" id="action_purchase_order_intervention_type_view">
+        <field name="name">Interventions Types</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">purchase.order.interventions</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Click to create a new type of intervention.</p>
+        </field>
+    </record>
+
+    <menuitem id="menu_purchase_order_intervention_type" parent="purchase_order_types.menu_purchase_order_in_config_purchase" sequence="20" action="action_purchase_order_intervention_type_view" />
 
 
 </odoo>
