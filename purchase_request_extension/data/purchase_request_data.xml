@@ -1,0 +1,44 @@
+<odoo>
+    <data>
+
+        <record id="new_purchase_request" model="mail.template">
+                    <field name="name">Requerimiento de compra: Nuevo registro</field>
+                    <field name="model_id" ref="purchase_request.model_purchase_request"/>
+                    <field name="email_to">${object.get_email_to()}</field>
+                    <field name="email_from"><![CDATA["${object.company_id.name|safe}" <${(object.company_id.email or user.email)|safe}>]]></field>
+                    <field name="subject">Requerimiento de compra: Nuevo registro</field>
+                    <field name="body_html"><![CDATA[
+<div style="padding:0px;width:600px;margin:auto;background: #FFFFFF repeat top /100%;color:#777777">
+    <table cellspacing="0" cellpadding="0" style="width:600px;background:inherit;color:inherit">
+        <tbody><tr>
+            <td valign="center" width="200" style="padding:10px 10px 10px 5px;font-size: 12px">
+                <img src="/logo.png" style="padding: 0px; margin: 0px; height: auto; width: 80px;" alt="${user.company_id.name}">
+            </td>
+        </tr></tbody>
+    </table>
+</div>
+<div style="padding:0px;width:600px;margin:auto;background: #FFFFFF repeat top /100%;color:#777777">
+<p>Hola,</p>
+    <p>
+        Un nuevo requerimiento de compra ha sido creado en Odoo.
+    </p>
+    <p>
+        Para visualizarlo, pulse en el siguiente enlace:
+    </p>
+    <div style="text-align: left; margin-top: 16px;">
+         <a href="${object.url}" style="padding: 5px 10px; font-size: 12px; line-height: 18px; color: #FFFFFF; border-color:#875A7B; text-decoration: none; display: inline-block; margin-bottom: 0px; font-weight: 400; text-align: center; vertical-align: middle; cursor: pointer; white-space: nowrap; background-image: none; background-color: #875A7B; border: 1px solid #875A7B; border-radius:3px">Revisar requerimiento</a>
+    </div>
+    </br>
+    <p>Reciba un cordial saludo,</p>
+</div>
+<div style="padding:0px;width:600px;margin:auto; margin-top: 10px; background: #fff repeat top /100%;color:#777777">
+    ${user.signature | safe}
+    <p style="font-size: 11px; margin-top: 10px;">
+        <strong>Enviado por ${user.company_id.name} usando <a href="www.odoo.com" style=" color: #875A7B;">Odoo</a></strong>
+    </p>
+</div>]]></field>
+            <field name="user_signature" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

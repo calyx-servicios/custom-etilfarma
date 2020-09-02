@@ -34,6 +34,17 @@ License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl-3.0) -->
         </field>
     </record>
 
+    <record id="view_purchase_request_tree" model="ir.ui.view">
+        <field name="name">purchase.request.tree</field>
+        <field name="model">purchase.request</field>
+        <field name="inherit_id" ref="purchase_request.view_purchase_request_tree"/>
+        <field name="arch" type="xml">
+            <field name="state" position="after">
+                <field name="purchase_order_name"/>
+            </field>
+        </field>
+    </record>
+
     <record id="purchase_request_line_tree" model="ir.ui.view">
         <field name="name">purchase.request.line.tree</field>
         <field name="model">purchase.request.line</field>
@@ -41,6 +52,9 @@ License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl-3.0) -->
         <field name="arch" type="xml">
             <field name="date_required" position="replace"/>
             <field name="supplier_id" position="replace"/>
+            <field name="purchase_state" position="after">
+                <field name="purchase_order_name"/>
+            </field>
         </field>
     </record>
 
