@@ -1,5 +1,5 @@
 {
-    'name': 'Custom Etilfarma Datetime Without Time',
+    'name': 'Datetime Without Time',
     'version': '11.0.1',
     'category': 'Tools',
     'author': "Calyx",
