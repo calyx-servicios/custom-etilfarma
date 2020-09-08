@@ -25,6 +25,7 @@
 
             <field name="categ_id" position="after">
                 <field name="product_nmc"/>
+                <field name="country_id" attrs="{'invisible':[('purchase_ok','=',False)]}"/>
             </field>
         </field>
     </record>
