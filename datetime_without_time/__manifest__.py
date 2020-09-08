@@ -14,8 +14,7 @@
                 views/stock_picking_view.xml
                 views/stock_production_lot_view.xml
                 views/stock_quant_view.xml                                                    ''',
-    'depends': [
-    ],
+    'depends': ["sale","purchase_request","purchase","stock"],
     'external_dependencies': {
     },
     'data': [
