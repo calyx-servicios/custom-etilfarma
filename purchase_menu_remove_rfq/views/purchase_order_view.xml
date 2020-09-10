@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="purchase.purchase_form_action" model="ir.actions.act_window">
+        <field name="domain"
+               eval="[('order_type','!=', ref('purchase_order_invoice_to.po_type_third_party'))]"/>
+    </record>
+
+    <menuitem id="purchase.menu_purchase_rfq"
+              active="False" />
+</odoo>
