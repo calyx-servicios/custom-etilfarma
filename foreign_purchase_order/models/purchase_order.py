@@ -128,6 +128,21 @@ class PurchaseOrder(models.Model):
     expenses_expenses = fields.Char(string="Expenses")
     expenses_not_required = fields.Boolean(string="Expenses Not Required")
 
+
+    @api.onchange('term_payments')
+    def _onchange_update_payment_term_id(self):
+        """
+            dynamic update of related field 'payment_term_id'
+        """
+        self.payment_term_id= self.term_payments
+
+    @api.onchange('payment_term_id')
+    def _onchange_update_term_payments(self):
+        """
+            dynamic update of related field 'term_payments'
+        """
+        self.term_payments= self.payment_term_id    
+
     @api.onchange("confirmation_not_required")
     def _onchange_confirmation_not_required(self):
         self.confirmation_number = ""
