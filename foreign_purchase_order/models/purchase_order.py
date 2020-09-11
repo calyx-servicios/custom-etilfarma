@@ -5,6 +5,22 @@ from datetime import datetime
 from odoo import fields, models, api, _
 
 
+def _format_date(date_utc_format):
+    """Change the UTC format used by Odoo for dd/mm/yyyy
+
+    Arguments:
+        date_utc_format {str} -- Date UTC format yyyy/mm/dd
+
+    Returns:
+        str -- Date in dd/mm/yyyy format.
+    """
+    if date_utc_format:
+        date_d_m_y_format = datetime.strptime(date_utc_format, '%Y-%m-%d %H:%M:%S').strftime('%d/%m/%Y')
+        return date_d_m_y_format
+    else:
+        return False
+
+
 class PurchaseOrder(models.Model):
     _inherit = "purchase.order"
 
@@ -68,7 +84,9 @@ class PurchaseOrder(models.Model):
 
     extra_notes = fields.Text(string="Extra", size=150)
 
-    description = fields.Char(string="Description")
+    description = fields.Char(string="Description",
+                              compute="_compute_description",
+                              store=True,)
 
     confirmation_number = fields.Char(string="Confirmation Number")
     confirmation_date = fields.Date(string="Confirmation Date")
@@ -250,14 +268,18 @@ class PurchaseOrder(models.Model):
                 for intervention in line.product_id.intervention_types:
                     if intervention.name not in interventions:
                         interventions.append(intervention.name)
+
+            interventions_to_write = " "
+            record.intervention_reference = interventions_to_write.join(interventions)
+
+    @api.depends('order_line')
+    def _compute_description(self):
+        for record in self:
             """ To Write in Description field, used in List View """
             if len(record.order_line.ids) == 1:
                 record.description = record.order_line[0].product_tmpl_id.display_name
             elif len(record.order_line.ids) > 1:
                 record.description = "Mix"
-
-            interventions_to_write = " "
-            record.intervention_reference = interventions_to_write.join(interventions)
 
     @api.onchange("use_other_company_address")
     def _onchange_use_other_company_address(self):
@@ -373,6 +395,74 @@ class PurchaseOrder(models.Model):
     special_indications = fields.Text(
         string="Special Indications", default=_get_default_special_indications
     )
+
+    """ Fields and Method used to update the status of information to display at List View """
+    confirmation_status = fields.Char(string='Confirmation', compute='_compute_tracking_status', store=True)
+    proforma_status = fields.Char(string='Proform', compute='_compute_tracking_status', store=True)
+    payment_TTE_status = fields.Char(string='Payment', compute='_compute_tracking_status', store=True)
+    booking_conveyance_status = fields.Char(string='Booking Conveyance', compute='_compute_tracking_status', store=True)
+    booking_transport_company_status = fields.Char(string='Booking Transport', compute='_compute_tracking_status', store=True)
+    booking_ETD_date_status = fields.Char(string='Booking ETD', compute='_compute_tracking_status', store=True)
+    booking_ETA_date_status = fields.Char(string='Booking ETA', compute='_compute_tracking_status', store=True)
+    documents_commercial_invoice_number_status = fields.Char(string='Document Commercial Invoice', compute='_compute_tracking_status', store=True)
+    documents_shipping_document_status = fields.Char(string='Shipping Document', compute='_compute_tracking_status', store=True)
+    delivery_number_status = fields.Char(string='Delivery', compute='_compute_tracking_status', store=True)
+    reception_status = fields.Char(string='Reception', compute='_compute_reception_status', store=True)
+
+    @api.depends('confirmation_not_required', 'proforma_not_required', 'payment_not_required',
+                 'booking_not_required', 'documents_not_required', 'delivery_not_required',
+                 'confirmation_number', 'proforma_number', 'payment_TTE_amount', 'booking_conveyance',
+                 'booking_transport_company', 'booking_ETD_date', 'booking_ETA_date', 'documents_commercial_invoice_number',
+                 'documents_shipping_document', 'delivery_number')
+    def _compute_tracking_status(self):
+
+        for record in self:
+            if record.confirmation_not_required:
+                record.confirmation_status = _("Not required")
+            else:
+                record.confirmation_status = record.confirmation_number
+
+            if record.proforma_not_required:
+                record.proforma_status = _("Not required")
+            else:
+                record.proforma_status = record.proforma_number
+
+            if record.payment_not_required:
+                record.payment_TTE_status = _("Not required")
+            else:
+                record.payment_TTE_status = record.payment_TTE_amount
+
+            if record.booking_not_required:
+                record.booking_conveyance_status = _("Not required")
+                record.booking_transport_company_status = _("Not required")
+                record.booking_ETD_date_status = _("Not required")
+                record.booking_ETA_date_status = _("Not required")
+            else:
+                record.booking_conveyance_status = record.booking_conveyance
+                record.booking_transport_company_status = record.booking_transport_company
+                record.booking_ETD_date_status = _format_date(record.booking_ETD_date)
+                record.booking_ETA_date_status = _format_date(record.booking_ETA_date)
+
+            if record.documents_not_required:
+                record.documents_commercial_invoice_number_status = _("Not required")
+                record.documents_shipping_document_status = _("Not required")
+            else:
+                record.documents_commercial_invoice_number_status = record.documents_commercial_invoice_number
+                record.documents_shipping_document_status = record.documents_shipping_document
+
+            if record.delivery_not_required:
+                record.delivery_number_status = _("Not required")
+            else:
+                record.delivery_number_status = record.delivery_number
+
+    @api.depends('picking_ids', 'picking_ids.state')
+    def _compute_reception_status(self):
+        for record in self:
+            if record.picking_ids and all([x.state in ['done', 'cancel'] for x in record.picking_ids]):
+                record.reception_status = _format_date(record.picking_ids.scheduled_date)
+            else:
+                record.reception_status = _('Pending')
+
 
 class InterventionReferences(models.Model):
     _name = "purchase.order.interventions"
