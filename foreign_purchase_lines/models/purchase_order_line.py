@@ -1,7 +1,8 @@
 # Copyright 2015 Camptocamp SA
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-from odoo import fields, models, api
+from odoo import fields, models, api, _
+from odoo.exceptions import UserError
 import logging
 
 _logger = logging.getLogger(__name__)
@@ -68,6 +69,9 @@ class PurchaseOrderLine(models.Model):
                 produc_id = product_obj.search(search_domain, limit=1)
                 if produc_id:
                     record.product_id = produc_id.id
+            if product_tmpl_id:
+                if not self.country_id:
+                    raise UserError(_("You must define the 'Origin' field in the product template model."))
 
             domain = [("id", "in", values_ids)]
 
@@ -86,5 +90,5 @@ class PurchaseOrderLine(models.Model):
     )
 
     product_nmc = fields.Char(string="HS Code", related="product_id.product_nmc")
-    country_id = fields.Many2one(comodel_name="res.country", string="Origin")
+    country_id = fields.Char(string="Origin", required=True, related="product_tmpl_id.country_id.name")
     observations = fields.Char(string="Observation")

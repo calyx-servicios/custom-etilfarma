@@ -29,6 +29,12 @@ msgid "Limit to only 1 variant"
 msgstr "Solo se permite 1 variante de empaquetado por producto."
 
 #. module: foreign_purchase_lines
+#: code:addons/foreign_purchase_lines/models/purchase_order_line.py:73
+#, python-format
+msgid "You must define the 'Origin' field in the product template model."
+msgstr "Debe definir el campo "Origen" en el modelo plantilla de producto."
+
+#. module: foreign_purchase_lines
 #: model:ir.model.fields,field_description:foreign_purchase_lines.field_product_product_product_nmc
 #: model:ir.model.fields,field_description:foreign_purchase_lines.field_product_template_product_nmc
 #: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_order_line_product_nmc
