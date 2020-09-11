@@ -69,6 +69,18 @@ class PurchaseRequest(models.Model):
 class PurchaseRequestLine(models.Model):
     _inherit = "purchase.request.line"
 
+    """
+        We redefine the fields 'purchased_qty' and 'product_qty' 
+        to change the digits of decimal precision
+    """
+    purchased_qty = fields.Float(
+        string='Quantity in RFQ or PO',
+        digits=(12,2),
+        compute="_compute_purchased_qty")
+    product_qty = fields.Float(
+        'Quantity', track_visibility='onchange',
+        digits=(12,2))
+
     # Create all fields related to foreign_purchase_line.
     product_tmpl_id = fields.Many2one(comodel_name="product.template",
                                       string="Product")
