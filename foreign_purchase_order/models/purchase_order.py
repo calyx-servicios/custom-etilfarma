@@ -68,6 +68,8 @@ class PurchaseOrder(models.Model):
 
     extra_notes = fields.Text(string="Extra", size=150)
 
+    description = fields.Char(string="Description")
+
     confirmation_number = fields.Char(string="Confirmation Number")
     confirmation_date = fields.Date(string="Confirmation Date")
     confirmation_not_required = fields.Boolean(string="Confirmation Not Required")
@@ -248,6 +250,11 @@ class PurchaseOrder(models.Model):
                 for intervention in line.product_id.intervention_types:
                     if intervention.name not in interventions:
                         interventions.append(intervention.name)
+            """ To Write in Description field, used in List View """
+            if len(record.order_line.ids) == 1:
+                record.description = record.order_line[0].product_tmpl_id.display_name
+            elif len(record.order_line.ids) > 1:
+                record.description = "Mix"
 
             interventions_to_write = " "
             record.intervention_reference = interventions_to_write.join(interventions)
