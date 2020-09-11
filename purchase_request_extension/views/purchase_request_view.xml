@@ -22,7 +22,9 @@ License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl-3.0) -->
                 <field name="product_id" force_save="1" invisible="1"/>
                 <field name="product_tmpl_id" options="{'no_open':True,'no_create': True, 'no_create_edit':1}" required="1"/>
                 <field name="product_attr_id" invisible="1" />
-                <field name="product_attr_value_id" options="{'no_open':True,'no_create': True,'no_create_edit':1}" domain="[('attribute_id' , '=', product_attr_id)]" context="{'default_attribute_id': product_attr_id, 'show_attribute': False}" required="1"/>
+                <field name="product_attr_value_id" options="{'no_open':True,'no_create': True,'no_create_edit':1}" 
+                       context="{'default_attribute_id': product_attr_id, 'show_attribute': False}" required="1" 
+                       domain="[('product_ids.product_tmpl_id' , '=', product_tmpl_id)]" />
             </xpath>
             <!-- Remove the required date from the lines, as we pass it as an only value on the PR. -->
             <xpath expr="//field[@name='line_ids']/tree//field[@name='date_required']" position="attributes">
