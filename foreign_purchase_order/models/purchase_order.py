@@ -15,7 +15,7 @@ def _format_date(date_utc_format):
         str -- Date in dd/mm/yyyy format.
     """
     if date_utc_format:
-        date_d_m_y_format = datetime.strptime(date_utc_format, '%Y-%m-%d %H:%M:%S').strftime('%d/%m/%Y')
+        date_d_m_y_format = datetime.strptime(date_utc_format.split(" ")[0], '%Y-%m-%d').strftime('%d/%m/%Y')
         return date_d_m_y_format
     else:
         return False
