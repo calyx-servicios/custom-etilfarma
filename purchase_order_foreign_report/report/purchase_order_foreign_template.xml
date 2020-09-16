@@ -121,7 +121,12 @@
                                 <td> <span t-esc="line.product_id.name"/> <br/> <span t-esc="line.observations"/> </td>
                                 <td> <span t-esc="line.product_attr_value_id.name"/></td> 
                                 <td> <span t-esc="line.product_nmc"/></td>
-                                <td> <span t-esc="line.country_id.name"/></td>
+                                    <t t-if="line.country_id">
+                                        <td> <span t-esc="line.country_id.name"/></td>
+                                    </t>
+                                    <t t-else="">
+                                        <td> <span/></td>
+                                    </t>
                                 <td style="text-align:right"> <span t-esc="line.price_unit" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></td>
                                 <td style="text-align:right"> <span t-esc="line.price_subtotal" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></td>
                             </tr>
