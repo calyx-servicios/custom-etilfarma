@@ -459,7 +459,7 @@ class PurchaseOrder(models.Model):
     def _compute_reception_status(self):
         for record in self:
             if record.picking_ids and all([x.state in ['done', 'cancel'] for x in record.picking_ids]):
-                record.reception_status = _format_date(record.picking_ids.scheduled_date)
+                record.reception_status = _format_date(record.picking_ids[-1].scheduled_date)
             else:
                 record.reception_status = _('Pending')
 
