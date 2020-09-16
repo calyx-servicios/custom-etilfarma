@@ -168,6 +168,9 @@
                         <td style="border: none;padding-bottom: 5px;">Certificate of Analysis: <span t-esc="doc.certificate_of_analysis_id.certificate_of_analysis"/></td>
                     </tr>
                     <tr>
+                        <td style="border: none;padding-bottom: 5px;">P/O: <span t-esc="doc.p_o"/></td>
+                    </tr>
+                    <tr>
                         <td colspan="2" style="border: none;padding-bottom: 5px;">Special Indications: <br/>
                         <span t-esc="doc.special_indications"/></td>
                     </tr>

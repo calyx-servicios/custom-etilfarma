@@ -34,11 +34,6 @@ class PurchaseOrder(models.Model):
         company_child_ids = self.env.user.company_id.partner_id.child_ids.ids
         return [('id', 'in', company_child_ids)]
 
-    # @api.model
-    # def _get_domain_sequence_id(self):
-    #     seq_type = self.env.ref('purchase.seq_purchase_order')
-    #     return [('code', '=', seq_type.code)]
-
     use_other_company_address = fields.Many2one(
         string="Use another company Address?",
         comodel_name="res.partner",
@@ -54,14 +49,17 @@ class PurchaseOrder(models.Model):
         comodel_name="purchase.certificate.analysis",
         string="Certificate of Analysis",
     )
+
+    p_o = fields.Char(
+        string="P/O",
+        related="customer_purchase_order"
+    )
+
     packing_list_id = fields.Many2one(
         comodel_name="purchase.packing.list", string="Packing List",
     )
     term_payments = fields.Many2one(
-        # The base purchase.order model already has a m2o rel
-        # with account.payment.term
-        # but this correspond to a custom request by the client.
-        comodel_name="account.payment.term",
+        related="payment_term_id",
         string="Terms of Payment",
     )
 
@@ -84,7 +82,7 @@ class PurchaseOrder(models.Model):
     payment_TTE_amount = fields.Char(string="Payment TTE Amount")
     payment_TC = fields.Char(string="Payment TC")
     payment_not_required = fields.Boolean(string="Payment Not Required")
-    
+
     dispatcher_reference = fields.Char(string="Dispatcher Reference")
     dispatcher_not_required = fields.Boolean(string="Dispatcher Not Required")
 
@@ -98,7 +96,7 @@ class PurchaseOrder(models.Model):
     import_license_approval_date = fields.Date(string="Import License Approval Date")
     import_license_official_date = fields.Date(string="Import License Official Date")
     import_license_not_required = fields.Boolean(string="Import License Not Required")
-    
+
     booking_conveyance = fields.Char(string="Booking Conveyance")
     booking_origin = fields.Char(string="Booking Origin")
     booking_ETD_date = fields.Date(string="Booking ETD Date")
@@ -106,8 +104,12 @@ class PurchaseOrder(models.Model):
     booking_transport_company = fields.Char(string="Booking Transport Company")
     booking_not_required = fields.Boolean(string="Booking Not Required")
 
-    documents_commercial_invoice_number = fields.Char(string="Documents Comercial Invoice Number")
-    documents_FC_date = fields.Date(string="Documents FC Date")
+    documents_commercial_invoice_number = fields.Char(string="Documents Comercial Invoice Number",
+                                                      compute='_compute_commercial_invoice_number',
+                                                      store=True)
+    documents_FC_date = fields.Date(string="Documents FC Date",
+                                    compute='_compute_documents_fc_date',
+                                    store=True)
     documents_quality_certificate_approval_date = fields.Date(string="Documents Quality Certificate Approval Date")
     documents_shipping_document = fields.Char(string="Documents Shipping Document")
     documents_shipping_date = fields.Date(string="Documents Shipping Date")
@@ -124,6 +126,21 @@ class PurchaseOrder(models.Model):
     expenses_dispatcher_fees = fields.Char(string="Expenses dispatcher Fees")
     expenses_expenses = fields.Char(string="Expenses")
     expenses_not_required = fields.Boolean(string="Expenses Not Required")
+
+
+    @api.onchange('term_payments')
+    def _onchange_update_payment_term_id(self):
+        """
+            dynamic update of related field 'payment_term_id'
+        """
+        self.payment_term_id= self.term_payments
+
+    @api.onchange('payment_term_id')
+    def _onchange_update_term_payments(self):
+        """
+            dynamic update of related field 'term_payments'
+        """
+        self.term_payments= self.payment_term_id    
 
     @api.onchange("confirmation_not_required")
     def _onchange_confirmation_not_required(self):
@@ -154,9 +171,9 @@ class PurchaseOrder(models.Model):
     def _onchange_intervention_not_required(self):
         self.intervention_application_date = ""
         self.intervention_approval_date = ""
-        self.intervention_reference = ""
+        # self.intervention_reference = "" # Line commented because of autocomplete Interventions Type behavior.
         self.intervention_VPE_amount = ""
-    
+
     @api.onchange("import_license_not_required")
     def _onchange_import_license_not_required(self):
         self.import_license_approval_date = ""
@@ -196,11 +213,31 @@ class PurchaseOrder(models.Model):
         self.expenses_dispatcher_fees = ""
         self.expenses_expenses = ""
 
+    @api.depends('invoice_ids')
+    def _compute_commercial_invoice_number(self):
+        """
+            In case Document Commercial Invoice Number is empty
+            we write the Invoice Number of the First (index -1) Invoice
+            related created.
+            Same for Document FC Date.
+        """
+        for record in self:
+            if not record.documents_commercial_invoice_number:
+                if record.invoice_ids:
+                    record.documents_commercial_invoice_number = record.invoice_ids[-1].document_number
+
+    @api.depends('invoice_ids.date_invoice')
+    def _compute_documents_fc_date(self):
+        for record in self:
+            if not record.documents_FC_date:
+                if record.invoice_ids:
+                    record.documents_FC_date = record.invoice_ids[-1].date_invoice
+
     @api.onchange("order_type")
     def _onchange_order_type(self):
         """
             When the order type changes, check if that order is a foreign order
-            if it is, then set like True the variable order_type_foreign 
+            if it is, then set like True the variable order_type_foreign
             to show some fields in the purchase view.
         """
         for record in self:
@@ -214,6 +251,18 @@ class PurchaseOrder(models.Model):
             else:
                 record.customer_purchase_order = ""
                 record.order_type_foreign = False
+
+    @api.onchange('order_line')
+    def _onchange_order_line(self):
+        interventions = []
+        for record in self:
+            for line in record.order_line:
+                for intervention in line.product_id.intervention_types:
+                    if intervention.name not in interventions:
+                        interventions.append(intervention.name)
+
+            interventions_to_write = " "
+            record.intervention_reference = interventions_to_write.join(interventions)
 
     @api.onchange("use_other_company_address")
     def _onchange_use_other_company_address(self):
@@ -329,3 +378,8 @@ class PurchaseOrder(models.Model):
     special_indications = fields.Text(
         string="Special Indications", default=_get_default_special_indications
     )
+
+class InterventionReferences(models.Model):
+    _name = "purchase.order.interventions"
+
+    name = fields.Char(string='Name', required=True)
