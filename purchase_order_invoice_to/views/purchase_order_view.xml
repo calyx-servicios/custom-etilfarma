@@ -69,6 +69,9 @@
             <field name="name" position="after">
                 <field name="invoice_to" invisible="context.get('show_invoice_to') != 1"/>
             </field>
+            <field name="order_type" position="attributes">
+                <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
+            </field>
         </field>
     </record>
 

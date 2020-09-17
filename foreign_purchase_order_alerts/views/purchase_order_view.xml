@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="purchase_order_foreign_fields_tree" model="ir.ui.view">
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_tree"/>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="is_three_days_since_ETD" invisible="1"/>
+            </field>
+            <tree position="attributes">
+                <attribute name="decoration-danger">reception_status == 'Pending'</attribute>
+                <attribute name="decoration-info">is_three_days_since_ETD == True</attribute>
+            </tree>
+        </field>
+    </record>
+
+</odoo>
