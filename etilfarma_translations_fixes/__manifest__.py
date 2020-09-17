@@ -9,11 +9,13 @@
     "website": "http://odoo.calyx-cloud.com.ar/",
     "license": "AGPL-3",
     "category": "Hidden",
-    "version": "11.0.1.0.0",
+    "version": "11.0.2.0.0",
     "development_status": "Production/Stable",
     "application": False,
     "installable": True,
     "depends": [
-        "purchase_location_by_line"
+        "purchase_location_by_line",
+        "purchase_request",
+        "purchase_request_extension",
     ],
 }
