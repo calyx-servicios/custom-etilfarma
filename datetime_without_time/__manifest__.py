@@ -20,6 +20,7 @@
         "purchase",
         "stock",
         "foreign_purchase_lines",
+        "purchase_request_extension"
     ],
     "external_dependencies": {},
     "data": [

@@ -9,7 +9,7 @@
                 <attribute name="attrs"/>
                 <attribute name="widget">date</attribute>
             </xpath>
-            <xpath expr="//field[@name='date_planned']" position="attributes">
+            <xpath expr="//page/group/group/div/field[@name='date_planned']" position="attributes">
                 <attribute name="attrs"/>
                 <attribute name="widget">date</attribute>
             </xpath>
