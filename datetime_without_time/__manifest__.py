@@ -1,9 +1,9 @@
 {
     "name": "Datetime Without Time",
-    "version": "11.0.1",
+    "version": "11.0.1.0.0",
     "category": "Tools",
-    "author": "Calyx",
-    "website": "www.calyxservicios.com.ar",
+    "author": "Calyx Servicios S.A.",
+    "website": "odoo.calyx-cloud.com.ar",
     "license": "AGPL-3",
     "summary": """Change all datetime fields to date only in the following views:
                 views/purchase_order_view.xml
