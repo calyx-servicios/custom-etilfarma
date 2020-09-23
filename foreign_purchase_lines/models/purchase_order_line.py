@@ -92,3 +92,7 @@ class PurchaseOrderLine(models.Model):
     product_nmc = fields.Char(string="HS Code", related="product_id.product_nmc")
     country_id = fields.Char(string="Origin", required=True, related="product_tmpl_id.country_id.name")
     observations = fields.Char(string="Observation")
+
+    product_qty = fields.Float(digits=(12,2))
+    qty_received = fields.Float(digits=(12,2))
+    qty_invoiced = fields.Float(digits=(12,2))
