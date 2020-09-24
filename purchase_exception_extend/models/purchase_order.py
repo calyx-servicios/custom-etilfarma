@@ -11,6 +11,19 @@ class PurchaseOrder(models.Model):
     )
 
     @api.multi
+    def check_delivery_import_ok(self):
+        if not self.order_type.foreign_order:
+            return True
+        else:
+            if self.delivery_not_required:
+                return True
+            else:
+                if (not self.delivery_number):
+                    return False
+                else:
+                    return True
+    
+    @api.multi
     def check_confirmation_fields_ok(self):
         if not self.order_type.foreign_order:
             return True
@@ -25,6 +38,7 @@ class PurchaseOrder(models.Model):
                     return False
                 else:
                     return True
+
 
     @api.multi
     def button_confirm_third_party(self):

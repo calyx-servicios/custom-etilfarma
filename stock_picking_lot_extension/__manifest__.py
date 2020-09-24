@@ -1,7 +1,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
     'name': 'Stock Picking Lot Extension',
-    'summary': "Adds lot's life_date field on several tree views",
+    'summary': "Adds lot's life_date field on several tree views and their corresponding validations",
     'author': 'Calyx Servicios S.A.',
     'maintainers': ['LucasSoto'],
     'website': 'http://odoo.calyx-cloud.com.ar/',
