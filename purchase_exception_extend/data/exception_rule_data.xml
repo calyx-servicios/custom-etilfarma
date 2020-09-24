@@ -12,4 +12,16 @@
     </field>
     <field name="active" eval="True"/>
   </record>
+    <record id="po_exep_delivery_import" model="exception.rule">
+    <field name="name">Import Delivery Field Empty</field>
+    <field name="description">The delivery number field is empty.</field>
+    <field name="block_oct">True</field>
+    <field name="sequence">50</field>
+    <field name="rule_group">purchase</field>
+    <field name="model">purchase.order</field>
+    <field name="code">if not purchase.check_delivery_import_ok():
+      failed = True
+    </field>
+    <field name="active" eval="True"/>
+  </record>
 </odoo>

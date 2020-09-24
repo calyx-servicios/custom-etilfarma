@@ -156,3 +156,12 @@ msgstr "Orden de compra"
 msgid "The confirmation fields (number or date) are empty."
 msgstr "Los campos de confirmación (número o fecha), para una orden exterior, estan vacios."
 
+#. module: purchase_exception_extend
+#: model:exception.rule,name:purchase_exception_extend.po_exep_delivery_import
+msgid "Import Delivery Field Empty"
+msgstr "Campo numero de despacho vacio."
+
+#. module: purchase_exception_extend
+#: model:exception.rule,description:purchase_exception_extend.po_exep_delivery_import
+msgid "The delivery number field is empty."
+msgstr "El campo numero de despacho, para una orden exterior, esta vacio."
