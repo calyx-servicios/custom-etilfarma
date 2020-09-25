@@ -27,6 +27,7 @@
 
     # any module necessary for this one to work correctly
     'depends': [
+        'web_tree_dynamic_colored_field',
         'foreign_purchase_order'
     ],
 
