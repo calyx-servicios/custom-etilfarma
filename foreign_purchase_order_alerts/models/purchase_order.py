@@ -19,17 +19,19 @@ class PurchaseOrder(models.Model):
 
     is_confirmation_delayed = fields.Boolean(default=False, compute='_compute_is_confirmation_delayed', store=True)
 
-    @api.depends('state', 'create_date', 'reception_status')
+    @api.depends('state', 'date_order', 'reception_status', 'confirmation_number', 'confirmation_date')
     def _compute_is_confirmation_delayed(self):
         for record in self:
-            if not record.confirmation_not_required:
+            if not record.confirmation_not_required and\
+                    not record.confirmation_number or\
+                    not record.confirmation_date:
                 if record.reception_status == 'Pending':
-                    create_date_to_datetime = datetime.strptime(record.create_date, "%Y-%m-%d %H:%M:%S")
-                    work_days = workdays(create_date_to_datetime, datetime.today())
-                    if len(work_days) > 3:
+                    date_order_to_datetime = datetime.strptime(record.date_order, "%Y-%m-%d %H:%M:%S")
+                    work_days = workdays(date_order_to_datetime, datetime.today())
+                    if len(work_days) > 2:
                         record.is_confirmation_delayed = True
-                elif record.reception_status != 'Pending':
-                    record.is_confirmation_delayed = False
+            else:
+                record.is_confirmation_delayed = False
 
     is_proform_delayed = fields.Boolean(default=False, compute='_compute_is_proform_delayed', store=True)
 
@@ -95,26 +97,32 @@ class PurchaseOrder(models.Model):
                 if record.booking_ETD_date and not record.booking_ETA_date:
                     date_ETD_to_datetime = datetime.strptime(record.booking_ETD_date, "%Y-%m-%d")
                     work_days = workdays(datetime.today(), date_ETD_to_datetime)
-                    if len(work_days) <= 15:
+                    if work_days and len(work_days) <= 15:
                         record.is_booking_ETA_date_empty = True
-            elif record.reception_status != 'Pending':
-                record.is_booking_ETA_date_empty = False
+                    else:
+                        record.is_booking_ETA_date_empty = False
+                elif record.booking_ETA_date:
+                    record.is_booking_ETA_date_empty = False
 
     is_documents_delayed = fields.Boolean(default=False, compute='_compute_is_documents_delayed', store=True)
 
-    @api.depends('create_date', 'documents_not_required', 'booking_not_required', 'booking_ETD_date')
+    @api.depends('create_date', 'documents_not_required', 'booking_not_required', 'booking_ETD_date',
+                 'documents_commercial_invoice_number', 'documents_shipping_document')
     def _compute_is_documents_delayed(self):
         for record in self:
             if not record.booking_not_required and\
                     not record.documents_not_required and\
-                    record.reception_status == 'Pending':
+                    record.reception_status == 'Pending' and\
+                    not record.documents_commercial_invoice_number and\
+                    not record.documents_shipping_document:
                 if record.booking_ETD_date:
                     date_ETD_to_datetime = datetime.strptime(record.booking_ETD_date, "%Y-%m-%d")
                     work_days = workdays(date_ETD_to_datetime, datetime.today())
                     if len(work_days) > 3:
                         record.is_documents_delayed = True
-            elif record.reception_status != 'Pending':
+            else:
                 record.is_documents_delayed = False
+
 
     is_delivery_delayed = fields.Boolean(default=False, compute='_compute_is_delivery_delayed', store=True)
 
@@ -129,7 +137,7 @@ class PurchaseOrder(models.Model):
                     work_days = workdays(date_ETD_to_datetime, datetime.today())
                     if len(work_days) > 3:
                         record.is_delivery_delayed = True
-            elif record.reception_status != 'Pending':
+            else:
                 record.is_delivery_delayed = False
 
     is_status_pending = fields.Boolean(default=False, compute='_compute_is_status_pending', store=True)
