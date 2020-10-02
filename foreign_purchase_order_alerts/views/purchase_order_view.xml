@@ -9,12 +9,12 @@
                 <field name="is_confirmation_delayed" invisible="1"/>
                 <field name="is_proform_delayed" invisible="1"/>
                 <field name="is_payment_TTE_delayed" invisible="1"/>
-                <field name="is_booking_conveyance_empty" invisible="1"/>
+                <!-- <field name="is_booking_conveyance_empty" invisible="1"/> -->
                 <field name="is_booking_ETD_date_empty" invisible="1"/>
                 <field name="is_booking_ETA_date_empty" invisible="1"/>
                 <field name="is_documents_invoice_delayed" invisible="1"/>
                 <field name="is_documents_shipping_delayed" invisible="1"/>
-                <field name="is_delivery_delayed" invisible="1"/>
+                <!-- <field name="is_delivery_delayed" invisible="1"/> -->
                 <field name="is_status_pending" invisible="1"/>
             </field>
 
@@ -36,12 +36,12 @@
                 }</attribute>
             </field>
 
-            <field name="booking_conveyance_status" position="attributes">
-                <attribute name="options">{
-                    "bg_color": "#f1948a: is_booking_conveyance_empty == True",
-                    "fg_color": "white: is_booking_conveyance_empty == True"
-                }</attribute>
-            </field>
+<!--            <field name="booking_conveyance_status" position="attributes">-->
+<!--                <attribute name="options">{-->
+<!--                    "bg_color": "#f1948a: is_booking_conveyance_empty == True",-->
+<!--                    "fg_color": "white: is_booking_conveyance_empty == True"-->
+<!--                }</attribute>-->
+<!--            </field>-->
 
             <field name="booking_ETD_date_status" position="attributes">
                 <attribute name="options">{
@@ -69,12 +69,12 @@
                 }</attribute>
             </field>
 
-            <field name="delivery_number_status" position="attributes">
-                <attribute name="options">{
-                    "bg_color": "#f1948a: is_delivery_delayed == True",
-                    "fg_color": "white: is_delivery_delayed == True"
-                }</attribute>
-            </field>
+<!--            <field name="delivery_number_status" position="attributes">-->
+<!--                <attribute name="options">{-->
+<!--                    "bg_color": "#f1948a: is_delivery_delayed == True",-->
+<!--                    "fg_color": "white: is_delivery_delayed == True"-->
+<!--                }</attribute>-->
+<!--            </field>-->
 
             <field name="reception_status" position="attributes">
                 <attribute name="options">{
