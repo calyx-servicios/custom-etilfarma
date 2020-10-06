@@ -339,7 +339,7 @@ msgstr "Provincia: %s\n"
 #: model:ir.actions.act_window,name:purchase_order_invoice_to.purchase_third_party_action
 #: model:ir.ui.menu,name:purchase_order_invoice_to.menu_purchase_third_party_action
 msgid "Statistics"
-msgstr "Estadisticas"
+msgstr "Estadísticas"
 
 #. module: purchase_order_invoice_to
 #: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_addresses_street
