@@ -10,6 +10,20 @@ from odoo.exceptions import Warning
 class PurchaseOrder(models.Model):
     _inherit = 'purchase.order'
 
+    def _default_order_types(self):
+        if self._context.get("ima"):
+            return self.env.ref("purchase_order_invoice_to.po_type_third_party").id
+        else:
+            return self.env.ref("purchase_order_types.po_type_regular").id
+
+    @api.multi
+    def _domain_order_type(self):
+        oct_order = self.env.ref("purchase_order_invoice_to.po_type_third_party").id
+        if self._context.get("ima"):
+            return [("id", "=", oct_order)]
+        else:
+            return [("id", "!=", oct_order)]
+    
     invoice_to = fields.Many2one(
         'res.partner.oct',
         string='Invoice to',
@@ -32,6 +46,11 @@ class PurchaseOrder(models.Model):
     use_other_invoice_to_address = fields.Many2one(
         string="Use another Client Address?",
         comodel_name="res.partner.oct.addresses",
+    )
+
+    order_type = fields.Many2one(
+        domain=_domain_order_type, 
+        default=_default_order_types
     )
 
     @staticmethod
@@ -110,6 +129,9 @@ class PurchaseOrder(models.Model):
     @api.onchange('partner_id')
     def onchange_partner_id(self):
         res = super(PurchaseOrder, self).onchange_partner_id()
+        order_oct = self.env.ref("purchase_order_invoice_to.po_type_third_party").id
+        if self._context.get("ima"):
+            self.order_type = order_oct
         return res
 
     @api.onchange('invoice_to')

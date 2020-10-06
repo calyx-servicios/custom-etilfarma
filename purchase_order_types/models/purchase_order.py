@@ -8,18 +8,12 @@ from odoo.addons.purchase.models.purchase import PurchaseOrder as Purchase
 class PurchaseOrder(models.Model):
     _inherit = "purchase.order"
 
-    def _default_order_type(self):
-        return self.env["purchase.order.type"].search([
-            ("name", "=", "OCL")
-        ], limit=1).id
-
     order_type = fields.Many2one(
         comodel_name="purchase.order.type",
         readonly=False,
         states=Purchase.READONLY_STATES,
         string="Type",
         ondelete="restrict",
-        default=_default_order_type,
     )
 
     @api.multi

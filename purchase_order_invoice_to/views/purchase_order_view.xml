@@ -37,6 +37,11 @@
                 <attribute name="attrs">{'invisible': ['|', ('order_type', '=', %(po_type_third_party)d)]}</attribute>
             </xpath>
 
+            <!-- Hide purchase sample when is a IMA order -->
+            <field name="purchase_sample" position="attributes">
+                <attribute name="attrs">{'invisible': ['|', ('order_type', '=', %(po_type_third_party)d)]}</attribute>
+            </field>
+
             <!-- Button Confirm Third Party only Visible when the Order Type is OCT -->
             <xpath expr="//button[@name='print_quotation']" position="after">
                 <button name="button_confirm_third_party"
@@ -93,11 +98,11 @@
 
     <!-- Third Party PO's Action, Menu Item and Search/Group By-->
     <record id="purchase_third_party_action" model="ir.actions.act_window">
-        <field name="name">IMA</field> <!-- Original name: Third Party Purchase Orders -->
+        <field name="name">Statistics</field> <!-- Original name: Third Party Purchase Orders -->
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">purchase.order</field>
         <field name="view_mode">tree,kanban,form,pivot,graph,calendar</field>
-        <field name="context">{'search_default_todo':1, 'show_purchase': True, 'show_invoice_to': 1}</field>
+        <field name="context">{'search_default_todo':1, 'show_purchase': True, 'show_invoice_to': 1,'ima': True}</field>
         <field name="domain" eval="[('order_type','=', ref('po_type_third_party'))]"/>
         <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>
         <field name="help" type="html">
@@ -112,9 +117,24 @@
             </p>
         </field>
     </record>
+
     <menuitem action="purchase_third_party_action" id="menu_purchase_third_party_action"
-              parent="purchase.menu_procurement_management"
-              sequence="10"/>
+        name="Statistics"    
+        web_icon="purchase,static/description/icon.png"
+        sequence="24"/>
+
+    <menuitem
+        id="menu_purchase_oct_partner"
+        name="Purchase"
+        parent="menu_purchase_third_party_action"
+        sequence="1"/>
+    
+    <menuitem
+        id="menu_purchase_statistics"
+        name="IMA"
+        parent="menu_purchase_oct_partner"
+        action="purchase_third_party_action"
+        sequence="1"/>
 
     <record id="view_purchase_order_filter" model="ir.ui.view">
         <field name="model">purchase.order</field>

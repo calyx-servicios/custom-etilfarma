@@ -141,8 +141,16 @@
         </field>
     </record>
 
+        
+    <menuitem
+        id="menu_configurations_partner_oct"
+        name="Configurations"
+        sequence="10"
+        parent="menu_purchase_third_party_action"
+        />
+
     <menuitem action="partner_oct_action" id="menu_partner_oct_action"
-              parent="purchase_order_types.menu_purchase_order_in_config_purchase"
+              parent="menu_configurations_partner_oct"
               sequence="25"/>
 
 </odoo>
