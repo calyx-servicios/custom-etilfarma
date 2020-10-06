@@ -1,8 +1,9 @@
 {
     "name": "Datetime Without Time",
-    "version": "11.0.1.0.0",
+    "version": "11.0.1.1.0",
     "category": "Tools",
     "author": "Calyx Servicios S.A.",
+    "maintainers": ["JhoneM"],
     "website": "odoo.calyx-cloud.com.ar",
     "license": "AGPL-3",
     "summary": """Change purchase and stock datetime fields to date only""",
@@ -12,7 +13,7 @@
         "purchase",
         "stock",
         "foreign_purchase_lines",
-        "purchase_request_extension"
+        "purchase_request_extension",
     ],
     "external_dependencies": {},
     "data": [
