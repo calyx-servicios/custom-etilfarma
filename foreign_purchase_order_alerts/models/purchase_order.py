@@ -55,16 +55,17 @@ class PurchaseOrder(models.Model):
     def _compute_is_payment_TTE_delayed(self):
         for record in self:
             if not record.payment_not_required and record.reception_status == 'Pending':
-                if "anticipa" not in record.payment_term_id.display_name:
-                    if record.invoice_ids:
-                        for invoice in record.invoice_ids:
-                            if invoice.date_due:
-                                date_due = datetime.strptime(invoice.date_due, "%Y-%m-%d")
-                                work_days = workdays(datetime.today(), date_due)
-                                if len(work_days) <= 5:
-                                    record.is_payment_TTE_delayed = True
-            elif record.reception_status != 'Pending':
-                record.is_payment_TTE_delayed = False
+                if record.payment_term_id.display_name:
+                    if "anticipa" not in record.payment_term_id.display_name:
+                        if record.invoice_ids:
+                            for invoice in record.invoice_ids:
+                                if invoice.date_due:
+                                    date_due = datetime.strptime(invoice.date_due, "%Y-%m-%d")
+                                    work_days = workdays(datetime.today(), date_due)
+                                    if len(work_days) <= 5:
+                                        record.is_payment_TTE_delayed = True
+                elif record.reception_status != 'Pending':
+                    record.is_payment_TTE_delayed = False
 
     # Removed Alert requested by Client
     # is_booking_conveyance_empty = fields.Boolean(default=False, compute='_compute_is_booking_conveyance_empty', store=True)
