@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-14 16:26+0000\n"
-"PO-Revision-Date: 2020-08-14 16:26+0000\n"
+"POT-Creation-Date: 2020-10-06 00:46+0000\n"
+"PO-Revision-Date: 2020-10-06 00:46+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -64,6 +64,11 @@ msgid "Click to create an IMA Clients."
 msgstr "Click para crear un Cliente IMA."
 
 #. module: purchase_order_invoice_to
+#: model:ir.ui.menu,name:purchase_order_invoice_to.menu_configurations_partner_oct
+msgid "Configurations"
+msgstr "Configuración"
+
+#. module: purchase_order_invoice_to
 #: model:ir.ui.view,arch_db:purchase_order_invoice_to.purchase_order_form
 msgid "Confirm Third Party Order"
 msgstr "Confirmar Orden a Terceros"
@@ -82,7 +87,7 @@ msgid "Country"
 msgstr "País"
 
 #. module: purchase_order_invoice_to
-#: code:addons/purchase_order_invoice_to/models/purchase_order.py:155
+#: code:addons/purchase_order_invoice_to/models/purchase_order.py:174
 #, python-format
 msgid "Country: %s\n"
 ""
@@ -111,7 +116,7 @@ msgstr "Mostrar Nombre"
 #: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_addresses_email
 #: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_email
 msgid "Email"
-msgstr "Correo electrónico"
+msgstr "Email"
 
 #. module: purchase_order_invoice_to
 #: model:ir.model.fields,help:purchase_order_invoice_to.field_purchase_order_third_party_number
@@ -125,8 +130,7 @@ msgid "ID"
 msgstr "ID"
 
 #. module: purchase_order_invoice_to
-#: model:ir.actions.act_window,name:purchase_order_invoice_to.purchase_third_party_action
-#: model:ir.ui.menu,name:purchase_order_invoice_to.menu_purchase_third_party_action
+#: model:ir.ui.menu,name:purchase_order_invoice_to.menu_purchase_statistics
 msgid "IMA"
 msgstr "IMA"
 
@@ -218,11 +222,6 @@ msgid "Main Identification Number"
 msgstr "Número de identificación principal"
 
 #. module: purchase_order_invoice_to
-#: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_marks
-msgid "Marks"
-msgstr "Marks"
-
-#. module: purchase_order_invoice_to
 #: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_addresses_mobile
 #: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_mobile
 msgid "Mobile"
@@ -289,7 +288,7 @@ msgid "Phone"
 msgstr "Teléfono"
 
 #. module: purchase_order_invoice_to
-#: code:addons/purchase_order_invoice_to/models/purchase_order.py:139
+#: code:addons/purchase_order_invoice_to/models/purchase_order.py:158
 #, python-format
 msgid "Please Select Client to Invoice, and check the option again."
 msgstr "Por favor elija un Cliente a Facturar, y vuelva a seleccionar la casilla."
@@ -299,6 +298,11 @@ msgstr "Por favor elija un Cliente a Facturar, y vuelva a seleccionar la casilla
 #: selection:res.partner.oct.addresses,type:0
 msgid "Private Address"
 msgstr "Dirección privada"
+
+#. module: purchase_order_invoice_to
+#: model:ir.ui.menu,name:purchase_order_invoice_to.menu_purchase_oct_partner
+msgid "Purchase"
+msgstr "Compra"
 
 #. module: purchase_order_invoice_to
 #: model:ir.model,name:purchase_order_invoice_to.model_purchase_order
@@ -324,12 +328,18 @@ msgid "State"
 msgstr "Estado"
 
 #. module: purchase_order_invoice_to
-#: code:addons/purchase_order_invoice_to/models/purchase_order.py:153
+#: code:addons/purchase_order_invoice_to/models/purchase_order.py:172
 #, python-format
 msgid "State: %s\n"
 ""
 msgstr "Provincia: %s\n"
 ""
+
+#. module: purchase_order_invoice_to
+#: model:ir.actions.act_window,name:purchase_order_invoice_to.purchase_third_party_action
+#: model:ir.ui.menu,name:purchase_order_invoice_to.menu_purchase_third_party_action
+msgid "Statistics"
+msgstr "Estadísticas"
 
 #. module: purchase_order_invoice_to
 #: model:ir.model.fields,field_description:purchase_order_invoice_to.field_res_partner_oct_addresses_street
@@ -354,7 +364,7 @@ msgid "Street2"
 msgstr "Calle2"
 
 #. module: purchase_order_invoice_to
-#: code:addons/purchase_order_invoice_to/models/purchase_order.py:149
+#: code:addons/purchase_order_invoice_to/models/purchase_order.py:168
 #, python-format
 msgid "Street: %s\n"
 ""
@@ -414,7 +424,7 @@ msgid "Website of Partner or Company"
 msgstr "Web de la empresa o de la compañía"
 
 #. module: purchase_order_invoice_to
-#: code:addons/purchase_order_invoice_to/models/purchase_order.py:21
+#: code:addons/purchase_order_invoice_to/models/purchase_order.py:35
 #, python-format
 msgid "Without Invoice to Receive"
 msgstr "Sin Factura a Recibir"
@@ -431,7 +441,7 @@ msgid "Zip"
 msgstr "C.P."
 
 #. module: purchase_order_invoice_to
-#: code:addons/purchase_order_invoice_to/models/purchase_order.py:151
+#: code:addons/purchase_order_invoice_to/models/purchase_order.py:170
 #, python-format
 msgid "Zip Code: %s\n"
 ""

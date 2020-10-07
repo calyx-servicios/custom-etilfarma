@@ -365,8 +365,6 @@ class PurchaseOrder(models.Model):
                 else:
                     if purchase_type:
                         record.order_type = purchase_type
-                    else:
-                        record.order_type = ocl.id
 
     @api.multi
     @api.onchange("partner_id")
