@@ -6,12 +6,83 @@
         <field name="inherit_id" ref="purchase.purchase_order_tree"/>
         <field name="arch" type="xml">
             <field name="partner_id" position="after">
-                <field name="is_three_days_since_ETD" invisible="1"/>
+                <field name="is_confirmation_delayed" invisible="1"/>
+                <field name="is_proform_delayed" invisible="1"/>
+                <field name="is_payment_TTE_delayed" invisible="1"/>
+                <!-- <field name="is_booking_conveyance_empty" invisible="1"/> -->
+                <field name="is_booking_ETD_date_empty" invisible="1"/>
+                <field name="is_booking_ETA_date_empty" invisible="1"/>
+                <field name="is_documents_invoice_delayed" invisible="1"/>
+                <field name="is_documents_shipping_delayed" invisible="1"/>
+                <!-- <field name="is_delivery_delayed" invisible="1"/> -->
+                <field name="is_status_pending" invisible="1"/>
             </field>
+
             <tree position="attributes">
-                <attribute name="decoration-danger">reception_status == 'Pending'</attribute>
-                <attribute name="decoration-info">is_three_days_since_ETD == True</attribute>
+                <attribute name="decoration-danger">is_confirmation_delayed == True</attribute>
             </tree>
+
+            <field name="proforma_status" position="attributes">
+                <attribute name="options">{
+                    "bg_color": "#f1948a: is_proform_delayed == True",
+                    "fg_color": "white: is_proform_delayed == True"
+                }</attribute>
+            </field>
+
+            <field name="payment_TTE_status" position="attributes">
+                <attribute name="options">{
+                    "bg_color": "#f1948a: is_payment_TTE_delayed == True",
+                    "fg_color": "white: is_payment_TTE_delayed == True"
+                }</attribute>
+            </field>
+
+<!--            <field name="booking_conveyance_status" position="attributes">-->
+<!--                <attribute name="options">{-->
+<!--                    "bg_color": "#f1948a: is_booking_conveyance_empty == True",-->
+<!--                    "fg_color": "white: is_booking_conveyance_empty == True"-->
+<!--                }</attribute>-->
+<!--            </field>-->
+
+            <field name="booking_ETD_date_status" position="attributes">
+                <attribute name="options">{
+                    "bg_color": "#f1948a: is_booking_ETD_date_empty == True",
+                    "fg_color": "white: is_booking_ETD_date_empty == True"
+                }</attribute>
+            </field>
+            <field name="booking_ETA_date_status" position="attributes">
+                <attribute name="options">{
+                    "bg_color": "#f1948a: is_booking_ETA_date_empty == True",
+                    "fg_color": "white: is_booking_ETA_date_empty == True"
+                }</attribute>
+            </field>
+
+            <field name="documents_commercial_invoice_number_status" position="attributes">
+                <attribute name="options">{
+                    "bg_color": "#f1948a: is_documents_invoice_delayed == True",
+                    "fg_color": "white: is_documents_invoice_delayed == True"
+                }</attribute>
+            </field>
+            <field name="documents_shipping_document_status" position="attributes">
+                <attribute name="options">{
+                    "bg_color": "#f1948a: is_documents_shipping_delayed == True",
+                    "fg_color": "white: is_documents_shipping_delayed == True"
+                }</attribute>
+            </field>
+
+<!--            <field name="delivery_number_status" position="attributes">-->
+<!--                <attribute name="options">{-->
+<!--                    "bg_color": "#f1948a: is_delivery_delayed == True",-->
+<!--                    "fg_color": "white: is_delivery_delayed == True"-->
+<!--                }</attribute>-->
+<!--            </field>-->
+
+            <field name="reception_status" position="attributes">
+                <attribute name="options">{
+                    "bg_color": "#f1948a: is_status_pending == True",
+                    "fg_color": "white: is_status_pending == True"
+                }</attribute>
+            </field>
+
         </field>
     </record>
 
