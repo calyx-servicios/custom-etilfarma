@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_sale_order_type_tree" model="ir.ui.view">
+        <field name="model">sale.order.type</field>
+        <field name="arch" type="xml">
+            <tree string="Sale Order Types" decoration-muted="active == False">
+                <field name="sequence" widget="handle" />
+                <field name="active" invisible="True" />
+                <field name="name"/>
+                <field name="sequence_id" />
+                <field name="incoterm_id" />
+                <field name="description" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_sale_order_type_form" model="ir.ui.view">
+        <field name="model">sale.order.type</field>
+        <field name="arch" type="xml">
+            <form string="Type">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="toggle_active" type="object" groups="base.group_user" class="oe_stat_button" icon="fa-archive">
+                            <field name="active" widget="boolean_button" options='{"terminology": "archive"}'/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="sequence_id" />
+                            <p class="text-warning">
+                                <strong>
+                                    <i class="fa fa-bell-o"/> In case of creating a new Sequence, select 'Sale Order Sequence'.
+                                </strong>
+                            </p>
+                        </group>
+                        <group>
+                            <field name="incoterm_id" />
+                            <field name="foreign_order" />
+                        </group>
+                    </group>
+                    <group>
+                        <field name="description" nolabel="1" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_sale_order_type_search" model="ir.ui.view">
+        <field name="model">sale.order.type</field>
+        <field name="arch" type="xml">
+            <search string="Sale Order Types">
+                <field name="name"/>
+                <field name="sequence_id" />
+                <field name="incoterm_id" />
+                <group expand="0" string="Group By">
+                    <filter string="Entry Sequence" name="entry_sequence" domain="[]" context="{'group_by':'sequence_id'}" />
+                    <filter string="Incoterm" name="incoterm" domain="[]" context="{'group_by':'incoterm_id'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_sale_order_type_view">
+        <field name="name">Sale Order Types</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.order.type</field>
+        <field name="view_mode">form,tree</field>
+        <field name="view_id" ref="view_sale_order_type_tree"/>
+        <field name="search_view_id" ref="view_sale_order_type_search"/>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Click to set a new type for sale order.</p>
+        </field>
+    </record>
+
+    <menuitem id="menu_sale_order_type" parent="foreign_trade.menu_sale_order_in_config_sale" sequence="20" action="action_sale_order_type_view" groups="base.group_no_one"/>
+
+</odoo>

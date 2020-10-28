@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record model="sale.order.type" id="so_type_local">
+        <field name="name">SOL</field>
+        <field name="sequence_id" ref="foreign_trade.sale_order_local" />
+        <field name="sequence">5</field>
+    </record>
+
+    <record model="sale.order.type" id="so_type_foreign">
+        <field name="name">SOE</field>
+        <field name="foreign_order">True</field>
+        <field name="sequence_id" ref="foreign_trade.sale_order_external" />
+        <field name="sequence">10</field>
+    </record>
+</odoo>
