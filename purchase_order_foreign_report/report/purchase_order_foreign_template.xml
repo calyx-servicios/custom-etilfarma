@@ -189,6 +189,10 @@
                     <tr>
                         <td style="border: none;padding-bottom: 2px;">P/O: <span t-esc="doc.p_o"/></td>
                     </tr>
+                    <tr>
+                        <td colspan="2" style="border: none;padding-bottom: 2px;">Special Indications: <br/>
+                        <pre style="border: none;background: transparent;font-size: 12px;font-family: helvetica;color:black;"><span t-esc="doc.special_indications"/></pre></td> 
+                    </tr>
                 </table>
             </div>
             <div class="col-xs-6 text-left">
@@ -207,10 +211,6 @@
                             </t>
                             <pre style="border: none;background: transparent;font-size: 12px;font-family: helvetica;color:black;"><span t-esc="doc.send_documents_to"/> </pre>
                         </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" style="border: none;padding-bottom: 2px;">Special Indications: <br/>
-                        <pre style="border: none;background: transparent;font-size: 12px;font-family: helvetica;color:black;"><span t-esc="doc.special_indications"/></pre></td> 
                     </tr>
                 </table>
             </div>
