@@ -14,8 +14,11 @@ class AccountInvoice(models.Model):
     @api.model
     def default_get(self, field_list):
         res = super(AccountInvoice, self).default_get(field_list)
-        currency = self.env['purchase.order'].browse(self._context.get('active_ids')).currency_id.id
-        res.update({
-            'currency_id': currency
-        })
+        try:
+            currency = self.env['purchase.order'].browse(self._context.get('active_ids')).currency_id.id
+            res.update({
+                'currency_id': currency
+            })
+        except:
+            return res
         return res
