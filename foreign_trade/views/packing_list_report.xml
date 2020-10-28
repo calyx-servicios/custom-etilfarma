@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report id="packing_list_report"
+            string="Packing List"
+            model="stock.picking"
+            report_type="qweb-pdf"
+            name="foreign_trade.report_packing_list"
+        />
+        <template id="report_packing_list">
+            <t t-call="web.html_container">
+                    <t t-foreach="docs" t-as="o">
+                        <t t-call="web.external_layout">
+                            <div class="page">
+                                <h1 style="margin-bottom:50px" class="bg-primary text-center align-items-center">PACKING LIST</h1>
+                                <h4>
+                                    <span>PACKING LIST: </span>
+                                    <span t-field="o.packing_list_number"/>
+                                </h4>    
+                                <h4>
+                                    <span>REF: </span>
+                                    <span t-field="o.sale_id.name"/>
+                                </h4>
+                                <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th t-if="o.origin"><strong>SALE ORDER</strong></th>
+                                        <th><strong>STATE</strong></th>
+                                        <th><strong>SHIPPING DATE</strong></th>
+                                        <th><strong>CONTAINER</strong></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td t-if="o.origin">
+                                            <span t-field="o.origin"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="o.state"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="o.sale_id.estimated_shipping_date" t-options='{"format": "dd/MM/yyyy"}'/>
+                                        </td>
+                                        <td>
+                                            <span t-field="o.container"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                </table>
+
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <div t-if="o.picking_type_id.code=='outgoing' and o.partner_id">
+                                            <h5><strong>SOLD TO: </strong></h5>
+                                            <div>
+                                                <span><strong>Importer: </strong></span>
+                                                <span t-field="o.partner_id.parent_id.name"/>
+                                            </div>    
+                                            <div>
+                                                <span><strong>Address: </strong></span>
+                                                <span t-field="o.partner_id.parent_id.street"/>
+                                            </div> 
+                                            <div>
+                                                <span><strong>City: </strong></span>
+                                                <span t-field="o.partner_id.parent_id.city"/>
+                                            </div> 
+                                            <div>
+                                                <span><strong>Postal Code: </strong></span>
+                                                <span t-field="o.partner_id.parent_id.zip"/>
+                                            </div> 
+                                            <div>
+                                                <span><strong>Country: </strong></span>
+                                                <span t-field="o.partner_id.parent_id.country_id.name"/>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <div>
+                                            <h5><strong>SEND TO: </strong></h5>
+                                            <div>
+                                                <span><strong>Addressee: </strong></span>
+                                                <span t-field="o.partner_id.name"/>
+                                            </div>
+                                            <div>
+                                                <span><strong>Address: </strong></span>
+                                                <span t-field="o.partner_id.street"/>
+                                            </div>
+                                            <div>
+                                                <span><strong>City: </strong></span>
+                                                <span t-field="o.partner_id.city"/>
+                                            </div>
+                                            <div>
+                                                <span><strong>Postal Code: </strong></span>
+                                                <span t-field="o.partner_id.zip"/>
+                                            </div>
+                                            <div>
+                                                <span><strong>Country: </strong></span>
+                                                <span t-field="o.partner_id.country_id.name"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <div>
+                                            <h5><strong>SHIPPING: </strong></h5>
+                                            <div>
+                                                <span><strong>Sale Condition: </strong></span>
+                                                <span t-field="o.incoterm"/>
+                                            </div>
+                                            <div>
+                                                <span><strong>Address: </strong></span>
+                                                <span t-field="o.shipping"/>
+                                            </div>
+                                            <div>
+                                                <span><strong>Carrier: </strong></span> 
+                                                <span t-field="o.carrier"/>
+                                            </div>
+                                            <div>
+                                                <span><strong>Delivery Term: </strong></span>
+                                                <span t-field="o.delivery_term"/>
+                                            </div>
+                                            <div>
+                                                <span><strong>Place of Delivery: </strong></span>
+                                                <span t-field="o.place_of_delivery"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br/>                                                              
+                                <br/>
+                                <table class="table table-condensed" t-if="o.move_line_ids">
+                                  <t t-set="has_barcode" t-value="any([move_lines.product_id and move_lines.product_id.sudo().barcode or move_lines.package_id for move_lines in o.move_line_ids])"/>
+                                  <t t-set="has_serial_number" t-value="o.move_line_ids.filtered(lambda ml: ml.lot_id or ml.lot_name)" groups="stock.group_production_lot"/>
+                                  <thead>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>NMC</th>
+                                        <th width="15%">Product</th>
+                                        <th>Origen</th>
+                                        <th>Quantity</th>
+                                        <th>Pallet Type</th>
+                                        <th>Quantity of Pallets</th>
+                                        <th>Quantity of Packages</th>
+                                        <th>Net Weight</th>
+                                        <th>Gross Weight</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                        <tr t-foreach="o.move_lines.sorted(key=lambda m: m.product_id.id)" t-as="move">
+                                            <td>
+                                                <span t-field="move.stock_move_line_seq"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="move.product_nmc_code"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="move.product_id.display_name"/><br/>
+                                                <span t-field="move.product_id.description_picking"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="move.product_id.country_id.name"/>
+                                            </td>
+                                            <td>
+                                                <span t-if="move.product_qty" t-field="move.product_qty"/>
+                                                <span t-if="not move.product_qty" t-esc="move.product_uom._compute_quantity(move.quantity_done, move.product_id.uom_id, rounding_method='HALF-UP')"/>
+                                                <span t-field="move.product_id.uom_id" groups="product.group_uom"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="move.pallet_type.name"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="move.pallet_qty"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="move.packages_qty"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="move.net_weight"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="move.gross_weight"/>
+                                            </td>
+                                        </tr>
+                                  </tbody>
+                                </table>
+                            </div>
+                        </t>
+                    </t>
+            </t>
+        </template>
+    </data>    
+</odoo>

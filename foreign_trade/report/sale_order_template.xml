@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo> 
+    <template id="foreign_trade_report" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//t[@t-set='doc']" position="replace">
+            <t t-if="is_in_en_us">
+                <t t-set="doc" t-value="doc.with_context(lang=en_US)"/>
+            </t>
+            <t t-if="not is_in_en_us">
+                <t t-set="doc" t-value="doc.with_context(lang=es_AR)"/> 
+            </t>     
+        </xpath>
+        <xpath expr="//div[@class='oe_structure']" position="before">
+            <h1 style="text-align: center">
+                <t t-if="not (env.context.get('proforma', False) or is_pro_forma)">
+                    <span t-if="doc.state not in ['draft','sent']">Order</span>
+                    <span t-if="doc.state in ['draft','sent']">Quotation</span>
+                </t>
+                <t t-if="env.context.get('proforma', False) or is_pro_forma">
+                    <span>Pro-Forma Invoice</span>
+                </t>
+            </h1>
+        </xpath>
+        <xpath expr="//div[@class='row']" position="replace">
+            <t t-if="not is_pro_forma and doc.state not in ['draft','sent']">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <t t-if="doc.partner_shipping_id == doc.partner_invoice_id and doc.partner_invoice_id != doc.partner_id or doc.partner_shipping_id != doc.partner_invoice_id">
+                            <strong t-if="doc.partner_shipping_id == doc.partner_invoice_id">Invoicing and shipping address:</strong>
+                            <strong t-if="doc.partner_shipping_id != doc.partner_invoice_id">Invoicing address:</strong>
+                            <div t-field="doc.partner_invoice_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"/>
+                            <div t-if="doc.partner_shipping_id != doc.partner_invoice_id" class="mt8">
+                                <strong>Shipping address:</strong>
+                                <div t-field="doc.partner_shipping_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"/>
+                            </div>
+                        </t>
+                    </div>
+                    <div class="col-xs-5 col-xs-offset-1">
+                        <div t-field="doc.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: True}"/>
+                        <p t-if="doc.partner_id.vat"><t t-esc="doc.company_id.country_id.vat_label or 'TIN'"/>: <span t-field="doc.partner_id.vat"/></p>
+                    </div>
+                </div>
+            </t>
+            <t t-if="is_pro_forma or doc.state in ['draft','sent']">
+                <div class="row">
+                    <div class="col-xs-6 col-xs-offset-1">
+                        <div t-field="doc.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: True}"/>
+                        <p t-if="doc.partner_id.vat"><t t-esc="doc.company_id.country_id.vat_label or 'TIN'"/>: <span t-field="doc.partner_id.vat"/></p>
+                    </div>
+                </div>
+            </t>  
+        </xpath>
+        <xpath expr="//div[@class='page']/h2" position="replace">
+            <h2>
+            # <span t-field="doc.name"/>
+            </h2>
+        </xpath>
+        <xpath expr="//div[@class='row mt32 mb32']" position="replace">
+            <div class="row mt32 mb32" id="informations">
+                <div t-if="doc.name and doc.state in ['draft', 'sent']" class="col-xs-3">
+                    <strong>Order Reference:</strong>
+                    <p t-field="doc.name"/>
+                </div>
+                <div t-if="doc.client_order_ref" class="col-xs-3">
+                    <strong>Your Reference:</strong>
+                    <p t-field="doc.client_order_ref"/>
+                </div>
+                <div t-if="doc.confirmation_date and doc.state not in ['draft','sent']" class="col-xs-3">
+                    <strong>Date Ordered:</strong>
+                    <p t-field="doc.confirmation_date" t-field-options='{"format": "yyyy/MM/dd"}'/>
+                </div>
+                <div t-if="doc.date_order and doc.state in ['draft','sent']" class="col-xs-3">
+                    <strong>Quotation Date:</strong>
+                    <p t-field="doc.date_order" t-field-options='{"format": "yyyy/MM/dd"}'/>
+                </div>
+                <div t-if="doc.validity_date and doc.state in ['draft', 'sent']" class="col-xs-3">
+                    <strong>Expiration Date:</strong>
+                    <p t-field="doc.validity_date" t-field-options='{"format": "yyyy/MM/dd"}'/>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//table[@class='table table-condensed']" position="replace">
+            <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <t t-if="doc.state not in ['draft','sent'] or is_pro_forma">
+                                <th class="text-left">Item</th>
+                            </t> 
+                            <th class="text-left">Product</th>
+                            <th class="text-left">Packaging</th>
+                            <t t-if="doc.state not in ['draft','sent'] and not is_pro_forma ">
+                                <th class="text-left">Loot Name</th>
+                            </t>    
+                            <th class="text-left">Quantity</th>
+                            <th class="text-left">HS Code</th>
+                            <th class="text-left">Origin</th>
+                            <th class="text-left">Price Unit</th>
+                            <th class="text-left" groups="sale.group_show_price_subtotal">Total Amount</th>
+                        </tr>
+                   </thead>
+                   <tbody class="sale_tbody">
+                        <t t-foreach="page" t-as="layout_category">
+                            <t t-if="layout_category_size &gt; 1 or page_size &gt; 1" groups="sale.group_sale_layout">
+                                <tr class="active">
+                                    <td colspan="7" style="font-weight: bold; border-bottom: 1px solid black;">&amp;bull;
+                                        <t t-esc="layout_category['name']"/>
+                                    </td>
+                                </tr>
+                            </t>
+                            <!-- Lines associated -->
+                            <t t-foreach="layout_category['lines']" t-as="l">
+                                <tr>
+                                    <t t-if="doc.state not in ['draft','sent'] or is_pro_forma">
+                                        <td><span t-field="l.order_line_seq"/></td>
+                                    </t>    
+                                    <td><span t-field="l.product_tmpl_id"/></td>
+                                    <td><span t-field="l.product_attr_value_id"/></td>
+                                    <t t-if="doc.state not in ['draft','sent'] and not is_pro_forma ">
+                                        <td><span t-field="l.loot_name"/></td>
+                                    </t>   
+                                    <td><span t-field="l.product_uom_qty"/></td>
+                                    <td><span t-field="l.product_nmc"/></td>
+                                    <td><span t-field="l.country_id"/></td>
+                                    <td><span t-field="l.price_unit"/></td>
+                                    <td class="text-right" groups="sale.group_show_price_subtotal">
+                                        <span t-field="l.price_subtotal" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.pricelist_id.currency_id}"/>
+                                    </td>
+                                </tr>
+                            </t>
+                            <t t-if="(layout_category_size &gt; 1 or page_size &gt; 1) and layout_category['subtotal']" groups="sale.group_sale_layout">
+                                <tr class="text-right">
+                                    <td colspan="6">
+                                        <strong>Subtotal: </strong>
+                                        <t t-set="subtotal" t-value="sum(line.price_subtotal for line in layout_category['lines'])"/>
+                                        <span t-esc="subtotal" t-options="{'widget': 'monetary', 'display_currency': doc.pricelist_id.currency_id}"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </t>
+                    </tbody>
+            </table>
+        </xpath>
+        <xpath expr="//p[@t-if='doc.payment_term_id.note']" position="replace">
+            <div class="row" style="margin-top:5px">
+                <div class="col-xs-6 text-left">
+                    <table class="table" style="width: 100%">
+                        <tr>
+                            <td style="border: none;padding-bottom: 5px;">Terms of Payments: <span t-esc="doc.term_payments.name"/></td>
+                        </tr>
+                        <tr>
+                            <td style="border: none;padding-bottom: 5px;">Incoterm: <span t-esc="doc.incoterm_id.name"/></td>
+                        </tr>
+                        <tr>
+                            <td style="border: none;padding-bottom: 5px;">Shipment: <span t-esc="doc.shipment_id.shipment"/></td>
+                        </tr>
+                        <t t-if="doc.state not in ['draft','sent']">
+                            <tr>
+                                <td style="border: none;padding-bottom: 5px;">Carriers: <span t-esc="doc.carriers"/></td>
+                            </tr>
+                        </t>
+                        <tr>
+                            <td style="border: none;padding-bottom: 5px;">Place of Delivery: <span t-esc="doc.place_of_delivery_id.place_of_delivery"/></td>
+                        </tr>
+                        <tr>
+                            <td style="border: none;padding-bottom: 5px;">Estimated Shipping Date: <span t-field="doc.estimated_shipping_date" t-field-options='{"format": "yyyy/MM/dd"}'/></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-xs-6 text-left">
+                    <table class="table" style="width: 100%">
+                        <t t-if="doc.state not in ['draft','sent'] or is_pro_forma">    
+                            <tr style="margin-top: 25px">
+                                <td style="border: none;">Payment Instructions: <span t-esc="doc.payment_instructions_id.payment_instructions"/></td>
+                            </tr>
+                        </t>
+                        <tr style="margin-top: 25px">
+                            <td style="border: none;">Observations: <span t-esc="doc.observations"/></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </xpath>
+    </template>
+    <template id="so_foreign_r">
+        <t t-call="web.html_container">
+            <t t-set="is_in_en_us" t-value="True"/>
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="foreign_trade.foreign_trade_report" t-lang="en_US"/>
+            </t>
+        </t>
+    </template>
+    
+    <template id="so_proforma_r">
+        <t t-call="web.html_container">
+            <t t-set="is_pro_forma" t-value="True"/>
+            <t t-set="is_in_en_us" t-value="True"/>
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="foreign_trade.foreign_trade_report" t-lang="en_US"/>
+            </t>
+        </t>
+    </template>
+</odoo>

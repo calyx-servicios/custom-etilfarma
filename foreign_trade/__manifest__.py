@@ -1,0 +1,46 @@
+{
+    'name': 'Foreign Trade',
+    'summary': """
+        This module adds functionalities in sales orders for international trade.""",
+    'author': 'Calyx Servicios S.A.',
+    'maintainers': ['miltonguzmanf@gmail.com'],
+    'website': 'http://odoo.calyx-cloud.com.ar/',
+    'license': 'AGPL-3',
+    'category': 'Sales',
+    'version': '11.0.1.0.0',
+    'development_status': 'Production/Stable',
+    'application': False,
+    'installable': True,
+    'external_dependencies': {
+        'python': [],
+        'bin': [],
+    },
+    'depends': [
+        'l10n_ar_account',
+        'stock',
+        'sale',
+        "foreign_purchase_lines",
+        "purchase_order_types",
+        "foreign_purchase_order"
+        ],
+    'data': [
+        'data/ir_sequence.xml',
+        'data/sale_order_type.xml',
+        'views/res_partner_view.xml',
+        'views/sale_order_view.xml',
+        'views/sale_certificate_of_analysis_view.xml',
+        'views/sale_place_of_delivery_view.xml',
+        'views/sale_shipment_view.xml',
+        'views/sale_order_type_view.xml',
+        'views/sale_payment_instructions_view.xml',
+        'views/ir_sequence_view.xml',
+        'views/sale_order_tree.xml',
+        'views/packing_list_report.xml',
+        'report/sale_order_template.xml',
+        'report/sale_order_report.xml',
+        'views/product_template_form_view.xml',
+        'views/stock_picking_form_view.xml',
+        'data/mail_template_data.xml',
+    ],
+
+}
