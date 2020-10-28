@@ -59,7 +59,7 @@
     </template>
 
     <template id="purchase_foreign_footer" name="purchase_foreign_footer">
-        <div class="text-center" style="border-top: 1px solid black;">
+        <div class="text-center" style="border-top: 1px solid black;margin-bottom:5px">
             <ul class="list-inline">
                 <li>Page:</li>
                 <li><span class="page"/></li>
@@ -70,7 +70,7 @@
     </template>
 
     <template id="purchase_foreign_page">
-       <div class="row">
+       <div class="row" style="font-size:12px">
             <div class="col-xs-6 text-left">
                 <div class="row">
                     <div class="col-xs-12">
@@ -80,7 +80,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <t t-if="doc.invoice_to">                            
-                            Invoice to: <span style="font-size:18px;font-weight:bold" t-esc="doc.invoice_to.name"/><br/>
+                            Invoice to: <span style="font-size:15px;font-weight:bold" t-esc="doc.invoice_to.name"/><br/>
                             <span t-if="doc.invoice_to.street" t-esc="doc.invoice_to.street"/><br/>
                             <span t-if="doc.invoice_to.zip" t-esc="doc.invoice_to.zip"/> <span t-if="doc.invoice_to.state_id" t-esc="doc.invoice_to.state_id.name"/><br/>
                             <span t-esc="doc.invoice_to.country_id.name"/><br/>
@@ -89,7 +89,7 @@
                             </t> 
                         </t>
                         <t t-else="">
-                            Invoice to: <span style="font-size:18px;font-weight:bold" t-esc="doc.company_id.name"/><br/>
+                            Invoice to: <span style="font-size:15px;font-weight:bold" t-esc="doc.company_id.name"/><br/>
                             <span t-if="doc.company_id.street" t-esc="doc.company_id.street"/><br/>
                             <span t-if="doc.company_id.zip" t-esc="doc.company_id.zip"/> <span t-if="doc.company_id.state_id" t-esc="doc.company_id.state_id.name"/><br/>
                             <span t-esc="doc.company_id.country_id.name"/><br/>
@@ -159,7 +159,7 @@
             </div>
        </div>
 
-        <div class="row" style="margin-top:5px">
+        <div class="row" style="margin-top:5px;font-size: 12px">
             <div class="col-xs-6 text-left">
                 <table class="table" style="width: 100%">
                     <tr>
@@ -191,7 +191,7 @@
                     </tr>
                     <tr>
                         <td colspan="2" style="border: none;padding-bottom: 2px;">Special Indications: <br/>
-                        <pre style="border: none;background: transparent;font-size: 14px;font-family: helvetica;"><span t-esc="doc.special_indications"/></pre></td> 
+                        <pre style="border: none;background: transparent;font-size: 12px;font-family: helvetica;color:black;"><span t-esc="doc.special_indications"/></pre></td> 
                     </tr>
                 </table>
             </div>
@@ -204,12 +204,12 @@
                         <td style="border: none;">Send Documents to: 
                             <br/>
                             <t t-if="doc.send_document_to_invoice_to">
-                                <span style="font-size:18px;font-weight:bold"> Direct to customer</span> <br/>                       
+                                <span style="font-size:15px;font-weight:bold"> Direct to customer</span> <br/>                       
                             </t>
                             <t t-else="">
-                                <span style="font-size:18px;font-weight:bold" t-esc="doc.company_id.name"/><br/>
+                                <span style="font-size:15px;font-weight:bold" t-esc="doc.company_id.name"/><br/>
                             </t>
-                            <pre style="border: none;background: transparent;font-size: 14px;font-family: helvetica;"><span t-esc="doc.send_documents_to"/> </pre>
+                            <pre style="border: none;background: transparent;font-size: 12px;font-family: helvetica;color:black;"><span t-esc="doc.send_documents_to"/> </pre>
                         </td>
                     </tr>
                 </table>
