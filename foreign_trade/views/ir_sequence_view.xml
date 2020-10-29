@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="ir_sequence_sale_seq_form_view">
+        <field name="name">ir.sequence.form</field>
+        <field name="model">ir.sequence</field>
+        <field name="inherit_id" ref="base.sequence_view"/>
+        <field name="arch" type="xml">
+            <field name="number_next_actual" position="after">
+                    <field name="sale_seq"/>
+            </field>
+        </field>
+    </record>
+</odoo>

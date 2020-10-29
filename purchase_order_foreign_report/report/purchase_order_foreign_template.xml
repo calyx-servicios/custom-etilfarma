@@ -14,6 +14,14 @@
             <t t-raw="0" />
         </div>
 
+        <div class="footer">
+            <div class="row">
+                <div class="col-xs-12" style="width:95%;">
+                    <t t-call="purchase_order_foreign_report.purchase_foreign_footer"/>
+                </div>
+            </div>
+        </div>  
+
     </template>
 
     <template id="external_layout">
@@ -35,7 +43,7 @@
 
     </template>
 
-    <template id="purchase_foreign_header">
+    <template id="purchase_foreign_header" name="purchase_foreign_header">
         <div class="headerx" style="width:100%;font-family:helvetica">
             <div class="row" style="margin-top: 10px;">
                 <div class="col-xs-6 text-left">
@@ -50,8 +58,19 @@
         <hr/>
     </template>
 
+    <template id="purchase_foreign_footer" name="purchase_foreign_footer">
+        <div class="text-center" style="border-top: 1px solid black;margin-bottom:5px">
+            <ul class="list-inline">
+                <li>Page:</li>
+                <li><span class="page"/></li>
+                <li>/</li>
+                <li><span class="topage"/></li>
+            </ul>
+        </div>
+    </template>
+
     <template id="purchase_foreign_page">
-       <div class="row">
+       <div class="row" style="font-size:12px">
             <div class="col-xs-6 text-left">
                 <div class="row">
                     <div class="col-xs-12">
@@ -61,7 +80,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <t t-if="doc.invoice_to">                            
-                            Invoice to: <span style="font-size:18px;font-weight:bold" t-esc="doc.invoice_to.name"/><br/>
+                            Invoice to: <span style="font-size:15px;font-weight:bold" t-esc="doc.invoice_to.name"/><br/>
                             <span t-if="doc.invoice_to.street" t-esc="doc.invoice_to.street"/><br/>
                             <span t-if="doc.invoice_to.zip" t-esc="doc.invoice_to.zip"/> <span t-if="doc.invoice_to.state_id" t-esc="doc.invoice_to.state_id.name"/><br/>
                             <span t-esc="doc.invoice_to.country_id.name"/><br/>
@@ -70,7 +89,7 @@
                             </t> 
                         </t>
                         <t t-else="">
-                            Invoice to: <span style="font-size:18px;font-weight:bold" t-esc="doc.company_id.name"/><br/>
+                            Invoice to: <span style="font-size:15px;font-weight:bold" t-esc="doc.company_id.name"/><br/>
                             <span t-if="doc.company_id.street" t-esc="doc.company_id.street"/><br/>
                             <span t-if="doc.company_id.zip" t-esc="doc.company_id.zip"/> <span t-if="doc.company_id.state_id" t-esc="doc.company_id.state_id.name"/><br/>
                             <span t-esc="doc.company_id.country_id.name"/><br/>
@@ -98,7 +117,7 @@
                 </div>
             </div>
        </div>
-       <div class="row" style="margin-top: 25px;">
+       <div class="row" style="margin-top: 25px;font-size: 10px">
             <div class="col-xs-12">
                 <table class="table table-condensed table-bordered" style="width: 100%">
                     <thead>
@@ -140,39 +159,39 @@
             </div>
        </div>
 
-        <div class="row" style="margin-top:5px">
+        <div class="row" style="margin-top:5px;font-size: 12px">
             <div class="col-xs-6 text-left">
                 <table class="table" style="width: 100%">
                     <tr>
-                        <td style="border: none;padding-bottom: 5px;">Port of delivery: <span t-esc="doc.place_of_delivery_id.place_of_delivery"/></td>
+                        <td style="border: none;padding-bottom: 2px;">Place of delivery: <span t-esc="doc.place_of_delivery_id.place_of_delivery"/></td>
                     </tr>
                     <tr>
-                        <td style="border: none;padding-bottom: 5px;">Packaging: <span t-esc="doc.packaging_id.packaging"/></td>
+                        <td style="border: none;padding-bottom: 2px;">Packaging: <span t-esc="doc.packaging_id.packaging"/></td>
                     </tr>
                     <tr>
-                        <td style="border: none;padding-bottom: 5px;">Delivery Date: <span t-esc="doc.delivery_date_week"/></td>
+                        <td style="border: none;padding-bottom: 2px;">Delivery Date: <span t-esc="doc.delivery_date_week"/></td>
                     </tr>
                     <tr>
-                        <td style="border: none;padding-bottom: 5px;">Shipment: <span t-esc="doc.shipment_id.shipment"/></td>
+                        <td style="border: none;padding-bottom: 2px;">Shipment: <span t-esc="doc.shipment_id.shipment"/></td>
                     </tr>
                     <tr>
-                        <td style="border: none;padding-bottom: 5px;">Marks: <span t-esc="doc.marks"/></td>
+                        <td style="border: none;padding-bottom: 2px;">Marks: <span t-esc="doc.marks"/></td>
                     </tr>
                     <tr>
-                        <td style="border: none;padding-bottom: 5px;">Packaging List: <span t-esc="doc.packing_list_id.packing_list"/></td>
+                        <td style="border: none;padding-bottom: 2px;">Packaging List: <span t-esc="doc.packing_list_id.packing_list"/></td>
                     </tr>
                     <tr>
-                        <td style="border: none;padding-bottom: 5px;">Import License: <span t-esc="doc.import_license_id.import_license"/></td>
+                        <td style="border: none;padding-bottom: 2px;">Import License: <span t-esc="doc.import_license_id.import_license"/></td>
                     </tr>
                     <tr>
-                        <td style="border: none;padding-bottom: 5px;">Certificate of Analysis: <span t-esc="doc.certificate_of_analysis_id.certificate_of_analysis"/></td>
+                        <td style="border: none;padding-bottom: 2px;">Certificate of Analysis: <span t-esc="doc.certificate_of_analysis_id.certificate_of_analysis"/></td>
                     </tr>
                     <tr>
-                        <td style="border: none;padding-bottom: 5px;">P/O: <span t-esc="doc.p_o"/></td>
+                        <td style="border: none;padding-bottom: 2px;">P/O: <span t-esc="doc.p_o"/></td>
                     </tr>
                     <tr>
-                        <td colspan="2" style="border: none;padding-bottom: 5px;">Special Indications: <br/>
-                        <span t-esc="doc.special_indications"/></td>
+                        <td colspan="2" style="border: none;padding-bottom: 2px;">Special Indications: <br/>
+                        <pre style="border: none;background: transparent;font-size: 12px;font-family: helvetica;color:black;"><span t-esc="doc.special_indications"/></pre></td> 
                     </tr>
                 </table>
             </div>
@@ -185,16 +204,13 @@
                         <td style="border: none;">Send Documents to: 
                             <br/>
                             <t t-if="doc.send_document_to_invoice_to">
-                                <span style="font-size:18px;font-weight:bold"> Direct to customer</span> <br/>                       
+                                <span style="font-size:15px;font-weight:bold"> Direct to customer</span> <br/>                       
                             </t>
                             <t t-else="">
-                                <span style="font-size:18px;font-weight:bold" t-esc="doc.company_id.name"/><br/>
+                                <span style="font-size:15px;font-weight:bold" t-esc="doc.company_id.name"/><br/>
                             </t>
-                            <pre style="border: none;background: transparent;font-size: 14px;font-family: helvetica;"> <span t-esc="doc.send_documents_to"/> </pre>
+                            <pre style="border: none;background: transparent;font-size: 12px;font-family: helvetica;color:black;"><span t-esc="doc.send_documents_to"/> </pre>
                         </td>
-                    </tr>
-                    <tr style="margin-top: 25px">
-                        <td style="border: none;">ETD week: <span t-esc="doc.extra_notes"/></td>
                     </tr>
                 </table>
             </div>
@@ -217,8 +233,6 @@
         </t>
     </template>
 
-
-
     <template id="po_foreign_r">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="doc">
@@ -226,4 +240,5 @@
             </t>
         </t>
     </template>
+
 </odoo>
