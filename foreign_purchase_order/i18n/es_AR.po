@@ -23,6 +23,7 @@ msgstr "Cuenta"
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_certificate_analysis_active
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_active
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_chanel_active
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_import_license_active
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packaging_active
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packing_list_active
@@ -128,6 +129,11 @@ msgid "Click to set a new Purchase Shipment."
 msgstr "Haga click para crear un nuevo Shipment."
 
 #. module: foreign_purchase_order
+#: model:ir.actions.act_window,help:foreign_purchase_order.action_purchase_delivery_chanel_view
+msgid "Click to set a new Purchase Delivery Chanel."
+msgstr "Haga click para crear un nuevo canal."
+
+#. module: foreign_purchase_order
 #: model:ir.actions.act_window,help:foreign_purchase_order.action_purchase_packing_list_view
 msgid "Click to set a new purchase Packing list."
 msgstr "Haga click para crear una nueva Lista de empaquetado."
@@ -183,6 +189,7 @@ msgstr "Country: %s\n"
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_certificate_analysis_create_uid
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_create_uid
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_chanel_create_uid
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_import_license_create_uid
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_interventions_create_uid
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packaging_create_uid
@@ -194,6 +201,7 @@ msgstr "Creado por"
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_certificate_analysis_create_date
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_create_date
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_chanel_create_date
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_import_license_create_date
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_interventions_create_date
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packaging_create_date
@@ -214,7 +222,7 @@ msgid "Date"
 msgstr "Fecha"
 
 #. module: foreign_purchase_order
-#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_delivery_chanel
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_delivery_chanel_id
 msgid "Delivery Chanel"
 msgstr "Despacho de Importación"
 
@@ -257,6 +265,7 @@ msgstr "Dispatcher Reference"
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_certificate_analysis_display_name
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_display_name
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_chanel_display_name
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_import_license_display_name
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_interventions_display_name
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packaging_display_name
@@ -287,8 +296,8 @@ msgstr "Documentos No requerido"
 
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_documents_quality_certificate_approval_date
-msgid "Documents Quality Certificate Approval Date"
-msgstr "Documentos Fecha aprobación de Certificado de Calidad"
+msgid "Documents Certificate of Analysis Approval Date"
+msgstr "Documentos Fecha de aprobación de Certificado de Analisis"
 
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_documents_shipping_date
@@ -360,6 +369,7 @@ msgstr "Compras Exteriores"
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_certificate_analysis_id
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_id
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_chanel_id
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_import_license_id
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_interventions_id
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packaging_id
@@ -536,6 +546,7 @@ msgstr "Factura"
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_certificate_analysis___last_update
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery___last_update
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_import_license___last_update
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_chanel___last_update
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_interventions___last_update
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packaging___last_update
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packing_list___last_update
@@ -547,6 +558,7 @@ msgstr "Última modificación en"
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_certificate_analysis_write_uid
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_write_uid
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_import_license_write_uid
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_chanel_write_uid
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_interventions_write_uid
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packaging_write_uid
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packing_list_write_uid
@@ -558,6 +570,7 @@ msgstr "Última actualización realizada por"
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_certificate_analysis_write_date
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_write_date
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_import_license_write_date
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_chanel_write_date
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_interventions_write_date
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packaging_write_date
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packing_list_write_date
@@ -728,6 +741,14 @@ msgid "Purchase Import License"
 msgstr "Licencia de importación"
 
 #. module: foreign_purchase_order
+#: model:ir.actions.act_window,name:foreign_purchase_order.action_purchase_delivery_chanel_view
+#: model:ir.ui.menu,name:foreign_purchase_order.menu_purchase_delivery_chanel
+#: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_delivery_chanel_search
+#: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_delivery_chanel_tree
+msgid "Purchase Delivery Chanel"
+msgstr "Delivery Chanel"
+
+#. module: foreign_purchase_order
 #: model:ir.model,name:foreign_purchase_order.model_purchase_order
 msgid "Purchase Order"
 msgstr "Orden de compra"
@@ -766,8 +787,8 @@ msgstr "Envío"
 
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
-msgid "Quality Certificate Approval Date"
-msgstr "Fecha aprobación de certificado de calidad"
+msgid "Certificate of Analysis Approval Date"
+msgstr "Fecha de aprobación de Certificado de Analisis"
 
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
@@ -789,6 +810,7 @@ msgstr "Send documents to"
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_certificate_analysis_sequence
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_sequence
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_import_license_sequence
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_chanel_sequence
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packaging_sequence
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packing_list_sequence
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_shipment_sequence
@@ -801,6 +823,13 @@ msgstr "Secuencia"
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Shipment"
 msgstr "Envío"
+
+#. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_delivery_chanel_id
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_chanel_delivery_chanel
+#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
+msgid "Chanel"
+msgstr "Canal"
 
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
@@ -847,8 +876,8 @@ msgstr "Tipo de Cambio"
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_term_payments
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
-msgid "Terms of Payment"
-msgstr "Terms of Payment"
+msgid "Payment Conditions"
+msgstr "Condición de Pago"
 
 #. module: foreign_purchase_order
 #: model:ir.ui.menu,name:foreign_purchase_order.menu_payment_terms_in_purchase
@@ -868,6 +897,7 @@ msgstr "Compañía de transporte"
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_certificate_of_analysis_form
 #: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_import_license_form
+#: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_delivery_chanel_form
 #: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_packaging_form
 #: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_packing_list_form
 #: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_place_delivery_form
@@ -894,6 +924,7 @@ msgstr "Escriba aquí sus 'Special Indications' a usar como predeterminado. El c
 #. module: foreign_purchase_order
 #: code:addons/foreign_purchase_order/models/purchase_certificate_of_analysis.py:19
 #: code:addons/foreign_purchase_order/models/purchase_import_license.py:19
+#: code:addons/foreign_purchase_order/models/purchase_delivery_chanel.py:19
 #: code:addons/foreign_purchase_order/models/purchase_packaging.py:19
 #: code:addons/foreign_purchase_order/models/purchase_packing_list.py:19
 #: code:addons/foreign_purchase_order/models/purchase_place_of_delivery.py:21
@@ -944,6 +975,11 @@ msgstr "purchase.packing.list"
 #: model:ir.model,name:foreign_purchase_order.model_purchase_shipment
 msgid "purchase.shipment"
 msgstr "purchase.shipment"
+
+#. module: foreign_purchase_order
+#: model:ir.model,name:foreign_purchase_order.model_purchase_delivery_chanel
+msgid "purchase.delivery.chanel"
+msgstr "purchase.delivery.chanel"
 
 #. module: foreign_purchase_order
 #: model:ir.model,name:foreign_purchase_order.model_res_config_settings

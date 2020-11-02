@@ -76,7 +76,7 @@ class PurchaseOrder(models.Model):
     )
     term_payments = fields.Many2one(
         related="payment_term_id",
-        string="Terms of Payment",
+        string="Payment Conditions",
     )
 
     extra_notes = fields.Text(string="Extra", size=150)
@@ -130,14 +130,16 @@ class PurchaseOrder(models.Model):
     documents_FC_date = fields.Date(string="Documents FC Date",
                                     compute='_compute_documents_fc_date',
                                     store=True)
-    documents_quality_certificate_approval_date = fields.Date(string="Documents Quality Certificate Approval Date")
+    documents_quality_certificate_approval_date = fields.Date(string="Documents Certificate of Analysis Approval Date")
     documents_shipping_document = fields.Char(string="Documents Shipping Document")
     documents_shipping_date = fields.Date(string="Documents Shipping Date")
     documents_not_required = fields.Boolean(string="Documents Not Required")
 
     delivery_number = fields.Char(string="Import Delivery Number")
     delivery_official_date = fields.Date(string="Import Official Delivery Date")
-    delivery_chanel = fields.Char(string="Delivery Chanel")
+    delivery_chanel_id = fields.Many2one(
+        comodel_name="purchase.delivery.chanel",
+        string="Delivery Chanel")
     delivery_not_required = fields.Boolean(string="Delivery Not Required")
 
     original_documentation_original_receipt_date = fields.Date(string="Original Documentation Original Receipt Date")
@@ -219,7 +221,7 @@ class PurchaseOrder(models.Model):
 
     @api.onchange("delivery_not_required")
     def _onchange_delivery_not_required(self):
-        self.delivery_chanel = ""
+        self.delivery_chanel_id = ""
         self.delivery_date_week = ""
         self.delivery_number = ""
         self.delivery_official_date = ""
