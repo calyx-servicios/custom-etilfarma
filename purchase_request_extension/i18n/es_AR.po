@@ -90,7 +90,7 @@ msgstr "SP"
 #. module: purchase_request_extension
 #: model:ir.model.fields,field_description:purchase_request_extension.field_purchase_request_date_planned
 msgid "Request Date"
-msgstr "Fecha de requerimiento"
+msgstr "Fecha de ingreso a planta"
 
 #. module: purchase_request_extension
 #: model:ir.model.fields,field_description:purchase_request_extension.field_purchase_request_line_make_purchase_order_order_type

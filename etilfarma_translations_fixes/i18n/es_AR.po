@@ -717,7 +717,7 @@ msgstr "Requerimiento"
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line_date_start
 #: model:ir.model.fields,field_description:purchase_request_extension.field_purchase_request_date_planned
 msgid "Request Date"
-msgstr "Fecha de requerimiento"
+msgstr "Fecha de ingreso a planta"
 
 #. module: purchase_request
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_name
