@@ -101,7 +101,7 @@ class SaleOrderLine(models.Model):
     product_nmc = fields.Char(string="HS Code", related="product_id.product_nmc")
     country_id = fields.Char(string="Origin", required=True, related="product_tmpl_id.country_id.name")
     observations = fields.Char(string="Observation")
-    loot_name = fields.Char(string="Loot Name")
+    loot_name = fields.Char(string="Lot Name")
     life_date = fields.Datetime(string="Life Date")
     product_qty = fields.Float(digits=(12,2))
     qty_received = fields.Float(digits=(12,2))
