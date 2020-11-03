@@ -58,7 +58,7 @@ class StockMove(models.Model):
         string="NMC",
         related="product_id.product_nmc"
     )
-    origin = fields.Char(
+    country = fields.Char(
         string="Origin",
         related="product_id.country_id.name"
     )

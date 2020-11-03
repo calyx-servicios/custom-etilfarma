@@ -12,7 +12,7 @@
         <xpath expr="//div[@class='oe_structure']" position="before">
             <h1 style="text-align: center">
                 <t t-if="not (env.context.get('proforma', False) or is_pro_forma)">
-                    <span t-if="doc.state not in ['draft','sent']">Order</span>
+                    <span t-if="doc.state not in ['draft','sent']">Confirmed Order</span>
                     <span t-if="doc.state in ['draft','sent']">Quotation</span>
                 </t>
                 <t t-if="env.context.get('proforma', False) or is_pro_forma">
@@ -66,15 +66,30 @@
                 </div>
                 <div t-if="doc.confirmation_date and doc.state not in ['draft','sent']" class="col-xs-3">
                     <strong>Date Ordered:</strong>
-                    <p t-field="doc.confirmation_date" t-field-options='{"format": "yyyy/MM/dd"}'/>
+                    <t t-if="is_in_en_us">
+                        <p t-field="doc.confirmation_date" t-field-options='{"format": "yyyy/MM/dd"}'/>
+                    </t>
+                    <t t-if="not is_in_en_us">
+                        <p t-field="doc.confirmation_date" t-field-options='{"format": "dd/MM/yyyy"}'/>                        
+                    </t>   
                 </div>
                 <div t-if="doc.date_order and doc.state in ['draft','sent']" class="col-xs-3">
                     <strong>Quotation Date:</strong>
-                    <p t-field="doc.date_order" t-field-options='{"format": "yyyy/MM/dd"}'/>
+                    <t t-if="is_in_en_us">
+                        <p t-field="doc.date_order" t-field-options='{"format": "yyyy/MM/dd"}'/>
+                    </t>
+                    <t t-if="not is_in_en_us">
+                        <p t-field="doc.date_order" t-field-options='{"format": "dd/MM/yyyy"}'/>                        
+                    </t>  
                 </div>
                 <div t-if="doc.validity_date and doc.state in ['draft', 'sent']" class="col-xs-3">
                     <strong>Expiration Date:</strong>
-                    <p t-field="doc.validity_date" t-field-options='{"format": "yyyy/MM/dd"}'/>
+                    <t t-if="is_in_en_us">
+                        <p t-field="doc.validity_date" t-field-options='{"format": "yyyy/MM/dd"}'/>
+                    </t>
+                    <t t-if="not is_in_en_us">
+                        <p t-field="doc.validity_date" t-field-options='{"format": "dd/MM/yyyy"}'/>                        
+                    </t>
                 </div>
             </div>
         </xpath>
@@ -88,7 +103,7 @@
                             <th class="text-left">Product</th>
                             <th class="text-left">Packaging</th>
                             <t t-if="doc.state not in ['draft','sent'] and not is_pro_forma ">
-                                <th class="text-left">Loot Name</th>
+                                <th class="text-left">Lot Name</th>
                             </t>    
                             <th class="text-left">Quantity</th>
                             <th class="text-left">HS Code</th>
@@ -161,7 +176,14 @@
                             <td style="border: none;padding-bottom: 5px;">Place of Delivery: <span t-esc="doc.place_of_delivery_id.place_of_delivery"/></td>
                         </tr>
                         <tr>
-                            <td style="border: none;padding-bottom: 5px;">Estimated Shipping Date: <span t-field="doc.estimated_shipping_date" t-field-options='{"format": "yyyy/MM/dd"}'/></td>
+                            <td style="border: none;padding-bottom: 5px;">Estimated Shipping Date: 
+                            <t t-if="is_in_en_us">
+                                <span t-field="doc.estimated_shipping_date" t-field-options='{"format": "yyyy/MM/dd"}'/>
+                            </t>
+                            <t t-if="not is_in_en_us">
+                                <span t-field="doc.estimated_shipping_date" t-field-options='{"format": "dd/MM/yyyy"}'/>                        
+                            </t>
+                            </td>
                         </tr>
                     </table>
                 </div>
