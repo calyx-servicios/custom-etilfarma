@@ -29,6 +29,10 @@
             <xpath expr="//button[@name='print_quotation'][2]" position="attributes">
                 <attribute name="attrs">{'invisible': ['|',('order_type_foreign','=',True)]}</attribute>
             </xpath>
+            <xpath expr="//field[@name='confirmation_date']" position="attributes">
+                <attribute name="attrs"/>
+                <attribute name="widget">date</attribute>
+            </xpath>
             <xpath expr="//notebook" position="inside">
                 <page string='Foreign Sale' attrs="{'invisible': [('order_type_foreign','=',False)]}">
                     <group>
@@ -76,7 +80,6 @@
                             <field name="payment_tre" string="TRE" attrs="{'invisible': [('payment_not_required','=',True)]}" force_save="1"/>
                             <field name="payment_date" string="Date" attrs="{'invisible': [('payment_not_required','=',True)]}" force_save="1"/>
                             <field name="payment_concept" string="Concept" attrs="{'invisible': [('payment_not_required','=',True)]}" force_save="1"/>
-                            <field name="payment_transport_company" string="Transport Company" attrs="{'invisible': [('payment_not_required','=',True)]}" force_save="1"/>
                         </group>
                         <group name="dispatcher" string="Dispatcher">
                             <field name="dispatcher_not_required" type="checkbox" string="Not Required"/>
