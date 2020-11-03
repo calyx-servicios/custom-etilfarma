@@ -74,8 +74,8 @@
                             <field name="payment_date" string="Date" attrs="{'readonly': [('payment_not_required','=',True)]}" force_save="1"/>
                             <field name="payment_reference" string="Reference" attrs="{'readonly': [('payment_not_required','=',True)]}" force_save="1"/>
                             <field name="payment_concept" string="Concept" attrs="{'readonly': [('payment_not_required','=',True)]}" force_save="1"/>
-                            <field name="payment_TTE_amount" string="Add Payment Value Of The TTE 'Amount'" attrs="{'readonly': [('payment_not_required','=',True)]}" force_save="1"/>
-                            <field name="payment_TC" string="TC" attrs="{'readonly': [('payment_not_required','=',True)]}" force_save="1"/>
+                            <field name="payment_TTE_amount" string="Add Payment Value Of The TTE 'Amount'" attrs="{'readonly': [('payment_not_required','=',True)]}" force_save="1" widget="float"/>
+                            <field name="payment_TC" string="TC" attrs="{'readonly': [('payment_not_required','=',True)]}" force_save="1" widget="float"/>
                         </group>
                         <group name="dispatcher" string="Dispatcher">
                             <field name="dispatcher_not_required" type="checkbox" string="Not Required"/>

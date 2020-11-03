@@ -1018,3 +1018,7 @@ msgstr "purchase.booking.conveyance"
 msgid "res.config.settings"
 msgstr "res.config.settings"
 
+#. module: foreign_purchase_order
+#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
+msgid "Quality Certificate Approval Date"
+msgstr "Fecha aprobación de certificado de calidad"
