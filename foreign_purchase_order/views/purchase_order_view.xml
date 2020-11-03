@@ -96,7 +96,7 @@
                         </group>
                         <group name="booking" string="Booking(Ship Reserve)">
                             <field name="booking_not_required" type="checkbox" string="Not Required"/>
-                            <field name="booking_conveyance" string="Conveyance" attrs="{'readonly': [('booking_not_required','=',True)]}" force_save="1"/>
+                            <field name="booking_conveyance_id" string="Conveyance" attrs="{'readonly': [('booking_not_required','=',True)]}" options="{'no_open':True,'no_create': True,'no_create_edit':1}" force_save="1"/>
                             <field name="booking_origin" string="Origin" attrs="{'readonly': [('booking_not_required','=',True)]}" force_save="1"/>
                             <field name="booking_ETD_date" string="ETD Date" attrs="{'readonly': [('booking_not_required','=',True)]}" force_save="1"/>
                             <field name="booking_ETA_date" string="ETA Date" attrs="{'readonly': [('booking_not_required','=',True)]}" force_save="1"/>
@@ -190,7 +190,7 @@
                         '&amp;',('dispatcher_not_required','=',False), ('dispatcher_reference','=',False),
                         '&amp;',('intervention_not_required','=',False), '|', '|', '|',('intervention_reference','=',False), ('intervention_VPE_amount','=',False), ('intervention_application_date','=',False), ('intervention_approval_date','=',False),
                         '&amp;',('import_license_not_required','=',False), '|', '|',('import_license_reference','=',False), ('import_license_approval_date','=',False), ('import_license_official_date','=',False),
-                        '&amp;',('booking_not_required','=',False), '|', '|', '|', '|',('booking_conveyance','=',False), ('booking_origin','=',False), ('booking_ETD_date','=',False), ('booking_ETA_date','=',False), ('booking_transport_company','=',False),
+                        '&amp;',('booking_not_required','=',False), '|', '|', '|', '|',('booking_conveyance_id','=',False), ('booking_origin','=',False), ('booking_ETD_date','=',False), ('booking_ETA_date','=',False), ('booking_transport_company','=',False),
                         '&amp;',('documents_not_required','=',False), '|', '|', '|', '|',('documents_commercial_invoice_number','=',False), ('documents_FC_date','=',False), ('documents_quality_certificate_approval_date','=',False), ('documents_shipping_document','=',False), ('documents_shipping_date','=',False),
                         '&amp;',('delivery_not_required','=',False), '|', '|',('delivery_number','=',False), ('delivery_official_date','=',False), ('delivery_chanel_id','=',False),
                         '&amp;',('original_documentation_not_required','=',False),('original_documentation_original_receipt_date','=',False),
@@ -208,7 +208,7 @@
                 <filter name="incomplete_import_license_data" string="Incomplete Import License Id" domain="['&amp;', '&amp;', '&amp;', ('order_type_foreign','=',True), 
                         ('state','in',['purchase', 'no_invoice']),('import_license_not_required','=',False), '|', '|',('import_license_reference','=',False), ('import_license_approval_date','=',False), ('import_license_official_date','=',False)]"/> 
                 <filter name="incomplete_booking_data" string="Incomplete Booking(Ship Reserve)" domain="['&amp;', '&amp;', '&amp;', ('order_type_foreign','=',True), 
-                        ('state','in',['purchase', 'no_invoice']),('booking_not_required','=',False), '|', '|', '|', '|',('booking_conveyance','=',False), ('booking_origin','=',False), ('booking_ETD_date','=',False), ('booking_ETA_date','=',False), ('booking_transport_company','=',False)]"/> 
+                        ('state','in',['purchase', 'no_invoice']),('booking_not_required','=',False), '|', '|', '|', '|',('booking_conveyance_id','=',False), ('booking_origin','=',False), ('booking_ETD_date','=',False), ('booking_ETA_date','=',False), ('booking_transport_company','=',False)]"/> 
                 <filter name="incomplete_documents_data" string="Incomplete Documents" domain="['&amp;', '&amp;', '&amp;', ('order_type_foreign','=',True), 
                         ('state','in',['purchase', 'no_invoice']),('documents_not_required','=',False), '|', '|', '|', '|',('documents_commercial_invoice_number','=',False), ('documents_FC_date','=',False), ('documents_quality_certificate_approval_date','=',False), ('documents_shipping_document','=',False), ('documents_shipping_date','=',False)]"/> 
                 <filter name="incomplete_import_delivery_data" string="Incomplete Import Delivery" domain="['&amp;', '&amp;', '&amp;', ('order_type_foreign','=',True), 

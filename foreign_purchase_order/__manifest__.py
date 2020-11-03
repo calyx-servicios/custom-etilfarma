@@ -26,6 +26,7 @@
         "views/purchase_packaging_view.xml",
         "views/purchase_packing_list_view.xml",
         "views/purchase_delivery_chanel_view.xml",
+        "views/purchase_booking_conveyance_view.xml",
         "views/purchase_place_delivery_view.xml",
         "views/purchase_shipment_view.xml",
         "views/purchase_certificate_of_analysis_view.xml",
