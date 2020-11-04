@@ -76,7 +76,7 @@ class PurchaseOrder(models.Model):
     )
     term_payments = fields.Many2one(
         related="payment_term_id",
-        string="Terms of Payment",
+        string="Payment Conditions",
     )
 
     extra_notes = fields.Text(string="Extra", size=150)
@@ -116,8 +116,10 @@ class PurchaseOrder(models.Model):
     import_license_approval_date = fields.Date(string="Import License Approval Date")
     import_license_official_date = fields.Date(string="Import License Official Date")
     import_license_not_required = fields.Boolean(string="Import License Not Required")
-
-    booking_conveyance = fields.Char(string="Booking Conveyance")
+ 
+    booking_conveyance_id = fields.Many2one(
+        comodel_name="purchase.booking.conveyance",
+        string="Booking Conveyance")
     booking_origin = fields.Char(string="Booking Origin")
     booking_ETD_date = fields.Date(string="Booking ETD Date")
     booking_ETA_date = fields.Date(string="Booking ETA Date")
@@ -130,14 +132,16 @@ class PurchaseOrder(models.Model):
     documents_FC_date = fields.Date(string="Documents FC Date",
                                     compute='_compute_documents_fc_date',
                                     store=True)
-    documents_quality_certificate_approval_date = fields.Date(string="Documents Quality Certificate Approval Date")
+    documents_quality_certificate_approval_date = fields.Date(string="Documents Certificate of Analysis Approval Date")
     documents_shipping_document = fields.Char(string="Documents Shipping Document")
     documents_shipping_date = fields.Date(string="Documents Shipping Date")
     documents_not_required = fields.Boolean(string="Documents Not Required")
 
     delivery_number = fields.Char(string="Import Delivery Number")
     delivery_official_date = fields.Date(string="Import Official Delivery Date")
-    delivery_chanel = fields.Char(string="Delivery Chanel")
+    delivery_chanel_id = fields.Many2one(
+        comodel_name="purchase.delivery.chanel",
+        string="Delivery Chanel")
     delivery_not_required = fields.Boolean(string="Delivery Not Required")
 
     original_documentation_original_receipt_date = fields.Date(string="Original Documentation Original Receipt Date")
@@ -203,7 +207,7 @@ class PurchaseOrder(models.Model):
 
     @api.onchange("booking_not_required")
     def _onchange_booking_not_required(self):
-        self.booking_conveyance = ""
+        self.booking_conveyance_id = ""
         self.booking_ETA_date = ""
         self.booking_ETD_date = ""
         self.booking_origin = ""
@@ -219,7 +223,7 @@ class PurchaseOrder(models.Model):
 
     @api.onchange("delivery_not_required")
     def _onchange_delivery_not_required(self):
-        self.delivery_chanel = ""
+        self.delivery_chanel_id = ""
         self.delivery_date_week = ""
         self.delivery_number = ""
         self.delivery_official_date = ""
@@ -421,7 +425,7 @@ class PurchaseOrder(models.Model):
 
     @api.depends('confirmation_not_required', 'proforma_not_required', 'payment_not_required',
                  'booking_not_required', 'documents_not_required', 'delivery_not_required',
-                 'confirmation_number', 'proforma_number', 'payment_TTE_amount', 'booking_conveyance',
+                 'confirmation_number', 'proforma_number', 'payment_TTE_amount', 'booking_conveyance_id',
                  'booking_transport_company', 'booking_ETD_date', 'booking_ETA_date', 'documents_commercial_invoice_number',
                  'documents_shipping_document', 'delivery_number')
     def _compute_tracking_status(self):
@@ -448,7 +452,7 @@ class PurchaseOrder(models.Model):
                 record.booking_ETD_date_status = _("Not required")
                 record.booking_ETA_date_status = _("Not required")
             else:
-                record.booking_conveyance_status = record.booking_conveyance
+                record.booking_conveyance_status = record.booking_conveyance_id.booking_conveyance
                 record.booking_transport_company_status = record.booking_transport_company
                 record.booking_ETD_date_status = _format_date(record.booking_ETD_date)
                 record.booking_ETA_date_status = _format_date(record.booking_ETA_date)

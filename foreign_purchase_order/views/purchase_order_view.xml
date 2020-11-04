@@ -48,7 +48,7 @@
                             <field name="send_documents_to" string="Send documents to" style='min-height: 130px; word-break: break-word'/>
                             <field name="use_other_company_address" string="Use another company Address?" options="{'no_open':True,'no_create': True,'no_create_edit':1}"/>
                             <field name="delivery_date_week" string="Delivery Date (Week)"/>
-                            <field name="term_payments" string="Terms of Payment" options="{'no_open':True,'no_create':1,'no_create_edit':1}"/>
+                            <field name="term_payments" string="Payment Conditions" options="{'no_open':True,'no_create':1,'no_create_edit':1}"/>
                             <field name="packing_list_id" string="Packing List" options="{'no_open':True,'no_create': True,'no_create_edit':1}"/>
                             <field name="import_license_id" string="Import License" options="{'no_open':True,'no_create': True,'no_create_edit':1}"/>
                         </group>
@@ -74,8 +74,8 @@
                             <field name="payment_date" string="Date" attrs="{'readonly': [('payment_not_required','=',True)]}" force_save="1"/>
                             <field name="payment_reference" string="Reference" attrs="{'readonly': [('payment_not_required','=',True)]}" force_save="1"/>
                             <field name="payment_concept" string="Concept" attrs="{'readonly': [('payment_not_required','=',True)]}" force_save="1"/>
-                            <field name="payment_TTE_amount" string="Add Payment Value Of The TTE 'Amount'" attrs="{'readonly': [('payment_not_required','=',True)]}" force_save="1"/>
-                            <field name="payment_TC" string="TC" attrs="{'readonly': [('payment_not_required','=',True)]}" force_save="1"/>
+                            <field name="payment_TTE_amount" string="Add Payment Value Of The TTE 'Amount'" attrs="{'readonly': [('payment_not_required','=',True)]}" force_save="1" widget="float"/>
+                            <field name="payment_TC" string="TC" attrs="{'readonly': [('payment_not_required','=',True)]}" force_save="1" widget="float"/>
                         </group>
                         <group name="dispatcher" string="Dispatcher">
                             <field name="dispatcher_not_required" type="checkbox" string="Not Required"/>
@@ -96,7 +96,7 @@
                         </group>
                         <group name="booking" string="Booking(Ship Reserve)">
                             <field name="booking_not_required" type="checkbox" string="Not Required"/>
-                            <field name="booking_conveyance" string="Conveyance" attrs="{'readonly': [('booking_not_required','=',True)]}" force_save="1"/>
+                            <field name="booking_conveyance_id" string="Conveyance" attrs="{'readonly': [('booking_not_required','=',True)]}" options="{'no_open':True,'no_create': True,'no_create_edit':1}" force_save="1"/>
                             <field name="booking_origin" string="Origin" attrs="{'readonly': [('booking_not_required','=',True)]}" force_save="1"/>
                             <field name="booking_ETD_date" string="ETD Date" attrs="{'readonly': [('booking_not_required','=',True)]}" force_save="1"/>
                             <field name="booking_ETA_date" string="ETA Date" attrs="{'readonly': [('booking_not_required','=',True)]}" force_save="1"/>
@@ -114,7 +114,7 @@
                             <field name="delivery_not_required" type="checkbox" string="Not Required"/>
                             <field name="delivery_number" string="Delivery Number" attrs="{'readonly': [('delivery_not_required','=',True)]}" force_save="1"/>
                             <field name="delivery_official_date" string="Official Date" attrs="{'readonly': [('delivery_not_required','=',True)]}" force_save="1"/>
-                            <field name="delivery_chanel" string="Chanel" attrs="{'readonly': [('delivery_not_required','=',True)]}" force_save="1"/>
+                            <field name="delivery_chanel_id" string="Chanel" attrs="{'readonly': [('delivery_not_required','=',True)]}" options="{'no_open':True,'no_create': True,'no_create_edit':1}" force_save="1"/>
                         </group>
                         <group name="original_documentation" string="Original Documentation">
                             <field name="original_documentation_not_required" type="checkbox" string="Not Required"/>
@@ -190,9 +190,9 @@
                         '&amp;',('dispatcher_not_required','=',False), ('dispatcher_reference','=',False),
                         '&amp;',('intervention_not_required','=',False), '|', '|', '|',('intervention_reference','=',False), ('intervention_VPE_amount','=',False), ('intervention_application_date','=',False), ('intervention_approval_date','=',False),
                         '&amp;',('import_license_not_required','=',False), '|', '|',('import_license_reference','=',False), ('import_license_approval_date','=',False), ('import_license_official_date','=',False),
-                        '&amp;',('booking_not_required','=',False), '|', '|', '|', '|',('booking_conveyance','=',False), ('booking_origin','=',False), ('booking_ETD_date','=',False), ('booking_ETA_date','=',False), ('booking_transport_company','=',False),
+                        '&amp;',('booking_not_required','=',False), '|', '|', '|', '|',('booking_conveyance_id','=',False), ('booking_origin','=',False), ('booking_ETD_date','=',False), ('booking_ETA_date','=',False), ('booking_transport_company','=',False),
                         '&amp;',('documents_not_required','=',False), '|', '|', '|', '|',('documents_commercial_invoice_number','=',False), ('documents_FC_date','=',False), ('documents_quality_certificate_approval_date','=',False), ('documents_shipping_document','=',False), ('documents_shipping_date','=',False),
-                        '&amp;',('delivery_not_required','=',False), '|', '|',('delivery_number','=',False), ('delivery_official_date','=',False), ('delivery_chanel','=',False),
+                        '&amp;',('delivery_not_required','=',False), '|', '|',('delivery_number','=',False), ('delivery_official_date','=',False), ('delivery_chanel_id','=',False),
                         '&amp;',('original_documentation_not_required','=',False),('original_documentation_original_receipt_date','=',False),
                         '&amp;',('expenses_not_required','=',False), '|',('expenses_dispatcher_fees','=',False),('expenses_dispatcher_fees','=',False)]"/>        
                 <filter name="incomplete_confirmation_data" string="Incomplete confirmation" domain="['&amp;', '&amp;', '&amp;', ('order_type_foreign','=',True), 
@@ -208,11 +208,11 @@
                 <filter name="incomplete_import_license_data" string="Incomplete Import License Id" domain="['&amp;', '&amp;', '&amp;', ('order_type_foreign','=',True), 
                         ('state','in',['purchase', 'no_invoice']),('import_license_not_required','=',False), '|', '|',('import_license_reference','=',False), ('import_license_approval_date','=',False), ('import_license_official_date','=',False)]"/> 
                 <filter name="incomplete_booking_data" string="Incomplete Booking(Ship Reserve)" domain="['&amp;', '&amp;', '&amp;', ('order_type_foreign','=',True), 
-                        ('state','in',['purchase', 'no_invoice']),('booking_not_required','=',False), '|', '|', '|', '|',('booking_conveyance','=',False), ('booking_origin','=',False), ('booking_ETD_date','=',False), ('booking_ETA_date','=',False), ('booking_transport_company','=',False)]"/> 
+                        ('state','in',['purchase', 'no_invoice']),('booking_not_required','=',False), '|', '|', '|', '|',('booking_conveyance_id','=',False), ('booking_origin','=',False), ('booking_ETD_date','=',False), ('booking_ETA_date','=',False), ('booking_transport_company','=',False)]"/> 
                 <filter name="incomplete_documents_data" string="Incomplete Documents" domain="['&amp;', '&amp;', '&amp;', ('order_type_foreign','=',True), 
                         ('state','in',['purchase', 'no_invoice']),('documents_not_required','=',False), '|', '|', '|', '|',('documents_commercial_invoice_number','=',False), ('documents_FC_date','=',False), ('documents_quality_certificate_approval_date','=',False), ('documents_shipping_document','=',False), ('documents_shipping_date','=',False)]"/> 
                 <filter name="incomplete_import_delivery_data" string="Incomplete Import Delivery" domain="['&amp;', '&amp;', '&amp;', ('order_type_foreign','=',True), 
-                        ('state','in',['purchase', 'no_invoice']),('delivery_not_required','=',False), '|', '|',('delivery_number','=',False), ('delivery_official_date','=',False), ('delivery_chanel','=',False)]"/> 
+                        ('state','in',['purchase', 'no_invoice']),('delivery_not_required','=',False), '|', '|',('delivery_number','=',False), ('delivery_official_date','=',False), ('delivery_chanel_id','=',False)]"/> 
                 <filter name="incomplete_original_documentation_data" string="Incomplete Original Documentation" domain="['&amp;', '&amp;', '&amp;', ('order_type_foreign','=',True), 
                         ('state','in',['purchase', 'no_invoice']),('original_documentation_not_required','=',False),('original_documentation_original_receipt_date','=',False)]"/> 
                 <filter name="incomplete_expenses_documentation_data" string="Incomplete Expenses" domain="['&amp;', '&amp;', '&amp;', ('order_type_foreign','=',True), 

@@ -29,6 +29,14 @@
             <xpath expr="//button[@name='print_quotation'][2]" position="attributes">
                 <attribute name="attrs">{'invisible': ['|',('order_type_foreign','=',True)]}</attribute>
             </xpath>
+            <xpath expr="//field[@name='confirmation_date']" position="attributes">
+                <attribute name="attrs"/>
+                <attribute name="widget">date</attribute>
+            </xpath>
+            <xpath expr="//field[@name='confirmation_date']" position="attributes">
+                <attribute name="attrs"/>
+                <attribute name="widget">date</attribute>
+            </xpath>
             <xpath expr="//notebook" position="inside">
                 <page string='Foreign Sale' attrs="{'invisible': [('order_type_foreign','=',False)]}">
                     <group>
@@ -76,7 +84,6 @@
                             <field name="payment_tre" string="TRE" attrs="{'invisible': [('payment_not_required','=',True)]}" force_save="1"/>
                             <field name="payment_date" string="Date" attrs="{'invisible': [('payment_not_required','=',True)]}" force_save="1"/>
                             <field name="payment_concept" string="Concept" attrs="{'invisible': [('payment_not_required','=',True)]}" force_save="1"/>
-                            <field name="payment_transport_company" string="Transport Company" attrs="{'invisible': [('payment_not_required','=',True)]}" force_save="1"/>
                         </group>
                         <group name="dispatcher" string="Dispatcher">
                             <field name="dispatcher_not_required" type="checkbox" string="Not Required"/>
@@ -87,7 +94,6 @@
                             <field name="booking_conveyance" string="Conveyance" attrs="{'invisible': [('booking_not_required','=',True)]}" force_save="1"/>
                             <field name="booking_ETD_date" string="ETD Date" attrs="{'invisible': [('booking_not_required','=',True)]}" force_save="1"/>
                             <field name="booking_ETA_date" string="ETA Date" attrs="{'invisible': [('booking_not_required','=',True)]}" force_save="1"/>
-                            <field name="booking_transport_company" string="Transport Company" attrs="{'invisible': [('booking_not_required','=',True)]}" force_save="1"/>
                         </group>
                         <group name="transport_doc" string="Transport Documentation">
                             <field name="transport_doc_not_required" type="checkbox" string="Not Required"/>
@@ -185,6 +191,16 @@
             <group position="inside">
                 <filter string="Type" name="order_type" domain="[]" context="{'group_by': 'order_type'}"/>
             </group>
+        </field>
+    </record>
+
+    <record id="sale_view_inherit123" model="ir.ui.view">
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale_crm.sale_view_inherit123"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='sales_person']/field[@name='tag_ids']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
         </field>
     </record>
 
