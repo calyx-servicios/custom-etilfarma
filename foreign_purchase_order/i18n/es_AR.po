@@ -301,7 +301,7 @@ msgstr "Documentos No requerido"
 
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_documents_quality_certificate_approval_date
-msgid "Documents Certificate of Analysis Approval Date"
+msgid "Documents Quality Certificate Approval Date"
 msgstr "Documentos Fecha de aprobación de Certificado de Analisis"
 
 #. module: foreign_purchase_order
@@ -804,7 +804,7 @@ msgstr "Envío"
 
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
-msgid "Certificate of Analysis Approval Date"
+msgid "Quality Certificate Approval Date"
 msgstr "Fecha de aprobación de Certificado de Analisis"
 
 #. module: foreign_purchase_order
@@ -864,7 +864,7 @@ msgstr "Fecha de documento de embarque"
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Shipping Date"
-msgstr "Fecha de aprobación de Certificado de Analisis"
+msgstr "Fecha de Envio"
 
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
