@@ -234,7 +234,7 @@ msgstr "Canal"
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_delivery_date_week
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Delivery Date (Week)"
-msgstr "Fecha Entrega (Semana)"
+msgstr "Delivery Date (Week)"
 
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_delivery_not_required
@@ -399,7 +399,7 @@ msgstr "Import Delivery Number"
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_import_license_id
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Import License"
-msgstr "Licencia de Importación"
+msgstr "Import License"
 
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_import_license_approval_date
@@ -637,7 +637,7 @@ msgstr "Fecha recepción de originales"
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packaging_packaging
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Packaging"
-msgstr "Empaquetado"
+msgstr "Packaging"
 
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_packing_list_id
@@ -701,7 +701,7 @@ msgstr "Payment TTE Amount"
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_place_of_delivery_id
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Place of Delivery"
-msgstr "Lugar de Entrega"
+msgstr "Place of Delivery"
 
 #. module: foreign_purchase_order
 #: model:ir.model,name:foreign_purchase_order.model_product_product
@@ -840,7 +840,7 @@ msgstr "Secuencia"
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_shipment_shipment
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Shipment"
-msgstr "Envío"
+msgstr "Shipment"
 
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_delivery_chanel_id
@@ -858,8 +858,13 @@ msgstr "Medio de transporte"
 
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
-msgid "Shipping Date"
+msgid "Certificate of Analysis Approval Date"
 msgstr "Fecha de documento de embarque"
+
+#. module: foreign_purchase_order
+#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
+msgid "Shipping Date"
+msgstr "Fecha de aprobación de Certificado de Analisis"
 
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
@@ -899,12 +904,13 @@ msgid "TC"
 msgstr "Tipo de Cambio"
 
 #. module: foreign_purchase_order
-#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_term_payments
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_payment_term_id
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Payment Conditions"
 msgstr "Condición de Pago"
 
 #. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_term_payments
 #: model:ir.ui.menu,name:foreign_purchase_order.menu_payment_terms_in_purchase
 msgid "Terms of Payments"
 msgstr "Terms of Payments"
@@ -1017,8 +1023,3 @@ msgstr "purchase.booking.conveyance"
 #: model:ir.model,name:foreign_purchase_order.model_res_config_settings
 msgid "res.config.settings"
 msgstr "res.config.settings"
-
-#. module: foreign_purchase_order
-#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
-msgid "Quality Certificate Approval Date"
-msgstr "Fecha aprobación de certificado de calidad"
