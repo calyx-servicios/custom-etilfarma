@@ -29,7 +29,7 @@
                 <field name="origin" attrs="{'column_invisible': [('parent.order_type_foreign', '=',  False)]}"/>
                 <field name="packages_qty" attrs="{'column_invisible': [('parent.order_type_foreign', '=',  False)]}"/>
                 <field name="pallet_qty" attrs="{'column_invisible': [('parent.order_type_foreign', '=',  False)]}"/>
-                <field name="pallet_type" attrs="{'column_invisible': [('parent.order_type_foreign', '=',  False)]}"/>
+                <field name="pallet_type" attrs="{'column_invisible': [('parent.order_type_foreign', '=',  False)]}" options="{'no_open':True,'no_create':1,'no_create_edit':1}"/>
                 <field name="net_weight" attrs="{'column_invisible': [('parent.order_type_foreign', '=',  False)]}"/>
                 <field name="gross_weight" attrs="{'column_invisible': [('parent.order_type_foreign', '=',  False)]}"/>
             </xpath>

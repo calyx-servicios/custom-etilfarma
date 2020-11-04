@@ -51,11 +51,11 @@ class StockMove(models.Model):
         related="sale_line_id.product_attr_value_id.name"
     )    
     stock_move_line_seq = fields.Integer(
-        string="Line Sequence",
+        string="Item",
         related="sale_line_id.order_line_seq"
     )
     product_nmc_code = fields.Char(
-        string="NMC",
+        string="HS Code",
         related="product_id.product_nmc"
     )
     origin = fields.Char(
