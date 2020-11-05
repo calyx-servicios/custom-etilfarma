@@ -12,7 +12,7 @@ class PurchaseOrder(models.Model):
     # Also make it required to avoid SQL constraint to show.
     # No default was set to avoid confusions to user.
     date_planned = fields.Datetime(
-        string="Scheduled Date", store=True, index=True, required=True, compute=""
+        string="Scheduled Date", store=True, index=True, required=False, compute=""
     )
 
     @api.multi
@@ -32,6 +32,7 @@ class PurchaseOrderLine(models.Model):
     def _onchange_quantity(self):
         """Inherit native method to force the PO line date_planned field to be
         the order's one."""
+
         for line in self:
             self.date_planned = self.order_id.date_planned
         return super(PurchaseOrderLine, self)._onchange_quantity()
