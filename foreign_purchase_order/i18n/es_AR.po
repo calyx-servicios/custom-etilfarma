@@ -910,6 +910,11 @@ msgid "Payment Conditions"
 msgstr "Condición de Pago"
 
 #. module: foreign_purchase_order
+#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
+msgid "Foreign Payment Conditions"
+msgstr "Terms of Payments"
+
+#. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_term_payments
 #: model:ir.ui.menu,name:foreign_purchase_order.menu_payment_terms_in_purchase
 msgid "Terms of Payments"
