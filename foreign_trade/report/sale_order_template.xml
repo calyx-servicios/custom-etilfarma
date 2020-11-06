@@ -12,7 +12,7 @@
         <xpath expr="//div[@class='oe_structure']" position="before">
             <h1 style="text-align: center">
                 <t t-if="not (env.context.get('proforma', False) or is_pro_forma)">
-                    <span t-if="doc.state not in ['draft','sent']">Confirmed Order</span>
+                    <span t-if="doc.state not in ['draft','sent']">Confirmed Quotation</span>
                     <span t-if="doc.state in ['draft','sent']">Quotation</span>
                 </t>
                 <t t-if="env.context.get('proforma', False) or is_pro_forma">
