@@ -103,7 +103,7 @@
                             <th class="text-left">Product</th>
                             <th class="text-left">Packaging</th>
                             <t t-if="doc.state not in ['draft','sent'] and not is_pro_forma ">
-                                <th class="text-left">Lot Name</th>
+                                <th class="text-left">Lot</th>
                             </t>    
                             <th class="text-left">Quantity</th>
                             <th class="text-left">HS Code</th>
