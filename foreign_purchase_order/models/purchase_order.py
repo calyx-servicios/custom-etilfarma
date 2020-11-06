@@ -158,6 +158,22 @@ class PurchaseOrder(models.Model):
             match = re.match("^[0-9]+([,][0-9]+)?$", rec.intervention_VPE_amount)
             if match == None:
                 raise UserError("VPE Amount invalid format")
+            
+    @api.constrains('payment_TTE_amount')
+    def _check_format_payment_TTE_amount(self):
+        for rec in self:
+            if rec.payment_TTE_amount:
+                match = re.match("^[0-9]+([,][0-9]+)?$", rec.payment_TTE_amount)
+                if match == None:
+                    raise UserError("TEE Amount invalid format")
+    
+    @api.constrains('payment_TC')
+    def _check_format_payment_TC(self):
+        for rec in self:
+            if rec.payment_TC:
+                match = re.match("^[0-9]+([,][0-9]+)?$", rec.payment_TC)
+                if match == None:
+                    raise UserError("TC Amount invalid format")
 
     @api.onchange('term_payments')
     def _onchange_update_payment_term_id(self):
