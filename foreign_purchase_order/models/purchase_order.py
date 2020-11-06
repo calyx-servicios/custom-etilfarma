@@ -155,9 +155,10 @@ class PurchaseOrder(models.Model):
     @api.constrains('intervention_VPE_amount')
     def _check_format_intervention_VPE_amount(self):
         for rec in self:
-            match = re.match("^[0-9]+([,][0-9]+)?$", rec.intervention_VPE_amount)
-            if match == None:
-                raise UserError("VPE Amount invalid format")
+            if rec.intervention_VPE_amount:
+                match = re.match("^[0-9]+([,][0-9]+)?$", rec.intervention_VPE_amount)
+                if match == None:
+                    raise UserError("VPE Amount invalid format")
             
     @api.constrains('payment_TTE_amount')
     def _check_format_payment_TTE_amount(self):
