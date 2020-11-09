@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sale_payment_instructions_tree" model="ir.ui.view">
+        <field name="model">sale.payment.instructions</field>
+        <field name="arch" type="xml">
+            <tree string="Payment Instructions" decoration-muted="active == False">
+                <field name="sequence" widget="handle" />
+                <field name="active" invisible="True" />
+                <field name="payment_instructions" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_sale_payment_instructions_form" model="ir.ui.view">
+        <field name="model">sale.payment.instructions</field>
+        <field name="arch" type="xml">
+            <form string="Type">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="payment_instructions" required="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_sale_payment_instructions_search" model="ir.ui.view">
+        <field name="model">sale.payment.instructions</field>
+        <field name="arch" type="xml">
+            <search string="Payment Instructions">
+                <field name="payment_instructions" />
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_sale_payment_instructions_view">
+        <field name="name">Sale Payment Instructions</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.payment.instructions</field>
+        <field name="view_mode">form,tree</field>
+        <field name="view_id" ref="view_sale_payment_instructions_tree"/>
+        <field name="search_view_id" ref="view_sale_payment_instructions_search"/>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Click to set a new sale Payment Instructions.</p>
+        </field>
+    </record>
+
+    <menuitem id="menu_sale_payment_instructions" parent="foreign_trade.menu_sale_order_in_config_sale" sequence="25" action="action_sale_payment_instructions_view"/>
+</odoo>

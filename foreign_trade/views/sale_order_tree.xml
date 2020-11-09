@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_tree_international_trade" model="ir.ui.view">
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="proforma_number"/>
+                <field name="quotation_number"/>
+                <field name="invoice_number"/>
+                <field name="confirmation_number"/>
+                <field name="certificate_of_analysis_shipment_date"/>
+                <field name="payment_tre"/>
+                <field name="booking_conveyance"/>
+                <field name="booking_ETD_date"/>
+                <field name="transport_doc_documents"/>
+                <field name="shipping_license_number"/>
+                <field name="origin_reference"/>
+                <field name="expenses_dispatcher_fees"/>
+                <field name="expenses_expenses"/>
+                <field name="after_shipment_customs_compliance_date"/>
+                <field name="after_shipment_invoice_closing_date_AFIP"/>
+                <field name="after_shipment_boarding_permit_date"/>
+            </xpath>
+        </field>        
+    </record>
+
+    <record id="view_sale_order_tree_filter" model="ir.ui.view">
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.sale_order_view_search_inherit_sale"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='my_sale_orders_filter']" position="before">
+                <filter name="incomplete_traking_order_data" string="Incomplete Traking Order" 
+                        domain="[('incomplete_traking_order_data', '=', True)]"/>
+                <filter name="incomplete_proform" string="Incomplete Proform" 
+                        domain="[('incomplete_proform', '=', True)]"/>
+                <filter name="incomplete_invoice" string="Incomplete Invoice" 
+                        domain="[('incomplete_invoice', '=', True)]"/>
+                <filter name="incomplete_payment" string="Incomplete Payment" 
+                        domain="[('incomplete_payment', '=', True)]"/>
+                <filter name="incomplete_dispatcher" string="Incomplete Dispatcher" 
+                        domain="[('incomplete_dispatcher', '=', True)]"/>
+                <filter name="incomplete_license" string="Incomplete License" 
+                        domain="[('incomplete_license', '=', True)]"/>
+                <filter name="incomplete_booking" string="Incomplete Booking" 
+                        domain="[('incomplete_booking', '=', True)]"/>
+                <filter name="incomplete_documents" string="Incomplete Documents" 
+                        domain="[('incomplete_documents', '=', True)]"/>
+                <filter name="incomplete_certificate_of_analysis" string="Incomplete Certificate of Analysis" 
+                        domain="[('incomplete_certificate_of_analysis', '=', True)]"/>
+                <filter name="incomplete_origin" string="Incomplete Origin" 
+                        domain="[('incomplete_origin', '=', True)]"/>
+                <filter name="incomplete_expenses" string="Incomplete Expenses" 
+                        domain="[('incomplete_expenses', '=', True)]"/>
+                <filter name="incomplete_quotation" string="Incomplete Quotation" 
+                        domain="[('incomplete_quotation', '=', True)]"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>        

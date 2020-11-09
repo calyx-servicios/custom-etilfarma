@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo> 
+    <report 
+        id="action_foreign_sale_report"
+        string="Foreign Sale Report"
+        model="sale.order" 
+        report_type="qweb-pdf"
+        menu="False"
+        file="foreign_trade.so_foreign_r" 
+        name="foreign_trade.so_foreign_r"
+    />
+
+    <report 
+        id="action_foreign_sale_proforma_report"
+        string="Foreign Sale Report"
+        model="sale.order" 
+        report_type="qweb-pdf"
+        menu="False"
+        file="foreign_trade.so_proforma_r" 
+        name="foreign_trade.so_proforma_r"
+    />
+</odoo>

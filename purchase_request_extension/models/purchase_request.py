@@ -9,7 +9,7 @@ class PurchaseRequest(models.Model):
     _inherit = "purchase.request"
 
     # Create date planned field to pass as unique value and not by line.
-    date_planned = fields.Datetime(string='Request Date', required=True)
+    date_planned = fields.Datetime(string='Request Date', required=False)
     # Create all fields related to foreign_purchase_line.
     product_tmpl_id = fields.Many2one(
         comodel_name="product.template",
@@ -32,7 +32,7 @@ class PurchaseRequest(models.Model):
     url = fields.Char(string="URL", compute="_compute_url")
 
     @api.depends('line_ids')
-    def _compute_purchase_order_name(self):
+    def _compute_purchase_order_name(self):  
         for record in self:
             lines = record.line_ids
             record.purchase_order_name = ''
