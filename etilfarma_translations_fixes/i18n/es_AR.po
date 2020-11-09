@@ -3,6 +3,7 @@
 # 	* purchase_location_by_line
 # 	* purchase_request
 # 	* purchase_request_extension
+#   * purchase
 #
 msgid ""
 msgstr ""
@@ -18,6 +19,11 @@ msgstr ""
 "Plural-Forms: \n"
 "Language: es_AR\n"
 "X-Generator: Poedit 2.0.6\n"
+
+#. module: purchase
+#: model:ir.model.fields,field_description:purchase.field_purchase_order_payment_term_id
+msgid "Payment Terms"
+msgstr "Condición de pago"
 
 #. module: purchase_location_by_line
 #: model:ir.model.fields,field_description:purchase_location_by_line.field_purchase_order_line_location_dest_id
@@ -717,7 +723,7 @@ msgstr "Requerimiento"
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line_date_start
 #: model:ir.model.fields,field_description:purchase_request_extension.field_purchase_request_date_planned
 msgid "Request Date"
-msgstr "Fecha de requerimiento"
+msgstr "Fecha de ingreso a planta"
 
 #. module: purchase_request
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_name

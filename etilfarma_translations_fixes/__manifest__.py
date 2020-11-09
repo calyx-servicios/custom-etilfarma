@@ -17,5 +17,6 @@
         "purchase_location_by_line",
         "purchase_request",
         "purchase_request_extension",
+        "purchase",
     ],
 }
