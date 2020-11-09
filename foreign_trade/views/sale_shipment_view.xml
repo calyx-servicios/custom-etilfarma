@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sale_shipment_tree" model="ir.ui.view">
+        <field name="model">sale.shipment</field>
+        <field name="arch" type="xml">
+            <tree string="Sale Shipment" decoration-muted="active == False">
+                <field name="sequence" widget="handle" />
+                <field name="active" invisible="True" />
+                <field name="shipment" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_sale_shipment_form" model="ir.ui.view">
+        <field name="model">sale.shipment</field>
+        <field name="arch" type="xml">
+            <form string="Type">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="shipment" required="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_sale_shipment_search" model="ir.ui.view">
+        <field name="model">sale.shipment</field>
+        <field name="arch" type="xml">
+            <search string="Sale Shipment">
+                <field name="shipment" />
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_sale_shipment_view">
+        <field name="name">Sale Shipment</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.shipment</field>
+        <field name="view_mode">form,tree</field>
+        <field name="view_id" ref="view_sale_shipment_tree"/>
+        <field name="search_view_id" ref="view_sale_shipment_search"/>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Click to set a new sale Shipment.</p>
+        </field>
+    </record>
+
+    <menuitem id="menu_sale_shipment" parent="foreign_trade.menu_sale_order_foreign_in_config_sale" sequence="30" action="action_sale_shipment_view"/>
+
+</odoo>

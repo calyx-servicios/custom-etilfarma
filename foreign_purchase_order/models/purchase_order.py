@@ -1,9 +1,10 @@
 # Copyright 2015 Camptocamp SA
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
+
+import re
 from datetime import datetime
-
 from odoo import fields, models, api, _
-
+from odoo.exceptions import UserError
 
 def _format_date(date_utc_format):
     """Change the UTC format used by Odoo for dd/mm/yyyy
@@ -151,6 +152,14 @@ class PurchaseOrder(models.Model):
     expenses_expenses = fields.Char(string="Expenses")
     expenses_not_required = fields.Boolean(string="Expenses Not Required")
 
+    @api.constrains('intervention_VPE_amount')
+    def _check_format_intervention_VPE_amount(self):
+        for rec in self:
+            if rec.intervention_VPE_amount:
+                match = re.match("^[0-9]+([,][0-9]+)?$", rec.intervention_VPE_amount)
+                if match == None:
+                    raise UserError("VPE Amount invalid format")
+            
     @api.constrains('payment_TTE_amount')
     def _check_format_payment_TTE_amount(self):
         for rec in self:
