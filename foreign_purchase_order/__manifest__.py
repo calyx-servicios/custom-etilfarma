@@ -18,7 +18,7 @@
     "installable": True,
     "external_dependencies": {"python": [], "bin": []},
     # any module necessary for this one to work correctly
-    "depends": ["base", "purchase", "purchase_order_types", "stock", "purchase_exception"],
+    "depends": ["base", "purchase", "purchase_order_types", "stock"],
     # always loaded
     "data": [
         "security/ir.model.access.csv",
