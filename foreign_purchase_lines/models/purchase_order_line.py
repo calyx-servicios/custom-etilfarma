@@ -89,6 +89,8 @@ class PurchaseOrderLine(models.Model):
     product_nmc = fields.Char(string="HS Code", related="product_id.product_nmc")
     country_id = fields.Char(string="Origin", required=True, related="product_tmpl_id.country_id.name")
     observations = fields.Char(string="Observation")
+    intervention_types = fields.Many2many(
+        comodel_name="purchase.order.interventions", string="Intervention Types", related="product_tmpl_id.intervention_types")    
 
     product_qty = fields.Float(digits=(12,2))
     qty_received = fields.Float(digits=(12,2))
