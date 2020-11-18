@@ -178,7 +178,7 @@
                         <td style="border: none;padding-bottom: 2px;">Marks: <span t-esc="doc.marks"/></td>
                     </tr>
                     <tr>
-                        <td style="border: none;padding-bottom: 2px;">Packaging List: <span t-esc="doc.packing_list_id.packing_list"/></td>
+                        <td style="border: none;padding-bottom: 2px;">Packing list: <span t-esc="doc.packing_list_id.packing_list"/></td>
                     </tr>
                     <tr>
                         <td style="border: none;padding-bottom: 2px;">Import License: <span t-esc="doc.import_license_id.import_license"/></td>
@@ -187,7 +187,9 @@
                         <td style="border: none;padding-bottom: 2px;">Certificate of Analysis: <span t-esc="doc.certificate_of_analysis_id.certificate_of_analysis"/></td>
                     </tr>
                     <tr>
-                        <td style="border: none;padding-bottom: 2px;">P/O: <span t-esc="doc.p_o"/></td>
+                        <t t-if="doc.p_o">
+                            <td style="border: none;padding-bottom: 2px;">P/O: <span t-esc="doc.p_o"/></td>
+                        </t>
                     </tr>
                     <tr>
                         <td colspan="2" style="border: none;padding-bottom: 2px;">Special Indications: <br/>
