@@ -76,6 +76,7 @@
                             <field name="payment_concept" string="Concept" attrs="{'readonly': [('payment_not_required','=',True)]}" force_save="1"/>
                             <field name="payment_TTE_amount" string="Add Payment Value Of The TTE 'Amount'" attrs="{'readonly': [('payment_not_required','=',True)]}" force_save="1"/>
                             <field name="payment_TC" string="TC" attrs="{'readonly': [('payment_not_required','=',True)]}" force_save="1"/>
+                            <field name="payment_currency" string="Payment Currency" attrs="{'readonly': [('payment_not_required','=',True)]}" widget="selection" force_save="1"/>
                         </group>
                         <group name="dispatcher" string="Dispatcher">
                             <field name="dispatcher_not_required" type="checkbox" string="Not Required"/>
@@ -109,6 +110,7 @@
                             <field name="documents_quality_certificate_approval_date" string="Quality Certificate Approval Date" attrs="{'readonly': [('documents_not_required','=',True)]}" force_save="1"/>
                             <field name="documents_shipping_document" string="Shipping Document" attrs="{'readonly': [('documents_not_required','=',True)]}" force_save="1"/>
                             <field name="documents_shipping_date" string="Shipping Date" attrs="{'readonly': [('documents_not_required','=',True)]}" force_save="1"/>
+                            <field name="documents_date_shipment_originals" string="Date of shipment of originals to dispatcher" attrs="{'readonly': [('documents_not_required','=',True)]}" force_save="1"/>                        
                         </group>
                         <group name="import_delivery" string="Import Delivery">
                             <field name="delivery_not_required" type="checkbox" string="Not Required"/>
@@ -129,6 +131,10 @@
                 </page>
             </xpath>
 
+            <xpath expr="//field[@name='order_line']/tree//field[@name='taxes_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
             <xpath expr="//sheet/div[@class='oe_title']" position="inside">
 
                 <!-- <p class="text-warning" attrs="{'invisible': ['|','|',['order_type_foreign','=',False], ['state','not in',('purchase', 'no_invoice')],'&amp;','&amp;',['import_license_reference','!=',False],['import_license_approval_date','!=',False],['import_license_official_date','!=',False]]}">
@@ -145,6 +151,17 @@
         </field>
     </record>
 
+    <record id="view_order_tree" model="ir.ui.view">
+        <field name="name">purchase_exception.view_order_tree</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_tree"/>
+        <field name="arch" type="xml">
+            <field name="main_exception_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+
     <record id="purchase_order_foreign_fields_tree" model="ir.ui.view">
         <field name="model">purchase.order</field>
         <field name="inherit_id" ref="purchase.purchase_order_tree"/>
@@ -152,13 +169,27 @@
             <field name="partner_id" position="after">
                 <field name="description" />
             </field>
+            <field name="state" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="invoice_status" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="amount_untaxed" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="date_order" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+
             <field name="date_planned" position="after">
                 <field name="incoterm_id" />
                 <field name="confirmation_status" />
                 <field name="proforma_status" />
             </field>
             <field name="amount_total" position="after">
-                <field name="payment_TTE_status" />
+                <field name="payment_TTE_status" invisible="1"/>
+                <field name="payment_date" string="Payment"/>
                 <field name="term_payments" />
                 <field name="shipment_id" />
                 <field name="booking_conveyance_status" />
