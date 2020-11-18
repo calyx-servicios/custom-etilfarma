@@ -279,6 +279,18 @@ class PurchaseOrder(models.Model):
     def _onchange_expenses_not_required(self):
         self.expenses_dispatcher_fees = ""
         self.expenses_expenses = ""
+    
+    @api.onchange("order_line")
+    def _onchange_order_line(self):
+        intervention_reference = []
+        not_duplicated_intervention = []
+        for line in self.order_line:
+            intervention_reference.append(line.intervention_types)
+        for intervention in intervention_reference:
+            if intervention not in not_duplicated_intervention:
+                not_duplicated_intervention.append(intervention)
+        self.intervention_reference = " ".join(not_duplicated_intervention) 
+            
 
     @api.depends('invoice_ids')
     def _compute_commercial_invoice_number(self):
