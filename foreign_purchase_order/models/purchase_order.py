@@ -102,6 +102,7 @@ class PurchaseOrder(models.Model):
     payment_concept = fields.Text(string="Payment Concept")
     payment_TTE_amount = fields.Char(string="Payment TTE Amount")
     payment_TC = fields.Char(string="Payment TC")
+    payment_currency = fields.Selection([ ("ARS", "ARS"),("EUR", "EUR"),("USD", "USD")], default="USD", string="Payment Currency")
     payment_not_required = fields.Boolean(string="Payment Not Required")
 
     dispatcher_reference = fields.Char(string="Dispatcher Reference")
@@ -136,6 +137,7 @@ class PurchaseOrder(models.Model):
     documents_quality_certificate_approval_date = fields.Date(string="Documents Certificate of Analysis Approval Date")
     documents_shipping_document = fields.Char(string="Documents Shipping Document")
     documents_shipping_date = fields.Date(string="Documents Shipping Date")
+    documents_date_shipment_originals = fields.Date(string=("Date of shipment of originals to dispatcher"))
     documents_not_required = fields.Boolean(string="Documents Not Required")
 
     delivery_number = fields.Char(string="Import Delivery Number")
@@ -175,6 +177,22 @@ class PurchaseOrder(models.Model):
                 match = re.match("^[0-9]+([,][0-9]+)?$", rec.payment_TC)
                 if match == None:
                     raise UserError("TC Amount invalid format")
+    
+    @api.constrains('expenses_dispatcher_fees')
+    def _check_format_expenses_dispatcher_fees(self):
+        for rec in self:
+            if rec.expenses_dispatcher_fees:
+                match = re.match("^[0-9]+([,][0-9]+)?$", rec.expenses_dispatcher_fees)
+                if match == None:
+                    raise UserError("Dispatcher fees invalid format")
+
+    @api.constrains('expenses_expenses')
+    def _check_format_expenses_expenses(self):
+        for rec in self:
+            if rec.expenses_expenses:
+                match = re.match("^[0-9]+([,][0-9]+)?$", rec.expenses_expenses)
+                if match == None:
+                    raise UserError("Expenses invalid format")
 
     @api.onchange('term_payments')
     def _onchange_update_payment_term_id(self):
@@ -210,6 +228,7 @@ class PurchaseOrder(models.Model):
         self.payment_reference = ""
         self.payment_TC = ""
         self.payment_TTE_amount = ""
+        self.payment_currency = ""
 
     @api.onchange("dispatcher_not_required")
     def _onchange_dispatcher_not_required(self):
