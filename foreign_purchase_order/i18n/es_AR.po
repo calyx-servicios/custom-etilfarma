@@ -643,7 +643,7 @@ msgstr "Fecha recepción de originales"
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packaging_packaging
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Packaging"
-msgstr "Packaging"
+msgstr "Tipo de envío"
 
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_packing_list_id
@@ -782,7 +782,7 @@ msgstr "Orden de compra"
 #: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_packaging_search
 #: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_packaging_tree
 msgid "Purchase Packaging"
-msgstr "Tipo de Envío"
+msgstr "Tipo de envío"
 
 #. module: foreign_purchase_order
 #: model:ir.actions.act_window,name:foreign_purchase_order.action_purchase_packing_list_view
