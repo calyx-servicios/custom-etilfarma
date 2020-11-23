@@ -45,7 +45,7 @@
                             <field name="incoterm_id" string="Incoterm" options="{'no_open':True,'no_create': True,'no_create_edit':1}"/>
                             <field name="observations" string="Observations" style=' min-height: 100px; word-break: break-word' />
                             <field name="shipment_id" string="Shipment" options="{'no_open':True,'no_create': True,'no_create_edit':1}"/>
-                            <field name="certificate_of_analysis_id" string="Certificate of Analysis"/>
+                            <field name="certificate_of_analysis_id" string="Certificate of Analysis" options="{'no_open':True,'no_create': True,'no_create_edit':1}"/>
                         </group>
                         <group>
                             <field name="place_of_delivery_id" string="Place of Delivery" options="{'no_open':True,'no_create': True,'no_create_edit':1}"/>
@@ -159,13 +159,28 @@
                 <field name="proforma_not_required" string="Proforma Not Required"/>
             </field>
             <field name="partner_id" position="after">
-                <field name="order_type" required="True" force_save="1"/>
+                <field name="order_type" required="True" force_save="1" options="{'no_open':True,'no_create': True, 'no_create_edit':True}"/>
                 <p class="text-warning">
                     <strong>
                         <i class="fa fa-bell-o"/> Using the edit button at the right side of the field, we can assign a diferent numeration.
                     </strong>
                 </p>
             </field>
+            <field name="partner_id" position="attributes">
+                <attribute name="options">{'no_open':True,'no_create': True, 'no_create_edit':True}</attribute>
+            </field>
+            <field name="payment_term_id" position="attributes">
+                <attribute name="options">{'no_open':True,'no_create': True, 'no_create_edit':True}</attribute>
+            </field>
+            <xpath expr="//group[@name='sale_pay']/field[@name='fiscal_position_id']" position="attributes">
+                <attribute name="options">{'no_open':True,'no_create': True, 'no_create_edit':True}</attribute>
+            </xpath>
+            <xpath expr="//group[@name='sales_person']/field[@name='user_id']" position="attributes">
+                <attribute name="options">{'no_open':True,'no_create': True, 'no_create_edit':True}</attribute>
+            </xpath>
+            <xpath expr="//group[@name='sales_person']/field[@name='team_id']" position="attributes">
+                <attribute name="options">{'no_open':True,'no_create': True, 'no_create_edit':True}</attribute>
+            </xpath>
             <xpath expr="//group[@name='sales_person']/field[@name='client_order_ref']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>

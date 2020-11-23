@@ -11,7 +11,7 @@
     # Check https://github.com/odoo/odoo/blob/11.0/odoo/addons/base/module/module_data.xml
     # for the full list
     "category": "Purchase",
-    "version": "11.0.2.0.0",
+    "version": "11.0.2.0.1",
     # see https://odoo-community.org/page/development-status
     "development_status": "Production/Stable",
     "application": False,
@@ -23,6 +23,7 @@
     "data": [
         "security/ir.model.access.csv",
         "views/purchase_order_view.xml",
+        "views/stock_view.xml",
         "views/purchase_packaging_view.xml",
         "views/purchase_packing_list_view.xml",
         "views/purchase_delivery_chanel_view.xml",
