@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="purchase_order_tree_view" model="ir.actions.act_window">
+        <field name="name">Purchase Orders</field>
+        <field name="res_model">purchase.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain" eval="[('order_type','=', ref('purchase_order_types.po_type_regular')), ('purchase_order_accounting', '=', True)]"/>
+        <field name="context">{'purchase_order_accounting': True}</field>
+        <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a quotation that will be converted into a purchase order.
+            </p>
+            <p>
+                Use this menu to search within your purchase orders by
+                references, vendor, products, etc. For each purchase order,
+                you can track the related discussion with the vendor, control
+                the products received and control the vendor bills.
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+            action="purchase_order_tree_view"
+            id="menu_action_purchase_order_tree"
+            parent="account.menu_finance_payables_documents"
+            sequence="1"/>
+
+</odoo>
