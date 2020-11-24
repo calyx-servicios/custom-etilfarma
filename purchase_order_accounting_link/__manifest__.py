@@ -26,14 +26,13 @@
     },
 
     # any module necessary for this one to work correctly
-    'depends': ['account'],
+    'depends': ['account', 'purchase', 'purchase_order_types'],
 
     # always loaded
-    # 'data': [
-    #     'security/ir.model.access.csv',
-    #     'views/views.xml',
-    #     'views/templates.xml',
-    # ],
+    'data': [
+        'views/account_invoice_view.xml',
+        'views/purchase_order_view.xml'
+    ],
 
     # only loaded in demonstration mode
     # 'demo': [
