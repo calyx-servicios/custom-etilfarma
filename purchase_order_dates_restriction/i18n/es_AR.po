@@ -1,0 +1,29 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* purchase_order_dates_restriction
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-24 03:00+0000\n"
+"PO-Revision-Date: 2020-11-24 03:00+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: purchase_order_dates_restriction
+#: code:addons/purchase_order_dates_restriction/models/purchase_order.py:13
+#: code:addons/purchase_order_dates_restriction/models/purchase_order.py:17
+#, python-format
+msgid "%s must not be prior to the Creation Date"
+msgstr "%s no debe ser previo a la fecha de Creación de la Orden"
+
+#. module: purchase_order_dates_restriction
+#: model:ir.model,name:purchase_order_dates_restriction.model_purchase_order
+msgid "Purchase Order"
+msgstr "Orden de compra"
+
