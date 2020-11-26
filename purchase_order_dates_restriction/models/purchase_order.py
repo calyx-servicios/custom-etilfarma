@@ -32,6 +32,7 @@ class PurchaseOrder(models.Model):
         'documents_FC_date',
         'documents_quality_certificate_approval_date',
         'documents_shipping_date',
+        'documents_date_shipment_originals',
         'delivery_official_date',
         'original_documentation_original_receipt_date'
     )
@@ -50,6 +51,7 @@ class PurchaseOrder(models.Model):
                         'documents_FC_date',
                         'documents_quality_certificate_approval_date',
                         'documents_shipping_date',
+                        'documents_date_shipment_originals',
                         'delivery_official_date',
                         'original_documentation_original_receipt_date')
         for rec in self:
