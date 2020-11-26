@@ -149,6 +149,7 @@ class PurchaseOrder(models.Model):
 
     original_documentation_original_receipt_date = fields.Date(string="Original Documentation Original Receipt Date")
     original_documentation_not_required = fields.Boolean(string="Original Documentation Not Required")
+    original_documentation_reference = fields.Char(string="Original Documentation Reference")
 
     expenses_dispatcher_fees = fields.Char(string="Expenses dispatcher Fees")
     expenses_expenses = fields.Char(string="Expenses")
@@ -274,6 +275,7 @@ class PurchaseOrder(models.Model):
     @api.onchange("original_documentation_not_required")
     def _onchange_original_documentation_not_required(self):
         self.original_documentation_original_receipt_date = ""
+        self.original_documentation_reference = ""
 
     @api.onchange("expenses_not_required")
     def _onchange_expenses_not_required(self):
