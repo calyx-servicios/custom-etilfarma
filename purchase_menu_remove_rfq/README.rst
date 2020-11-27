@@ -23,7 +23,7 @@ Unified Menu Purchase Orders - Except IMA/OTC Orders
 
 .. !!! Description must be max 2-3 paragraphs, and is required.
 
-This module extends the functionality of Purchase to support Unified Purchase Orders Menu, except IMA/OCT Orders.
+This module extends the functionality of Purchase to support Unified Purchase Orders Menu, except IMA/OCT Orders. Also the Purchase Orders created from the Accounting App and the purchase_order_accounting_link module are filtered on Purchases/Comex menu.
 
 **Table of contents**
 
