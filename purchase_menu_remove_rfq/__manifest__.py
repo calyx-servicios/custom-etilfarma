@@ -28,7 +28,7 @@
     },
 
     # any module necessary for this one to work correctly
-    'depends': ['purchase', 'purchase_order_invoice_to'],
+    'depends': ['purchase', 'purchase_order_invoice_to','purchase_order_accounting_link'],
 
     # always loaded
     'data': [
