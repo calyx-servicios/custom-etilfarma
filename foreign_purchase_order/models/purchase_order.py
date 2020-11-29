@@ -128,6 +128,7 @@ class PurchaseOrder(models.Model):
     booking_transport_company = fields.Char(string="Booking Transport Company")
     booking_not_required = fields.Boolean(string="Booking Not Required")
     booking_ship_name = fields.Char(string="Booking Ship Name")
+    booking_extra_notes = fields.Text(string="Notes")
 
     documents_commercial_invoice_number = fields.Char(string="Documents Comercial Invoice Number",
                                                       compute='_compute_commercial_invoice_number',
