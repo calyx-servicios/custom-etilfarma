@@ -119,6 +119,7 @@
                             <field name="booking_ETD_date" string="ETD Date" attrs="{'readonly': [('booking_not_required','=',True)]}" force_save="1"/>
                             <field name="booking_ETA_date" string="ETA Date" attrs="{'readonly': [('booking_not_required','=',True)]}" force_save="1"/>
                             <field name="booking_transport_company" string="Transport Company" attrs="{'readonly': [('booking_not_required','=',True)]}" force_save="1"/>
+                            <field name="booking_ship_name" string="Booking Ship Name" attrs="{'readonly': [('booking_not_required','=',True)]}" force_save="1"/>
                         </group>
                         <group name="documents" string="Documents">
                             <field name="documents_not_required" type="checkbox" string="Not Required"/>
