@@ -10,7 +10,7 @@ License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl-3.0) -->
         <field name="arch" type="xml">
             <!-- Replace simple product filling with the foreign_purchase_line way. -->
             <field name="date_start" position="after">
-                <field name="date_planned"/>
+                <field name="date_planned" attrs="{'readonly':['|', ('state', '!=', 'draft'), ('origin', '!=', False)]}" force_save="1" widget="date"/>
             </field>
             <xpath expr="//field[@name='line_ids']/tree//field[@name='product_id']" position="replace">
                 <field name="product_id" force_save="1" invisible="1"/>

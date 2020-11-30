@@ -18,7 +18,6 @@
     "external_dependencies": {},
     "data": [
         "view/purchase_order_view.xml",
-        "view/purchase_request_view.xml",
         "view/sale_order_view.xml",
         "view/stock_inventory_view.xml",
         "view/stock_move_line_view.xml",
