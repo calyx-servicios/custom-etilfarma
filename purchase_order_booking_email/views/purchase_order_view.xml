@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="purchase_order_form_foreign_fields" model="ir.ui.view">
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <group name="booking" position="inside">
+                <button string="Send Booking Information"
+                        name="action_booking_send"
+                        type="object"
+                        attrs="{'invisible': [('booking_not_required','=',True)]}"
+                        class="oe_highlight"
+                        groups="base.group_user"/>
+            </group>
+        </field>
+    </record>
+</odoo>

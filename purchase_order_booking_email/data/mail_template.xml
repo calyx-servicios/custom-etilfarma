@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--Email template -->
+    <record id="email_template_purchase_order_booking" model="mail.template">
+        <field name="name">Purchase Order Booking Email</field>
+        <field name="email_from">
+            ${(object.company_id.partner_id.email)|safe}
+        </field>
+        <field name="subject">${object.company_id.name} Purchase Order Booking (Ref ${object.name or 'n/a' })
+        </field>
+        <field name="partner_to">${object.partner_id.id}</field>
+        <field name="model_id" ref="purchase.model_purchase_order"/>
+        <field name="auto_delete" eval="True"/>
+        <field name="lang">${object.partner_id.lang}</field>
+        <field name="body_html">
+            <![CDATA[
+                <p>Greetings
+                % if object.partner_id.is_company and object.partner_id.child_ids:
+                    ${object.partner_id.child_ids[0].name}
+                % else :
+                    ${object.partner_id.name}
+                % endif
+                ,</p>
+                <p>
+                <p style="margin-bottom: 20px;">
+                Here is the Booking information of the ${object.state in ('draft', 'sent') and 'request for quotation' or 'purchase order confirmation'} <strong>${object.name}</strong>
+                </p>
+                % if object.booking_conveyance_id:
+                    <p>
+                    Conveyance: <strong>${object.booking_conveyance_id.display_name}</strong>
+                    </p>
+                % endif
+                % if object.booking_origin:
+                    <p>
+                    Origin: <strong>${object.booking_origin}</strong>
+                    </p>
+                % endif
+                % if object.booking_ETD_date:
+                    <p>
+                    ETD Date: <strong>${object.booking_ETD_date}</strong>
+                    </p>
+                % endif
+                % if object.booking_ETA_date:
+                    <p>
+                    ETA Date: <strong>${object.booking_ETA_date}</strong>
+                    </p>
+                % endif
+                % if object.booking_transport_company:
+                    <p>
+                    Transport Company: <strong>${object.booking_transport_company}</strong>
+                    </p>
+                % endif
+                % if object.booking_ship_name:
+                    <p>
+                    Ship Name: <strong>${object.booking_ship_name}</strong>
+                    </p>
+                % endif
+                % if object.booking_extra_notes:
+                    <p>
+                    Intern Notes: ${object.booking_extra_notes}
+                    </p>
+                % endif
+                </p>
+
+                <p style="margin-top: 20px;">Do not hesitate to contact us if you have any further question.</p>
+                <p>Best regards,</p>
+                <p style="color:#888888;">
+                % if object.sudo().create_uid and object.sudo().create_uid.signature:
+                    ${object.sudo().create_uid.signature | safe}
+                % endif
+                </p>
+                ]]>
+        </field>
+    </record>
+</odoo>
