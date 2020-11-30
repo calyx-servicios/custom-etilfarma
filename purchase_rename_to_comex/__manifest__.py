@@ -1,10 +1,8 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
-    'name': 'Unified Menu Purchase Orders - Except IMA/OTC Orders',
+    'name': 'Purchase Rename to Comex',
     'summary': """
-        The purpose of this module is to remove Request for Quotation Menu and show all 
-        Purchase Orders in a unique menu item.
-        IMA/OTC Orders maintain other menu item""",
+        This module changes the name of the main menu from Purchase to Comex""",
 
     'author': 'Calyx Servicios S.A.',
     'maintainers': ['FedericoGregori'],
@@ -28,13 +26,11 @@
     },
 
     # any module necessary for this one to work correctly
-    'depends': ['purchase', 'purchase_order_invoice_to','purchase_order_accounting_link'],
+    'depends': ['purchase'],
 
     # always loaded
     'data': [
         'views/purchase_order_view.xml',
-        #     'views/views.xml',
-        #     'views/templates.xml',
     ],
 
     # only loaded in demonstration mode

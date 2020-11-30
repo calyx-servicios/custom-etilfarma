@@ -1,10 +1,10 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
-    'name': 'Unified Menu Purchase Orders - Except IMA/OTC Orders',
+    'name': 'Dates Restrictions for Purchase Orders',
     'summary': """
-        The purpose of this module is to remove Request for Quotation Menu and show all 
-        Purchase Orders in a unique menu item.
-        IMA/OTC Orders maintain other menu item""",
+        This module adds the functionality to raise an Error
+        anytime the user input a date that is prior to the
+        creation date of the record""",
 
     'author': 'Calyx Servicios S.A.',
     'maintainers': ['FedericoGregori'],
@@ -28,14 +28,14 @@
     },
 
     # any module necessary for this one to work correctly
-    'depends': ['purchase', 'purchase_order_invoice_to','purchase_order_accounting_link'],
+    'depends': ['purchase'],
 
     # always loaded
-    'data': [
-        'views/purchase_order_view.xml',
-        #     'views/views.xml',
-        #     'views/templates.xml',
-    ],
+    # 'data': [
+    #     'security/ir.model.access.csv',
+    #     'views/views.xml',
+    #     'views/templates.xml',
+    # ],
 
     # only loaded in demonstration mode
     # 'demo': [

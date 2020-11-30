@@ -1,6 +1,6 @@
-====================================================
-Unified Menu Purchase Orders - Except IMA/OTC Orders
-====================================================
+================================
+Purchase Order Dates Restriction
+================================
 
 .. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
    !! This file is intended to be in every module    !!
@@ -23,12 +23,26 @@ Unified Menu Purchase Orders - Except IMA/OTC Orders
 
 .. !!! Description must be max 2-3 paragraphs, and is required.
 
-This module extends the functionality of Purchase to support Unified Purchase Orders Menu, except IMA/OCT Orders. Also the Purchase Orders created from the Accounting App and the purchase_order_accounting_link module are filtered on Purchases/Comex menu.
-
+This module extends the functionality of Purchase Order to support restrictions of dates before the creation of the order.
 **Table of contents**
 
 .. contents::
    :local:
+
+Usage
+=====
+
+The warning should pop up when the input date is before the creation of the order or current day.
+
+Known issues / Roadmap
+======================
+
+* Bugs or Roadmap
+
+Bug Tracker
+===========
+
+* Help Contact
 
 Credits
 =======
@@ -42,7 +56,9 @@ Contributors
 ~~~~~~~~~~~~
 
 * `Calyx Servicios S.A. <http://odoo.calyx-cloud.com.ar/>`_
-
+  
+  * Lucas Soto
+  * Jhone Mendez
   * Federico Gregori
 
 Maintainers
@@ -57,4 +73,4 @@ This module is maintained by the Calyx Servicios S.A.
 CALYX SERVICIOS S.A. It is part of the PGK Consultores economic group, member of an important global network, a world organization positioned among the 20 largest consultant-studios in the world.
 The PGK Consultores group is one of the 20 largest consultant-studios in Argentina with nearly 200 professionals.
 
-This module is part of the `Custom-Etilfarma <https://gitlab.com/calyxservicios-group/odoo/custom-etilfarma>`_ project on Gitlab.
+This module is part of the `Odoo-Calyx <https://gitlab.com/calyxservicios-group/odoo/odoo-calyx>`_ project on Gitlab.
