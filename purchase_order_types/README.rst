@@ -25,6 +25,8 @@ Purchase Order Types
 
 This module extends the functionality of Purchase to support Purchase Order Type and to allow you to apply different functionalities.
 
+* The term of payment Advanced is added.
+
 **Table of contents**
 
 .. contents::
