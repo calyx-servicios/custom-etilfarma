@@ -29,6 +29,8 @@ class PurchaseOrder(models.Model):
 
     purchase_sample = fields.Boolean(string="Sample?", default=False)
 
+    delivery_date_planned = fields.Date(string="Delivery Date Planned")
+
     customer_purchase_order = fields.Char(string="Customer Purchase Order")
 
     place_of_delivery_id = fields.Many2one(
