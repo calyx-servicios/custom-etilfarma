@@ -101,7 +101,10 @@
                         </group>
                         <group name="dispatcher" string="Dispatcher">
                             <field name="dispatcher_not_required" type="checkbox" string="Not Required"/>
-                            <field name="dispatcher_reference" string="Reference" attrs="{'readonly': [('dispatcher_not_required','=',True)]}" force_save="1"/>
+                            <field name="dispatcher_id" string="Dispatcher" attrs="{'readonly': [('dispatcher_not_required','=',True)]}" options="{'no_open':True,'no_create': True,'no_create_edit':1}" force_save="1"/>
+                            <field name="dispatcher_address" string="Address" attrs="{'readonly': [('intervention_not_required','=',True)]}" force_save="1"/>
+                            <field name="dispatcher_email" string="Email" attrs="{'readonly': [('intervention_not_required','=',True)]}" force_save="1"/>
+                            <field name="dispatcher_phone_number" string="Phone Number" attrs="{'readonly': [('intervention_not_required','=',True)]}" force_save="1"/>
                         </group>
                         <group name="interventions" string="Interventions">
                             <field name="intervention_not_required" type="checkbox" string="Not Required"/>
@@ -242,7 +245,7 @@
                         '&amp;',('confirmation_not_required','=',False),'|',('confirmation_number','=',False), ('confirmation_date','=',False),
                         '&amp;',('proforma_not_required','=',False), '|',('proforma_number','=',False), ('proforma_date','=',False),
                         '&amp;',('payment_not_required','=',False), '|', '|', '|', '|', '|', '|', '|',('payment_bank','=',False), ('payment_account','=',False), ('payment_application_number','=',False), ('payment_date','=',False), ('payment_reference','=',False), ('payment_concept','=',False), ('payment_TTE_amount','=',False), ('payment_TC','=',False),
-                        '&amp;',('dispatcher_not_required','=',False), ('dispatcher_reference','=',False),
+                        '&amp;',('dispatcher_not_required','=',False), ('dispatcher_id','=',False),
                         '&amp;',('intervention_not_required','=',False), '|', '|', '|',('intervention_reference','=',False), ('intervention_VPE_amount','=',False), ('intervention_application_date','=',False), ('intervention_approval_date','=',False),
                         '&amp;',('import_license_not_required','=',False), '|', '|',('import_license_reference','=',False), ('import_license_approval_date','=',False), ('import_license_official_date','=',False),
                         '&amp;',('booking_not_required','=',False), '|', '|', '|', '|',('booking_conveyance_id','=',False), ('booking_origin','=',False), ('booking_ETD_date','=',False), ('booking_ETA_date','=',False), ('booking_transport_company','=',False),
@@ -257,7 +260,7 @@
                 <filter name="incomplete_payment_data" string="Incomplete payment" domain="['&amp;', '&amp;', '&amp;', ('order_type_foreign','=',True), 
                         ('state','in',['purchase', 'no_invoice']),('payment_not_required','=',False), '|', '|', '|', '|', '|', '|', '|',('payment_bank','=',False), ('payment_account','=',False), ('payment_application_number','=',False), ('payment_date','=',False), ('payment_reference','=',False), ('payment_concept','=',False), ('payment_TTE_amount','=',False), ('payment_TC','=',False)]"/> 
                 <filter name="incomplete_dispatcher_data" string="Incomplete dispatcher" domain="['&amp;', '&amp;', '&amp;', ('order_type_foreign','=',True), 
-                        ('state','in',['purchase', 'no_invoice']),('dispatcher_not_required','=',False), ('dispatcher_reference','=',False)]"/>        
+                        ('state','in',['purchase', 'no_invoice']),('dispatcher_not_required','=',False), ('dispatcher_id','=',False)]"/>        
                 <filter name="incomplete_interventions_data" string="Incomplete interventions" domain="['&amp;', '&amp;', '&amp;', ('order_type_foreign','=',True), 
                         ('state','in',['purchase', 'no_invoice']),('intervention_not_required','=',False), '|', '|', '|',('intervention_reference','=',False), ('intervention_VPE_amount','=',False), ('intervention_application_date','=',False), ('intervention_approval_date','=',False)]"/> 
                 <filter name="incomplete_import_license_data" string="Incomplete Import License Id" domain="['&amp;', '&amp;', '&amp;', ('order_type_foreign','=',True), 

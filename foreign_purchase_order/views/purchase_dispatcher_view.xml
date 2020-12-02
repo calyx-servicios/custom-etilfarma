@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_purchase_dispatcher_tree" model="ir.ui.view">
+        <field name="model">purchase.dispatcher</field>
+        <field name="arch" type="xml">
+            <tree string="Purchase Dispatcher" decoration-muted="active == False">
+                <field name="sequence" widget="handle" />
+                <field name="active" invisible="True" />
+                <field name="name"/>
+                <field name="address"/>
+                <field name="email"/>
+                <field name="phone_number"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_purchase_dispatcher_form" model="ir.ui.view">
+        <field name="model">purchase.dispatcher</field>
+        <field name="arch" type="xml">
+            <form string="Type">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" requiered="1"/>
+                            <field name="address"/>
+                            <field name="email"/>
+                            <field name="phone_number"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_purchase_dispatcher_search" model="ir.ui.view">
+        <field name="model">purchase.dispatcher</field>
+        <field name="arch" type="xml">
+            <search string="Purchase Dispatcher">
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_purchase_dispatcher_view">
+        <field name="name">Purchase Dispatcher</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">purchase.dispatcher</field>
+        <field name="view_mode">form,tree</field>
+        <field name="view_id" ref="view_purchase_dispatcher_tree"/>
+        <field name="search_view_id" ref="view_purchase_dispatcher_search"/>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Click to set a new purchase Dispatcher.</p>
+        </field>
+    </record>
+
+    <menuitem id="menu_purchase_dispatcher" parent="foreign_purchase_order.menu_purchase_order_foreign_in_config_purchase" sequence="20" action="action_purchase_dispatcher_view"/>
+
+</odoo>

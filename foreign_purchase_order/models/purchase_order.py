@@ -107,7 +107,12 @@ class PurchaseOrder(models.Model):
     payment_currency = fields.Selection([ ("ARS", "ARS"),("EUR", "EUR"),("USD", "USD")], default="USD", string="Payment Currency")
     payment_not_required = fields.Boolean(string="Payment Not Required")
 
-    dispatcher_reference = fields.Char(string="Dispatcher Reference")
+    dispatcher_id = fields.Many2one(
+        comodel_name="purchase.dispatcher", string="Dispatcher",
+    )
+    dispatcher_address = fields.Char(string="Address", related="dispatcher_id.address")
+    dispatcher_email = fields.Char(string="Email", related="dispatcher_id.email")
+    dispatcher_phone_number = fields.Char(string="Phone Number", related="dispatcher_id.phone_number")
     dispatcher_not_required = fields.Boolean(string="Dispatcher Not Required")
 
     intervention_reference = fields.Char(string="Intervention Reference")

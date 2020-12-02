@@ -38,6 +38,13 @@ msgid "Add Payment Value Of The TTE 'Amount'"
 msgstr "Monto"
 
 #. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_dispatcher_address
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_dispatcher_address
+#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
+msgid "Address"
+msgstr "Dirección"
+
+#. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Application Date"
 msgstr "Fecha de solicitud"
@@ -128,6 +135,11 @@ msgstr "Haga click para crear un nuevo Lugar de Entrega."
 #: model:ir.actions.act_window,help:foreign_purchase_order.action_purchase_shipment_view
 msgid "Click to set a new Purchase Shipment."
 msgstr "Haga click para crear un nuevo Shipment."
+
+#. module: foreign_purchase_order
+#: model:ir.actions.act_window,help:foreign_purchase_order.action_purchase_dispatcher_view
+msgid "Click to set a new purchase Dispatcher."
+msgstr "Haga click para crear un nuevo Despachante."
 
 #. module: foreign_purchase_order
 #: model:ir.actions.act_window,help:foreign_purchase_order.action_purchase_delivery_chanel_view
@@ -253,6 +265,7 @@ msgid "Delivery Number"
 msgstr "Número de despacho"
 
 #. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_dispatcher_id
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Dispatcher"
 msgstr "Despachante"
@@ -555,11 +568,12 @@ msgid "Invoice"
 msgstr "Factura"
 
 #. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_booking_conveyance___last_update
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_certificate_analysis___last_update
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery___last_update
-#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_import_license___last_update
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_chanel___last_update
-#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_booking_conveyance___last_update
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_dispatcher___last_update
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_import_license___last_update
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_interventions___last_update
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packaging___last_update
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packing_list___last_update
@@ -568,11 +582,12 @@ msgid "Last Modified on"
 msgstr "Última modificación en"
 
 #. module: foreign_purchase_order
-#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_certificate_analysis_write_uid
-#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_write_uid
-#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_import_license_write_uid
-#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_chanel_write_uid
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_booking_conveyance_write_uid
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_certificate_analysis_write_uid
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_chanel_write_uid
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_write_uid
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_dispatcher_write_uid
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_import_license_write_uid
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_interventions_write_uid
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packaging_write_uid
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packing_list_write_uid
@@ -581,11 +596,12 @@ msgid "Last Updated by"
 msgstr "Última actualización realizada por"
 
 #. module: foreign_purchase_order
-#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_certificate_analysis_write_date
-#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_write_date
-#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_import_license_write_date
-#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_chanel_write_date
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_booking_conveyance_write_date
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_certificate_analysis_write_date
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_chanel_write_date
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_write_date
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_dispatcher_write_date
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_import_license_write_date
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_interventions_write_date
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packaging_write_date
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packing_list_write_date
@@ -708,6 +724,13 @@ msgid "Payment TTE Amount"
 msgstr "Payment TTE Amount"
 
 #. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_dispatcher_phone_number
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_dispatcher_phone_number
+#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
+msgid "Phone Number"
+msgstr "Tefono"
+
+#. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_place_of_delivery
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_place_of_delivery_id
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
@@ -777,6 +800,14 @@ msgid "Purchase Booking Conveyance"
 msgstr "Medio de transporte"
 
 #. module: foreign_purchase_order
+#: model:ir.actions.act_window,name:foreign_purchase_order.action_purchase_dispatcher_view
+#: model:ir.ui.menu,name:foreign_purchase_order.menu_purchase_dispatcher
+#: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_dispatcher_search
+#: model:ir.ui.view,arch_db:foreign_purchase_order.view_purchase_dispatcher_tree
+msgid "Purchase Dispatcher"
+msgstr "Despachante"
+
+#. module: foreign_purchase_order
 #: model:ir.model,name:foreign_purchase_order.model_purchase_order
 msgid "Purchase Order"
 msgstr "Orden de compra"
@@ -835,11 +866,12 @@ msgid "Send documents to"
 msgstr "Send documents to"
 
 #. module: foreign_purchase_order
-#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_certificate_analysis_sequence
-#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_sequence
-#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_import_license_sequence
-#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_chanel_sequence
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_booking_conveyance_sequence
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_certificate_analysis_sequence
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_chanel_sequence
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_delivery_sequence
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_dispatcher_sequence
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_import_license_sequence
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packaging_sequence
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_packing_list_sequence
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_shipment_sequence
