@@ -80,12 +80,12 @@ msgstr "<strong>Descripción</strong>"
 #. module: purchase_request
 #: model:ir.ui.view,arch_db:purchase_request.report_purchase_request
 msgid "<strong>Estimated Cost</strong>"
-msgstr "<strong>Coste estimado</strong>"
+msgstr "<strong>Costo estimado</strong>"
 
 #. module: purchase_request
 #: model:ir.ui.view,arch_db:purchase_request.report_purchase_request
 msgid "<strong>Picking Type:</strong><br/>"
-msgstr "<strong>Tipo de albarán:</strong><br/>"
+msgstr "<strong>Deposito de ingreso:</strong><br/>"
 
 #. module: purchase_request
 #: model:ir.ui.view,arch_db:purchase_request.report_purchase_request
@@ -326,7 +326,7 @@ msgstr "Introduce un proveedor."
 #. module: purchase_request
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line_estimated_cost
 msgid "Estimated Cost"
-msgstr "Coste estimado"
+msgstr "Costo estimado"
 
 #. module: purchase_request
 #: model:ir.model.fields,help:purchase_request.field_purchase_request_line_estimated_cost
@@ -458,7 +458,7 @@ msgstr "Presentación"
 #. module: purchase_request
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_picking_type_id
 msgid "Picking Type"
-msgstr "Tipo de albarán"
+msgstr "Deposito de ingreso"
 
 #. module: purchase_request
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line_supplier_id
@@ -942,13 +942,13 @@ msgstr "No puedes eliminar un registro que refiere a una línea de compra!"
 #: code:addons/purchase_request/wizard/purchase_request_line_make_purchase_order.py:67
 #, python-format
 msgid "You have to enter a Picking Type."
-msgstr "Debes ingresar un tipo de albarán."
+msgstr "Debes ingresar un Deposito de ingreso."
 
 #. module: purchase_request
 #: code:addons/purchase_request/wizard/purchase_request_line_make_purchase_order.py:71
 #, python-format
 msgid "You have to select lines from the same Picking Type."
-msgstr "Debes seleccionar líneas del mismo tipo de albarán."
+msgstr "Debes seleccionar líneas del mismo Deposito de ingreso."
 
 #. module: purchase_request
 #: code:addons/purchase_request/wizard/purchase_request_line_make_purchase_order.py:59

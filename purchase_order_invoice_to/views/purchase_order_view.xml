@@ -8,8 +8,9 @@
         <field name="arch" type="xml">
             <!-- Field Invoice To only Visible when the Order Type is OCT -->
             <field name="partner_id" position="before">
-                <field name="invoice_to"
-                       attrs="{'invisible': [('order_type', '!=', %(po_type_third_party)d)],
+                <field name="invoice_to" 
+                        options="{'no_open':True,'no_create': True, 'no_create_edit':True}"
+                        attrs="{'invisible': [('order_type', '!=', %(po_type_third_party)d)],
                            'required':[('order_type', '=', %(po_type_third_party)d)]}"/>
             </field>
             <!-- Show Field To Write 'Send Document To' with the Invoice To Client Info - Only with OCT type -->

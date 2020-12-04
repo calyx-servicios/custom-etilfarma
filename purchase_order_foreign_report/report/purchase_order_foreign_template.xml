@@ -82,7 +82,7 @@
                         <t t-if="doc.invoice_to">                            
                             Invoice to: <span style="font-size:15px;font-weight:bold" t-esc="doc.invoice_to.name"/><br/>
                             <span t-if="doc.invoice_to.street" t-esc="doc.invoice_to.street"/><br/>
-                            <span t-if="doc.invoice_to.zip" t-esc="doc.invoice_to.zip"/> <span t-if="doc.invoice_to.state_id" t-esc="doc.invoice_to.state_id.name"/><br/>
+                            <span t-if="doc.invoice_to.city" t-esc="doc.invoice_to.city"/> <t t-if="doc.invoice_to.zip"><span t-esc="doc.invoice_to.zip"/>, </t> <span t-if="doc.invoice_to.state_id" t-esc="doc.invoice_to.state_id.name"/><br/>
                             <span t-esc="doc.invoice_to.country_id.name"/><br/>
                             <t t-if="doc.invoice_to.main_id_number">
                                 <span t-esc="doc.invoice_to.main_id_category_id.code"/>: <span t-esc="doc.invoice_to.main_id_number"/>
@@ -178,7 +178,7 @@
                         <td style="border: none;padding-bottom: 2px;">Marks: <span t-esc="doc.marks"/></td>
                     </tr>
                     <tr>
-                        <td style="border: none;padding-bottom: 2px;">Packaging List: <span t-esc="doc.packing_list_id.packing_list"/></td>
+                        <td style="border: none;padding-bottom: 2px;">Packing list: <span t-esc="doc.packing_list_id.packing_list"/></td>
                     </tr>
                     <tr>
                         <td style="border: none;padding-bottom: 2px;">Import License: <span t-esc="doc.import_license_id.import_license"/></td>
@@ -187,7 +187,9 @@
                         <td style="border: none;padding-bottom: 2px;">Certificate of Analysis: <span t-esc="doc.certificate_of_analysis_id.certificate_of_analysis"/></td>
                     </tr>
                     <tr>
-                        <td style="border: none;padding-bottom: 2px;">P/O: <span t-esc="doc.p_o"/></td>
+                        <t t-if="doc.p_o">
+                            <td style="border: none;padding-bottom: 2px;">P/O: <span t-esc="doc.p_o"/></td>
+                        </t>
                     </tr>
                     <tr>
                         <td colspan="2" style="border: none;padding-bottom: 2px;">Special Indications: <br/>

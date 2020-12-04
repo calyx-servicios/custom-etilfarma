@@ -42,6 +42,11 @@ msgid "HS Code"
 msgstr "HS Code"
 
 #. module: foreign_purchase_lines
+#: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_order_line_intervention_types
+msgid "Intervention Types"
+msgstr "Intervenciónes"
+
+#. module: foreign_purchase_lines
 #: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_order_line_observations
 msgid "Observation"
 msgstr "Observación"
