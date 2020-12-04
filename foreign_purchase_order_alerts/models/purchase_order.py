@@ -72,6 +72,14 @@ class PurchaseOrder(models.Model):
         for record in self:
             if not record.payment_not_required and record.reception_status == 'Pending':
                 if record.payment_term_id != advanced_payment_term:
+
+                    if not all([record.payment_bank, record.payment_account, record.payment_application_number,
+                                record.payment_date, record.payment_reference, record.payment_concept,
+                                record.payment_TTE_amount, record.payment_TC, record.payment_currency]):
+                        record.is_payment_delayed = True
+                    else:
+                        record.is_payment_delayed = False
+
                     if record.invoice_ids:
                         for invoice in record.invoice_ids:
                             if invoice.date_due:
@@ -79,10 +87,7 @@ class PurchaseOrder(models.Model):
                                 work_days = workdays(datetime.today(), date_due)
                                 if len(work_days) <= 5:
                                     record.is_payment_delayed = True
-                    if not all([record.payment_bank, record.payment_account, record.payment_application_number,
-                                record.payment_date, record.payment_reference, record.payment_concept,
-                                record.payment_TTE_amount, record.payment_TC, record.payment_currency]):
-                        record.is_payment_delayed = True
+
             elif record.reception_status != 'Pending':
                 record.is_payment_delayed = False
 
