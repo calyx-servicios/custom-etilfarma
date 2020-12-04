@@ -57,6 +57,7 @@ class PurchaseOrder(models.Model):
         'payment_not_required',
         'payment_TTE_amount',
         'invoice_ids',
+        'invoice_ids.date_due',
         'payment_bank',
         'payment_account',
         'payment_application_number',
@@ -162,7 +163,8 @@ class PurchaseOrder(models.Model):
                     work_days = workdays(date_ETD_to_datetime, datetime.today())
                     if len(work_days) > 3:
                         record.is_delivery_delayed = True
-                if not all([record.delivery_number, record.delivery_official_date, record.delivery_chanel_id]):
+                if not all([record.delivery_number, record.delivery_official_date, record.delivery_chanel_id,
+                            record.booking_ETD_date]):
                     record.is_delivery_delayed = True
             else:
                 record.is_delivery_delayed = False
