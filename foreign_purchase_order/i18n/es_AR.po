@@ -650,6 +650,11 @@ msgid "Original Documentation Original Receipt Date"
 msgstr "Original Documentation Original Receipt Date"
 
 #. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_original_documentation_reference
+msgid "Original Documentation Reference"
+msgstr "Reference"
+
+#. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Original Receipt Date"
 msgstr "Fecha recepción de originales"
