@@ -25,6 +25,7 @@
         "views/purchase_order_view.xml",
         "views/stock_view.xml",
         "views/purchase_packaging_view.xml",
+        "views/purchase_dispatcher_view.xml",
         "views/purchase_packing_list_view.xml",
         "views/purchase_delivery_chanel_view.xml",
         "views/purchase_booking_conveyance_view.xml",
