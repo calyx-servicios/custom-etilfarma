@@ -1,10 +1,8 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
-    'name': 'Unified Menu Purchase Orders - Except IMA/OTC Orders',
+    'name': 'Purchase Orders from Accounting App',
     'summary': """
-        The purpose of this module is to remove Request for Quotation Menu and show all 
-        Purchase Orders in a unique menu item.
-        IMA/OTC Orders maintain other menu item""",
+        This module adds the functionality to create Purchase Orders from the Account App.""",
 
     'author': 'Calyx Servicios S.A.',
     'maintainers': ['FedericoGregori'],
@@ -15,7 +13,7 @@
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/11.0/odoo/addons/base/module/module_data.xml
     # for the full list
-    'category': 'Purchase',
+    'category': 'Accounting',
     'version': '11.0.1.0.0',
     # see https://odoo-community.org/page/development-status
     'development_status': 'Production/Stable',
@@ -28,13 +26,12 @@
     },
 
     # any module necessary for this one to work correctly
-    'depends': ['purchase', 'purchase_order_invoice_to','purchase_order_accounting_link'],
+    'depends': ['account', 'purchase', 'purchase_order_types'],
 
     # always loaded
     'data': [
-        'views/purchase_order_view.xml',
-        #     'views/views.xml',
-        #     'views/templates.xml',
+        'views/account_invoice_view.xml',
+        'views/purchase_order_view.xml'
     ],
 
     # only loaded in demonstration mode
