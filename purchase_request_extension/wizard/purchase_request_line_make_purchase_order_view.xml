@@ -17,7 +17,7 @@
             <xpath expr="//form/newline[2]" position="replace"/>
             <!-- Add PO type, and currency -->
             <field name="supplier_id" position="after">
-                <field name="order_type"/>
+                <field name="order_type" required="1"/>
                 <field name="currency_id"/>
                 <field name="invoice_to"
                        attrs="{'invisible':[('order_type', '!=', %(purchase_order_invoice_to.po_type_third_party)d)]}"/>

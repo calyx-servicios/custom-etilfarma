@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="request_purchase_order_form" model="ir.ui.view">
+        <field name="name">Request Purchase Order</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="priority">20</field>
+        <field name="arch" type="xml">
+            <xpath expr="//page/group/group/div/field[@name='date_planned']" position="before">
+                <field name="from_purchase_request_line" invisible="1"/>
+            </xpath>
+            <xpath expr="//page/group/group/div/field[@name='date_planned']" position="attributes">
+                <attribute name="attrs">{'readonly': [('from_purchase_request_line' ,'=', True)]}</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>
