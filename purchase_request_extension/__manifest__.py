@@ -14,6 +14,7 @@
     "application": False,
     "installable": True,
     "depends": [
+        "purchase",
         "purchase_request",
         "purchase_order_types",
         "purchase_order_invoice_to",
@@ -21,6 +22,7 @@
     ],
     "data": [
         "data/purchase_request_data.xml",
+        "views/purchase_order_view.xml",
         "views/purchase_request_view.xml",
         "wizard/purchase_request_line_make_purchase_order_view.xml",
     ],
