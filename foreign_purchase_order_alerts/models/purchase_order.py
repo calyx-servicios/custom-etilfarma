@@ -1,4 +1,4 @@
-# Copyright 2015 Camptocamp SA
+# Copyright 2020 Calyx Servicios S.A.
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 from datetime import datetime, timedelta
 
@@ -37,48 +37,70 @@ class PurchaseOrder(models.Model):
 
     @api.depends('payment_term_id', 'date_order', 'proforma_not_required', 'proforma_number', 'proforma_date')
     def _compute_is_proform_delayed(self):
+        advanced_payment_term = self.env.ref('purchase_order_types.account_payment_term_advance')
         for record in self:
-            if record.payment_term_id.display_name and\
-                    "anticipa" in record.payment_term_id.display_name and\
-                    not record.proforma_not_required and\
+            if record.payment_term_id == advanced_payment_term and not record.proforma_not_required and\
                     record.reception_status == 'Pending':
                 date_to_datetime = datetime.strptime(record.date_order, "%Y-%m-%d %H:%M:%S")
                 work_days = workdays(date_to_datetime, datetime.today())
-                if len(work_days) > 5:
+                if len(work_days) > 5 or not record.proforma_number or not record.proforma_date:
                     record.is_proform_delayed = True
             elif record.reception_status != 'Pending':
                 record.is_proform_delayed = False
 
-    is_payment_TTE_delayed = fields.Boolean(default=False, compute='_compute_is_payment_TTE_delayed', store=True)
+    is_payment_delayed = fields.Boolean(default=False, compute='_compute_is_payment_delayed', store=True)
 
-    @api.depends('reception_status', 'payment_not_required', 'payment_TTE_amount', 'invoice_ids')
-    def _compute_is_payment_TTE_delayed(self):
+    @api.depends(
+        'date_order',
+        'payment_term_id',
+        'reception_status',
+        'payment_not_required',
+        'payment_TTE_amount',
+        'invoice_ids',
+        'invoice_ids.date_due',
+        'payment_bank',
+        'payment_account',
+        'payment_application_number',
+        'payment_date',
+        'payment_reference',
+        'payment_concept',
+        'payment_TTE_amount',
+        'payment_TC',
+        'payment_currency')
+    def _compute_is_payment_delayed(self):
+        advanced_payment_term = self.env.ref('purchase_order_types.account_payment_term_advance')
         for record in self:
             if not record.payment_not_required and record.reception_status == 'Pending':
-                if record.payment_term_id.display_name:
-                    if "anticipa" not in record.payment_term_id.display_name:
-                        if record.invoice_ids:
-                            for invoice in record.invoice_ids:
-                                if invoice.date_due:
-                                    date_due = datetime.strptime(invoice.date_due, "%Y-%m-%d")
-                                    work_days = workdays(datetime.today(), date_due)
-                                    if len(work_days) <= 5:
-                                        record.is_payment_TTE_delayed = True
-                elif record.reception_status != 'Pending':
-                    record.is_payment_TTE_delayed = False
+                if record.payment_term_id != advanced_payment_term:
 
-    # Removed Alert requested by Client
-    # is_booking_conveyance_empty = fields.Boolean(default=False, compute='_compute_is_booking_conveyance_empty', store=True)
-    #
-    # @api.depends('create_date', 'booking_not_required', 'booking_conveyance')
-    # def _compute_is_booking_conveyance_empty(self):
-    #     for record in self:
-    #         if not record.booking_not_required and \
-    #                 record.reception_status == 'Pending':
-    #             if not record.booking_conveyance:
-    #                 record.is_booking_conveyance_empty = True
-    #         elif record.reception_status != 'Pending':
-    #             record.is_booking_conveyance_empty = False
+                    empty_fields = False
+                    if not all([record.payment_bank, record.payment_account, record.payment_application_number,
+                                record.payment_date, record.payment_reference, record.payment_concept,
+                                record.payment_TTE_amount, record.payment_TC, record.payment_currency]):
+                        empty_fields = True
+
+                    if record.invoice_ids:
+                        for invoice in record.invoice_ids:
+                            if invoice.date_due:
+                                date_due = datetime.strptime(invoice.date_due, "%Y-%m-%d")
+                                work_days = workdays(datetime.today(), date_due)
+                                if len(work_days) <= 5 and empty_fields:
+                                    record.is_payment_delayed = True
+
+            elif record.reception_status != 'Pending':
+                record.is_payment_delayed = False
+
+    is_booking_conveyance_empty = fields.Boolean(default=False, compute='_compute_is_booking_conveyance_empty', store=True)
+
+    @api.depends('date_order', 'booking_not_required', 'booking_conveyance_id')
+    def _compute_is_booking_conveyance_empty(self):
+        for record in self:
+            if not record.booking_not_required and \
+                    record.reception_status == 'Pending':
+                if not record.booking_conveyance_id:
+                    record.is_booking_conveyance_empty = True
+            elif record.reception_status != 'Pending':
+                record.is_booking_conveyance_empty = False
 
     is_booking_ETD_date_empty = fields.Boolean(default=False, compute='_compute_is_booking_ETD_date_empty', store=True)
 
@@ -131,24 +153,26 @@ class PurchaseOrder(models.Model):
                 record.is_documents_invoice_delayed = False
                 record.is_documents_shipping_delayed = False
 
-    # Removed Alert requested by Client
-    # is_delivery_delayed = fields.Boolean(default=False, compute='_compute_is_delivery_delayed', store=True)
-    #
-    # @api.depends('create_date', 'delivery_not_required', 'booking_not_required', 'booking_ETD_date',
-    #              'delivery_number')
-    # def _compute_is_delivery_delayed(self):
-    #     for record in self:
-    #         if not record.booking_not_required and\
-    #                 not record.delivery_not_required and\
-    #                 record.reception_status == 'Pending' and\
-    #                 not record.delivery_number:
-    #             if record.booking_ETD_date:
-    #                 date_ETD_to_datetime = datetime.strptime(record.booking_ETD_date, "%Y-%m-%d")
-    #                 work_days = workdays(date_ETD_to_datetime, datetime.today())
-    #                 if len(work_days) > 3:
-    #                     record.is_delivery_delayed = True
-    #         else:
-    #             record.is_delivery_delayed = False
+    is_delivery_delayed = fields.Boolean(default=False, compute='_compute_is_delivery_delayed', store=True)
+
+    @api.depends('date_order', 'delivery_not_required', 'booking_not_required', 'booking_ETD_date',
+                 'delivery_number', 'delivery_official_date', 'delivery_chanel_id')
+    def _compute_is_delivery_delayed(self):
+        for record in self:
+            if not record.booking_not_required and\
+                    not record.delivery_not_required and\
+                    record.reception_status == 'Pending':
+                if record.booking_ETD_date:
+                    date_ETD_to_datetime = datetime.strptime(record.booking_ETD_date, "%Y-%m-%d")
+                    work_days = workdays(date_ETD_to_datetime, datetime.today())
+                    if len(work_days) > 3:
+                        record.is_delivery_delayed = True
+                    elif not all([record.delivery_number, record.delivery_official_date, record.delivery_chanel_id]):
+                        record.is_delivery_delayed = True
+                    else:
+                        record.is_delivery_delayed = False
+            else:
+                record.is_delivery_delayed = False
 
     is_status_pending = fields.Boolean(default=False, compute='_compute_is_status_pending', store=True)
 

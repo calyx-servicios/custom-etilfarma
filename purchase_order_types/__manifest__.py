@@ -34,6 +34,7 @@
     'data': [
         'security/ir.model.access.csv',
         'data/ir_sequence.xml',
+        'data/account_payment_term.xml',
         'data/purchase_order_type.xml',
         'views/res_partner_view.xml',
         'views/purchase_order_view.xml',
