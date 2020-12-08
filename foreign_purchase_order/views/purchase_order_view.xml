@@ -6,6 +6,9 @@
         <field name="arch" type="xml">
             <field name="picking_type_id" position="after">
                 <field name="delivery_date_planned"/>
+                <field name="delivery_date_planned_month" attrs="{'invisible': [('delivery_date_planned', '!=', 'month')]}"/>
+                <field name="delivery_date_planned_week" attrs="{'invisible': [('delivery_date_planned', '!=', 'week')]}"/>
+                <field name="delivery_date_planned_date" attrs="{'invisible': [('delivery_date_planned', '!=', 'date')]}"/>
             </field>
 
             <button name="action_view_invoice" position="attributes">

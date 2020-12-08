@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 import re
+import pytz
 from datetime import datetime
 from odoo import fields, models, api, _
 from odoo.exceptions import UserError
@@ -29,7 +30,62 @@ class PurchaseOrder(models.Model):
 
     purchase_sample = fields.Boolean(string="Sample?", default=False)
 
-    delivery_date_planned = fields.Date(string="Delivery Date Planned")
+    """
+        Here begins the Delivery Date Planned Fields and Logic
+    """
+    delivery_date_planned = fields.Selection([
+        ('month', _('Month')),
+        ('week', _('Week')),
+        ('date', _('Date'))], string='Delivery Date Planned', default='date')
+
+    delivery_date_planned_month = fields.Selection([
+        (1, 'January'),
+        (2, 'February'),
+        (3, 'March'),
+        (4, 'April'),
+        (5, 'May'),
+        (6, 'June'),
+        (7, 'July'),
+        (8, 'August'),
+        (9, 'September'),
+        (10, 'October'),
+        (11, 'November'),
+        (12, 'December')],
+        string='Month Picker',
+        default=lambda self: datetime.today().month,
+        readonly=True, states={'draft': [('readonly', False)]})
+
+    @api.model
+    def _get_delivery_date_planned_week_picker(self):
+        lst = []
+        for week in range(1, 53):
+            lst.append((week, str(week)))
+        return lst
+
+    delivery_date_planned_week = fields.Selection(
+        _get_delivery_date_planned_week_picker,
+        string="Week Picker",
+        readonly=True,
+        states={'draft': [('readonly', False)]},
+        default=lambda self: datetime.today().isocalendar()[1]
+    )
+
+    @api.model
+    def _default_delivery_date_planned_date_picker(self):
+        user = self.env['res.users'].browse(self.env.uid)
+        tz = pytz.timezone(user.tz) if user.tz else pytz.utc
+        d = fields.datetime.now(tz)
+        return d
+
+    delivery_date_planned_date = fields.Date(
+        string='Date Picker',
+        readonly=True,
+        states={'draft': [('readonly', False)]},
+        default=_default_delivery_date_planned_date_picker)
+
+    """
+        End of Delivery Date Planned Fields and Logic
+    """
 
     customer_purchase_order = fields.Char(string="Customer Purchase Order")
 
