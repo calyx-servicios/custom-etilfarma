@@ -106,3 +106,5 @@ class SaleOrderLine(models.Model):
     product_qty = fields.Float(digits=(12,2))
     qty_received = fields.Float(digits=(12,2))
     qty_invoiced = fields.Float(digits=(12,2))
+    qty_delivered = fields.Float(digits=(12,2))
+    product_uom_qty = fields.Float(digits=(12,2))
