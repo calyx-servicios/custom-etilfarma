@@ -11,7 +11,7 @@
     # Check https://github.com/odoo/odoo/blob/11.0/odoo/addons/base/module/module_data.xml
     # for the full list
     "category": "Purchase",
-    "version": "11.0.3.1.1",
+    "version": "11.0.3.1.2",
     # see https://odoo-community.org/page/development-status
     "development_status": "Production/Stable",
     "application": False,
