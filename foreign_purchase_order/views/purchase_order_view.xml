@@ -226,9 +226,12 @@
                 <field name="booking_transport_company_status" />
                 <field name="booking_ETD_date_status" />
                 <field name="booking_ETA_date_status" />
+                <field name="booking_extra_notes" />
+                <field name="import_license_approval_date" />
                 <field name="documents_commercial_invoice_number_status" />
                 <field name="documents_shipping_document_status" />
                 <field name="delivery_number_status" />
+                <field name="original_documentation_original_receipt_date" />
                 <field name="reception_status" />
             </field>
         </field>
