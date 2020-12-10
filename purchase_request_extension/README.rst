@@ -28,6 +28,7 @@ This module:
     * adds a planned date field that will be passed from the PR to the draft RFQ.
     * adapts the purchase request lines to work with products as customized on RFQs.
     * removes the date field from all purchase request lines.
+    * date planned field is readonly when created from purchase request line.
 
 
 **Table of contents**

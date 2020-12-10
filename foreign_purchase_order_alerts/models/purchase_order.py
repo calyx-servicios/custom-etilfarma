@@ -57,6 +57,7 @@ class PurchaseOrder(models.Model):
         'payment_not_required',
         'payment_TTE_amount',
         'invoice_ids',
+        'invoice_ids.date_due',
         'payment_bank',
         'payment_account',
         'payment_application_number',
@@ -71,17 +72,21 @@ class PurchaseOrder(models.Model):
         for record in self:
             if not record.payment_not_required and record.reception_status == 'Pending':
                 if record.payment_term_id != advanced_payment_term:
+
+                    empty_fields = False
+                    if not all([record.payment_bank, record.payment_account, record.payment_application_number,
+                                record.payment_date, record.payment_reference, record.payment_concept,
+                                record.payment_TTE_amount, record.payment_TC, record.payment_currency]):
+                        empty_fields = True
+
                     if record.invoice_ids:
                         for invoice in record.invoice_ids:
                             if invoice.date_due:
                                 date_due = datetime.strptime(invoice.date_due, "%Y-%m-%d")
                                 work_days = workdays(datetime.today(), date_due)
-                                if len(work_days) <= 5:
+                                if len(work_days) <= 5 and empty_fields:
                                     record.is_payment_delayed = True
-                    if not all([record.payment_bank, record.payment_account, record.payment_application_number,
-                                record.payment_date, record.payment_reference, record.payment_concept,
-                                record.payment_TTE_amount, record.payment_TC, record.payment_currency]):
-                        record.is_payment_delayed = True
+
             elif record.reception_status != 'Pending':
                 record.is_payment_delayed = False
 
@@ -162,8 +167,10 @@ class PurchaseOrder(models.Model):
                     work_days = workdays(date_ETD_to_datetime, datetime.today())
                     if len(work_days) > 3:
                         record.is_delivery_delayed = True
-                if not all([record.delivery_number, record.delivery_official_date, record.delivery_chanel_id]):
-                    record.is_delivery_delayed = True
+                    elif not all([record.delivery_number, record.delivery_official_date, record.delivery_chanel_id]):
+                        record.is_delivery_delayed = True
+                    else:
+                        record.is_delivery_delayed = False
             else:
                 record.is_delivery_delayed = False
 

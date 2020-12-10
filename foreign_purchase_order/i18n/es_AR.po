@@ -647,7 +647,7 @@ msgstr "Original Documentation Not Required"
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_original_documentation_original_receipt_date
 msgid "Original Documentation Original Receipt Date"
-msgstr "Original Documentation Original Receipt Date"
+msgstr "Fecha recepción de originales"
 
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_original_documentation_reference
