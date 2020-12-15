@@ -59,7 +59,7 @@ class PurchaseOrder(models.Model):
     def _get_delivery_date_planned_week_picker(self):
         lst = []
         for week in range(1, 53):
-            lst.append((week, str(week)))
+            lst.append((str(week), str(week)))
         return lst
 
     delivery_date_planned_week = fields.Selection(
