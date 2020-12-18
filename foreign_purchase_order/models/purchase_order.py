@@ -67,7 +67,7 @@ class PurchaseOrder(models.Model):
         string="Week Picker",
         readonly=True,
         states={'draft': [('readonly', False)]},
-        default=lambda self: datetime.today().isocalendar()[1]
+        default=lambda self: str(datetime.today().isocalendar()[1])
     )
 
     @api.model
@@ -322,17 +322,17 @@ class PurchaseOrder(models.Model):
         self.booking_origin = ""
         self.booking_transport_company = ""
 
-    @api.onchange("booking_ETA_date")
-    def _onchange_booking_ETA_date(self):
-        """
-            We change the Delivery Date Planned in case the user
-            adds a Booking ETA Date
-        :return: Delivery Date Planeed Date Selection
-        """
-        for rec in self:
-            if rec.booking_ETA_date:
-                rec.delivery_date_planned = 'date'
-                rec.delivery_date_planned_date = rec.booking_ETA_date
+    # @api.onchange("booking_ETA_date")
+    # def _onchange_booking_ETA_date(self):
+    #     """
+    #         We change the Delivery Date Planned in case the user
+    #         adds a Booking ETA Date
+    #     :return: Delivery Date Planeed Date Selection
+    #     """
+    #     for rec in self:
+    #         if rec.booking_ETA_date:
+    #             rec.delivery_date_planned = 'date'
+    #             rec.delivery_date_planned_date = rec.booking_ETA_date
 
 
     @api.onchange("documents_not_required")
