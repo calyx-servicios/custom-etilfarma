@@ -23,7 +23,8 @@ Purchase Order Foreign Fields
 
 .. !!! Description must be max 2-3 paragraphs, and is required.
 
-This module extends the functionality of Purchase and add field in purchase order for the foreign fields.
+This module extends the functionality of Purchase and add field in purchase order for the foreign fields. Besides, add an if
+statement in the validation of the document number in purchase invoice
 
 **Table of contents**
 
