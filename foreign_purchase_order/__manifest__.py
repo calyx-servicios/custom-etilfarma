@@ -17,7 +17,6 @@
     "installable": True,
     "external_dependencies": {"python": [], "bin": []},
     "depends": [
-        "base",
         "purchase",
         "purchase_order_types",
         "stock",
