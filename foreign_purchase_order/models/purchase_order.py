@@ -58,7 +58,7 @@ class PurchaseOrder(models.Model):
     @api.model
     def _get_delivery_date_planned_week_picker(self):
         lst = []
-        for week in range(1, 53):
+        for week in range(1, 54):
             lst.append((str(week), str(week)))
         return lst
 
