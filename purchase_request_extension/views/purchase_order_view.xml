@@ -9,8 +9,13 @@
             <xpath expr="//page/group/group/div/field[@name='date_planned']" position="before">
                 <field name="from_purchase_request_line" invisible="1"/>
             </xpath>
-            <xpath expr="//page/group/group/div/field[@name='date_planned']" position="attributes">
+            <!-- <xpath expr="//page/group/group/div/field[@name='date_planned']" position="attributes">
                 <attribute name="attrs">{'readonly': [('from_purchase_request_line' ,'=', True)]}</attribute>
+            </xpath> -->
+            <!-- Field date_planned is not required when the Order Type is OCT -->
+            <xpath expr="//page/group/group/div/field[@name='date_planned']" position="replace">
+                <field name="date_planned" attrs="{'readonly': ['|', ('state', 'not in', ('draft', 'sent')), ('from_purchase_request_line' ,'=', True)],
+                'required':[('order_type', '!=', %(purchase_order_invoice_to.po_type_third_party)d)]}" widget="date"/>
             </xpath>
         </field>
     </record>
