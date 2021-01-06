@@ -38,6 +38,11 @@ msgid "Add Payment Value Of The TTE 'Amount'"
 msgstr "Monto"
 
 #. module: foreign_purchase_order
+#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
+msgid "Closing order"
+msgstr "Cierre de pedido"
+
+#. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_dispatcher_address
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_dispatcher_address
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
