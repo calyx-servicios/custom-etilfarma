@@ -8,10 +8,10 @@
         <field name="arch" type="xml">
             <field name="scheduled_date" position="after">
                 <field name="purchase_id" invisible="1"/>
-                <field name="date_picker" attrs="{'invisible':[('purchase_id', '=', False)]}"/>
+                <field name="date_picker" attrs="{'invisible':[('picking_type_id', '!=', %(stock.picking_type_in)d)]}"/>
             </field>
             <field name="scheduled_date" position="attributes">
-                <attribute name="attrs">{'invisible': [('purchase_id', '!=', False)]}</attribute>
+                <attribute name="attrs">{'invisible': [('picking_type_id', '!=', %(stock.picking_type_out)d)]}</attribute>
             </field>
         </field>
     </record>
@@ -25,8 +25,20 @@
                 <attribute name="decoration-danger">state not in ('cancel', 'done') and date_picker &lt; current_date</attribute>
             </xpath>
             <field name="scheduled_date" position="replace">
-                <field name="date_picker"/>
+                <field name="scheduled_date" widget="date" invisible="context.get('show_dates') != 1" attrs="{'invisible':[('picking_type_id', '!=', %(stock.picking_type_out)d)]}"/>
+                <field name="date_picker" invisible="context.get('show_dates') != 1" attrs="{'invisible':[('picking_type_id', '!=', %(stock.picking_type_in)d)]}"/>
+
+                <field name="scheduled_date" widget="date" invisible="context.get('active_id') != %(stock.picking_type_out)d"/>
+                <field name="date_picker" invisible="context.get('active_id') != %(stock.picking_type_in)d"/>
             </field>
+        </field>
+    </record>
+
+    <record id="stock.action_picking_tree_all" model="ir.actions.act_window">
+        <field name="context">{
+            'contact_display': 'partner_address',
+            'show_dates': 1
+            }
         </field>
     </record>
 
