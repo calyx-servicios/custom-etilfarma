@@ -1,21 +1,19 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* purchase_request_extension
+#	* purchase_request_extension
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 11.0+e\n"
+"Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-26 23:47+0000\n"
-"PO-Revision-Date: 2020-08-26 20:48-0300\n"
+"POT-Creation-Date: 2021-01-12 19:07+0000\n"
+"PO-Revision-Date: 2021-01-12 19:07+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
-"Language: es_AR\n"
-"X-Generator: Poedit 2.0.6\n"
 
 #. module: purchase_request_extension
 #: model:ir.model.fields,field_description:purchase_request_extension.field_purchase_request_line_make_purchase_order_item_product_attr_id
@@ -85,7 +83,7 @@ msgstr "Purchase Request Line Make Purchase Order Item"
 #: code:addons/purchase_request_extension/wizard/purchase_request_line_make_purchase_order.py:138
 #, python-format
 msgid "RFQ"
-msgstr "SP"
+msgstr "OC"
 
 #. module: purchase_request_extension
 #: model:ir.model.fields,field_description:purchase_request_extension.field_purchase_request_date_planned
@@ -97,3 +95,9 @@ msgstr "Fecha de ingreso a planta"
 msgid "Type"
 msgstr "Tipo"
 
+#. module: purchase_request_extension
+#: model:ir.ui.view,arch_db:purchase_request_extension.purchase_request_line_tree
+#: model:ir.ui.view,arch_db:purchase_request_extension.view_purchase_request_form
+#: model:ir.ui.view,arch_db:purchase_request_extension.view_purchase_request_line_form
+msgid "Quantity in RFQ"
+msgstr "Cantidad en OC"
