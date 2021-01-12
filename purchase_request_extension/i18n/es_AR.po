@@ -100,4 +100,4 @@ msgstr "Tipo"
 #: model:ir.ui.view,arch_db:purchase_request_extension.view_purchase_request_form
 #: model:ir.ui.view,arch_db:purchase_request_extension.view_purchase_request_line_form
 msgid "Quantity in RFQ"
-msgstr "Cantidad en OC"
+msgstr "Cantidad OC"
