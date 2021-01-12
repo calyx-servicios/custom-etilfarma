@@ -232,7 +232,7 @@ msgstr "Copiar la descripción a nuevas OC"
 #: model:ir.actions.act_window,name:purchase_request.action_purchase_request_line_make_purchase_order
 #: model:ir.ui.view,arch_db:purchase_request.view_purchase_request_line_make_purchase_order
 msgid "Create RFQ"
-msgstr "Crear SP"
+msgstr "Crear OC"
 
 #. module: purchase_request
 #: model:ir.model.fields,field_description:purchase_request.field_stock_move_created_purchase_request_line_id
