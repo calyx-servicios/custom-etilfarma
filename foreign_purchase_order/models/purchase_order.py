@@ -322,18 +322,6 @@ class PurchaseOrder(models.Model):
         self.booking_origin = ""
         self.booking_transport_company = ""
 
-    @api.onchange("booking_ETA_date")
-    def _onchange_booking_ETA_date(self):
-        """
-            We change the Delivery Date Planned in case the user
-            adds a Booking ETA Date
-        :return: Delivery Date Planeed Date Selection
-        """
-        for rec in self:
-            if rec.booking_ETA_date:
-                rec.delivery_date_planned = 'date'
-                rec.delivery_date_planned_date = rec.booking_ETA_date
-
     @api.onchange("documents_not_required")
     def _onchange_documents_not_required(self):
         self.documents_commercial_invoice_number = ""
