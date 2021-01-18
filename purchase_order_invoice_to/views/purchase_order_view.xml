@@ -8,15 +8,12 @@
         <field name="arch" type="xml">
             <!-- Field Invoice To only Visible when the Order Type is OCT -->
             <field name="partner_id" position="before">
-                <field name="invoice_to" 
-                        options="{'no_open':True,'no_create': True, 'no_create_edit':True}"
-                        attrs="{'invisible': [('order_type', '!=', %(po_type_third_party)d)],
+                <field name="invoice_to" options="{'no_open':True,'no_create': True, 'no_create_edit':True}" attrs="{'invisible': [('order_type', '!=', %(po_type_third_party)d)],
                            'required':[('order_type', '=', %(po_type_third_party)d)]}"/>
             </field>
             <!-- Show Field To Write 'Send Document To' with the Invoice To Client Info - Only with OCT type -->
             <field name="send_documents_to" position="before">
-                <field name="send_document_to_invoice_to"
-                       attrs="{'invisible': [('order_type', '!=', %(po_type_third_party)d)]}"/>
+                <field name="send_document_to_invoice_to" attrs="{'invisible': [('order_type', '!=', %(po_type_third_party)d)]}"/>
             </field>
 
             <xpath expr="//field[@name='use_other_company_address']" position="attributes">
@@ -30,6 +27,11 @@
             <!-- Regular Button Confirm Not Visible when the Order Type is OCT (We want to avoid the
              regular flow of Purchase Order) -->
             <xpath expr="//button[@name='button_confirm'][1]" position="attributes">
+                <attribute name="attrs">{'invisible': ['|', ('order_type', '=', %(po_type_third_party)d)]}</attribute>
+            </xpath>
+
+            <!-- Button View picking Not Visible when the Order Type is OCT-->
+            <xpath expr="//button[@name='action_view_picking']" position="attributes">
                 <attribute name="attrs">{'invisible': ['|', ('order_type', '=', %(po_type_third_party)d)]}</attribute>
             </xpath>
 
@@ -94,18 +96,16 @@
         <field name="name">Requests for Quotation</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">purchase.order</field>
-        <field name="domain"
-               eval="[('state','in',('draft','sent','cancel', 'confirmed')), ('order_type','!=', ref('po_type_third_party'))]"/>
+        <field name="domain" eval="[('state','in',('draft','sent','cancel', 'confirmed')), ('order_type','!=', ref('po_type_third_party'))]"/>
     </record>
 
     <record id="purchase.purchase_form_action" model="ir.actions.act_window">
-        <field name="domain"
-               eval="[('state','not in',('draft','sent', 'confirmed')), ('order_type','!=', ref('po_type_third_party'))]"/>
+        <field name="domain" eval="[('state','not in',('draft','sent', 'confirmed')), ('order_type','!=', ref('po_type_third_party'))]"/>
     </record>
 
     <!-- Third Party PO's Action, Menu Item and Search/Group By-->
     <record id="purchase_third_party_action" model="ir.actions.act_window">
-        <field name="name">Statistics</field> <!-- Original name: Third Party Purchase Orders -->
+        <field name="name">Statistics</field><!-- Original name: Third Party Purchase Orders -->
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">purchase.order</field>
         <field name="view_mode">tree,kanban,form,pivot,graph,calendar</field>

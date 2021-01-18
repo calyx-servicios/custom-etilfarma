@@ -120,6 +120,31 @@ class PurchaseOrder(models.Model):
         return new_po
 
     @api.multi
+    def button_approve(self, force=False):
+        """
+        when the Order Type is OCT the confirm action will not create
+        a picking order.
+        """
+        self.write(
+            {
+                "state": "purchase",
+                "date_approve": fields.Date.context_today(self),
+            }
+        )
+        if (
+            self.order_type.id
+            != self.env.ref(
+                "purchase_order_invoice_to.po_type_third_party"
+            ).id
+        ):
+            self._create_picking()
+        self.filtered(lambda p: p.company_id.po_lock == "lock").write(
+            {"state": "done"}
+        )
+        return {}
+
+
+    @api.multi
     def button_cancel_third_party(self):
         for order in self:
             order.write({'state': 'cancel'})
