@@ -20,3 +20,12 @@ access_import_license_manager,purchase.import.license manager,model_purchase_imp
 
 access_intervention_types,purchase.intervention.types,model_purchase_order_interventions,purchase.group_purchase_user,1,1,1,0
 access_intervention_types_manager,purchase.intervention.types.manager,model_purchase_order_interventions,purchase.group_purchase_manager,1,1,1,1
+
+access_dispatcher,purchase.dispatcher,model_purchase_dispatcher,purchase.group_purchase_user,1,1,1,0
+access_dispatcher_manager,purchase.dispatcher.manager,model_purchase_dispatcher,purchase.group_purchase_manager,1,1,1,1
+
+access_booking_conveyance,purchase.booking.conveyance,model_purchase_booking_conveyance,purchase.group_purchase_user,1,1,1,0
+access_booking_conveyance_manager,purchase.booking.conveyance.manager,model_purchase_booking_conveyance,purchase.group_purchase_manager,1,1,1,1
+
+access_delivery_chanel,purchase.delivery.chanel,model_purchase_delivery_chanel,purchase.group_purchase_user,1,1,1,0
+access_delivery_chanel_manager,purchase.delivery.chanel.manager,model_purchase_delivery_chanel,purchase.group_purchase_manager,1,1,1,1
