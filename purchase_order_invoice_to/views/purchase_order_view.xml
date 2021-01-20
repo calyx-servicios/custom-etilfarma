@@ -86,6 +86,9 @@
             <field name="order_type" position="attributes">
                 <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
             </field>
+            <field name="reception_status" position="attributes">
+                <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
+            </field>
         </field>
     </record>
 
