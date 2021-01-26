@@ -7,3 +7,5 @@ access_sale_delivery_salesman,sale.delivery salesman,model_sale_delivery,sales_t
 access_sale_shipment_salesman,sale.shipment salesman,model_sale_shipment,sales_team.group_sale_salesman,1,1,1,1
 access_sale_certificate_analysis_salesman,sale.certificate.analysisy salesman,model_sale_certificate_analysis,sales_team.group_sale_salesman,1,1,1,1
 access_pallet_type_salesman,pallet.type salesman,model_pallet_type,sales_team.group_sale_salesman,1,1,1,1
+access_sale_dispatcher_salesman,sale.dispatcher salesman,model_sale_dispatcher,sales_team.group_sale_salesman,1,1,1,1
+access_sale_booking_conveyance_salesman,sale.booking_conveyance salesman,model_sale_booking_conveyance,sales_team.group_sale_salesman,1,1,1,1
