@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sale_booking_conveyance_tree" model="ir.ui.view">
+        <field name="model">sale.booking.conveyance</field>
+        <field name="arch" type="xml">
+            <tree string="Sale Booking Conveyance" decoration-muted="active == False">
+                <field name="sequence" widget="handle" />
+                <field name="active" invisible="True" />
+                <field name="booking_conveyance" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_sale_booking_conveyance_form" model="ir.ui.view">
+        <field name="model">sale.booking.conveyance</field>
+        <field name="arch" type="xml">
+            <form string="Type">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="booking_conveyance" required="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_sale_booking_conveyance_search" model="ir.ui.view">
+        <field name="model">sale.booking.conveyance</field>
+        <field name="arch" type="xml">
+            <search string="Sale Booking Conveyance">
+                <field name="booking_conveyance"/>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_sale_booking_conveyance_view">
+        <field name="name">Sale Booking Conveyance</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.booking.conveyance</field>
+        <field name="view_mode">form,tree</field>
+        <field name="view_id" ref="view_sale_booking_conveyance_tree"/>
+        <field name="search_view_id" ref="view_sale_booking_conveyance_search"/>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Click to set a new Sale Booking Conveyance.</p>
+        </field>
+    </record>
+
+    <menuitem id="menu_sale_booking_conveyance" parent="foreign_trade.menu_sale_order_foreign_in_config_sale" sequence="25" action="action_sale_booking_conveyance_view"/>
+
+</odoo>

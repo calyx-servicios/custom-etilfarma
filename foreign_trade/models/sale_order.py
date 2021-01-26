@@ -3,6 +3,7 @@
 
 from odoo import fields, models, api, _
 from odoo.exceptions import UserError
+import re
 
 class SaleOrder(models.Model):
     _inherit = "sale.order"
@@ -65,15 +66,18 @@ class SaleOrder(models.Model):
 
     proforma_not_required = fields.Boolean(string="Proforma Not Required")
     proforma_number = fields.Char(string="Proforma Number")
+    proforma_date = fields.Date(string="Proforma Date")
 
     confirmation_not_required = fields.Boolean(string="Confirmation Not Required")
     confirmation_number = fields.Char(string="Confirmation Number")
+    date_confirm= fields.Date(string="Confirmation Date")
 
     certificate_of_analysis_not_required = fields.Boolean(string="Certificate Of Analysis Not Required")
-    certificate_of_analysis_shipment_date = fields.Date(string="Certificate Of Analysis Shipment Date")
+    certificate_of_analysis_shipment_date_to_customer = fields.Date(string="Certificate Of Analysis Shipment Date to Customer")
 
     invoice_not_required = fields.Boolean(string="Invoice Not Required")
     invoice_number = fields.Char(string="Invoice Number")
+    invoice_date = fields.Date(string="Invoice Date")
 
     payment_not_required = fields.Boolean(string="Payment Not Required")
     payment_bank = fields.Char(string="Payment Bank")
@@ -81,12 +85,22 @@ class SaleOrder(models.Model):
     payment_date = fields.Date(string="Payment Date")
     payment_concept = fields.Char(string="Payment Concept")
     payment_transport_company = fields.Char(string="Payment Transport Company")
+    payment_exchange_rate = fields.Char("Payment Exchange Rate")
 
+    dispatcher_not_required = fields.Boolean(string="Dispatcher Not Required")
+    dispatcher_id = fields.Many2one(
+        comodel_name="sale.dispatcher", string="Dispatcher",
+    )
+    dispatcher_address = fields.Char(string="Address", related="dispatcher_id.address")
+    dispatcher_email = fields.Char(string="Email", related="dispatcher_id.email")
+    dispatcher_phone_number = fields.Char(string="Phone Number", related="dispatcher_id.phone_number")
     dispatcher_not_required = fields.Boolean(string="Dispatcher Not Required")
     dispatcher_reference = fields.Char(string="Dispatcher Reference")
 
     booking_not_required = fields.Boolean(string="Booking Not Required")
-    booking_conveyance = fields.Char(string="Booking Conveyance")
+    booking_conveyance_id = fields.Many2one(
+        comodel_name="sale.booking.conveyance",
+        string="Booking Conveyance")    
     booking_ETD_date = fields.Date(string="Booking ETD Date")
     booking_ETA_date = fields.Date(string="Booking ETA Date")
     booking_transport_company = fields.Char(string="Booking Transport Company")
@@ -115,6 +129,30 @@ class SaleOrder(models.Model):
     after_shipment_customs_compliance_date = fields.Date(string="After Shipment Customs Compliance Date")
     after_shipment_invoice_closing_date_AFIP = fields.Date(string="After Shipment Invoice Closing Date")
     after_shipment_boarding_permit_date = fields.Date(string="After Shipment Boarding Permit Date")
+
+    @api.constrains('payment_excehange_rate')
+    def _check_format_payment_excehange_rate(self):
+        for rec in self:
+            if rec.payment_excehange_rate:
+                match = re.match("^[0-9]+([,][0-9]+)?$", rec.payment_excehange_rate)
+                if match == None:
+                    raise UserError("exchamge rate invalid format")
+
+    @api.constrains('expenses_dispatcher_fees')
+    def _check_format_expenses_dispatcher_fees(self):
+        for rec in self:
+            if rec.expenses_dispatcher_fees:
+                match = re.match("^[0-9]+([,][0-9]+)?$", rec.expenses_dispatcher_fees)
+                if match == None:
+                    raise UserError("Dispatcher fees invalid format")
+
+    @api.constrains('expenses_expenses')
+    def _check_format_expenses_expenses(self):
+        for rec in self:
+            if rec.expenses_expenses:
+                match = re.match("^[0-9]+([,][0-9]+)?$", rec.expenses_expenses)
+                if match == None:
+                    raise UserError("expenses invalid format")
 
     @api.onchange('term_payments')
     def _onchange_update_payment_term_id(self):
