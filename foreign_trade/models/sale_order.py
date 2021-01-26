@@ -116,12 +116,23 @@ class SaleOrder(models.Model):
     after_shipment_invoice_closing_date_AFIP = fields.Date(string="After Shipment Invoice Closing Date")
     after_shipment_boarding_permit_date = fields.Date(string="After Shipment Boarding Permit Date")
 
+    sale_code = fields.Char(compute="_onchange_update_sale_code")
+
     @api.onchange('term_payments')
     def _onchange_update_payment_term_id(self):
         """
             dynamic update of related field 'payment_term_id'
         """
         self.payment_term_id= self.term_payments
+
+    @api.depends('name')
+    def _onchange_update_sale_code(self):
+        code = ''.join(filter(str.isdigit, self.name))
+        if self.order_type.foreign_order:
+            code = "E " + code
+        else: 
+            code = "L " + code
+        self.sale_code = code
 
     @api.onchange('payment_term_id')
     def _onchange_update_term_payments(self):
