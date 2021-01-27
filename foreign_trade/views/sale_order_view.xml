@@ -81,7 +81,7 @@
                             <field name="invoice_number" string="Number" attrs="{'invisible': [('invoice_not_required','=',True)]}" force_save="1"/>
                             <field name="invoice_date" string="Date" attrs="{'invisible': [('invoice_not_required','=',True)]}" force_save="1"/>
                         </group>
-                        <group name="payment" string="Payment">
+                        <group name="payment" string="Collection">
                             <field name="payment_not_required" type="checkbox" string="Not Required"/>
                             <field name="payment_bank" string="Bank" attrs="{'invisible': [('payment_not_required','=',True)]}" force_save="1"/>
                             <field name="payment_tre" string="TRE" attrs="{'invisible': [('payment_not_required','=',True)]}" force_save="1"/>
