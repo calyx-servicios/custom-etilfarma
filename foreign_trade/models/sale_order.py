@@ -3,6 +3,7 @@
 
 from odoo import fields, models, api, _
 from odoo.exceptions import UserError
+from datetime import datetime, timedelta
 import re
 
 class SaleOrder(models.Model):
@@ -60,24 +61,24 @@ class SaleOrder(models.Model):
     carriers = fields.Text(string="Carriers", size=150)
 
     quotation_not_required = fields.Boolean(string="Quotation Not Required")
-    quotation_client = fields.Char(string="Quotation Client")
-    quotation_number = fields.Char(string="Quotation Number")
-    quotation_date = fields.Date(string="Quotation Date")
+    quotation_client = fields.Char(string="Quotation Client", compute="_onchange_update_quotation_client")
+    quotation_number = fields.Char(string="Quotation Number", compute="_onchange_update_quotation_number")
+    quotation_date = fields.Date(string="Quotation Date", compute="_onchange_update_quotation_date")
 
     proforma_not_required = fields.Boolean(string="Proforma Not Required")
-    proforma_number = fields.Char(string="Proforma Number")
-    proforma_date = fields.Date(string="Proforma Date")
+    proforma_number = fields.Char(string="Proforma Number", compute="_onchange_update_proforma_number")
+    proforma_date = fields.Date(string="Proforma Date", compute="_onchange_update_proforma_date")
 
     confirmation_not_required = fields.Boolean(string="Confirmation Not Required")
-    confirmation_number = fields.Char(string="Confirmation Number")
-    date_confirm= fields.Date(string="Confirmation Date")
+    confirmation_number = fields.Char(string="Confirmation Number", compute="_onchange_update_confirmation_number")
+    date_confirm= fields.Date(string="Confirmation Date", compute="_onchange_update_date_confirm")
 
     certificate_of_analysis_not_required = fields.Boolean(string="Certificate Of Analysis Not Required")
     certificate_of_analysis_shipment_date_to_customer = fields.Date(string="Certificate Of Analysis Shipment Date to Customer")
 
     invoice_not_required = fields.Boolean(string="Invoice Not Required")
-    invoice_number = fields.Char(string="Invoice Number")
-    invoice_date = fields.Date(string="Invoice Date")
+    invoice_number = fields.Char(string="Invoice Number", compute="_get_invoice_number")
+    invoice_date = fields.Date(string="Invoice Date", compute="_get_invoice_date")
 
     payment_not_required = fields.Boolean(string="Payment Not Required")
     payment_bank = fields.Char(string="Payment Bank")
@@ -161,6 +162,68 @@ class SaleOrder(models.Model):
             dynamic update of related field 'payment_term_id'
         """
         self.payment_term_id= self.term_payments
+
+    def _get_invoice_date(self):
+        for rec in self:
+            record = rec.env["account.invoice"].search([('origin', '=',rec.name)])
+            if record:
+                if record.date_invoice:
+                    rec.invoice_date = record.date_invoice
+    
+    def _get_invoice_number(self):
+        for rec in self:
+            record = rec.env["account.invoice"].search([('origin', '=',rec.name)])
+            if record:
+                if record.sequence_number_next_prefix and record.sequence_number_next:
+                    rec.invoice_number = record.sequence_number_next_prefix + record.sequence_number_next
+
+    @api.depends('partner_id')
+    def _onchange_update_quotation_client(self):
+        """
+            dynamic update of related field 'quotation_client'
+        """
+        self.quotation_client= self.partner_id.name
+
+    @api.depends('name')
+    def _onchange_update_quotation_number(self):
+        """
+            dynamic update of related field 'quotation_number'
+        """
+        for rec in self:
+            rec.quotation_number= rec.name
+
+    @api.depends('date_order')
+    def _onchange_update_quotation_date(self):
+        """
+            dynamic update of related field 'quotation_date'
+        """
+        if self.date_order:
+            self.quotation_date = datetime.strptime(self.date_order, "%Y-%m-%d %H:%M:%S")
+        
+    @api.depends('confirmation_date')
+    def _onchange_update_date_confirm(self):
+        """
+            dynamic update of related field 'date_confirm'
+        """
+        if self.confirmation_date:
+            self.date_confirm = datetime.strptime(self.confirmation_date, "%Y-%m-%d %H:%M:%S")    
+
+    @api.depends('quotation_number')
+    def _onchange_update_confirmation_number(self):
+        for rec in self:
+            if rec.state in "sale":
+                rec.confirmation_number= "COE" + ''.join(filter(str.isdigit, rec.name))
+
+    @api.onchange('state')
+    def _onchange_update_proforma_date(self):
+        if self.state in "sent":
+            self.proforma_date= fields.Datetime.now()
+    
+    @api.onchange('state')
+    def _onchange_update_proforma_number(self):
+        for rec in self:
+            if rec.state in "sent":
+                rec.proforma_number= "PRE" + ''.join(filter(str.isdigit, rec.name))
 
     @api.depends('name')
     def _onchange_update_sale_code(self):
