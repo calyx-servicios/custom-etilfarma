@@ -162,12 +162,7 @@ class SaleOrder(models.Model):
         """
         self.payment_term_id= self.term_payments
 
-<<<<<<< Updated upstream
-=======
     def _get_invoice_date(self):
-        """
-            dynamic update of related field 'invoice_date'
-        """
         for rec in self:
             record = rec.env["account.invoice"].search([('origin', '=',rec.name)])
             if record:
@@ -175,9 +170,6 @@ class SaleOrder(models.Model):
                     rec.invoice_date = record.date_invoice
     
     def _get_invoice_number(self):
-        """
-            dynamic update of related field 'invoice_number'
-        """
         for rec in self:
             record = rec.env["account.invoice"].search([('origin', '=',rec.name)])
             if record:
@@ -241,7 +233,6 @@ class SaleOrder(models.Model):
             code = "L " + code
         self.sale_code = code
 
->>>>>>> Stashed changes
     @api.onchange('payment_term_id')
     def _onchange_update_term_payments(self):
         """
