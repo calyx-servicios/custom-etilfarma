@@ -6,15 +6,24 @@
         <field name="inherit_id" ref="purchase.purchase_order_form"/>
         <field name="arch" type="xml">
 
+            <xpath expr="//field[@name='order_line']" position="attributes">
+                <attribute name="context">{'show_attribute': False}</attribute>
+            </xpath>
+
             <xpath expr="//field[@name='order_line']/tree//field[@name='product_id']" position="replace">
                 <field name="product_id" attrs="{'readonly': [('state', 'in', ('purchase', 'to approve','done', 'cancel'))]}" context="{'partner_id':parent.partner_id, 'quantity':product_qty,'uom':product_uom, 'company_id': parent.company_id}" force_save="1" invisible="1"/>
+                <field name="product_id_default_code" attrs="{'readonly': [('state', 'in', ('purchase', 'to approve','done', 'cancel'))]}" force_save="1"/>
                 <field name="product_tmpl_id" attrs="{'readonly': [('state', 'in', ('purchase', 'to approve','done', 'cancel'))]}" required="1" force_save="1" options="{'no_open':True,'no_create': True, 'no_create_edit':1}"/>
                 <field name="product_attr_id" invisible="1" />
-                <field name="product_attr_value_id" options="{'no_open':True,'no_create': True,'no_create_edit':1}" domain="[('attribute_id' , '=', product_attr_id)]" context="{'default_attribute_id': product_attr_id, 'show_attribute': False}" />
+                <field name="product_attr_value_id" options="{'no_open':True,'no_create': True,'no_create_edit':1}" domain="[('attribute_id' , '=', product_attr_id)]" context="{'default_attribute_id': product_attr_id, 'show_attribute': False}"/>
             </xpath>
 
             <xpath expr="//field[@name='order_line']/tree//field[@name='taxes_id']" position="after">
                 <field name="intervention_types" widget="many2many_tags" readonly="1"/>
+            </xpath>
+
+            <xpath expr="//field[@name='order_line']/tree//field[@name='name']" position="replace">
+                <field name="name" invisible="1"/>
             </xpath>
 
             <xpath expr="//field[@name='order_line']/tree//field[@name='product_uom']" position="after">
