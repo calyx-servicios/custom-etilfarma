@@ -45,6 +45,11 @@
                 <attribute name="attrs">{'invisible': ['|', ('order_type', '=', %(po_type_third_party)d)]}</attribute>
             </field>
 
+            <!-- Hide state bar when is a IMA order -->
+            <field name="state" position="attributes">
+                <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
+            </field>
+
             <!-- Button Confirm Third Party only Visible when the Order Type is OCT -->
             <xpath expr="//button[@name='print_quotation']" position="after">
                 <button name="button_confirm_third_party"
@@ -65,6 +70,28 @@
                         id="draft_cancel_third_party"
                 />
             </xpath>
+            
+            <!-- Hide groups of tracking order when is a IMA order -->
+            <xpath expr="//group[@name='dispatcher']" position="attributes">
+                <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
+            </xpath>
+
+            <xpath expr="//group[@name='interventions']" position="attributes">
+                <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
+            </xpath>
+
+            <xpath expr="//group[@name='import_license']" position="attributes">
+                <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
+            </xpath>
+
+            <xpath expr="//group[@name='import_delivery']" position="attributes">
+                <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
+            </xpath>
+
+            <xpath expr="//group[@name='expenses']" position="attributes">
+                <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
+            </xpath>
+
         </field>
     </record>
 
