@@ -87,7 +87,7 @@
                             <field name="payment_tre" string="TRE" attrs="{'invisible': [('payment_not_required','=',True)]}" force_save="1"/>
                             <field name="payment_date" string="Date" attrs="{'invisible': [('payment_not_required','=',True)]}" force_save="1"/>
                             <field name="payment_concept" string="Concept" attrs="{'invisible': [('payment_not_required','=',True)]}" force_save="1"/>
-                            <field name="payment_exchange_rate" string="Concept" attrs="{'invisible': [('payment_not_required','=',True)]}" force_save="1"/>                        
+                            <field name="payment_exchange_rate" string="payment exchange" attrs="{'invisible': [('payment_not_required','=',True)]}" force_save="1"/>                        
                         </group>
                         <group name="dispatcher" string="Dispatcher">
                             <field name="dispatcher_not_required" type="checkbox" string="Not Required"/>
