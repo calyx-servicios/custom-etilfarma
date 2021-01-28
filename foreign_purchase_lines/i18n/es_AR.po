@@ -22,6 +22,12 @@ msgid "Attribute"
 msgstr "Atributo"
 
 #. module: foreign_purchase_lines
+#: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_order_line_product_id_default_code
+msgid "Default Code"
+msgstr "Ref. Interna"
+
+
+#. module: foreign_purchase_lines
 #: code:addons/foreign_purchase_lines/models/product_template.py:22
 #: code:addons/foreign_purchase_lines/models/product_template.py:34
 #, python-format
