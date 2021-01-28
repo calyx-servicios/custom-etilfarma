@@ -174,8 +174,8 @@ class SaleOrder(models.Model):
         for rec in self:
             record = rec.env["account.invoice"].search([('origin', '=',rec.name)])
             if record:
-                if record.sequence_number_next_prefix and record.sequence_number_next:
-                    rec.invoice_number = record.sequence_number_next_prefix + record.sequence_number_next
+                if record.display_name:
+                    rec.invoice_number = record.display_name
 
     @api.depends('partner_id')
     def _onchange_update_quotation_client(self):
