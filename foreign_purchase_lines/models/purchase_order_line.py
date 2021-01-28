@@ -11,8 +11,8 @@ class PurchaseOrderLine(models.Model):
     @api.depends("product_tmpl_id")
     def _available_product_attribute(self):
         """
-            Set the attribute with packaging option in product_attr_id field.
-            This is for attribute values.
+        Set the attribute with packaging option in product_attr_id field.
+        This is for attribute values.
         """
         for record in self:
             product_attr_obj = self.env["product.attribute"]
@@ -24,9 +24,9 @@ class PurchaseOrderLine(models.Model):
     @api.onchange("product_attr_value_id")
     def _onchange_product_attr_value_id(self):
         """
-            Set the product_id field based in variable option selected 
-            in the product_attr_value_id (packaging) field 
-            and in the product_tmpl_id field.
+        Set the product_id field based in variable option selected
+        in the product_attr_value_id (packaging) field
+        and in the product_tmpl_id field.
         """
         for record in self:
             product_tmpl_id = record.product_tmpl_id
@@ -38,19 +38,27 @@ class PurchaseOrderLine(models.Model):
                     record.product_attr_value_id.id
                     in product.attribute_value_ids.ids
                 ):
-                    record.update({"product_id": product.id})
+                    record.update(
+                        {
+                            "product_id": product.id,
+                            "product_id_default_code": product.default_code,
+                        }
+                    )
                     break
 
     @api.onchange("product_tmpl_id")
     def _onchange_product_tmpl_id(self):
         """
-            Check if the product has variants if doesn't 
-            set the normal product_id
-            Add a dinamic domain in the product_attr_value_id based in the
-            product template.
-            This only show attribute values set in the product.
+        Check if the product has variants if doesn't
+        set the normal product_id
+        Add a dinamic domain in the product_attr_value_id based in the
+        product template.
+        This only show attribute values set in the product.
         """
         for record in self:
+            record.product_attr_value_id = False
+            record.product_id_default_code = False
+            record.product_id = False
             values_ids = []
             product_tmpl_id = record.product_tmpl_id.id
             attri_value_line_obj = self.env["product.attribute.line"]
@@ -68,7 +76,11 @@ class PurchaseOrderLine(models.Model):
                     record.product_id = produc_id.id
             if product_tmpl_id:
                 if not self.country_id:
-                    raise UserError(_("You must define the 'Origin' field in the product template model."))
+                    raise UserError(
+                        _(
+                            "You must define the 'Origin' field in the product template model."
+                        )
+                    )
 
             domain = [("id", "in", values_ids)]
 
@@ -86,12 +98,26 @@ class PurchaseOrderLine(models.Model):
         comodel_name="product.attribute.value", string="Packaging"
     )
 
-    product_nmc = fields.Char(string="HS Code", related="product_id.product_nmc")
-    country_id = fields.Char(string="Origin", required=True, related="product_tmpl_id.country_id.name")
-    observations = fields.Char(string="Observation")
-    intervention_types = fields.Many2many(
-        comodel_name="purchase.order.interventions", string="Intervention Types", related="product_tmpl_id.intervention_types")    
+    product_id_default_code = fields.Char(string="Default Code")
 
-    product_qty = fields.Float(digits=(12,2))
-    qty_received = fields.Float(digits=(12,2))
-    qty_invoiced = fields.Float(digits=(12,2))
+    name = fields.Text(required=False)
+
+    product_nmc = fields.Char(
+        string="HS Code", related="product_id.product_nmc"
+    )
+    country_id = fields.Char(
+        string="Origin",
+        required=True,
+        related="product_tmpl_id.country_id.name",
+    )
+    observations = fields.Char(string="Observation")
+
+    intervention_types = fields.Many2many(
+        comodel_name="purchase.order.interventions",
+        string="Intervention Types",
+        related="product_tmpl_id.intervention_types",
+    )
+
+    product_qty = fields.Float(digits=(12, 2))
+    qty_received = fields.Float(digits=(12, 2))
+    qty_invoiced = fields.Float(digits=(12, 2))
