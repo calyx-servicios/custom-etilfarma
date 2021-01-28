@@ -132,13 +132,13 @@ class SaleOrder(models.Model):
     after_shipment_boarding_permit_date = fields.Date(string="After Shipment Boarding Permit Date")
 
     sale_code = fields.Char(compute="_onchange_update_sale_code")
-    @api.constrains('payment_excehange_rate')
-    def _check_format_payment_excehange_rate(self):
+    @api.constrains('payment_exchange_rate')
+    def _check_format_payment_exchange_rate(self):
         for rec in self:
-            if rec.payment_excehange_rate:
-                match = re.match("^[0-9]+([,][0-9]+)?$", rec.payment_excehange_rate)
+            if rec.payment_exchange_rate:
+                match = re.match("^[0-9]+([,][0-9]+)?$", rec.payment_exchange_rate)
                 if match == None:
-                    raise UserError("exchamge rate invalid format")
+                    raise UserError("exchange rate invalid format")
 
     @api.constrains('expenses_dispatcher_fees')
     def _check_format_expenses_dispatcher_fees(self):
