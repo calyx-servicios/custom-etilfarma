@@ -65,35 +65,43 @@
                         <group name="proforma" string="Proforma">
                             <field name="proforma_not_required" type="checkbox" string="Not Required"/>
                             <field name="proforma_number" string="Number" attrs="{'invisible': [('proforma_not_required','=',True)]}" force_save="1"/>
+                            <field name="proforma_date" string="Date" attrs="{'invisible': [('proforma_not_required','=',True)]}" force_save="1"/>                        
                         </group>
                         <group name="confirmation" string="Confirmation">
                             <field name="confirmation_not_required" type="checkbox" string="Not Required"/> 
                             <field name="confirmation_number" string="Number" attrs="{'invisible': [('confirmation_not_required','=',True)]}" force_save="1"/>
+                            <field name="date_confirm" string="Date" attrs="{'invisible': [('confirmation_not_required','=',True)]}" force_save="1"/>                        
                         </group>
                         <group name="certificate_of_analysis " string="Certificate Of Analysis">
                             <field name="certificate_of_analysis_not_required" type="checkbox" string="Not Required"/>
-                            <field name="certificate_of_analysis_shipment_date" string="Shipment Date" attrs="{'invisible': [('certificate_of_analysis_not_required','=',True)]}" force_save="1"/>
+                            <field name="certificate_of_analysis_shipment_date_to_customer" string="Shipment Date to Customer" attrs="{'invisible': [('certificate_of_analysis_not_required','=',True)]}" force_save="1"/>
                         </group>
                         <group name="invoice" string="Invoice">
                             <field name="invoice_not_required" type="checkbox" string="Not Required"/>
                             <field name="invoice_number" string="Number" attrs="{'invisible': [('invoice_not_required','=',True)]}" force_save="1"/>
+                            <field name="invoice_date" string="Date" attrs="{'invisible': [('invoice_not_required','=',True)]}" force_save="1"/>
                         </group>
-                        <group name="payment" string="Payment">
+                        <group name="payment" string="Collection">
                             <field name="payment_not_required" type="checkbox" string="Not Required"/>
                             <field name="payment_bank" string="Bank" attrs="{'invisible': [('payment_not_required','=',True)]}" force_save="1"/>
                             <field name="payment_tre" string="TRE" attrs="{'invisible': [('payment_not_required','=',True)]}" force_save="1"/>
                             <field name="payment_date" string="Date" attrs="{'invisible': [('payment_not_required','=',True)]}" force_save="1"/>
                             <field name="payment_concept" string="Concept" attrs="{'invisible': [('payment_not_required','=',True)]}" force_save="1"/>
+                            <field name="payment_exchange_rate" string="payment exchange" attrs="{'invisible': [('payment_not_required','=',True)]}" force_save="1"/>                        
                         </group>
                         <group name="dispatcher" string="Dispatcher">
                             <field name="dispatcher_not_required" type="checkbox" string="Not Required"/>
+                            <field name="dispatcher_id" string="Dispatcher" attrs="{'readonly': [('dispatcher_not_required','=',True)]}" options="{'no_open':True,'no_create': True,'no_create_edit':1}" force_save="1"/>
+                            <field name="dispatcher_address" string="Address" attrs="{'readonly': [('dispatcher_not_required','=',True)]}" force_save="1"/>
+                            <field name="dispatcher_email" string="Email" attrs="{'readonly': [('dispatcher_not_required','=',True)]}" force_save="1"/>
+                            <field name="dispatcher_phone_number" string="Phone Number" attrs="{'readonly': [('dispatcher_not_required','=',True)]}" force_save="1"/>
                             <field name="dispatcher_reference" string="Reference" attrs="{'invisible': [('dispatcher_not_required','=',True)]}" force_save="1"/>
                         </group>
                         <group name="booking" string="Booking(Ship Reserve)">
                             <field name="booking_not_required" type="checkbox" string="Not Required"/>
-                            <field name="booking_conveyance" string="Conveyance" attrs="{'invisible': [('booking_not_required','=',True)]}" force_save="1"/>
-                            <field name="booking_ETD_date" string="ETD Date" attrs="{'invisible': [('booking_not_required','=',True)]}" force_save="1"/>
+                            <field name="booking_conveyance_id" string="Conveyance" attrs="{'readonly': [('booking_not_required','=',True)]}" options="{'no_open':True,'no_create': True,'no_create_edit':1}" force_save="1"/>                            <field name="booking_ETD_date" string="ETD Date" attrs="{'invisible': [('booking_not_required','=',True)]}" force_save="1"/>
                             <field name="booking_ETA_date" string="ETA Date" attrs="{'invisible': [('booking_not_required','=',True)]}" force_save="1"/>
+                            <field name="booking_transport_company" string="Transport Company" attrs="{'invisible': [('booking_not_required','=',True)]}" force_save="1"/>                        
                         </group>
                         <group name="transport_doc" string="Transport Documentation">
                             <field name="transport_doc_not_required" type="checkbox" string="Not Required"/>

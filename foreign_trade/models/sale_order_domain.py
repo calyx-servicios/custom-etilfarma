@@ -60,7 +60,7 @@ class SaleOrderDomain(models.AbstractModel):
         return [
             '&', '&',('booking_not_required', '=', False), ('sale_international', '=', True),
             '|', '|', '|',
-            ('booking_conveyance', '=', False),
+            ('booking_conveyance_id', '=', False),
             ('booking_ETD_date', '=', False),
             ('booking_ETA_date', '=', False),
             ('booking_transport_company', '=', False),
@@ -75,7 +75,7 @@ class SaleOrderDomain(models.AbstractModel):
     def _get_domain_incomplete_certificate_of_analysis(self):
         return [
             '&', '&',('certificate_of_analysis_not_required' , '=' , False), ('sale_international', '=', True),
-            ('certificate_of_analysis_shipment_date', '=', False),
+            ('certificate_of_analysis_shipment_date_to_customer', '=', False),
         ]
 
     def _get_domain_incomplete_origin(self):

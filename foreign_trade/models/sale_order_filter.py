@@ -159,7 +159,7 @@ class SaleOrder(models.Model):
                 rec.incomplete_license = False
 
     @api.multi
-    @api.depends("booking_not_required","booking_conveyance","booking_ETD_date","booking_ETA_date",
+    @api.depends("booking_not_required","booking_conveyance_id","booking_ETD_date","booking_ETA_date",
                  "booking_transport_company","sale_international")
     def compute_incomplete_booking(self):
         domain_incomplete_booking = self.search(self._get_domain_incomplete_booking())
@@ -180,7 +180,7 @@ class SaleOrder(models.Model):
                 rec.incomplete_documents = False
 
     @api.multi
-    @api.depends("certificate_of_analysis_not_required","certificate_of_analysis_shipment_date","sale_international")
+    @api.depends("certificate_of_analysis_not_required","certificate_of_analysis_shipment_date_to_customer","sale_international")
     def compute_incomplete_certificate_of_analysis(self):
         domain_incomplete_certificate_of_analysis = self.search(self._get_domain_incomplete_certificate_of_analysis())
         for rec in self:

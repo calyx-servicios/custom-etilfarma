@@ -211,8 +211,8 @@ class PurchaseOrder(models.Model):
         comodel_name="purchase.delivery.chanel",
         string="Delivery Chanel")
     delivery_not_required = fields.Boolean(string="Delivery Not Required")
-
     original_documentation_original_receipt_date = fields.Date(string="Original Documentation Original Receipt Date")
+    original_documentation_original_sent_date = fields.Date(string="Original Documentation Original Sent Date")    
     original_documentation_not_required = fields.Boolean(string="Original Documentation Not Required")
     original_documentation_reference = fields.Char(string="Original Documentation Reference")
 
@@ -340,6 +340,7 @@ class PurchaseOrder(models.Model):
     @api.onchange("original_documentation_not_required")
     def _onchange_original_documentation_not_required(self):
         self.original_documentation_original_receipt_date = ""
+        self.original_documentation_original_sent_date = ""
         self.original_documentation_reference = ""
 
     @api.onchange("expenses_not_required")
