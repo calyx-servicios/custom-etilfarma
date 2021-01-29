@@ -24,6 +24,18 @@
                 <field name="use_other_invoice_to_address" attrs="{'invisible': [('send_document_to_invoice_to','=',False)]}" options="{'no_create': True, 'no_create_edit':True, 'no_open': True}"/>
             </xpath>
 
+            <xpath expr="//field[@name='documents_date_shipment_originals']" position="attributes">
+                <attribute name="attrs">{'invisible': [('order_type', '=', %(po_type_third_party)d)]}</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='original_documentation_original_receipt_date']" position="attributes">
+                <attribute name="attrs">{'invisible': [('order_type', '=', %(po_type_third_party)d)]}</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='original_documentation_original_receipt_date']" position="after">
+                <field name="original_documentation_original_sent_date" string="Original Sent Date" attrs="{'readonly': [('original_documentation_not_required','=',True)],'invisible': [('order_type', '!=', %(po_type_third_party)d)]}" force_save="1"/>                            
+            </xpath>
+
             <!-- Regular Button Confirm Not Visible when the Order Type is OCT (We want to avoid the
              regular flow of Purchase Order) -->
             <xpath expr="//button[@name='button_confirm'][1]" position="attributes">
