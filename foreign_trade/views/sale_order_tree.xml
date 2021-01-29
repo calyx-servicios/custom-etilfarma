@@ -9,9 +9,8 @@
                 <field name="quotation_number"/>
                 <field name="invoice_number"/>
                 <field name="confirmation_number"/>
-                <field name="certificate_of_analysis_shipment_date"/>
+                <field name="certificate_of_analysis_shipment_date_to_customer"/>
                 <field name="payment_tre"/>
-                <field name="booking_conveyance"/>
                 <field name="booking_ETD_date"/>
                 <field name="transport_doc_documents"/>
                 <field name="shipping_license_number"/>
