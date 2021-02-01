@@ -64,13 +64,13 @@
                         </group>
                         <group name="proforma" string="Proforma">
                             <field name="proforma_not_required" type="checkbox" string="Not Required"/>
-                            <field name="proforma_number" string="Number" attrs="{'invisible': [('proforma_not_required','=',True)]}" force_save="1"/>
-                            <field name="proforma_date" string="Date" attrs="{'invisible': [('proforma_not_required','=',True)]}" force_save="1"/>                        
+                            <field name="proforma_number" string="Number" attrs="{'invisible': [('proforma_not_required','=',True)], 'readonly':True}" force_save="1"/>
+                            <field name="proforma_date" string="Date" attrs="{'invisible': [('proforma_not_required','=',True)], 'readonly':True}" force_save="1"/>                        
                         </group>
                         <group name="confirmation" string="Confirmation">
                             <field name="confirmation_not_required" type="checkbox" string="Not Required"/> 
-                            <field name="confirmation_number" string="Number" attrs="{'invisible': [('confirmation_not_required','=',True)]}" force_save="1"/>
-                            <field name="date_confirm" string="Date" attrs="{'invisible': [('confirmation_not_required','=',True)]}" force_save="1"/>                        
+                            <field name="confirmation_number" string="Number" attrs="{'invisible': [('confirmation_not_required','=',True)], 'readonly':True}" force_save="1"/>
+                            <field name="date_confirm" string="Date" attrs="{'invisible': [('confirmation_not_required','=',True)], 'readonly':True}" force_save="1"/>                        
                         </group>
                         <group name="certificate_of_analysis " string="Certificate Of Analysis">
                             <field name="certificate_of_analysis_not_required" type="checkbox" string="Not Required"/>

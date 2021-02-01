@@ -66,12 +66,12 @@ class SaleOrder(models.Model):
     quotation_date = fields.Date(string="Quotation Date", compute="_onchange_update_quotation_date")
 
     proforma_not_required = fields.Boolean(string="Proforma Not Required")
-    proforma_number = fields.Char(string="Proforma Number", compute="_onchange_update_proforma_number")
-    proforma_date = fields.Date(string="Proforma Date", compute="_onchange_update_proforma_date")
+    proforma_number = fields.Char(string="Proforma Number")
+    proforma_date = fields.Date(string="Proforma Date")
 
     confirmation_not_required = fields.Boolean(string="Confirmation Not Required")
-    confirmation_number = fields.Char(string="Confirmation Number", compute="_onchange_update_confirmation_number")
-    date_confirm= fields.Date(string="Confirmation Date", compute="_onchange_update_date_confirm")
+    confirmation_number = fields.Char(string="Confirmation Number")
+    date_confirm= fields.Date(string="Confirmation Date")
 
     certificate_of_analysis_not_required = fields.Boolean(string="Certificate Of Analysis Not Required")
     certificate_of_analysis_shipment_date_to_customer = fields.Date(string="Certificate Of Analysis Shipment Date to Customer")
@@ -200,30 +200,17 @@ class SaleOrder(models.Model):
         if self.date_order:
             self.quotation_date = datetime.strptime(self.date_order, "%Y-%m-%d %H:%M:%S")
         
-    @api.depends('confirmation_date')
-    def _onchange_update_date_confirm(self):
-        """
-            dynamic update of related field 'date_confirm'
-        """
-        if self.confirmation_date:
-            self.date_confirm = datetime.strptime(self.confirmation_date, "%Y-%m-%d %H:%M:%S")    
-
-    @api.depends('quotation_number')
-    def _onchange_update_confirmation_number(self):
+    def _set_comfirmation(self):
         for rec in self:
-            if rec.state in "sale":
+            if rec.state in "sale" and self.confirmation_date and not self.date_confirm:
                 rec.confirmation_number= "COE" + ''.join(filter(str.isdigit, rec.name))
+                rec.date_confirm = datetime.strptime(rec.confirmation_date, "%Y-%m-%d %H:%M:%S")    
 
-    @api.onchange('state')
-    def _onchange_update_proforma_date(self):
-        if self.state in "sent":
-            self.proforma_date= fields.Datetime.now()
-    
-    @api.onchange('state')
-    def _onchange_update_proforma_number(self):
+    def _set_proforma(self):
         for rec in self:
-            if rec.state in "sent":
+            if rec.state in "draft" or not rec.proforma_date:
                 rec.proforma_number= "PRE" + ''.join(filter(str.isdigit, rec.name))
+                rec.proforma_date= fields.Datetime.now()
 
     @api.depends('name')
     def _onchange_update_sale_code(self):
@@ -280,6 +267,7 @@ class SaleOrder(models.Model):
     @api.multi
     def action_confirm(self):
         res = super(SaleOrder, self).action_confirm()
+        self._set_comfirmation()    
         if self.order_line:
             for line in self.order_line:
                 if not self.certificate_of_analysis_id and line.loot_name:
@@ -356,6 +344,7 @@ class SaleOrder(models.Model):
 
     @api.multi
     def print_foreign_sale_proforma_report(self):
+        self._set_proforma()
         if self.state == "draft":
             self.write({"state": "sent"})
         return self.env.ref(
@@ -369,6 +358,7 @@ class SaleOrder(models.Model):
         able template message loaded by default
         and the proforma report as attachment
         """
+        self._set_proforma()
         self.ensure_one()
         ir_model_data = self.env["ir.model.data"]
         try:
