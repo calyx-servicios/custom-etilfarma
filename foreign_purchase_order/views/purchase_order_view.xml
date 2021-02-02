@@ -5,16 +5,6 @@
         <field name="inherit_id" ref="purchase.purchase_order_form"/>
         <field name="arch" type="xml">
 
-                <!-- para ocultar el elusivo <page string="Deliveries &amp; Invoices"> -->
-
-            <xpath expr="//sheet/notebook" position="attributes">
-                <attribute name="name">note_book</attribute>
-            </xpath>
-
-            <xpath expr="//notebook[@name='note_book']/page[2]" position="attributes">
-                <attribute name="invisible">{'invisible': [('order_type', '=', %(purchase_order_invoice_to.po_type_third_party)d)]}</attribute>
-            </xpath>
-
             <button id="draft_confirm" position="replace">
                 <button name="button_confirm" type="object" states="draft" string="Closing order" id="draft_confirm"/>                
             </button>    
@@ -154,7 +144,6 @@
                             <field name="documents_quality_certificate_approval_date" string="Quality Certificate Approval Date" attrs="{'readonly': [('documents_not_required','=',True)]}" force_save="1"/>
                             <field name="documents_shipping_document" string="Shipping Document" attrs="{'readonly': [('documents_not_required','=',True)]}" force_save="1"/>
                             <field name="documents_shipping_date" string="Shipping Date" attrs="{'readonly': [('documents_not_required','=',True)]}" force_save="1"/>
-                            <field name="documents_date_shipment_originals" string="Date of shipment of originals to dispatcher" attrs="{'readonly': [('documents_not_required','=',True)]}" force_save="1"/>                                               
                         </group>
                         <group name="import_delivery" string="Import Delivery">
                             <field name="delivery_not_required" type="checkbox" string="Not Required"/>
@@ -166,6 +155,7 @@
                             <field name="original_documentation_not_required" type="checkbox" string="Not Required"/>
                             <field name="original_documentation_original_receipt_date" string="Original Receipt Date" attrs="{'readonly': [('original_documentation_not_required','=',True)]}" force_save="1"/>                             
                             <field name="original_documentation_reference" string="Reference" attrs="{'readonly': [('original_documentation_not_required','=',True)]}" force_save="1"/>                        
+                            <field name="documents_date_shipment_originals" string="Date of shipment of originals to dispatcher" attrs="{'readonly': [('documents_not_required','=',True)]}" force_save="1"/>                        
                         </group>
                         <group name="expenses" string="Expenses">
                             <field name="expenses_not_required" type="checkbox" string="Not Required"/>
