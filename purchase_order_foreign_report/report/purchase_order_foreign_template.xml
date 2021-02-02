@@ -214,6 +214,9 @@
                             <pre style="border: none;background: transparent;font-size: 12px;font-family: helvetica;color:black;"><span t-esc="doc.send_documents_to"/> </pre>
                         </td>
                     </tr>
+                    <tr style="margin-top: 25px">
+                        <td style="border: none;"><span t-esc="doc.extra_notes"/></td>
+                    </tr>
                 </table>
             </div>
         </div>
