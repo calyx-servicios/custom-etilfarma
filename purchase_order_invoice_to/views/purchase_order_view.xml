@@ -12,7 +12,7 @@
             </xpath>
 
             <xpath expr="//notebook[@name='note_book']/page[2]" position="attributes">
-                <attribute name="invisible">{'invisible': [('order_type', '=', %(po_type_third_party)d)]}</attribute>
+                <attribute name="attrs">{'invisible': [('order_type', '=', %(po_type_third_party)d)]}</attribute>
             </xpath>
 
             <!-- Field Invoice To only Visible when the Order Type is OCT -->
