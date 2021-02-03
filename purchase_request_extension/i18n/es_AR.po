@@ -27,6 +27,11 @@ msgid "Currency"
 msgstr "Moneda"
 
 #. module: purchase_request_extension
+#: model:ir.model.fields,field_description:purchase_request_extension.field_purchase_request_line_product_id_default_code
+msgid "Default Code"
+msgstr "Ref. Interna"
+
+#. module: purchase_request_extension
 #: code:addons/purchase_request_extension/wizard/purchase_request_line_make_purchase_order.py:97
 #, python-format
 msgid "Enter a positive quantity."

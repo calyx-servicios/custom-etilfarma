@@ -682,7 +682,7 @@ msgstr "Cantidad"
 #. module: purchase_request
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line_purchased_qty
 msgid "Quantity in RFQ or PO"
-msgstr "Cantidad en SP u OC"
+msgstr "Cantidad en OC"
 
 #. module: purchase_request
 #: model:ir.model.fields,field_description:purchase_request.field_purchase_request_line_make_purchase_order_item_product_qty
