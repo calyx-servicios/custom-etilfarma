@@ -96,6 +96,7 @@ class PurchaseRequestLine(models.Model):
         string="Purchase Order",
         compute="_compute_purchase_order_name",
     )
+    product_id_default_code = fields.Char(string="Default Code")
 
     @api.depends('purchase_lines')
     def _compute_purchase_order_name(self):
@@ -109,9 +110,9 @@ class PurchaseRequestLine(models.Model):
     @api.onchange("product_attr_value_id")
     def _onchange_product_attr_value_id(self):
         """
-            Set the product_id field based in variable option selected
-            in the product_attr_value_id (packaging) field
-            and in the product_tmpl_id field.
+        Set the product_id field based in variable option selected
+        in the product_attr_value_id (packaging) field
+        and in the product_tmpl_id field.
         """
         for record in self:
             product_tmpl_id = record.product_tmpl_id
@@ -123,9 +124,13 @@ class PurchaseRequestLine(models.Model):
                     record.product_attr_value_id.id
                     in product.attribute_value_ids.ids
                 ):
-                    record.update({"product_id": product.id})
+                    record.update(
+                        {
+                            "product_id": product.id,
+                            "product_id_default_code": product.default_code,
+                        }
+                    )
                     break
-
     # Exact copy of the method defined on foreign_purchase_lines.
     @api.depends("product_tmpl_id")
     def _available_product_attribute(self):
