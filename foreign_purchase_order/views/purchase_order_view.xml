@@ -220,6 +220,9 @@
                 <field name="incoterm_id" />
                 <field name="confirmation_status" />
                 <field name="proforma_status" />
+                <field name="intervention_reference" string="Interventions"/>
+                <field name="import_license_reference" string="Import license"/>
+                <field name="original_documentation_original_receipt_date" string="Original documentation"/>
             </field>
             <field name="amount_total" position="after">
                 <field name="payment_TTE_status" invisible="1"/>

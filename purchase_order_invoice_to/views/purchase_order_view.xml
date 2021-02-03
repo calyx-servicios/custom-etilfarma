@@ -128,6 +128,15 @@
             <field name="reception_status" position="attributes">
                 <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
             </field>
+            <field name="intervention_reference" position="attributes">
+                <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
+            </field>
+            <field name="import_license_reference" position="attributes">
+                <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
+            </field>
+            <field name="original_documentation_original_receipt_date" position="attributes">
+                <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
+            </field>
         </field>
     </record>
 
