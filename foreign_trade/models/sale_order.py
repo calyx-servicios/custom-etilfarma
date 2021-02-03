@@ -132,6 +132,7 @@ class SaleOrder(models.Model):
     after_shipment_boarding_permit_date = fields.Date(string="After Shipment Boarding Permit Date")
 
     sale_code = fields.Char(compute="_onchange_update_sale_code")
+    
     @api.constrains('payment_exchange_rate')
     def _check_format_payment_exchange_rate(self):
         for rec in self:

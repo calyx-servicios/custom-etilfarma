@@ -426,6 +426,11 @@ msgid "Import License"
 msgstr "Import License"
 
 #. module: foreign_purchase_order
+#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_foreign_fields_tree
+msgid "Import license"
+msgstr "Licencia de importación"
+
+#. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_import_license_approval_date
 msgid "Import License Approval Date"
 msgstr "Fecha de Aprobación de la Licencia de Importación"
@@ -557,6 +562,7 @@ msgid "Intervention VPE Amount"
 msgstr "Intervention VPE Amount"
 
 #. module: foreign_purchase_order
+#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_foreign_fields_tree
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Interventions"
 msgstr "Intervenciones"
@@ -641,6 +647,7 @@ msgstr "Origin"
 
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
+#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_foreign_fields_tree
 msgid "Original Documentation"
 msgstr "Documentación Original"
 
