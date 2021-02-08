@@ -529,7 +529,6 @@ class PurchaseOrder(models.Model):
         )
         return indications
 
-    @api.constrains('order_type')
     def _check_requiered_oce_fields(self):
         error = ""
         if self.order_type.name == "OCE":
@@ -558,7 +557,6 @@ class PurchaseOrder(models.Model):
             if error:
                 raise UserError(error)
             
-    @api.constrains('order_line')
     def _check_order_line(self):
         if self.order_type.name == "OCE":
             complete_order = False
@@ -566,7 +564,7 @@ class PurchaseOrder(models.Model):
                 if order.product_qty != 0 and order.product_nmc and order.price_unit != 0 and order.product_attr_value_id: 
                     complete_order = True
             if not complete_order:
-                raise UserError("at least one product line must be complete")
+                raise UserError("At least one product line must be complete")
 
     special_indications = fields.Text(
         string="Special Indications", default=_get_default_special_indications
