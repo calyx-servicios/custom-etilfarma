@@ -70,6 +70,82 @@ class PurchaseOrder(models.Model):
         default=lambda self: str(datetime.today().isocalendar()[1])
     )
 
+    def _get_partner_default_bank(self):
+        self.payment_bank = self.partner_id.default_bank.bank_id.name
+
+    def _get_account_bank(self):
+        self.payment_account = self.partner_id.default_bank.acc_number
+
+
+    def _get_currency_payment_list(self, list_currency):
+        """ It returns the elements of the 
+            list that are not repeated """
+        list_currency_sorted = sorted(list_currency)
+        string_list_currency = ''
+        previous_item = ''
+        for currency in list_currency_sorted:
+            if currency != previous_item:
+                string_list_currency += currency
+            previous_item = currency
+
+        return string_list_currency
+
+    def _get_invoices_list(self, invoice_list):
+        """ It returns the elements of the 
+            list that are not repeated """
+        invoice_list_sorted = sorted(invoice_list)
+        string_list_invoice = ''
+        previous_item = ''
+        for invoice in invoice_list_sorted:
+            if invoice != previous_item:
+                string_list_invoice += invoice
+            previous_item = invoice
+        
+        return string_list_invoice
+
+    @api.multi
+    def _compute_payment_fields(self):
+        
+        """ To form the computed fields we must necessarily 
+        go through all the invoices and in turn payments 
+        that are associated with the purchase order """
+
+        for rec in self:            
+            payment_tte_amount = 0
+            payment_application_numbers = ''
+            payment_date = ''
+            payment_reference = ''
+            payment_concept = []
+            payment_TC = ''
+            payment_currency = []
+            invoices = rec.invoice_ids
+            for invoice in invoices:
+                if invoice.currency_rate > 0:
+                    payment_TC += invoice.currency_id.name
+                    payment_TC += (': ' + str(invoice.currency_rate) + '  ')
+                
+                payments = invoice.payment_group_ids
+                for payment in payments:
+                    payment_application_numbers += (payment.display_name + '  ')
+                    payment_date += (payment.payment_date + '  ')
+                    if payment.notes:
+                        payment_reference += (payment.notes + '  ')
+                    payment_tte_amount += payment.payments_amount 
+                    payment_currency.append(payment.currency_id.name)
+                    imputed_vouchers = payment.matched_move_line_ids
+                    for imputed_voucher in imputed_vouchers:
+                        payment_concept.append(imputed_voucher.invoice_id.display_name)
+
+            rec.payment_application_number = payment_application_numbers
+            rec.payment_TTE_amount = payment_tte_amount
+            rec.payment_date = payment_date
+            rec.payment_reference = payment_reference
+            rec.payment_concept = rec._get_invoices_list(payment_concept)
+            rec.payment_TC = payment_TC
+            rec.payment_currency = rec._get_currency_payment_list(payment_currency)
+
+
+
     @api.model
     def _default_delivery_date_planned_date_picker(self):
         user = self.env['res.users'].browse(self.env.uid)
@@ -152,15 +228,15 @@ class PurchaseOrder(models.Model):
     proforma_date = fields.Date(string="Proforma Date")
     proforma_not_required = fields.Boolean(string="Proforma Not Required")
 
-    payment_bank = fields.Text(string="Payment Bank")
-    payment_account = fields.Char(string="Payment Account")
-    payment_application_number = fields.Char(string="Payment Application number")
-    payment_date = fields.Date(string="Payment Date")
-    payment_reference = fields.Char(string="Payment Reference")
-    payment_concept = fields.Text(string="Payment Concept")
-    payment_TTE_amount = fields.Char(string="Payment TTE Amount")
-    payment_TC = fields.Char(string="Payment TC")
-    payment_currency = fields.Selection([ ("ARS", "ARS"),("EUR", "EUR"),("USD", "USD")], default="USD", string="Payment Currency")
+    payment_bank = fields.Char(string="Payment Bank", compute="_get_partner_default_bank")
+    payment_account = fields.Char(string="Payment Account", compute="_get_account_bank")
+    payment_application_number = fields.Char(string="Payment Application number", compute="_compute_payment_fields")
+    payment_date = fields.Char(string="Payment Date", compute="_compute_payment_fields")
+    payment_reference = fields.Char(string="Payment Reference", compute="_compute_payment_fields")
+    payment_concept = fields.Char(string="Payment Concept", compute="_compute_payment_fields")
+    payment_TTE_amount = fields.Float(string="Payment TTE Amount", compute="_compute_payment_fields")
+    payment_TC = fields.Char(string="Payment TC", compute="_compute_payment_fields")
+    payment_currency = fields.Char(string="Payment Currency", compute="_compute_payment_fields")
     payment_not_required = fields.Boolean(string="Payment Not Required")
 
     dispatcher_id = fields.Many2one(

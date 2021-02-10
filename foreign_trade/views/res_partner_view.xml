@@ -13,4 +13,17 @@
             </page>
         </field>
     </record>
+    <record model="ir.ui.view" id="res_partner_default_bank_form_view">
+        <field name="name">res.partner.default.bank.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="account.partner_view_buttons"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='currency_id']" position="after">
+                <field name="id" invisible='True'/>
+                <field name="default_bank" string="Default Bank Account" domain="[('partner_id','=',id)]"/>
+            </xpath>            
+        </field>
+    </record>
+
 </odoo>
+
