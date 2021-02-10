@@ -19,6 +19,54 @@ class SaleOrder(models.Model):
             [("payment_instructions", "!=", "")
         ], limit=1).id
 
+    def _compute_partner_default_bank(self):
+        self.payment_bank = self.partner_id.default_bank.bank_id.name
+
+    def _get_invoices_list(self, invoice_list):
+        """ It returns the elements of the 
+            list that are not repeated """
+        invoice_list_sorted = sorted(invoice_list)
+        string_list_invoice = ''
+        previous_item = ''
+        for invoice in invoice_list_sorted:
+            if invoice != previous_item:
+                string_list_invoice += invoice
+            previous_item = invoice
+
+        return string_list_invoice
+
+    @api.multi
+    def _compute_payment_fields(self):
+        """ To form the computed fields we must necessarily 
+        go through all the invoices and in turn payments 
+        that are associated with the sales order """
+
+        for rec in self:            
+            payments_tre = ''
+            payment_date = ''
+            payment_concept = []
+            payment_exchange_rate = ''
+            invoices = rec.invoice_ids
+            for invoice in invoices:
+                if invoice.currency_rate > 0:
+                    payment_exchange_rate += invoice.currency_id.name
+                    payment_exchange_rate += (': ' + str(invoice.currency_rate) + '  ')
+                
+                payments = invoice.payment_group_ids
+                for payment in payments:
+                    payments_tre += (payment.display_name + '  ')
+                    payment_date += (payment.payment_date + '  ')
+                    imputed_vouchers = payment.matched_move_line_ids
+                    for imputed_voucher in imputed_vouchers:
+                        payment_concept.append(imputed_voucher.invoice_id.display_name)
+
+
+            rec.payment_tre = payments_tre
+            rec.payment_date = payment_date
+            rec.payment_concept = self._get_invoices_list(payment_concept)
+            rec.payment_exchange_rate = payment_exchange_rate
+
+
     proforma_not_required = fields.Boolean(string="Proforma Not Required")
 
     order_type_foreign = fields.Boolean(string="Foreign Order", default=False)
@@ -78,15 +126,15 @@ class SaleOrder(models.Model):
 
     invoice_not_required = fields.Boolean(string="Invoice Not Required")
     invoice_number = fields.Char(string="Invoice Number", compute="_get_invoice_number")
-    invoice_date = fields.Date(string="Invoice Date", compute="_get_invoice_date")
+    invoice_date = fields.Char(string="Invoice Date", compute="_get_invoice_date")
 
     payment_not_required = fields.Boolean(string="Payment Not Required")
-    payment_bank = fields.Char(string="Payment Bank")
-    payment_tre = fields.Char(string="Payment TRE")
-    payment_date = fields.Date(string="Payment Date")
-    payment_concept = fields.Char(string="Payment Concept")
+    payment_bank = fields.Char(string="Payment Bank", compute="_compute_partner_default_bank")
+    payment_tre = fields.Char(string="Payment TRE", compute="_compute_payment_fields")
+    payment_date = fields.Char(string="Payment Date", compute="_compute_payment_fields")
+    payment_concept = fields.Char(string="Payment Concept", compute="_compute_payment_fields")
+    payment_exchange_rate = fields.Char("Payment Exchange Rate", compute="_compute_payment_fields")
     payment_transport_company = fields.Char(string="Payment Transport Company")
-    payment_exchange_rate = fields.Char("Payment Exchange Rate")
 
     dispatcher_not_required = fields.Boolean(string="Dispatcher Not Required")
     dispatcher_id = fields.Many2one(
@@ -167,17 +215,23 @@ class SaleOrder(models.Model):
 
     def _get_invoice_date(self):
         for rec in self:
-            record = rec.env["account.invoice"].search([('origin', '=',rec.name)])
-            if record:
-                if record.date_invoice:
-                    rec.invoice_date = record.date_invoice
+            invoice_date = ''
+            invoices = rec.env["account.invoice"].search([('origin', '=',rec.name)])
+            for invoice in invoices:
+                if invoice.date_invoice:
+                    invoice_date += (invoice.date_invoice + '  ')
+            rec.invoice_date = invoice_date
     
     def _get_invoice_number(self):
         for rec in self:
-            record = rec.env["account.invoice"].search([('origin', '=',rec.name)])
-            if record:
-                if record.display_name:
-                    rec.invoice_number = record.display_name
+            invoice_number = ''
+            invoices = rec.env["account.invoice"].search([('origin', '=',rec.name)])
+            for invoice in invoices:
+                if invoice.display_name:
+                    invoice_number += (invoice.display_name + '  ')
+                    
+            rec.invoice_number = invoice_number
+                    
 
     @api.depends('partner_id')
     def _onchange_update_quotation_client(self):
