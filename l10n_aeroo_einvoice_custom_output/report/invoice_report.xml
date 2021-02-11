@@ -4,5 +4,30 @@
         <record id="l10n_ar_aeroo_einvoice.action_aeroo_report_ar_einvoice" model="ir.actions.report">
             <field name="report_file">l10n_aeroo_einvoice_custom_output/report/einvoice_with_footer.odt</field>
         </record>
+
+        <record id="action_aeroo_report_ar_einvoice_en" context="{'no_key_lines':True}" model="ir.actions.report">
+            <field name="name">Argentinian Aeroo English Electronic Invoice</field>
+            <field name="model">account.invoice</field>
+            <field name="sequence" eval="5"/>
+            <field name="report_name">aeroo_report_ar_einvoice_en</field>
+            <field name="report_type">aeroo</field>
+            <field name="in_format">oo-odt</field>
+            <field name="report_file">l10n_aeroo_einvoice_custom_output/report/einvoice_with_footer_en.odt</field>
+            <field name="tml_source">file</field>
+            <field name="print_logo">company_logo</field>
+            <field name="background_image" type="base64" file="l10n_ar_aeroo_einvoice/einvoice.png"/>
+            <field name="process_sep" eval="True"/>
+            <field name="use_background_image" eval="True"/>
+            <field name="account_invoice_split_invoice" eval="False"/>
+            <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+            <field name="print_report_name">(object.state == 'draft' and 'PROFORMA' or ('INVOICE')) + " " + (object.document_number or '')</field>
+        </record>
+
+        <function
+            eval="([ref('action_aeroo_report_ar_einvoice_en')])"
+            id="update_lines_ar_invoice_en"
+            model="ir.actions.report"
+            name="update_lines_that_apply"/>
+
     </data>
 </odoo>

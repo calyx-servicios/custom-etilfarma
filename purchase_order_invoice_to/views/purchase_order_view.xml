@@ -37,6 +37,18 @@
                 <field name="use_other_invoice_to_address" attrs="{'invisible': [('send_document_to_invoice_to','=',False)]}" options="{'no_create': True, 'no_create_edit':True, 'no_open': True}"/>
             </xpath>
 
+            <xpath expr="//field[@name='documents_date_shipment_originals']" position="attributes">
+                <attribute name="attrs">{'invisible': [('order_type', '=', %(po_type_third_party)d)]}</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='original_documentation_original_receipt_date']" position="attributes">
+                <attribute name="attrs">{'invisible': [('order_type', '=', %(po_type_third_party)d)]}</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='original_documentation_original_receipt_date']" position="after">
+                <field name="original_documentation_original_sent_date" string="Original Sent Date" attrs="{'readonly': [('original_documentation_not_required','=',True)],'invisible': [('order_type', '!=', %(po_type_third_party)d)]}" force_save="1"/>                            
+            </xpath>
+
             <!-- Regular Button Confirm Not Visible when the Order Type is OCT (We want to avoid the
              regular flow of Purchase Order) -->
             <xpath expr="//button[@name='button_confirm'][1]" position="attributes">
@@ -56,6 +68,11 @@
             <!-- Hide purchase sample when is a IMA order -->
             <field name="purchase_sample" position="attributes">
                 <attribute name="attrs">{'invisible': ['|', ('order_type', '=', %(po_type_third_party)d)]}</attribute>
+            </field>
+
+            <!-- Hide state bar when is a IMA order -->
+            <field name="state" position="attributes">
+                <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
             </field>
 
             <!-- Button Confirm Third Party only Visible when the Order Type is OCT -->
@@ -78,6 +95,28 @@
                         id="draft_cancel_third_party"
                 />
             </xpath>
+            
+            <!-- Hide groups of tracking order when is a IMA order -->
+            <xpath expr="//group[@name='dispatcher']" position="attributes">
+                <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
+            </xpath>
+
+            <xpath expr="//group[@name='interventions']" position="attributes">
+                <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
+            </xpath>
+
+            <xpath expr="//group[@name='import_license']" position="attributes">
+                <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
+            </xpath>
+
+            <xpath expr="//group[@name='import_delivery']" position="attributes">
+                <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
+            </xpath>
+
+            <xpath expr="//group[@name='expenses']" position="attributes">
+                <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
+            </xpath>
+
         </field>
     </record>
 
@@ -97,6 +136,9 @@
                 <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
             </field>
             <field name="order_type" position="attributes">
+                <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
+            </field>
+            <field name="reception_status" position="attributes">
                 <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
             </field>
         </field>

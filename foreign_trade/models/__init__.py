@@ -1,4 +1,6 @@
 from . import sale_payment_instructions
+from . import sale_dispatcher
+from . import sale_booking_conveyance
 from . import sale_order_type
 from . import sale_order
 from . import sale_order_filter

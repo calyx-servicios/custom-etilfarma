@@ -30,6 +30,8 @@
         'views/res_partner_view.xml',
         'views/sale_order_view.xml',
         'views/sale_certificate_of_analysis_view.xml',
+        'views/sale_dispatcher_view.xml',
+        'views/sale_booking_conveyance_view.xml',
         'views/sale_place_of_delivery_view.xml',
         'views/sale_shipment_view.xml',
         'views/sale_order_type_view.xml',

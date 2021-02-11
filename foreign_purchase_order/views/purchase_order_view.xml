@@ -153,7 +153,7 @@
                         </group>
                         <group name="original_documentation" string="Original Documentation">
                             <field name="original_documentation_not_required" type="checkbox" string="Not Required"/>
-                            <field name="original_documentation_original_receipt_date" string="Original Receipt Date" attrs="{'readonly': [('original_documentation_not_required','=',True)]}" force_save="1"/>
+                            <field name="original_documentation_original_receipt_date" string="Original Receipt Date" attrs="{'readonly': [('original_documentation_not_required','=',True)]}" force_save="1"/>                             
                             <field name="original_documentation_reference" string="Reference" attrs="{'readonly': [('original_documentation_not_required','=',True)]}" force_save="1"/>                        
                             <field name="documents_date_shipment_originals" string="Date of shipment of originals to dispatcher" attrs="{'readonly': [('documents_not_required','=',True)]}" force_save="1"/>                        
                         </group>
