@@ -167,17 +167,22 @@ class SaleOrder(models.Model):
 
     def _get_invoice_date(self):
         for rec in self:
-            record = rec.env["account.invoice"].search([('origin', '=',rec.name)])
-            if record:
-                if record.date_invoice:
-                    rec.invoice_date = record.date_invoice
+            invoice_date = ''
+            invoices = rec.env["account.invoice"].search([('origin', '=',rec.name)])
+            for invoice in invoices:
+                if invoice.date_invoice:
+                    invoice_date += (invoice.date_invoice + '  ')
+            rec.invoice_date = invoice_date
     
     def _get_invoice_number(self):
         for rec in self:
-            record = rec.env["account.invoice"].search([('origin', '=',rec.name)])
-            if record:
-                if record.display_name:
-                    rec.invoice_number = record.display_name
+            invoice_number = ''
+            invoices = rec.env["account.invoice"].search([('origin', '=',rec.name)])
+            for invoice in invoices:
+                if invoice.display_name:
+                    invoice_number += (invoice.display_name + '  ')
+                    
+            rec.invoice_number = invoice_number
 
     @api.depends('partner_id')
     def _onchange_update_quotation_client(self):
