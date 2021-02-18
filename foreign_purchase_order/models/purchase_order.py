@@ -120,31 +120,33 @@ class PurchaseOrder(models.Model):
             payment_currency = []
             invoices = rec.invoice_ids
             for invoice in invoices:
-                if invoice.currency_rate > 0:
-                    payment_TC += invoice.currency_id.name
-                    payment_TC += (': ' + str(invoice.currency_rate) + '  ')
-                
+                payment_currency.append(invoice.currency_id.name)
+                payment_tte_amount += invoice.amount_total_signed - invoice.residual_signed
                 payments = invoice.payment_group_ids
                 for payment in payments:
                     payment_application_numbers += (payment.display_name + '  ')
                     payment_date += (payment.payment_date + '  ')
                     if payment.notes:
                         payment_reference += (payment.notes + '  ')
-                    payment_tte_amount += payment.payments_amount 
-                    payment_currency.append(payment.currency_id.name)
                     imputed_vouchers = payment.matched_move_line_ids
                     for imputed_voucher in imputed_vouchers:
                         payment_concept.append(imputed_voucher.invoice_id.display_name)
-
+                    # We extract the exchange rate information from each of the payment 
+                    # lines that was made in each payment group.
+                    payments_line = payment.payment_ids
+                    for payment_line in payments_line:
+                        payment_TC += (payment_line.name + '   ')
+                        payment_TC += (str(payment_line.amount) + ' ')
+                        payment_TC += (str(payment_line.currency_id.name) + ' - ')
+                        payment_TC += ('T/C ' + str(payment_line.exchange_rate) + '\r' + '\n')
+                       
             rec.payment_application_number = payment_application_numbers
             rec.payment_TTE_amount = payment_tte_amount
             rec.payment_date = payment_date
             rec.payment_reference = payment_reference
             rec.payment_concept = rec._get_invoices_list(payment_concept)
-            rec.payment_TC = payment_TC
             rec.payment_currency = rec._get_currency_payment_list(payment_currency)
-
-
+            rec.payment_TC = payment_TC
 
     @api.model
     def _default_delivery_date_planned_date_picker(self):
@@ -235,7 +237,7 @@ class PurchaseOrder(models.Model):
     payment_reference = fields.Char(string="Payment Reference", compute="_compute_payment_fields")
     payment_concept = fields.Char(string="Payment Concept", compute="_compute_payment_fields")
     payment_TTE_amount = fields.Float(string="Payment TTE Amount", compute="_compute_payment_fields")
-    payment_TC = fields.Char(string="Payment TC", compute="_compute_payment_fields")
+    payment_TC = fields.Text(string="Payment TC", compute="_compute_payment_fields")
     payment_currency = fields.Char(string="Payment Currency", compute="_compute_payment_fields")
     payment_not_required = fields.Boolean(string="Payment Not Required")
 

@@ -40,7 +40,6 @@ class SaleOrder(models.Model):
         """ To form the computed fields we must necessarily 
         go through all the invoices and in turn payments 
         that are associated with the sales order """
-
         for rec in self:            
             payments_tre = ''
             payment_date = ''
@@ -48,10 +47,6 @@ class SaleOrder(models.Model):
             payment_exchange_rate = ''
             invoices = rec.invoice_ids
             for invoice in invoices:
-                if invoice.currency_rate > 0:
-                    payment_exchange_rate += invoice.currency_id.name
-                    payment_exchange_rate += (': ' + str(invoice.currency_rate) + '  ')
-                
                 payments = invoice.payment_group_ids
                 for payment in payments:
                     payments_tre += (payment.display_name + '  ')
@@ -59,7 +54,14 @@ class SaleOrder(models.Model):
                     imputed_vouchers = payment.matched_move_line_ids
                     for imputed_voucher in imputed_vouchers:
                         payment_concept.append(imputed_voucher.invoice_id.display_name)
-
+                    # We extract the exchange rate information from each of the payment 
+                    # lines that was made in each payment group.
+                    payments_line = payment.payment_ids
+                    for payment_line in payments_line:
+                        payment_exchange_rate += (payment_line.name + '   ')
+                        payment_exchange_rate += (str(payment_line.amount) + ' ')
+                        payment_exchange_rate += (str(payment_line.currency_id.name) + ' - ')
+                        payment_exchange_rate += ('T/C ' + str(payment_line.exchange_rate) + '\r' + '\n')
 
             rec.payment_tre = payments_tre
             rec.payment_date = payment_date
@@ -133,7 +135,7 @@ class SaleOrder(models.Model):
     payment_tre = fields.Char(string="Payment TRE", compute="_compute_payment_fields")
     payment_date = fields.Char(string="Payment Date", compute="_compute_payment_fields")
     payment_concept = fields.Char(string="Payment Concept", compute="_compute_payment_fields")
-    payment_exchange_rate = fields.Char("Payment Exchange Rate", compute="_compute_payment_fields")
+    payment_exchange_rate = fields.Text("Payment Exchange Rate", compute="_compute_payment_fields")
     payment_transport_company = fields.Char(string="Payment Transport Company")
 
     dispatcher_not_required = fields.Boolean(string="Dispatcher Not Required")
