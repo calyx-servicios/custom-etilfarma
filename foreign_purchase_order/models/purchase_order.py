@@ -529,6 +529,43 @@ class PurchaseOrder(models.Model):
         )
         return indications
 
+    def _check_requiered_oce_fields(self):
+        error = ""
+        if self.order_type.name == "OCE":
+            if not self.place_of_delivery_id:
+                error += "Place of delivery empty\n"
+            if not self.packaging_id:
+                error += "Packaging empty\n"
+            if not self.delivery_date_week:
+                error += "Delivery date week empty\n"
+            if not self.shipment_id:
+                error += "Shipment empty\n"
+            if not self.marks:
+                error += "Marks empty\n"
+            if not self.packing_list_id:
+                error += "Packing list empty\n"
+            if not self.import_license_id:
+                error += "Import license empty\n"
+            if not self.certificate_of_analysis_id:
+                error += "Certificate of analysis empty\n"
+            if not self.term_payments:
+                error += "Terms payment empty\n"
+            if not self.send_documents_to:
+                error += "Sends documents to empty\n"
+            if not self.order_line:
+                error += "No products"
+            if error:
+                raise UserError(error)
+            
+    def _check_order_line(self):
+        if self.order_type.name == "OCE":
+            complete_order = False
+            for order in self.order_line:
+                if order.product_qty != 0 and order.product_nmc and order.price_unit != 0 and order.product_attr_value_id: 
+                    complete_order = True
+            if not complete_order:
+                raise UserError("At least one product line must be complete")
+
     special_indications = fields.Text(
         string="Special Indications", default=_get_default_special_indications
     )
@@ -600,6 +637,12 @@ class PurchaseOrder(models.Model):
             else:
                 record.reception_status = _('Pending')
 
+    @api.multi
+    def button_confirm(self):
+        self._check_requiered_oce_fields()
+        self._check_order_line()
+        res = super(PurchaseOrder, self).button_confirm() 
+        return res          
 
 class InterventionReferences(models.Model):
     _name = "purchase.order.interventions"
