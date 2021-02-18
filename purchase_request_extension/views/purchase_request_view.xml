@@ -12,6 +12,9 @@ License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl-3.0) -->
             <field name="date_start" position="after">
                 <field name="date_planned" attrs="{'readonly':[('state', '!=', 'draft')]}" force_save="1" widget="date"/>
             </field>
+            <xpath expr="//field[@name='line_ids']" position="attributes">
+                <attribute name="context">{'show_attribute': False}</attribute>
+            </xpath>
             <xpath expr="//field[@name='line_ids']/tree//field[@name='name']" position="attributes">
                 <attribute name="invisible">True</attribute>
             </xpath>
