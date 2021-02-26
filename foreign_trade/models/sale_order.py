@@ -232,7 +232,6 @@ class SaleOrder(models.Model):
                     invoice_number += (invoice.display_name + '  ')
                     
             rec.invoice_number = invoice_number
-                    
 
     @api.depends('partner_id')
     def _onchange_update_quotation_client(self):
