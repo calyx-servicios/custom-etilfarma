@@ -6,11 +6,24 @@
         <field name="model">purchase.order</field>
         <field name="inherit_id" ref="purchase.purchase_order_form"/>
         <field name="arch" type="xml">
+            
+            <xpath expr="//sheet/notebook" position="attributes">
+                <attribute name="name">note_book</attribute>
+            </xpath>
+
+            <xpath expr="//notebook[@name='note_book']/page[2]" position="attributes">
+                <attribute name="attrs">{'invisible': [('order_type', '=', %(po_type_third_party)d)]}</attribute>
+            </xpath>
+
             <!-- Field Invoice To only Visible when the Order Type is OCT -->
             <field name="partner_id" position="before">
                 <field name="invoice_to" options="{'no_open':True,'no_create': True, 'no_create_edit':True}" attrs="{'invisible': [('order_type', '!=', %(po_type_third_party)d)],
                            'required':[('order_type', '=', %(po_type_third_party)d)]}"/>
             </field>
+            <xpath expr="//sheet/notebook/page/group/group/field[@name='fiscal_position_id']" position="attributes">
+                <attribute name="attrs"> {'invisible': [('order_type', '!=', %(po_type_third_party)d)]}</attribute>
+            </xpath>
+
             <!-- Show Field To Write 'Send Document To' with the Invoice To Client Info - Only with OCT type -->
             <field name="send_documents_to" position="before">
                 <field name="send_document_to_invoice_to" attrs="{'invisible': [('order_type', '!=', %(po_type_third_party)d)]}"/>
@@ -126,6 +139,15 @@
                 <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
             </field>
             <field name="reception_status" position="attributes">
+                <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
+            </field>
+            <field name="intervention_reference" position="attributes">
+                <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
+            </field>
+            <field name="import_license_reference" position="attributes">
+                <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
+            </field>
+            <field name="original_documentation_original_receipt_date" position="attributes">
                 <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
             </field>
         </field>

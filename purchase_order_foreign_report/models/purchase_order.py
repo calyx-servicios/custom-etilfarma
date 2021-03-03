@@ -10,6 +10,8 @@ class PurchaseOrder(models.Model):
 
     @api.multi
     def print_purchase_foreign_report(self):
+        self._check_requiered_oce_fields()
+        self._check_order_line()
         if self.state == "draft":
             self.write({"state": "sent"})
         return self.env.ref(
@@ -23,6 +25,8 @@ class PurchaseOrder(models.Model):
         purchase template message loaded by default
         and the purchase foreign report as attachment
         """
+        self._check_requiered_oce_fields()
+        self._check_order_line()
         self.ensure_one()
         ir_model_data = self.env["ir.model.data"]
         try:
