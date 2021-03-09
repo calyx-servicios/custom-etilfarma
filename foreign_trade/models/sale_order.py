@@ -30,10 +30,8 @@ class SaleOrder(models.Model):
         comodel_name="sale.shipment", string="Shipment",
     )
 
-    certificate_of_analysis_id = fields.Many2one(
-        comodel_name="sale.certificate.analysis",
-        string="Certificate of Analysis",
-    )
+    certificate_of_analysis = fields.Char(string='Certificate of Analysis')
+    
 
     payment_instructions_id = fields.Many2one(
         comodel_name="sale.payment.instructions",
@@ -114,7 +112,8 @@ class SaleOrder(models.Model):
     shipping_license_number = fields.Char(string="Shipping License Number")
     shipping_license_official_date = fields.Date(string="Shipping License Official Date")
     shipping_license_channel = fields.Char(string="Shipping License Channel")
-
+    ship_name = fields.Char(string='Ship Name')
+    
     origin_not_required = fields.Boolean(string="Origin Not Required")
     origin_reference = fields.Char(string="Origin Reference")
     origin_shipment_date = fields.Date(string="Origin Date")
@@ -275,11 +274,7 @@ class SaleOrder(models.Model):
     @api.multi
     def action_confirm(self):
         res = super(SaleOrder, self).action_confirm()
-        self._set_comfirmation()    
-        if self.order_line:
-            for line in self.order_line:
-                if not self.certificate_of_analysis_id and line.loot_name:
-                    raise UserError(_('You need to supply a certificate of analysis'))
+        self._set_comfirmation()
         return res
 
     @api.model

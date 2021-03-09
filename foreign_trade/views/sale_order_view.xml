@@ -45,7 +45,7 @@
                             <field name="incoterm_id" string="Incoterm" options="{'no_open':True,'no_create': True,'no_create_edit':1}"/>
                             <field name="observations" string="Observations" style=' min-height: 100px; word-break: break-word' />
                             <field name="shipment_id" string="Shipment" options="{'no_open':True,'no_create': True,'no_create_edit':1}"/>
-                            <field name="certificate_of_analysis_id" string="Certificate of Analysis" options="{'no_open':True,'no_create': True,'no_create_edit':1}"/>
+                            <field name="certificate_of_analysis" string="Certificate of Analysis"/>
                         </group>
                         <group>
                             <field name="place_of_delivery_id" string="Place of Delivery" options="{'no_open':True,'no_create': True,'no_create_edit':1}"/>
@@ -101,7 +101,8 @@
                             <field name="booking_not_required" type="checkbox" string="Not Required"/>
                             <field name="booking_conveyance_id" string="Conveyance" attrs="{'readonly': [('booking_not_required','=',True)]}" options="{'no_open':True,'no_create': True,'no_create_edit':1}" force_save="1"/>                            <field name="booking_ETD_date" string="ETD Date" attrs="{'invisible': [('booking_not_required','=',True)]}" force_save="1"/>
                             <field name="booking_ETA_date" string="ETA Date" attrs="{'invisible': [('booking_not_required','=',True)]}" force_save="1"/>
-                            <field name="booking_transport_company" string="Transport Company" attrs="{'invisible': [('booking_not_required','=',True)]}" force_save="1"/>                        
+                            <field name="booking_transport_company" string="Transport Company" attrs="{'invisible': [('booking_not_required','=',True)]}" force_save="1"/>
+                            <field name="ship_name" string="Ship Name" attrs="{'invisible': [('booking_not_required','=',True)]}" force_save="1"/>
                         </group>
                         <group name="transport_doc" string="Transport Documentation">
                             <field name="transport_doc_not_required" type="checkbox" string="Not Required"/>
@@ -204,6 +205,21 @@
         <field name="arch" type="xml">
             <field name="state" position="before">
                 <field name="order_type" invisible="context.get('group_by') == 'order_type'"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_order_tree_ship_name" model="ir.ui.view">
+        <field name="name">sale_order_ship_name</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_tree"/>
+        <field name="arch" type="xml">
+            <field name="invoice_status" position="replace">
+                <field name="ship_name"/>
+            </field>
+            
+            <field name="user_id" position="attributes">
+                <attribute name="invisible">1</attribute>
             </field>
         </field>
     </record>

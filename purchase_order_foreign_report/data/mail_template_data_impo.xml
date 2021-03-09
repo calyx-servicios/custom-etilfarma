@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <record id="email_template_fporder_peding_confirmation_impo" model="mail.template">
+            <field name="name">Orden pendiente de confirmación.</field>
+            <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
+            <field name="subject">Nestra Orden de compra (Ref ${object.name or 'n/a' }) esta pendiente de confirmación.</field>
+            <field name="partner_to">${object.partner_id.id}</field>
+            <field name="model_id" ref="purchase.model_purchase_order"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="body_html"><![CDATA[
+                <p>Estimado/a
+                % if object.partner_id.is_company and object.partner_id.child_ids:
+                    ${object.partner_id.child_ids[0].name}
+                % else :
+                    ${object.partner_id.name}
+                % endif
+                ,</p>
+                <p>Por favor, notar que nuestro pedido <strong>${object.name}</strong> esta pendiente de confirmación.</p>
+                <p>Quedamos atentos.</p>
+                
+                <p>Muchas gracias.</p>
+                <p>Saludos cordiales,</p>
+                <p>Departamento de Comercio Exterior.</p>
+                <p>ETILFARMA S.A.</p>
+                ]]>
+            </field>
+        </record>
+
+        <record id="email_template_fpo_pending_proforma_impo" model="mail.template">
+            <field name="name">Factura Proforma pendiente</field>
+            <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
+            <field name="subject">Factura proforma pendiente para nuestra orden (Ref ${object.name or 'n/a' }).</field>
+            <field name="partner_to">${object.partner_id.id}</field>
+            <field name="model_id" ref="purchase.model_purchase_order"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="body_html"><![CDATA[
+                <p>Estimado/a
+                % if object.partner_id.is_company and object.partner_id.child_ids:
+                    ${object.partner_id.child_ids[0].name}
+                % else :
+                    ${object.partner_id.name}
+                % endif
+                ,</p>
+                <p>Por favor, notar que a la fecha no hemos recibido la factura proforma para nuestro pedido <strong>${object.name}</strong>.</p>
+
+                <p>Quedamos atentos.</p>
+                
+                <p>Muchas Gracias.</p>
+                <p>Saludos Cordiales,</p>
+                <p>Departamento de Comercio Exterior.</p>
+                <p>ETILFARMA S.A.</p>
+                ]]>
+            </field>
+        </record>
+
+        <record id="email_template_fpo_pending_booking_impo" model="mail.template">
+            <field name="name">Datos de embarque pendientes.</field>
+            <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
+            <field name="subject">Datos de embarque pendientes para nuestra orden (Ref ${object.name or 'n/a' }).</field>
+            <field name="partner_to">${object.partner_id.id}</field>
+            <field name="model_id" ref="purchase.model_purchase_order"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="body_html"><![CDATA[
+                <p>Estimado/a
+                % if object.partner_id.is_company and object.partner_id.child_ids:
+                    ${object.partner_id.child_ids[0].name}
+                % else :
+                    ${object.partner_id.name}
+                % endif
+                ,</p>
+                <p>Por favor, notar que a la fecha no hemos recibido los datos de embarque de nuestro pedido <strong>${object.name}.</p>
+
+                <p>Quedamos atentos.</p>
+
+                <p>Muchas Gracias.</p>
+                <p>Saludos Cordiales,</p>
+                <p>Departamento de Comercio Exterior.</p>
+                <p>ETILFARMA S.A.</p>
+                ]]>
+            </field>
+        </record>
+
+        <record id="email_template_fpo_pending_documents_copy_impo" model="mail.template">
+            <field name="name">Copia de documentos pendientes.</field>
+            <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
+            <field name="subject">Copia de documentos pendientes para nuestra orden (Ref ${object.name or 'n/a' }).</field>
+            <field name="partner_to">${object.partner_id.id}</field>
+            <field name="model_id" ref="purchase.model_purchase_order"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="body_html"><![CDATA[
+                <p>Estimado/a
+                % if object.partner_id.is_company and object.partner_id.child_ids:
+                    ${object.partner_id.child_ids[0].name}
+                % else :
+                    ${object.partner_id.name}
+                % endif
+                ,</p>
+                <p>Por favor, notar que a la fecha no hemos recibido copia de documentos de nuestro pedido <strong>${object.name}</strong>.</p>
+
+                <p>Quedamos atentos.</p>
+                
+                <p>Muchas Gracias.</p>
+                <p>Saludos Cordiales,</p>
+                <p>Departamento de Comercio Exterior.</p>
+                <p>ETILFARMA S.A.</p>
+                ]]>
+            </field>
+        </record>
+
+        <record id="email_template_fpo_pending_documents_original_impo" model="mail.template">
+            <field name="name">Documentos originales pendientes</field>
+            <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
+            <field name="subject">Documentos originales pendientes para nuestra orden (Ref ${object.name or 'n/a' }).</field>
+            <field name="partner_to">${object.partner_id.id}</field>
+            <field name="model_id" ref="purchase.model_purchase_order"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="body_html"><![CDATA[
+                <p>Estimado/a
+                % if object.partner_id.is_company and object.partner_id.child_ids:
+                    ${object.partner_id.child_ids[0].name}
+                % else :
+                    ${object.partner_id.name}
+                % endif
+                ,</p>
+                <p>Por favor, notar que a la fecha no hemos recibido los documentos orifinales de nuestro pedido <strong>${object.name}.</p>
+                
+                <p>Favor de informar número de seguimiento del envío.</p>
+                <p>Quedamos atentos.</p>
+
+                <p>Muchas Gracias.</p>
+                <p>Saludos Cordiales,</p>
+                <p>Departamento de Comercio Exterior.</p>
+                <p>ETILFARMA S.A.</p>
+                ]]>
+            </field>
+        </record>
+
+
+    </data>
+
+
+</odoo>

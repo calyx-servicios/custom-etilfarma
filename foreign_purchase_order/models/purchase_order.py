@@ -80,7 +80,6 @@ class PurchaseOrder(models.Model):
     delivery_date_planned_date = fields.Date(
         string='Date Picker',
         readonly=True,
-        states={'draft': [('readonly', False)]},
         default=_default_delivery_date_planned_date_picker)
 
     """
@@ -575,6 +574,7 @@ class PurchaseOrder(models.Model):
     proforma_status = fields.Char(string='Proform', compute='_compute_tracking_status', store=True)
     payment_TTE_status = fields.Char(string='Payment', compute='_compute_tracking_status', store=True)
     booking_conveyance_status = fields.Char(string='Booking Conveyance', compute='_compute_tracking_status', store=True)
+    booking_ship_name_status = fields.Char(string='Booking Ship Name', compute='_compute_tracking_status', store=True)
     booking_transport_company_status = fields.Char(string='Booking Transport', compute='_compute_tracking_status', store=True)
     booking_ETD_date_status = fields.Char(string='Booking ETD', compute='_compute_tracking_status', store=True)
     booking_ETA_date_status = fields.Char(string='Booking ETA', compute='_compute_tracking_status', store=True)
@@ -611,7 +611,10 @@ class PurchaseOrder(models.Model):
                 record.booking_transport_company_status = _("Not required")
                 record.booking_ETD_date_status = _("Not required")
                 record.booking_ETA_date_status = _("Not required")
+                record.booking_ship_name_status = _("Not required")
+
             else:
+                record.booking_ship_name_status = record.booking_ship_name
                 record.booking_conveyance_status = record.booking_conveyance_id.booking_conveyance
                 record.booking_transport_company_status = record.booking_transport_company
                 record.booking_ETD_date_status = _format_date(record.booking_ETD_date)
