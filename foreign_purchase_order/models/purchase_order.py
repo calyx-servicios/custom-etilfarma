@@ -157,7 +157,6 @@ class PurchaseOrder(models.Model):
 
     delivery_date_planned_date = fields.Date(
         string='Date Picker',
-        readonly=True,
         default=_default_delivery_date_planned_date_picker)
 
     """
