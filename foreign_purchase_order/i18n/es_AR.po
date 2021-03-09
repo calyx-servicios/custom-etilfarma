@@ -919,7 +919,7 @@ msgstr "Fecha de documento de embarque"
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Shipping Date"
-msgstr "Fecha de Envio"
+msgstr "Fecha de documento de embarque"
 
 #. module: foreign_purchase_order
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields

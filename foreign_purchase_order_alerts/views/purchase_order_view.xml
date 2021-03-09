@@ -10,6 +10,7 @@
                 <field name="is_proform_delayed" invisible="1"/>
                 <field name="is_payment_delayed" invisible="1"/>
                 <field name="is_booking_conveyance_empty" invisible="1"/>
+                <field name="is_booking_ship_name_empty" invisible="1"/>
                 <field name="is_booking_ETD_date_empty" invisible="1"/>
                 <field name="is_booking_ETA_date_empty" invisible="1"/>
                 <field name="is_documents_invoice_delayed" invisible="1"/>
@@ -36,10 +37,10 @@
                 }</attribute>
             </field>
 
-            <field name="booking_conveyance_status" position="attributes">
+            <field name="booking_ship_name_status" position="attributes">
                 <attribute name="options">{
-                    "bg_color": "#f1948a: is_booking_conveyance_empty == True",
-                    "fg_color": "white: is_booking_conveyance_empty == True"
+                    "bg_color": "#f1948a: is_booking_ship_name_empty == True",
+                    "fg_color": "white: is_booking_ship_name_empty == True"
                 }</attribute>
             </field>
 
