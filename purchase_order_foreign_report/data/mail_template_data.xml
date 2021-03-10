@@ -59,11 +59,11 @@
                     ${object.partner_id.name}
                 % endif
                 ,</p>
-                <p>Kindly note that order <strong>${object.name}</strong>
+                <p>Kindly note that 
                 % if object.invoice_to: 
-                    from customer <strong>${object.invoice_to.name}</strong> 
+                    our order <strong>${object.name}</strong> from customer <strong>${object.invoice_to.name}</strong> 
                 % else:
-                    is pending of confirmation.</p>
+                    order <strong>${object.name}</strong> is pending of confirmation.</p>
                 % endif
                                 
                 <p>Looking forward to receiving your feedback.</p>
@@ -92,12 +92,12 @@
                     ${object.partner_id.name}
                 % endif
                 ,</p>
-                <p>Please be so kind to send the proforma invoice for order <strong>${object.name}</strong>
+                <p>Please be so kind to send the proforma invoice for
                 
                 % if object.invoice_to:
-                    from customer <strong>${object.invoice_to.name}</strong>.</p>
+                    our order <strong>${object.name}</strong> from customer <strong>${object.invoice_to.name}</strong>.</p>
                 % else:
-                    .</p>
+                    order <strong>${object.name}</strong>.</p>
                 % endif
 
                 <p>Looking forward to receiving your feedback.</p>
@@ -126,12 +126,12 @@
                     ${object.partner_id.name}
                 % endif
                 ,</p>
-                <p>Please be so kind to confirm booking details for order <strong>${object.name}</strong>
+                <p>Please be so kind to confirm booking details for 
                 
                 % if object.invoice_to:
-                    from customer <strong>${object.invoice_to.name}</strong>.</p>
+                    our order <strong>${object.name}</strong> from customer <strong>${object.invoice_to.name}</strong>.</p>
                 % else
-                    .</p>
+                    order <strong>${object.name}</strong>.</p>
                 % endif
 
                 <p>Looking forward to receiving your feedback.</p>
@@ -160,12 +160,12 @@
                     ${object.partner_id.name}
                 % endif
                 ,</p>
-                <p>Please be so kind to send the copy of documents for order <strong>${object.name}</strong>
+                <p>Please be so kind to send the copy of documents for 
                 
                 % if object.invoice_to:
-                    from customer <strong>${object.invoice_to.name}</strong>.</p>
+                    our order <strong>${object.name}</strong> from customer <strong>${object.invoice_to.name}</strong>.</p>
                 % else
-                    .</p>
+                    order <strong>${object.name}</strong>.</p>
                 % endif
 
                 <p>Looking forward to receiving your feedback.</p>
@@ -194,12 +194,12 @@
                     ${object.partner_id.name}
                 % endif
                 ,</p>
-                <p>Please be so kind to inform tracking number for the original documents of order <strong>${object.name}</strong>
+                <p>Please be so kind to inform tracking number for the original documents of 
                 
                 % if object.invoice_to:
-                    from customer <strong>${object.invoice_to.name}</strong>.</p>
+                    our order <strong>${object.name}</strong> from customer <strong>${object.invoice_to.name}</strong>.</p>
                 % else
-                    .</p>
+                    order <strong>${object.name}</strong>.</p>
                 % endif
 
                 <p>Looking forward to receiving your feedback.</p>
