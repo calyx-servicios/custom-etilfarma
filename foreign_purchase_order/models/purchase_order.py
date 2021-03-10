@@ -664,7 +664,7 @@ class PurchaseOrder(models.Model):
                  'booking_not_required', 'documents_not_required', 'delivery_not_required',
                  'confirmation_number', 'proforma_number', 'payment_TTE_amount', 'booking_conveyance_id',
                  'booking_transport_company', 'booking_ETD_date', 'booking_ETA_date', 'documents_commercial_invoice_number',
-                 'documents_shipping_document', 'delivery_number')
+                 'documents_shipping_document', 'delivery_number', 'booking_ship_name')
     def _compute_tracking_status(self):
 
         for record in self:
