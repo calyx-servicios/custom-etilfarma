@@ -61,9 +61,9 @@
                 ,</p>
                 <p>Kindly note that 
                 % if object.invoice_to: 
-                    our order <strong>${object.name}</strong> from customer <strong>${object.invoice_to.name}</strong> 
+                    order <strong>${object.name}</strong> from customer <strong>${object.invoice_to.name}</strong> 
                 % else:
-                    order <strong>${object.name}</strong> is pending of confirmation.</p>
+                    our order <strong>${object.name}</strong> is pending of confirmation.</p>
                 % endif
                                 
                 <p>Looking forward to receiving your feedback.</p>
@@ -95,9 +95,9 @@
                 <p>Please be so kind to send the proforma invoice for
                 
                 % if object.invoice_to:
-                    our order <strong>${object.name}</strong> from customer <strong>${object.invoice_to.name}</strong>.</p>
+                    order <strong>${object.name}</strong> from customer <strong>${object.invoice_to.name}</strong>.</p>
                 % else:
-                    order <strong>${object.name}</strong>.</p>
+                    our order <strong>${object.name}</strong>.</p>
                 % endif
 
                 <p>Looking forward to receiving your feedback.</p>
@@ -129,9 +129,9 @@
                 <p>Please be so kind to confirm booking details for 
                 
                 % if object.invoice_to:
-                    our order <strong>${object.name}</strong> from customer <strong>${object.invoice_to.name}</strong>.</p>
+                    order <strong>${object.name}</strong> from customer <strong>${object.invoice_to.name}</strong>.</p>
                 % else
-                    order <strong>${object.name}</strong>.</p>
+                    our order <strong>${object.name}</strong>.</p>
                 % endif
 
                 <p>Looking forward to receiving your feedback.</p>
@@ -163,9 +163,9 @@
                 <p>Please be so kind to send the copy of documents for 
                 
                 % if object.invoice_to:
-                    our order <strong>${object.name}</strong> from customer <strong>${object.invoice_to.name}</strong>.</p>
+                    order <strong>${object.name}</strong> from customer <strong>${object.invoice_to.name}</strong>.</p>
                 % else
-                    order <strong>${object.name}</strong>.</p>
+                    our order <strong>${object.name}</strong>.</p>
                 % endif
 
                 <p>Looking forward to receiving your feedback.</p>
@@ -197,9 +197,9 @@
                 <p>Please be so kind to inform tracking number for the original documents of 
                 
                 % if object.invoice_to:
-                    our order <strong>${object.name}</strong> from customer <strong>${object.invoice_to.name}</strong>.</p>
+                    order <strong>${object.name}</strong> from customer <strong>${object.invoice_to.name}</strong>.</p>
                 % else
-                    order <strong>${object.name}</strong>.</p>
+                    our order <strong>${object.name}</strong>.</p>
                 % endif
 
                 <p>Looking forward to receiving your feedback.</p>
