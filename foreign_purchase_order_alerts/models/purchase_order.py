@@ -92,6 +92,7 @@ class PurchaseOrder(models.Model):
 
     is_booking_conveyance_empty = fields.Boolean(default=False, compute='_compute_is_booking_conveyance_empty', store=True)
 
+
     @api.depends('date_order', 'booking_not_required', 'booking_conveyance_id')
     def _compute_is_booking_conveyance_empty(self):
         for record in self:
@@ -101,6 +102,18 @@ class PurchaseOrder(models.Model):
                     record.is_booking_conveyance_empty = True
             elif record.reception_status != 'Pending':
                 record.is_booking_conveyance_empty = False
+
+    is_booking_ship_name_empty = fields.Boolean(default=False, compute='_compute_is_booking_ship_name_empty', store=True)
+    
+    @api.depends('date_order', 'booking_not_required', 'booking_ship_name')
+    def _compute_is_booking_ship_name_empty(self):
+        for record in self:
+            if not record.booking_not_required and \
+                    record.reception_status == 'Pending':
+                if not record.booking_ship_name:
+                    record.is_booking_ship_name_empty = True
+            elif record.reception_status != 'Pending':
+                record.is_booking_ship_name_empty = False
 
     is_booking_ETD_date_empty = fields.Boolean(default=False, compute='_compute_is_booking_ETD_date_empty', store=True)
 

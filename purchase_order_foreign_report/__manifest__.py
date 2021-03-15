@@ -8,7 +8,7 @@
     "website": "http://odoo.calyx-cloud.com.ar/",
     "license": "AGPL-3",
     "category": "Report",
-    "version": "11.0.1.1.0",
+    "version": "11.0.1.1.1",
     "development_status": "Production/Stable",
     "application": False,
     "installable": True,
@@ -28,6 +28,7 @@
         "report/purchase_order_foreign_template.xml",
         "report/purchase_order_foreign_report.xml",
         "data/mail_template_data.xml",
+        "data/mail_template_data_impo.xml",
         "data/report_header_parameters.xml",
     ],
 }
