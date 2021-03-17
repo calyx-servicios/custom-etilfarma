@@ -605,7 +605,7 @@ class PurchaseOrder(models.Model):
         )
         return indications
 
-    def _check_requiered_oce_fields(self):
+    def _check_requiered_fields(self):
         error = ""
         if self.order_type.name == "OCE" or self.order_type.name == "OCT":
             if not self.place_of_delivery_id:
@@ -719,7 +719,7 @@ class PurchaseOrder(models.Model):
 
     @api.multi
     def button_confirm(self):
-        self._check_requiered_oce_fields()
+        self._check_requiered_fields()
         self._check_order_line()
         res = super(PurchaseOrder, self).button_confirm() 
         return res          
