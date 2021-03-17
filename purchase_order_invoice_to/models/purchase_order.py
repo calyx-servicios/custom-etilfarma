@@ -90,6 +90,8 @@ class PurchaseOrder(models.Model):
     @api.multi
     def button_confirm_third_party(self):
         for order in self:
+            self._check_requiered_oce_fields()
+            self._check_order_line()
             order.write({'state': 'no_invoice'})
         return True
 
