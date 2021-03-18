@@ -235,7 +235,7 @@
                 <field name="booking_ETD_date_status" />
                 <field name="booking_ETA_date_status" />
                 <field name="internal_notes"/>
-                <field name="import_license_approval_date" />
+                <field name="import_license_official_date_status" />
                 <field name="documents_commercial_invoice_number_status" />
                 <field name="documents_shipping_document_status" />
                 <field name="delivery_number_status" />

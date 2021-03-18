@@ -196,3 +196,65 @@ class PurchaseOrder(models.Model):
                 record.is_status_pending = True
             else:
                 record.is_status_pending = False
+
+    is_import_license_official_date_pending = fields.Boolean(
+        default=False,
+        compute="_compute_is_license_official_date_pending",
+        store=True,
+    )
+
+    @api.depends(
+        "proforma_date",
+        "import_license_not_required",
+        "import_license_official_date",
+        "proforma_not_required",
+    )
+    def _compute_is_license_official_date_pending(self):
+        for record in self:
+            if (
+                record.proforma_not_required
+                and not record.import_license_official_date
+            ):
+                record.is_import_license_official_date_pending = True
+                
+            elif (
+                record.proforma_date
+                and not record.import_license_official_date
+            ):
+                record.is_import_license_official_date_pending = True
+            else:
+                record.is_import_license_official_date_pending = False
+            
+            if record.import_license_not_required:
+                record.is_import_license_official_date_pending = False
+
+    is_original_documentation_delayed = fields.Boolean(
+        default=False,
+        compute='_is_original_documentation_delayed',
+        tore=True
+    )
+
+    @api.depends(
+        "original_documentation_not_required",
+        "booking_ETA_date",
+        "original_documentation_original_receipt_date",
+    )
+    def _is_original_documentation_delayed(self):
+        for record in self:
+            if (
+                not record.original_documentation_not_required
+                and record.booking_ETA_date
+            ):
+                if (
+                    not record.original_documentation_original_receipt_date
+                ):
+                    date_ETA_to_datetime = datetime.strptime(
+                        record.booking_ETA_date, "%Y-%m-%d"
+                    )
+                    work_days = workdays(
+                        date_ETA_to_datetime, datetime.today()
+                    )
+                    if len(work_days) > 10:
+                        record.is_original_documentation_delayed = True
+            else:
+                record.is_original_documentation_delayed = False
