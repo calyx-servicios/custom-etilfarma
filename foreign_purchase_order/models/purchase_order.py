@@ -659,12 +659,17 @@ class PurchaseOrder(models.Model):
     documents_shipping_document_status = fields.Char(string='Shipping Document', compute='_compute_tracking_status', store=True)
     delivery_number_status = fields.Char(string='Delivery', compute='_compute_tracking_status', store=True)
     reception_status = fields.Char(string='Reception', compute='_compute_reception_status', store=True)
+    import_license_official_date_status = fields.Char(string='Approval Date', compute='_compute_tracking_status', store=True )
+    
 
     @api.depends('confirmation_not_required', 'proforma_not_required', 'payment_not_required',
                  'booking_not_required', 'documents_not_required', 'delivery_not_required',
                  'confirmation_number', 'proforma_number', 'payment_TTE_amount', 'booking_conveyance_id',
                  'booking_transport_company', 'booking_ETD_date', 'booking_ETA_date', 'documents_commercial_invoice_number',
-                 'documents_shipping_document', 'delivery_number', 'booking_ship_name')
+                 'documents_shipping_document', 'delivery_number', 'booking_ship_name', 'import_license_official_date',
+                 'proforma_date', 'import_license_not_required', 'original_documentation_original_receipt_date',
+                 'original_documentation_not_required'
+                 )
     def _compute_tracking_status(self):
 
         for record in self:
@@ -708,6 +713,12 @@ class PurchaseOrder(models.Model):
                 record.delivery_number_status = _("Not required")
             else:
                 record.delivery_number_status = record.delivery_number
+
+            if record.import_license_not_required:
+                record.import_license_official_date_status = _("Not required")
+            else:
+                record.import_license_official_date_status = _format_date(record.import_license_official_date)
+
 
     @api.depends('picking_ids', 'picking_ids.state')
     def _compute_reception_status(self):
