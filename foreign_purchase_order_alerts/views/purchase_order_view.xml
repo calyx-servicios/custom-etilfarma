@@ -88,7 +88,7 @@
                 }</attribute>
             </field>
 
-            <field name="import_license_official_date_status" position="attributes">
+            <field name="import_license_reference" position="attributes">
                 <attribute name="options">{
                     "bg_color": "#f1948a: is_import_license_official_date_pending == True",
                     "fg_color": "white: is_import_license_official_date_pending == True"
