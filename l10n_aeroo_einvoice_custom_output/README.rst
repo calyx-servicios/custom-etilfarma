@@ -23,7 +23,7 @@ Einvoice custom Output
 
 .. !!! Description must be max 2-3 paragraphs, and is required.
 
-This module edit the .odt format to e invoices.
+This module edit the .odt format to e invoices and adds a english einvoice template.
 
 **Table of contents**
 

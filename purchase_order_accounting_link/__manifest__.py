@@ -5,7 +5,7 @@
         This module adds the functionality to create Purchase Orders from the Account App.""",
 
     'author': 'Calyx Servicios S.A.',
-    'maintainers': ['FedericoGregori'],
+    'maintainers': ['FedericoGregori', 'JhoneM'],
 
     'website': 'http://odoo.calyx-cloud.com.ar/',
     'license': 'AGPL-3',
@@ -14,7 +14,7 @@
     # Check https://github.com/odoo/odoo/blob/11.0/odoo/addons/base/module/module_data.xml
     # for the full list
     'category': 'Accounting',
-    'version': '11.0.1.0.0',
+    'version': '11.0.1.0.1',
     # see https://odoo-community.org/page/development-status
     'development_status': 'Production/Stable',
 
