@@ -15,8 +15,10 @@
                 <field name="is_booking_ETA_date_empty" invisible="1"/>
                 <field name="is_documents_invoice_delayed" invisible="1"/>
                 <field name="is_documents_shipping_delayed" invisible="1"/>
-                 <field name="is_delivery_delayed" invisible="1"/>
+                <field name="is_delivery_delayed" invisible="1"/>
                 <field name="is_status_pending" invisible="1"/>
+                <field name="is_import_license_official_date_pending" invisible="1"/>
+                <field name="is_original_documentation_delayed" invisible="1"/>
             </field>
 
             <tree position="attributes">
@@ -83,6 +85,20 @@
                 <attribute name="options">{
                     "bg_color": "#f1948a: is_status_pending == True",
                     "fg_color": "white: is_status_pending == True"
+                }</attribute>
+            </field>
+
+            <field name="import_license_reference" position="attributes">
+                <attribute name="options">{
+                    "bg_color": "#f1948a: is_import_license_official_date_pending == True",
+                    "fg_color": "white: is_import_license_official_date_pending == True"
+                }</attribute>
+            </field>
+
+            <field name="original_documentation_original_receipt_date" position="attributes">
+                <attribute name="options">{
+                    "bg_color": "#f1948a: is_original_documentation_delayed == True",
+                    "fg_color": "white: is_original_documentation_delayed == True"
                 }</attribute>
             </field>
 
