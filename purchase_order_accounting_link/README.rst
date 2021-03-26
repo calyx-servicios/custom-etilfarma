@@ -1,6 +1,6 @@
-=============
-New Module
-=============
+===========================
+Purchase Order Account Link
+===========================
 
 .. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
    !! This file is intended to be in every module    !!
@@ -23,7 +23,7 @@ New Module
 
 .. !!! Description must be max 2-3 paragraphs, and is required.
 
-This module extends the functionality of ... to support ... and to allow you to ...
+This module adds the functionality to create Purchase Orders from the Account App.
 
 **Table of contents**
 
@@ -35,19 +35,19 @@ This module extends the functionality of ... to support ... and to allow you to 
 Install
 =======
 
-Do this ...
+Just Install.
 
 .. !!! Configuration: This file is optional, it should explain how to configure the module before using it; it is aimed at advanced users. To configure this module, you need to:
 
 Configure
 =========
 
-Go to ...
+Nothing to configure.
 
 Usage
 =====
 
-1. Go to ...
+1. Go to Account -> Purchase -> Purchase Orders.
 
 Known issues / Roadmap
 ======================
@@ -72,9 +72,9 @@ Contributors
 
 * `Calyx Servicios S.A. <http://odoo.calyx-cloud.com.ar/>`_
   
-  * Lucas Soto
   * Jhone Mendez
   * Federico Gregori
+  * Cris Paradiso
 
 Maintainers
 ~~~~~~~~~~~
@@ -88,4 +88,4 @@ This module is maintained by the Calyx Servicios S.A.
 CALYX SERVICIOS S.A. It is part of the PGK Consultores economic group, member of an important global network, a world organization positioned among the 20 largest consultant-studios in the world.
 The PGK Consultores group is one of the 20 largest consultant-studios in Argentina with nearly 200 professionals.
 
-This module is part of the `Odoo-Calyx <https://gitlab.com/calyxservicios-group/odoo/odoo-calyx>`_ project on Gitlab.
+This module is part of the `Custom-Etilfarma <https://github.com/calyx-servicios/custom-etilfarma>`_ project on Github.

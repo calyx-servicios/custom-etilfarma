@@ -1,9 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-    <record id="purchase_order_tree_view" model="ir.actions.act_window">
+
+    <record id="purchase_order_tree_acc_view" model="ir.ui.view">
+        <field name="name">purchase.order.list</field>
+        <field name="model">purchase.order</field>
+        <field name="priority" eval="20" />
+        <field name="arch" type="xml">
+            <tree decoration-bf="message_unread==True" decoration-muted="state=='cancel'" decoration-info="state in ('wait','confirmed')" string="Purchase Order">
+                <field name="message_unread" invisible="1"/>
+                <field name="order_type" invisible="1"/>
+                <field name="purchase_order_accounting" invisible="1"/>
+                <field name="purchase_order_accounting" invisible="1"/>
+                <field name="name" string="Reference"/>
+                <field name="date_order"/>
+                <field name="partner_id"/>
+                <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+                <field name="date_planned" invisible="context.get('quotation_only', False)"/>
+                <field name="origin"/>
+                <field name="amount_untaxed" sum="Total Untaxed amount" string="Untaxed" widget="monetary"/>
+                <field name="amount_total" sum="Total amount" widget="monetary"/>
+                <field name="currency_id" invisible="1"/>
+                <field name="state"/>
+                <field name="invoice_status" invisible="not context.get('show_purchase', True)"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="purchase_order_tree_view_acc" model="ir.actions.act_window">
         <field name="name">Purchase Orders</field>
         <field name="res_model">purchase.order</field>
         <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="purchase_order_tree_acc_view"/>
         <field name="domain" eval="[('order_type','=', ref('purchase_order_types.po_type_regular')), ('purchase_order_accounting', '=', True)]"/>
         <field name="context">{'purchase_order_accounting': True}</field>
         <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>
@@ -21,7 +48,7 @@
     </record>
 
     <menuitem
-            action="purchase_order_tree_view"
+            action="purchase_order_tree_view_acc"
             id="menu_action_purchase_order_tree"
             parent="account.menu_finance_payables_documents"
             sequence="1"/>
