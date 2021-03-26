@@ -605,9 +605,9 @@ class PurchaseOrder(models.Model):
         )
         return indications
 
-    def _check_requiered_oce_fields(self):
+    def _check_requiered_fields(self):
         error = ""
-        if self.order_type.name == "OCE":
+        if self.order_type.name == "OCE" or self.order_type.name == "OCT":
             if not self.place_of_delivery_id:
                 error += "Place of delivery empty\n"
             if not self.packaging_id:
@@ -634,7 +634,7 @@ class PurchaseOrder(models.Model):
                 raise UserError(error)
             
     def _check_order_line(self):
-        if self.order_type.name == "OCE":
+        if self.order_type.name == "OCE" or self.order_type.name == "OCT":
             complete_order = False
             for order in self.order_line:
                 if order.product_qty != 0 and order.product_nmc and order.price_unit != 0 and order.product_attr_value_id: 
@@ -719,7 +719,7 @@ class PurchaseOrder(models.Model):
 
     @api.multi
     def button_confirm(self):
-        self._check_requiered_oce_fields()
+        self._check_requiered_fields()
         self._check_order_line()
         res = super(PurchaseOrder, self).button_confirm() 
         return res          
