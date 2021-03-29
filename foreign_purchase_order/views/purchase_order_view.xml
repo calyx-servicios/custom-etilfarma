@@ -234,7 +234,7 @@
                 <field name="term_payments"/>
                 <field name="payment_date" string="Payment"/>
                 <field name="import_license_reference" string="Import license"/>
-                <field name="import_license_official_date" />
+                <field name="import_license_official_date" string="Import License Approval Date"/>
                 <field name="shipment_id" />
                 <field name="booking_transport_company_status" />
                 <field name="booking_ship_name_status" />
