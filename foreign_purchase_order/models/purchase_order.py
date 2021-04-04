@@ -418,6 +418,8 @@ class PurchaseOrder(models.Model):
     def _onchange_delivery_not_required(self):
         self.delivery_chanel_id = ""
         self.delivery_date_week = ""
+        self.delivery_date_week_date = ""
+        self.delivery_date_week_week = ""
         self.delivery_number = ""
         self.delivery_official_date = ""
 
