@@ -178,7 +178,7 @@
             <field name="payment_date" position="attributes">
                 <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
             </field>
-            <field name="import_license_approval_date" position="attributes">
+            <field name="import_license_official_date" position="attributes">
                 <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
             </field>
             <field name="shipment_id" position="attributes">
