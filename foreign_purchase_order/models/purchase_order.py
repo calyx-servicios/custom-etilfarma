@@ -173,8 +173,16 @@ class PurchaseOrder(models.Model):
         comodel_name="purchase.packaging", string="Packaging",
     )
 
+    delivery_date_week_date = fields.Datetime(string="Delivery Date (Week)")
+    
+    delivery_date_week_week = fields.Char(
+        string="Delivery Date",
+        compute="_compute_delivery_date_week_week",
+        store=True,
+    )
+
     delivery_date_week = fields.Char(
-        string="Delivery Date (Week)",
+        string="Delivery Date",
         compute="_compute_delivery_date_week",
         store=True,
     )
@@ -525,25 +533,35 @@ class PurchaseOrder(models.Model):
 
         self.send_documents_to = info_to_write
 
-    @api.depends("date_planned")
+    @api.depends("delivery_date_week_date")
     def _compute_delivery_date_week(self):
         """
-        We take the date_planned assigned by the user to
+        We take the delivery_date_week_date assigned by the user to
         format it into the regular format.
         Then we concatenate a string with that formmated
         date plus the week number
         """
         for po in self:
-            if po.date_planned:
+            if po.delivery_date_week_date:
                 date_fmt = "/".join(
-                    reversed(po.date_planned.split(" ")[0].split("-"))
+                    reversed(po.delivery_date_week_date.split(" ")[0].split("-"))
                 )
                 po.delivery_date_week = "{} - W{}".format(
                     date_fmt,
                     datetime.strptime(
-                        po.date_planned, "%Y-%m-%d %H:%M:%S"
+                        po.delivery_date_week_date, "%Y-%m-%d %H:%M:%S"
                     ).isocalendar()[1],
                 )
+
+    @api.depends("delivery_date_week_date")
+    def _compute_delivery_date_week_week(self):
+        for po in self:
+            if po.delivery_date_week_date:
+                po.delivery_date_week_week = " - W{}".format(
+                    datetime.strptime(
+                        po.delivery_date_week_date, "%Y-%m-%d %H:%M:%S"
+                    ).isocalendar()[1])
+
 
     @api.onchange("purchase_sample")
     def _onchange_purchase_sample(self):
