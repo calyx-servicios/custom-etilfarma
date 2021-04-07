@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # Copyright 2018 Raphael Reverdy https://akretion.com
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
-from datetime import datetime
-
+from datetime import datetime, timedelta
+import dateutil.parser
 from odoo import api, fields, models, _
 from odoo.exceptions import Warning
 
@@ -52,6 +52,9 @@ class PurchaseOrder(models.Model):
         domain=_domain_order_type, 
         default=_default_order_types
     )
+
+    product_qty = fields.Float("Quantity", related="order_line.product_qty" )
+    invoice_due_date = fields.Date("Invoice Due Date")
 
     @staticmethod
     def _get_date_range(date_order_str):
@@ -151,6 +154,19 @@ class PurchaseOrder(models.Model):
         for order in self:
             order.write({'state': 'cancel'})
         return True
+
+    @api.multi
+    @api.onchange('term_payments','documents_FC_date')
+    def _onchange_term_patments(self):
+        for rec in self:
+            if rec.term_payments and rec.documents_FC_date:
+                try:
+                    term = int(rec.term_payments.name.split(" ")[0])
+                    date = dateutil.parser.parse(rec.documents_FC_date).date()
+                    new_date = date + timedelta(days=term)
+                    rec.invoice_due_date = new_date
+                except:
+                    rec.invoice_due_date = rec.documents_FC_date
 
     @api.multi
     @api.onchange('partner_id')

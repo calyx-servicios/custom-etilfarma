@@ -35,6 +35,7 @@
 
             <xpath expr="//field[@name='send_documents_to']" position="after">
                 <field name="use_other_invoice_to_address" attrs="{'invisible': [('send_document_to_invoice_to','=',False)]}" options="{'no_create': True, 'no_create_edit':True, 'no_open': True}"/>
+                <field name="invoice_due_date" invisible="1" force_save="1"/>
             </xpath>
 
             <xpath expr="//field[@name='documents_date_shipment_originals']" position="attributes">
@@ -126,9 +127,6 @@
         <field name="inherit_id" ref="purchase.purchase_order_tree"/>
         <field name="arch" type="xml">
             <!-- Field Invoice To only Visible when the action used is purchase_third_party_action-->
-            <field name="name" position="after">
-                <field name="invoice_to" invisible="context.get('show_invoice_to') != 1"/>
-            </field>
             <field name="date_planned" position="attributes">
                 <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
             </field>
@@ -149,6 +147,70 @@
             </field>
             <field name="original_documentation_original_receipt_date" position="attributes">
                 <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
+            </field>
+            <field name="name" position="attributes">
+                <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
+            </field>
+            <field name="description" position="attributes">
+                <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
+            </field>
+            <field name="incoterm_id" position="attributes">
+                <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
+            </field>
+            <field name="internal_notes" position="attributes">
+                <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
+            </field>
+            <field name="confirmation_status" position="attributes">
+                <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
+            </field>
+            <field name="proforma_status" position="attributes">
+                <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
+            </field>
+            <field name="confirmation_status" position="attributes">
+                <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
+            </field>
+            <field name="amount_total" position="attributes">
+                <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
+            </field>
+            <field name="term_payments" position="attributes">
+                <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
+            </field>
+            <field name="payment_date" position="attributes">
+                <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
+            </field>
+            <field name="import_license_official_date" position="attributes">
+                <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
+            </field>
+            <field name="shipment_id" position="attributes">
+                <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
+            </field>
+            <field name="booking_transport_company_status" position="attributes">
+                <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
+            </field>
+            <field name="documents_commercial_invoice_number_status" position="attributes">
+                <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
+            </field>
+            <field name="documents_shipping_document_status" position="attributes">
+                <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
+            </field>
+            <field name="partner_id" position="after">
+                <field name="original_documentation_original_sent_date" invisible="context.get('show_invoice_to') != 1"/>
+            </field>
+            <field name="partner_id" position="after">
+                <field name="invoice_to" invisible="context.get('show_invoice_to') != 1"/>
+                <field name="customer_purchase_order" invisible="context.get('show_invoice_to') != 1"/>
+                <field name="extra_notes" invisible="context.get('show_invoice_to') != 1"/>
+                <field name="name" invisible="context.get('show_invoice_to') != 1"/>
+                <field name="date_order" invisible="context.get('show_invoice_to') != 1" widget="date"/>
+                <field name="internal_notes" invisible="context.get('show_invoice_to') != 1"/>
+                <field name="confirmation_status" invisible="context.get('show_invoice_to') != 1"/>
+                <field name="product_qty" invisible="context.get('show_invoice_to') != 1"/>
+                <field name="description" invisible="context.get('show_invoice_to') != 1"/>
+                <field name="amount_total" invisible="context.get('show_invoice_to') != 1"/>
+                <field name="documents_commercial_invoice_number_status" invisible="context.get('show_invoice_to') != 1"/>
+                <field name="documents_FC_date" invisible="context.get('show_invoice_to') != 1"/>
+                <field name="invoice_due_date" invisible="context.get('show_invoice_to') != 1"/>
+                <field name="documents_shipping_document_status" invisible="context.get('show_invoice_to') != 1"/>
             </field>
         </field>
     </record>
