@@ -1,0 +1,101 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* purchase_order_chanel
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-08 15:32+0000\n"
+"PO-Revision-Date: 2021-04-08 15:32+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: purchase_order_chanel
+#: model:ir.model.fields,field_description:purchase_order_chanel.field_purchase_order_chanel_active
+msgid "Active"
+msgstr "Activo"
+
+#. module: purchase_order_chanel
+#: model:ir.model.fields,field_description:purchase_order_chanel.field_purchase_order_chanel_id_9020
+#: model:ir.model.fields,field_description:purchase_order_chanel.field_purchase_order_chanel_name
+msgid "Chanel"
+msgstr "Canal"
+
+#. module: purchase_order_chanel
+#: model:ir.actions.act_window,help:purchase_order_chanel.action_purchase_order_chanel_view
+msgid "Click to set a new Purchase Order Chanel."
+msgstr "Click to set a new Purchase Order Chanel."
+
+#. module: purchase_order_chanel
+#: model:ir.model.fields,field_description:purchase_order_chanel.field_purchase_order_chanel_create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: purchase_order_chanel
+#: model:ir.model.fields,field_description:purchase_order_chanel.field_purchase_order_chanel_create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: purchase_order_chanel
+#: model:ir.model.fields,field_description:purchase_order_chanel.field_purchase_order_chanel_display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: purchase_order_chanel
+#: model:ir.model.fields,field_description:purchase_order_chanel.field_purchase_order_chanel_id
+msgid "ID"
+msgstr "ID (identificación)"
+
+#. module: purchase_order_chanel
+#: model:ir.model.fields,field_description:purchase_order_chanel.field_purchase_order_chanel___last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: purchase_order_chanel
+#: model:ir.model.fields,field_description:purchase_order_chanel.field_purchase_order_chanel_write_uid
+msgid "Last Updated by"
+msgstr "Última actualización de"
+
+#. module: purchase_order_chanel
+#: model:ir.model.fields,field_description:purchase_order_chanel.field_purchase_order_chanel_write_date
+msgid "Last Updated on"
+msgstr "Última actualización en"
+
+#. module: purchase_order_chanel
+#: model:ir.model,name:purchase_order_chanel.model_purchase_order
+msgid "Purchase Order"
+msgstr "Pedido de compra"
+
+#. module: purchase_order_chanel
+#: model:ir.actions.act_window,name:purchase_order_chanel.action_purchase_order_chanel_view
+#: model:ir.ui.menu,name:purchase_order_chanel.menu_purchase_order_chanel
+#: model:ir.ui.view,arch_db:purchase_order_chanel.view_purchase_order_chanel_search
+#: model:ir.ui.view,arch_db:purchase_order_chanel.view_purchase_order_chanel_tree
+msgid "Purchase Order Chanel"
+msgstr "Canales de compra"
+
+#. module: purchase_order_chanel
+#: model:ir.model.fields,field_description:purchase_order_chanel.field_purchase_order_chanel_sequence
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: purchase_order_chanel
+#: model:ir.ui.view,arch_db:purchase_order_chanel.view_purchase_order_chanel_form
+msgid "Type"
+msgstr "Tipo"
+
+#. module: purchase_order_chanel
+#: code:addons/purchase_order_chanel/models/purchase_order_chanel.py:22
+#, python-format
+msgid "You are trying to delete a record that is still referenced in one o more purchase, try to archive it."
+msgstr "You are trying to delete a record that is still referenced in one o more purchase, try to archive it."
+
+#. module: purchase_order_chanel
+#: model:ir.model,name:purchase_order_chanel.model_purchase_order_chanel
+msgid "purchase.order.chanel"
+msgstr "purchase.order.chanel"
