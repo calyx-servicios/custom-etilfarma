@@ -23,6 +23,7 @@ msgstr "Activo"
 #. module: purchase_order_chanel
 #: model:ir.model.fields,field_description:purchase_order_chanel.field_purchase_order_chanel_id_9020
 #: model:ir.model.fields,field_description:purchase_order_chanel.field_purchase_order_chanel_name
+#: model:ir.ui.view,arch_db:purchase_order_chanel.purchase_order_chanel_form
 msgid "Chanel"
 msgstr "Canal"
 
