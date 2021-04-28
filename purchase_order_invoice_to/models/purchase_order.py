@@ -10,6 +10,13 @@ from odoo.exceptions import Warning
 class PurchaseOrder(models.Model):
     _inherit = 'purchase.order'
 
+    @api.depends("date_order")
+    def _compute_date_order_stats(self):
+        for po in self:
+            po.date_order_stats = datetime.strptime(
+                    po.date_order, "%Y-%m-%d %H:%M:%S"
+                ).date()
+
     def _default_order_types(self):
         if self._context.get("ima"):
             return self.env.ref("purchase_order_invoice_to.po_type_third_party").id
@@ -55,6 +62,7 @@ class PurchaseOrder(models.Model):
 
     product_qty = fields.Float("Quantity", related="order_line.product_qty" )
     invoice_due_date = fields.Date("Invoice Due Date")
+    date_order_stats = fields.Date("Order Date", compute="_compute_date_order_stats")
 
     @staticmethod
     def _get_date_range(date_order_str):
