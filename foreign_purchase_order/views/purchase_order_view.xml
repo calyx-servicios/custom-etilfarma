@@ -169,7 +169,7 @@
                             <field name="expenses_dispatcher_fees" string="Dispatcher Fees" attrs="{'readonly': [('expenses_not_required','=',True)]}" force_save="1"/>
                             <field name="expenses_currency_id" string="Payment Currency" attrs="{'readonly': [('expenses_not_required','=',True)]}" force_save="1"/>
                             <field name="expenses_expenses" string="Expenses" attrs="{'readonly': [('expenses_not_required','=',True)]}" force_save="1"/>
-                            <field name="expenses_currency_id" string="Payment Currency" attrs="{'readonly': [('expenses_not_required','=',True)]}" force_save="1"/>
+                            <field name="expenses_currency_id_expenses" string="Payment Currency" attrs="{'readonly': [('expenses_not_required','=',True)]}" force_save="1"/>
                         </group>
                     </group>
                 </page>

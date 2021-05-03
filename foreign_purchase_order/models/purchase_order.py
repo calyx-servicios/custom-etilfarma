@@ -311,6 +311,10 @@ class PurchaseOrder(models.Model):
         [("eur", "EUR"), ("ars", "ARS"), ("usd", "USD")],
         string="Expenses Currency"
     )
+    expenses_currency_id_expenses = fields.Selection(
+        [("eur", "EUR"), ("ars", "ARS"), ("usd", "USD")],
+        string="Expenses Currency"
+    )
 
     @api.constrains('intervention_VPE_amount')
     def _check_format_intervention_VPE_amount(self):
