@@ -44,13 +44,13 @@
     </template>
 
     <template id="purchase_foreign_header" name="purchase_foreign_header">
-        <div class="headerx" style="width:100%;font-family:helvetica">
+        <div class="headerx" style="width:100%;">
             <div class="row" style="margin-top: 10px;">
                 <div class="col-xs-6 text-left">
-                    <span style="font-size:16px;" t-esc="header_name"/>
+                    <span class="foreign_title" style="font-size:16px;" t-esc="header_name"/>
                 </div>
-                <div class="col-xs-6 text-right" style="font-size:14px;margin-top: 15px">
-                    Phone: <span t-esc="header_phone"/> <br/>
+                <div class="col-xs-6 text-right foreign_text" style="font-size:14px;margin-top: 15px">
+                    Phone: <span t-esc="header_phone"/><br/>
                     Email: <span t-esc="header_mail"/>
                 </div>
             </div>
@@ -59,9 +59,9 @@
     </template>
 
     <template id="purchase_foreign_footer" name="purchase_foreign_footer">
-        <div class="text-center" style="border-top: 1px solid black;margin-bottom:5px">
+        <div class="text-right" style="border-top: 1px solid black;margin-bottom:5px;font-size:10px">
             <ul class="list-inline">
-                <li>Page:</li>
+                <li>page:</li>
                 <li><span class="page"/></li>
                 <li>/</li>
                 <li><span class="topage"/></li>
@@ -70,7 +70,7 @@
     </template>
 
     <template id="purchase_foreign_page">
-       <div class="row" style="font-size:12px">
+       <div class="row">
             <div class="col-xs-6 text-left">
                 <div class="row">
                     <div class="col-xs-12">
@@ -80,7 +80,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <t t-if="doc.invoice_to">                            
-                            Invoice to: <span style="font-size:15px;font-weight:bold" t-esc="doc.invoice_to.name"/><br/>
+                            Invoice to: <span class="foreign_title" style="font-size:15px" t-esc="doc.invoice_to.name"/><br/>
                             <span t-if="doc.invoice_to.street" t-esc="doc.invoice_to.street"/><br/>
                             <span t-if="doc.invoice_to.city" t-esc="doc.invoice_to.city"/> <t t-if="doc.invoice_to.zip"><span t-esc="doc.invoice_to.zip"/>, </t> <span t-if="doc.invoice_to.state_id" t-esc="doc.invoice_to.state_id.name"/><br/>
                             <span t-esc="doc.invoice_to.country_id.name"/><br/>
@@ -89,7 +89,7 @@
                             </t> 
                         </t>
                         <t t-else="">
-                            Invoice to: <span style="font-size:15px;font-weight:bold" t-esc="doc.company_id.name"/><br/>
+                            Invoice to: <span class="foreign_title" style="font-size:15px" t-esc="doc.company_id.name"/><br/>
                             <span t-if="doc.company_id.street" t-esc="doc.company_id.street"/><br/>
                             <span t-if="doc.company_id.zip" t-esc="doc.company_id.zip"/> <span t-if="doc.company_id.state_id" t-esc="doc.company_id.state_id.name"/><br/>
                             <span t-esc="doc.company_id.country_id.name"/><br/>
@@ -109,7 +109,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         Ask to transmit to the supplier: <br/>
-                        <span style="font-size:18px;font-weight:bold" t-esc="doc.partner_id.name"/><br/>
+                        <span class="foreign_title" style="font-size:18px" t-esc="doc.partner_id.name"/><br/>
                         <span t-if="doc.partner_id.street" t-esc="doc.partner_id.street"/><br/>
                         <span t-if="doc.partner_id.zip" t-esc="doc.partner_id.zip"/> <span t-if="doc.partner_id.state_id" t-esc="doc.partner_id.state_id.name"/><br/>
                         <span t-if="doc.partner_id.country_id" t-esc="doc.partner_id.country_id.name"/><br/>
@@ -120,16 +120,16 @@
        <div class="row" style="margin-top: 25px;font-size: 10px">
             <div class="col-xs-12">
                 <table class="table table-condensed table-bordered" style="width: 100%">
-                    <thead>
+                    <thead style="background:#e6e6e6;">
                         <tr>
-                            <th>Quantity</th>
-                            <th>Unit</th>
-                            <th>Product</th>
-                            <th>Packaging</th>
-                            <th>HS Code</th>
-                            <th>Origin</th>
-                            <th>Price</th>
-                            <th>Partial</th>
+                            <th class="foreign_title text-center">Quantity</th>
+                            <th class="foreign_title text-center">Unit</th>
+                            <th class="foreign_title text-center">Product</th>
+                            <th class="foreign_title text-center">Packaging</th>
+                            <th class="foreign_title text-center">HS Code</th>
+                            <th class="foreign_title text-center">Origin</th>
+                            <th class="foreign_title text-center">Price</th>
+                            <th class="foreign_title text-center">Partial</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -159,7 +159,7 @@
             </div>
        </div>
 
-        <div class="row" style="margin-top:5px;font-size: 12px">
+        <div class="row" style="margin-top:5px">
             <div class="col-xs-6 text-left">
                 <table class="table" style="width: 100%">
                     <tr>
@@ -193,7 +193,7 @@
                     </tr>
                     <tr>
                         <td colspan="2" style="border: none;padding-bottom: 2px;">Special Indications: <br/>
-                        <pre style="border: none;background: transparent;font-size: 12px;font-family: helvetica;color:black;"><span t-esc="doc.special_indications"/></pre></td> 
+                        <pre class="foreign_text" style="border: none;background: transparent;color:black;"><span t-esc="doc.special_indications"/></pre></td> 
                     </tr>
                 </table>
             </div>
@@ -206,12 +206,12 @@
                         <td style="border: none;">Send Documents to: 
                             <br/>
                             <t t-if="doc.send_document_to_invoice_to">
-                                <span style="font-size:15px;font-weight:bold"> Direct to customer</span> <br/>                       
+                                <span style="font-size:15px" class="foreign_title"> Direct to customer</span> <br/>                       
                             </t>
                             <t t-else="">
-                                <span style="font-size:15px;font-weight:bold" t-esc="doc.company_id.name"/><br/>
+                                <span style="font-size:15px" class="foreign_title" t-esc="doc.company_id.name"/><br/>
                             </t>
-                            <pre style="border: none;background: transparent;font-size: 12px;font-family: helvetica;color:black;"><span t-esc="doc.send_documents_to"/> </pre>
+                            <pre style="border: none;background: transparent;font-size: 10px;color:black;"><span t-esc="doc.send_documents_to"/> </pre>
                         </td>
                     </tr>
                     <tr style="margin-top: 25px">
@@ -229,7 +229,7 @@
 
                 <div class="oe_structure"/>
                 <div class="row">
-                    <div class="col-xs-12" style="font-family:helvetica;width:95%;padding-left: 25px;padding-right: 25px;">
+                    <div class="col-xs-12 foreign_text" style="font-size:10px;width:95%;padding-left: 25px;padding-right: 25px;">
                         <t t-call="purchase_order_foreign_report.purchase_foreign_page"/>
                     </div>
                 </div>
