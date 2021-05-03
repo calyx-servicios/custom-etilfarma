@@ -47,7 +47,7 @@
         <div class="headerx" style="width:100%;">
             <div class="row" style="margin-top: 10px;">
                 <div class="col-xs-6 text-left">
-                    <span style="font-size:16px;" t-esc="header_name"/>
+                    <span class="foreign_title" style="font-size:16px;" t-esc="header_name"/>
                 </div>
                 <div class="col-xs-6 text-right foreign_text" style="font-size:14px;margin-top: 15px">
                     Phone: <span t-esc="header_phone"/><br/>
@@ -59,9 +59,9 @@
     </template>
 
     <template id="purchase_foreign_footer" name="purchase_foreign_footer">
-        <div class="text-center" style="border-top: 1px solid black;margin-bottom:5px">
+        <div class="text-right" style="border-top: 1px solid black;margin-bottom:5px;font-size:10px">
             <ul class="list-inline">
-                <li>Page:</li>
+                <li>page:</li>
                 <li><span class="page"/></li>
                 <li>/</li>
                 <li><span class="topage"/></li>
@@ -120,16 +120,16 @@
        <div class="row" style="margin-top: 25px;font-size: 10px">
             <div class="col-xs-12">
                 <table class="table table-condensed table-bordered" style="width: 100%">
-                    <thead>
-                        <tr class="foreign_title">
-                            <th>Quantity</th>
-                            <th>Unit</th>
-                            <th>Product</th>
-                            <th>Packaging</th>
-                            <th>HS Code</th>
-                            <th>Origin</th>
-                            <th>Price</th>
-                            <th>Partial</th>
+                    <thead style="background:#e6e6e6;">
+                        <tr>
+                            <th class="foreign_title text-center">Quantity</th>
+                            <th class="foreign_title text-center">Unit</th>
+                            <th class="foreign_title text-center">Product</th>
+                            <th class="foreign_title text-center">Packaging</th>
+                            <th class="foreign_title text-center">HS Code</th>
+                            <th class="foreign_title text-center">Origin</th>
+                            <th class="foreign_title text-center">Price</th>
+                            <th class="foreign_title text-center">Partial</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -193,7 +193,7 @@
                     </tr>
                     <tr>
                         <td colspan="2" style="border: none;padding-bottom: 2px;">Special Indications: <br/>
-                        <pre style="border: none;background: transparent;color:black;"><span t-esc="doc.special_indications"/></pre></td> 
+                        <pre class="foreign_text" style="border: none;background: transparent;color:black;"><span t-esc="doc.special_indications"/></pre></td> 
                     </tr>
                 </table>
             </div>
