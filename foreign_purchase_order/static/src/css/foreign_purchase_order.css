@@ -1,11 +1,11 @@
 .tree_columns .column_width_long {
-    width: 9%;
+    width: 225px;
 }
 
 .tree_columns .column_width_short {
-    width: 3%;
+    width: 75px;
 }
 
 .tree_columns {
-    width: 150%;
+    width: 2725px;
 }
