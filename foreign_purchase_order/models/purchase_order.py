@@ -264,6 +264,9 @@ class PurchaseOrder(models.Model):
     intervention_application_date = fields.Date(string="Intervention Application Date")
     intervention_approval_date = fields.Date(string="Intervention Approval Date")
     intervention_not_required = fields.Boolean(string="Intervention Not Required")
+    intervention_currency_id = fields.Selection(
+        [("eur", "EUR"), ("ars", "ARS"), ("usd", "USD")],
+        string="Intervention Currency")
 
     import_license_reference = fields.Char(string="Import License Reference")
     import_license_approval_date = fields.Date(string="Import License Approval Date")
@@ -309,12 +312,10 @@ class PurchaseOrder(models.Model):
     expenses_not_required = fields.Boolean(string="Expenses Not Required")
     expenses_currency_id = fields.Selection(
         [("eur", "EUR"), ("ars", "ARS"), ("usd", "USD")],
-        string="Expenses Currency"
-    )
+        string="Expenses Currency")
     expenses_currency_id_expenses = fields.Selection(
         [("eur", "EUR"), ("ars", "ARS"), ("usd", "USD")],
-        string="Expenses Currency"
-    )
+        string="Expenses Currency")
 
     @api.constrains('intervention_VPE_amount')
     def _check_format_intervention_VPE_amount(self):
