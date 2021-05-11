@@ -102,7 +102,7 @@
                 <button name="button_confirm_third_party"
                         type="object"
                         states="draft"
-                        string="Confirm Third Party Order"
+                        string="Confirm Order"
                         id="draft_confirm_third_party"
                         attrs="{'invisible': ['|', ('order_type', '!=', %(po_type_third_party)d)]}"
                 />
