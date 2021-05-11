@@ -30,7 +30,7 @@ class PurchaseOrder(models.Model):
             return [("id", "=", oct_order)]
         else:
             return [("id", "!=", oct_order)]
-    
+
     invoice_to = fields.Many2one(
         'res.partner.oct',
         string='Invoice to',
@@ -63,6 +63,29 @@ class PurchaseOrder(models.Model):
     product_qty = fields.Float("Quantity", related="order_line.product_qty" )
     invoice_due_date = fields.Date("Invoice Due Date")
     date_order_stats = fields.Date("Order Date", compute="_compute_date_order_stats")
+
+    def order_name_copy(self):
+        split_order = self.name.split("-")
+        not_unique = True
+        new_order = ""
+        if len(split_order) == 1:
+            self.not_unique = False
+        while not_unique:
+            if len(split_order) == 2:
+                new_order= self.name + "-A"
+            elif len(split_order) == 3:
+                new_order = split_order[0] + "-" + split_order[1] + "-" + chr(ord(split_order[2])+1)
+            check_order = self.env["purchase.order"].search([('name', '=', new_order)])
+            if check_order:
+                split_order = new_order.split("-")
+            else:
+                not_unique = False
+        self.order_name = new_order
+
+    order_name = fields.Char(compute="order_name_copy")
+    has_copy = fields.Boolean(default=False)
+    original = fields.Boolean(default=False)
+    copied = fields.Boolean(default=False)
 
     @staticmethod
     def _get_date_range(date_order_str):
@@ -100,11 +123,64 @@ class PurchaseOrder(models.Model):
 
     @api.multi
     def button_confirm_third_party(self):
-        for order in self:
-            self._check_requiered_fields()
-            self._check_order_line()
-            order.write({'state': 'no_invoice'})
+        split_order_name= self.name.split("-")
+        order_name = "{}-{}".format(split_order_name[0],split_order_name[1])
+        original_order = self.env["purchase.order"].search([
+            ("name", "=", order_name)
+        ], limit=1)
+        for line in self.order_line:
+            if line.confirm_product:
+                for original_line in original_order.order_line:
+                    if original_line.product_id_origin == line.product_id_origin:
+                        original_line.confirm_product = True
+        self._check_requiered_fields()
+        self._check_order_line()
+        self.write({'state': 'no_invoice'})
         return True
+
+    @api.multi
+    def button_create_order(self):
+        self.has_copy = True
+        self.original = True
+        vals = {
+            'has_copy': False,
+            'original': False,
+            'copied': True,
+        }
+        new_record = self.copy(default=vals)
+        line_cont = 0
+        split_order_name= self.name.split("-")
+        order_name = "{}-{}".format(split_order_name[0],split_order_name[1])
+        original_order = self.env["purchase.order"].search([
+            ("name", "like", order_name),("original", "=", True)
+        ], limit=1)
+        duplicated_order = self.env["purchase.order"].search([
+            ("name", "like", order_name),("copied", "=", True)
+        ], limit=1)
+        for line in original_order.order_line:
+            if not line.confirm_product and line.purchase_order_created and line.tracked_line:
+                line.write({'tracked_line': False})
+                line.write({'purchase_order_created': False})
+                if original_order.name != order_name:
+                   original_order.order_line = [(2,line.id ,0)]  
+        original_order.write({'original': False})  
+        for line in duplicated_order.order_line:
+            if not line.confirm_product and not line.purchase_order_created and line.tracked_line:
+                line.write({'tracked_line': False})
+            if not line.confirm_product and line.purchase_order_created and line.tracked_line:
+                line.write({'purchase_order_created': False})
+            if line.confirm_product and not line.purchase_order_created and line.tracked_line:
+                line.write({'tracked_line': False})
+            if not line.tracked_line:
+                duplicated_order.order_line = [(2,line.id ,0)]
+        duplicated_order.write({'copied': False})
+        return {
+                'type': 'ir.actions.act_window',
+                'res_model': 'purchase.order',
+                'res_id': new_record.id,
+                'view_mode': 'form',
+                "context":{'search_default_todo':1, 'show_purchase': True, 'show_invoice_to': 1,'ima': True},
+                }
 
     @api.model
     def create(self, vals):
@@ -124,11 +200,14 @@ class PurchaseOrder(models.Model):
 
             if not last_purchase_order_oct_num:
                 new_po.third_party_number = 1
-            else:
+            elif not self.has_copy:
                 new_po.third_party_number = last_purchase_order_oct_num.third_party_number + 1
 
             new_name = '{}-{}'.format(new_po.date_order.split('-')[0], new_po.third_party_number)
-            new_po.write({'name': new_name})
+            if not self.has_copy:
+                new_po.write({'name': new_name})
+            else:
+                new_po.write({'name': self.order_name})
 
         return new_po
 
@@ -184,6 +263,15 @@ class PurchaseOrder(models.Model):
         if self._context.get("ima"):
             self.order_type = order_oct
         return res
+
+    @api.multi
+    @api.onchange('order_line')
+    def onchange_order_lines(self):
+        if len(self.name.split("-")) == 2 or self.name == "New": 
+            req = 0
+            for line in self.order_line:
+                line.product_id_origin = req
+                req += 1
 
     @api.onchange('invoice_to')
     def _invoice_to_for_opt_address(self):

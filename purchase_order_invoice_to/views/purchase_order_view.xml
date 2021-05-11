@@ -6,7 +6,7 @@
         <field name="model">purchase.order</field>
         <field name="inherit_id" ref="purchase.purchase_order_form"/>
         <field name="arch" type="xml">
-            
+
             <xpath expr="//sheet/notebook" position="attributes">
                 <attribute name="name">note_book</attribute>
             </xpath>
@@ -15,6 +15,27 @@
                 <attribute name="attrs">{'invisible': [('order_type', '=', %(po_type_third_party)d)]}</attribute>
             </xpath>
 
+            <xpath expr="//field[@name='order_line']/tree/field[@name='price_subtotal']" position="after">
+                <field name="confirm_product" invisible="context.get('show_invoice_to') != 1" attrs="{'readonly':['|','|',('state', 'in', 'no_invoice'),('tracked_line','=',False),('purchase_order_created','=',True)]}" force_save="1"/>
+                <field name="purchase_order_created" invisible="context.get('show_invoice_to') != 1" attrs="{'readonly':['|',('tracked_line','=',False),('confirm_product', '=', True)]}" force_save="1"/>
+                <field name="tracked_line" invisible="1" attrs="{'readonly':[('state', 'in', 'no_invoice')]}" force_save="1"/>
+                <field name="product_id_origin" invisible="1" force_save="1"/>            
+            </xpath>
+            
+            <xpath expr="//field[@name='order_line']" position="before">
+                <div class="oe_right oe_button_box">
+                    <button name="button_create_order"
+                        type="object"
+                        string="Create Order"
+                        id="create_order"                        
+                        attrs="{'invisible': [('order_type', '!=', %(po_type_third_party)d)]}"
+                    />
+                </div>
+                <field name="order_name" invisible="1" force_save="1"/>
+                <field name="has_copy" invisible="1" force_save="1"/>
+                <field name="original" invisible="1" force_save="1"/>
+                <field name="copied" invisible="1" force_save="1"/>
+            </xpath>
             <!-- Field Invoice To only Visible when the Order Type is OCT -->
             <field name="partner_id" position="before">
                 <field name="invoice_to" options="{'no_open':True,'no_create': True, 'no_create_edit':True}" attrs="{'invisible': [('order_type', '!=', %(po_type_third_party)d)],
@@ -254,6 +275,32 @@
         </field>
     </record>
 
+    <record id="purchase_order_line_tree" model="ir.ui.view">
+        <field name="name">purchase.order.line.tree</field>
+        <field name="model">purchase.order.line</field>
+        <field name="inherit_id" ref="purchase.purchase_order_line_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="decoration-danger">not confirm_product</attribute>
+            </xpath>
+            <xpath expr="//field[@name='order_id']" position="after">
+                <field name="confirm_product" invisible="1"/>
+                <field name="tracked_line" invisible="1"/>
+            </xpath>        
+        </field>
+    </record>
+
+    <record id="purchase_third_party_line_action" model="ir.actions.act_window">
+        <field name="name">Statistics</field><!-- Original name: Third Party Purchase Orders -->
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">purchase.order.line</field>
+        <field name="view_mode">tree</field>
+        <field name="domain" eval="[('order_id.order_type','=', ref('po_type_third_party')),('tracked_line','=',True)]"/>
+        <field name="help" type="html">
+         <p>Products Views</p>
+        </field>
+    </record>
+
     <menuitem action="purchase_third_party_action" id="menu_purchase_third_party_action"
         name="Statistics"    
         web_icon="purchase,static/description/icon.png"
@@ -270,6 +317,13 @@
         name="IMA"
         parent="menu_purchase_oct_partner"
         action="purchase_third_party_action"
+        sequence="1"/>
+
+    <menuitem
+        id="menu_purchase_statistics_lines"
+        name="IMA Lines"
+        parent="menu_purchase_oct_partner"
+        action="purchase_third_party_line_action"
         sequence="1"/>
 
     <record id="view_purchase_order_filter" model="ir.ui.view">
