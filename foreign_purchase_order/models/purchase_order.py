@@ -256,10 +256,17 @@ class PurchaseOrder(models.Model):
     dispatcher_not_required = fields.Boolean(string="Dispatcher Not Required")
 
     intervention_reference = fields.Char(string="Intervention Reference")
+    intervention_currency_id = fields.Selection(
+        [("eur", "EUR"), ("ars", "ARS"), ("usd", "USD")],
+        string="Intervention Currency"
+    )
     intervention_VPE_amount = fields.Char(string="Intervention VPE Amount")
     intervention_application_date = fields.Date(string="Intervention Application Date")
     intervention_approval_date = fields.Date(string="Intervention Approval Date")
     intervention_not_required = fields.Boolean(string="Intervention Not Required")
+    intervention_currency_id = fields.Selection(
+        [("eur", "EUR"), ("ars", "ARS"), ("usd", "USD")],
+        string="Intervention Currency")
 
     import_license_reference = fields.Char(string="Import License Reference")
     import_license_approval_date = fields.Date(string="Import License Approval Date")
@@ -303,6 +310,12 @@ class PurchaseOrder(models.Model):
     expenses_dispatcher_fees = fields.Char(string="Expenses dispatcher Fees")
     expenses_expenses = fields.Char(string="Expenses")
     expenses_not_required = fields.Boolean(string="Expenses Not Required")
+    expenses_currency_id = fields.Selection(
+        [("eur", "EUR"), ("ars", "ARS"), ("usd", "USD")],
+        string="Expenses Currency")
+    expenses_currency_id_expenses = fields.Selection(
+        [("eur", "EUR"), ("ars", "ARS"), ("usd", "USD")],
+        string="Expenses Currency")
 
     @api.constrains('intervention_VPE_amount')
     def _check_format_intervention_VPE_amount(self):
@@ -679,6 +692,7 @@ class PurchaseOrder(models.Model):
     documents_shipping_document_status = fields.Char(string='Shipping Document', compute='_compute_tracking_status', store=True)
     delivery_number_status = fields.Char(string='Delivery', compute='_compute_tracking_status', store=True)
     reception_status = fields.Char(string='Reception', compute='_compute_reception_status', store=True)
+    status_status = fields.Char(string='Status', compute='_compute_status_status', store=True)
     import_license_official_date_status = fields.Char(string='Approval Date', compute='_compute_tracking_status', store=True )
     
 
@@ -747,6 +761,14 @@ class PurchaseOrder(models.Model):
                 record.reception_status = _format_date(record.picking_ids[-1].scheduled_date)
             else:
                 record.reception_status = _('Pending')
+
+    @api.depends('state')
+    def _compute_status_status(self):
+        for record in self:
+            if record.state in 'purchase': 
+                record.status_status = _('Confirmed')
+            else:
+                record.status_status = _('In progress')
 
     @api.multi
     def button_confirm(self):

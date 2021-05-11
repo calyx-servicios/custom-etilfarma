@@ -26,6 +26,7 @@
     "data": [
         "security/ir.model.access.csv",
         "views/purchase_order_view.xml",
+        "views/assets.xml",
         "views/stock_view.xml",
         "views/purchase_packaging_view.xml",
         "views/purchase_dispatcher_view.xml",
