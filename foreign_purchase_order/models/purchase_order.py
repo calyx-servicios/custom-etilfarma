@@ -266,7 +266,7 @@ class PurchaseOrder(models.Model):
     intervention_not_required = fields.Boolean(string="Intervention Not Required")
     intervention_currency_id = fields.Selection(
         [("eur", "EUR"), ("ars", "ARS"), ("usd", "USD")],
-        string="Intervention Currency")
+        string="Expenses Currency")
 
     import_license_reference = fields.Char(string="Import License Reference")
     import_license_approval_date = fields.Date(string="Import License Approval Date")
@@ -309,7 +309,7 @@ class PurchaseOrder(models.Model):
 
     expenses_dispatcher_fees = fields.Char(string="Expenses dispatcher Fees")
     expenses_expenses = fields.Char(string="Expenses")
-    expenses_not_required = fields.Boolean(string="Expenses Not Required")
+    expenses_not_required = fields.Boolean(string="Expenses Not Required")    
     expenses_currency_id = fields.Selection(
         [("eur", "EUR"), ("ars", "ARS"), ("usd", "USD")],
         string="Expenses Currency")
