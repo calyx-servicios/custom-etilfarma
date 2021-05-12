@@ -124,6 +124,7 @@
                             <field name="intervention_not_required" type="checkbox" string="Not Required"/>
                             <field name="intervention_reference" string="Reference" attrs="{'readonly': [('intervention_not_required','=',True)]}" force_save="1"/>
                             <field name="intervention_VPE_amount" string="VPE Amount" attrs="{'readonly': [('intervention_not_required','=',True)]}" force_save="1"/>
+                            <field name="intervention_currency_id" string="Payment Currency" attrs="{'readonly': [('expenses_not_required','=',True)]}" force_save="1"/>
                             <field name="intervention_application_date" string="Application Date" attrs="{'readonly': [('intervention_not_required','=',True)]}" force_save="1"/>
                             <field name="intervention_approval_date" string="Approval Date" attrs="{'readonly': [('intervention_not_required','=',True)]}" force_save="1"/>
                         </group>
@@ -166,7 +167,9 @@
                         <group name="expenses" string="Expenses">
                             <field name="expenses_not_required" type="checkbox" string="Not Required"/>
                             <field name="expenses_dispatcher_fees" string="Dispatcher Fees" attrs="{'readonly': [('expenses_not_required','=',True)]}" force_save="1"/>
+                            <field name="expenses_currency_id" string="Payment Currency" attrs="{'readonly': [('expenses_not_required','=',True)]}" force_save="1"/>
                             <field name="expenses_expenses" string="Expenses" attrs="{'readonly': [('expenses_not_required','=',True)]}" force_save="1"/>
+                            <field name="expenses_currency_id_expenses" string="Payment Currency" attrs="{'readonly': [('expenses_not_required','=',True)]}" force_save="1"/>
                         </group>
                     </group>
                 </page>
