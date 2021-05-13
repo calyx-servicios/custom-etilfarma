@@ -251,8 +251,8 @@ msgstr "Confirmado"
 #. module: foreign_purchase_order
 #: code:addons/foreign_purchase_order/models/purchase_order.py:770
 #, python-format
-msgid "In progress"
-msgstr "En proceso"
+msgid "Finished"
+msgstr "Finalizado"
 
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_status_status
