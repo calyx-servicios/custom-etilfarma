@@ -766,7 +766,7 @@ class PurchaseOrder(models.Model):
     def _compute_status_status(self):
         for record in self:
             if record.state in 'purchase': 
-                record.status_status = _('Confirmed')
+                record.status_status = _('Finished')
             else:
                 record.status_status = _('In progress')
 
