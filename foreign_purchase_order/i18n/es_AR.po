@@ -1089,3 +1089,17 @@ msgstr "purchase.booking.conveyance"
 #: model:ir.model,name:foreign_purchase_order.model_res_config_settings
 msgid "res.config.settings"
 msgstr "res.config.settings"
+
+#. modules: report_extended_sale, stock
+#: selection:ir.actions.report,sale_order_state:0
+#: selection:stock.inventory,state:0
+msgid "In Progress"
+msgstr "En Proceso"
+
+#. modules: foreign_purchase_order, crm, l10n_ar_account
+#: selection:base.partner.merge.automatic.wizard,state:0
+#: code:addons/foreign_purchase_order/models/purchase_order.py:769
+#: selection:res.partner.update.from.padron.wizard,state:0
+#, python-format
+msgid "Finished"
+msgstr "Finalizado"
