@@ -769,7 +769,7 @@ class PurchaseOrder(models.Model):
                 record.status_status = _('Finished')
             else:
                 record.status_status = _('In progress')
-
+    
     @api.multi
     def button_confirm(self):
         self._check_requiered_fields()

@@ -260,7 +260,6 @@
                 <field name="delivery_number_status" />
                 <field name="reception_status" />
                 <field name="status_status" class="column_width_short"/>
-                
             </field>
         </field>
     </record>
