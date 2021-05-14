@@ -212,6 +212,40 @@
             </field>
         </record>
 
+        <record id="email_template_fpo_sending_purchase_order" model="mail.template">
+            <field name="name">sending a new purchase order</field>
+            <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
+            <field name="subject">sending a new purchase order (Ref ${object.name or 'n/a' }).</field>
+            <field name="partner_to">${object.partner_id.id}</field>
+            <field name="model_id" ref="purchase.model_purchase_order"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="body_html"><![CDATA[
+                <p>Dear
+                % if object.partner_id.is_company and object.partner_id.child_ids:
+                    ${object.partner_id.child_ids[0].name}
+                % else :
+                    ${object.partner_id.name}
+                % endif
+                ,</p>
+                <p>Please send proforma invoice to process the import license. We will keep you informed about the status to advance in the coordination of the shipment.
+                
+                % if object.invoice_to:
+                    order <strong>${object.name}</strong> from customer <strong>${object.invoice_to.name}</strong>.</p>
+                % else
+                    our order <strong>${object.name}</strong>.</p>
+                % endif
+
+                <p>Looking forward to receiving your feedback.</p>
+                
+                <p>Thank you.</p>
+                <p>Best regards,</p>
+                <p>Foreign Trade Department</p>
+                <p>ETILFARMA S.A.</p>
+                ]]>
+            </field>
+        </record>
+
     </data>
 
 </odoo>
