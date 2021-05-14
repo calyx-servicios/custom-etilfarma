@@ -1089,3 +1089,9 @@ msgstr "purchase.booking.conveyance"
 #: model:ir.model,name:foreign_purchase_order.model_res_config_settings
 msgid "res.config.settings"
 msgstr "res.config.settings"
+
+#. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_expenses_currency_id
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_expenses_currency_id_expenses
+msgid "Expenses Currency"
+msgstr "Moneda de Pago"
