@@ -194,23 +194,26 @@
                 <attribute name="invisible">context.get('show_invoice_to') == 1</attribute>
             </field>
             <field name="partner_id" position="after">
-                <field name="original_documentation_original_sent_date" invisible="context.get('show_invoice_to') != 1"/>
+                <field name="original_documentation_original_sent_date" class="column_width_short" invisible="context.get('show_invoice_to') != 1"/>
+            </field>                
+            <field name="partner_id" position="attributes">
+                <attribute name="class">column_width_short</attribute>            
             </field>
             <field name="partner_id" position="after">
-                <field name="invoice_to" invisible="context.get('show_invoice_to') != 1"/>
-                <field name="customer_purchase_order" invisible="context.get('show_invoice_to') != 1"/>
-                <field name="extra_notes" invisible="context.get('show_invoice_to') != 1"/>
-                <field name="name" invisible="context.get('show_invoice_to') != 1"/>
-                <field name="date_order" invisible="context.get('show_invoice_to') != 1" widget="date"/>
-                <field name="internal_notes" invisible="context.get('show_invoice_to') != 1"/>
-                <field name="confirmation_status" invisible="context.get('show_invoice_to') != 1"/>
-                <field name="product_qty" invisible="context.get('show_invoice_to') != 1"/>
-                <field name="description" invisible="context.get('show_invoice_to') != 1"/>
-                <field name="amount_total" invisible="context.get('show_invoice_to') != 1"/>
-                <field name="documents_commercial_invoice_number_status" invisible="context.get('show_invoice_to') != 1"/>
-                <field name="documents_FC_date" invisible="context.get('show_invoice_to') != 1"/>
-                <field name="invoice_due_date" invisible="context.get('show_invoice_to') != 1"/>
-                <field name="documents_shipping_document_status" invisible="context.get('show_invoice_to') != 1"/>
+                <field name="invoice_to" invisible="context.get('show_invoice_to') != 1" class="column_width_short"/>
+                <field name="customer_purchase_order" invisible="context.get('show_invoice_to') != 1" class="column_width_short"/>
+                <field name="extra_notes" invisible="context.get('show_invoice_to') != 1" class="column_width_short"/>
+                <field name="name" invisible="context.get('show_invoice_to') != 1" class="column_width_short"/>
+                <field name="date_order_stats" invisible="context.get('show_invoice_to') != 1" class="column_width_short"/>
+                <field name="internal_notes" invisible="context.get('show_invoice_to') != 1" class="column_width_long"/>
+                <field name="confirmation_status" invisible="context.get('show_invoice_to') != 1" class="column_width_short"/>
+                <field name="product_qty" invisible="context.get('show_invoice_to') != 1" class="column_width_short"/>
+                <field name="description" invisible="context.get('show_invoice_to') != 1" class="column_width_short"/>
+                <field name="amount_total" invisible="context.get('show_invoice_to') != 1" class="column_width_short"/>
+                <field name="documents_commercial_invoice_number_status" invisible="context.get('show_invoice_to') != 1" class="column_width_short"/>
+                <field name="documents_FC_date" invisible="context.get('show_invoice_to') != 1" class="column_width_short"/>
+                <field name="invoice_due_date" invisible="context.get('show_invoice_to') != 1" class="column_width_short"/>
+                <field name="documents_shipping_document_status" invisible="context.get('show_invoice_to') != 1" class="column_width_short"/>
             </field>
         </field>
     </record>
