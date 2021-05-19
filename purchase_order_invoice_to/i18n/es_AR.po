@@ -70,8 +70,8 @@ msgstr "Configuración"
 
 #. module: purchase_order_invoice_to
 #: model:ir.ui.view,arch_db:purchase_order_invoice_to.purchase_order_form
-msgid "Confirm Third Party Order"
-msgstr "Confirmar Orden a Terceros"
+msgid "Confirm Order"
+msgstr "Confirmar Orden"
 
 #. module: purchase_order_invoice_to
 #: selection:res.partner.oct,type:0
