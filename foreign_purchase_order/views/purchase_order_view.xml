@@ -210,6 +210,9 @@
         <field name="model">purchase.order</field>
         <field name="inherit_id" ref="purchase.purchase_order_tree"/>
         <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="class">tree_columns</attribute>
+            </xpath>
             <field name="partner_id" position="replace">
             </field>
             <field name="message_unread" position="after">
@@ -232,11 +235,11 @@
             </field>
 
             <field name="date_planned" position="after">
-                <field name="incoterm_id" />
-                <field name="internal_notes" />
-                <field name="intervention_reference" string="Interventions" />
-                <field name="confirmation_status" />
-                <field name="proforma_status" />
+                <field name="incoterm_id"/>
+                <field name="internal_notes" class="column_width_long"/>
+                <field name="intervention_reference" string="Interventions"/>
+                <field name="confirmation_status"/>
+                <field name="proforma_status"/>
             </field>
             <field name="amount_total" position="after">
                 <field name="payment_TTE_status" invisible="1"/>
@@ -246,14 +249,15 @@
                 <field name="import_license_official_date" string="Import License Approval Date"/>
                 <field name="shipment_id" />
                 <field name="booking_transport_company_status" />
-                <field name="booking_ship_name_status" />
-                <field name="booking_ETD_date_status" />
-                <field name="booking_ETA_date_status"/>
+                <field name="booking_ship_name_status" class="column_width_short"/>
+                <field name="booking_ETD_date_status" class="column_width_short"/>
+                <field name="booking_ETA_date_status" class="column_width_short"/>
                 <field name="documents_commercial_invoice_number_status" />
                 <field name="documents_shipping_document_status" />
                 <field name="original_documentation_original_receipt_date" string="Original documentation"/>
                 <field name="delivery_number_status" />
                 <field name="reception_status" />
+                <field name="status_status" class="column_width_short"/>
             </field>
         </field>
     </record>

@@ -688,6 +688,7 @@ class PurchaseOrder(models.Model):
     documents_shipping_document_status = fields.Char(string='Shipping Document', compute='_compute_tracking_status', store=True)
     delivery_number_status = fields.Char(string='Delivery', compute='_compute_tracking_status', store=True)
     reception_status = fields.Char(string='Reception', compute='_compute_reception_status', store=True)
+    status_status = fields.Char(string='Status', compute='_compute_status_status', store=True)
     import_license_official_date_status = fields.Char(string='Approval Date', compute='_compute_tracking_status', store=True )
     
 
@@ -756,6 +757,14 @@ class PurchaseOrder(models.Model):
                 record.reception_status = _format_date(record.picking_ids[-1].scheduled_date)
             else:
                 record.reception_status = _('Pending')
+                
+    @api.depends('state')
+    def _compute_status_status(self):
+        for record in self:
+            if record.state in 'purchase': 
+                record.status_status = _('Finished')
+            else:
+                record.status_status = _('In progress')
 
     @api.multi
     def button_confirm(self):
