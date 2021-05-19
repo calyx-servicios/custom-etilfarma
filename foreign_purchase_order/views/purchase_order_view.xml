@@ -251,6 +251,7 @@
                 <field name="original_documentation_original_receipt_date" string="Original documentation"/>
                 <field name="delivery_number_status" />
                 <field name="reception_status" />
+                <field name="status_status" class="column_width_short"/>
             </field>
         </field>
     </record>
