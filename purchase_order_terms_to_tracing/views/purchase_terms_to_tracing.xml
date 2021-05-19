@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- label replaced is in report_extended_puchase -->
+    
+    <record id="purchase_order_form_inherit_purchase" model="ir.ui.view">
+        <field name="name">purchase.order.view.form.inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <field name="notes" position = "replace">
+                <div class="oe_clear">
+                    <label for="client_tracing"/>
+                </div>
+                <field name="client_tracing" string = "Internal Client Tracing" class="oe_inline" placeholder="Internal client tracing... "/>
+            </field>
+        </field>
+    </record>
+    
+    <record id="purchase_order_form_report_extended_purchase" model="ir.ui.view">
+        <field name="name">purchase.order.extended.view.form.inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="report_extended_purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[2][hasclass('oe_clear')]" position="replace">
+            </xpath>
+        </field>
+    </record>
+</odoo>
