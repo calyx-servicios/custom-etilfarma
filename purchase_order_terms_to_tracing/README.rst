@@ -38,7 +38,6 @@ Contributors
 
 * `Calyx Servicios S.A. <http://odoo.calyx-cloud.com.ar/>`_
   
-  * Lucas Soto
   * Jhone Mendez
   * Federico Gregori
   * Andres Andrade
