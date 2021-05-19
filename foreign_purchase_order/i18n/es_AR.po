@@ -1091,6 +1091,11 @@ msgid "res.config.settings"
 msgstr "res.config.settings"
 
 #. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_expenses_currency_id
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_expenses_currency_id_expenses
+msgid "Expenses Currency"
+msgstr "Moneda de Pago"
+
 #: code:addons/foreign_purchase_order/models/purchase_order.py:758
 #, python-format
 msgid "In progress"
