@@ -1,6 +1,6 @@
-=============
-New Module
-=============
+================
+Terms to Tracing
+================
 
 .. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
    !! This file is intended to be in every module    !!
@@ -23,41 +23,7 @@ New Module
 
 .. !!! Description must be max 2-3 paragraphs, and is required.
 
-This module extends the functionality of ... to support ... and to allow you to ...
-
-**Table of contents**
-
-.. contents::
-   :local:
-
-.. !!! Instalation: must only be present if there are very specific installation instructions, such as installing non-python dependencies.The audience is systems administrators. ] To install this module, you need to: !!!
-
-Install
-=======
-
-Do this ...
-
-.. !!! Configuration: This file is optional, it should explain how to configure the module before using it; it is aimed at advanced users. To configure this module, you need to:
-
-Configure
-=========
-
-Go to ...
-
-Usage
-=====
-
-1. Go to ...
-
-Known issues / Roadmap
-======================
-
-* Bugs or Roadmap
-
-Bug Tracker
-===========
-
-* Help Contact
+This module extends the functionality of Purchase. Changes notes for Client Tracing
 
 Credits
 =======
@@ -75,6 +41,8 @@ Contributors
   * Lucas Soto
   * Jhone Mendez
   * Federico Gregori
+  * Andres Andrade
+  * Marco Oegg
 
 Maintainers
 ~~~~~~~~~~~
