@@ -143,7 +143,7 @@
             </field>
         </record>
 
-        <record id="email_template_fpo_sending_purchase_order" model="mail.template">
+        <record id="email_template_fpo_sending_purchase_order_impo" model="mail.template">
             <field name="name">Envio de nueva orden de compra</field>
             <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
             <field name="subject">Envio de nueva orden de compra (Ref ${object.name or 'n/a' }).</field>
@@ -159,7 +159,8 @@
                     ${object.partner_id.name}
                 % endif
                 ,</p>
-                <p>Por favor, le pedimos amablemente enviar factura proforma para poder tramitar la licencia de importación. Lo mantendremos informado sobre el estatus de la misma a fin de poder avanzar en la coordinación del envío. <strong>${object.name}</strong>.</p>
+                <p>Por favor, encuentre adjunta nuestra nueva orden de compra: <strong>${object.name}</strong>.</p>
+                <p>Por favor, le pedimos amablemente enviar factura proforma para poder tramitar la licencia de importación. Lo mantendremos informado sobre el estatus de la misma a fin de poder avanzar en la coordinación del envío. </p>
 
                 <p>Quedamos atentos.</p>
                 
@@ -170,9 +171,57 @@
                 ]]>
             </field>
         </record>
+        <record id="email_template_fpo_sending_booking_data_impo" model="mail.template">
+            <field name="name">Envio de datos de booking</field>
+            <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
+            <field name="subject">Envio de datos de booking (Ref ${object.name or 'n/a' }).</field>
+            <field name="partner_to">${object.partner_id.id}</field>
+            <field name="model_id" ref="purchase.model_purchase_order"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="body_html"><![CDATA[
+                <p>Estimado/a
+                % if object.partner_id.is_company and object.partner_id.child_ids:
+                    ${object.partner_id.child_ids[0].name}
+                % else :
+                    ${object.partner_id.name}
+                % endif
+                ,</p>
+                <p>A continuación, informamos los datos de booking correspondientes a su Orden de Compra <strong>${object.name}</strong>.</p>
+                
+                 % if object.booking_ship_name:
+                    <p>
+                    Ship Name: <strong>${object.booking_ship_name}</strong>
+                    </p>
+                % endif
+                % if object.booking_ETD_date:
+                    <p>
+                    ETD Date: <strong>${object.booking_ETD_date}</strong>
+                    </p>
+                % endif 
+                % if object.booking_ETA_date:
+                    <p>
+                    ETA Date: <strong>${object.booking_ETA_date}</strong>
+                    </p>
+                % endif
+                % if object.booking_transport_company:
+                    <p>
+                    Transport Company: <strong>${object.booking_transport_company}</strong>
+                    </p>
+                % endif
+                % if object.booking_extra_notes:
+                    <p>
+                    Intern Notes: ${object.booking_extra_notes}
+                    </p>
+                % endif
 
 
+                <p>Quedamos a disposición.</p>
+                <p>Saludos Cordiales,</p>
+                <p>Departamento de Comercio Exterior.</p>
+                <p>ETILFARMA S.A.</p>
+                ]]>
+            </field>
+        </record>
     </data>
-
-
 </odoo>
