@@ -1,0 +1,9 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* foreign_trade
+#
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_customer_purchase_order
+msgid "Customer Purchase Order"
+msgstr "Order de compra del Cliente"

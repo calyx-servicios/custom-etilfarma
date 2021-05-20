@@ -70,9 +70,13 @@
                     <strong>Order Reference:</strong>
                     <p t-field="doc.name"/>
                 </div>
-                <div t-if="doc.client_order_ref" class="col-xs-3">
+                <div t-if="doc.client_order_ref and doc.state in ['draft', 'sent'] and not is_pro_forma" class="col-xs-3">
                     <strong>Your Reference:</strong>
                     <p t-field="doc.client_order_ref"/>
+                </div>
+                <div t-if="doc.customer_purchase_order and doc.state in ['sale', 'done'] or is_pro_forma" class="col-xs-3">
+                    <strong>Customer Purchase Order:</strong>
+                    <p t-field="doc.customer_purchase_order"/>
                 </div>
                 <div t-if="doc.confirmation_date and doc.state not in ['draft','sent']" class="col-xs-3">
                     <strong>Date Ordered:</strong>
