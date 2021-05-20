@@ -261,6 +261,9 @@ class PurchaseOrder(models.Model):
         string="Intervention Currency"
     )
     intervention_VPE_amount = fields.Char(string="Intervention VPE Amount")
+    intervention_currency_id = fields.Selection(
+        [("eur", "EUR"), ("ars", "ARS"), ("usd", "USD")],
+        string="Intervention Currency")
     intervention_application_date = fields.Date(string="Intervention Application Date")
     intervention_approval_date = fields.Date(string="Intervention Approval Date")
     intervention_not_required = fields.Boolean(string="Intervention Not Required")
@@ -309,10 +312,10 @@ class PurchaseOrder(models.Model):
 
     expenses_dispatcher_fees = fields.Char(string="Expenses dispatcher Fees")
     expenses_expenses = fields.Char(string="Expenses")
-    expenses_not_required = fields.Boolean(string="Expenses Not Required")    
     expenses_currency_id = fields.Selection(
         [("eur", "EUR"), ("ars", "ARS"), ("usd", "USD")],
         string="Expenses Currency")
+    expenses_not_required = fields.Boolean(string="Expenses Not Required")
     expenses_currency_id_expenses = fields.Selection(
         [("eur", "EUR"), ("ars", "ARS"), ("usd", "USD")],
         string="Expenses Currency")
@@ -761,6 +764,14 @@ class PurchaseOrder(models.Model):
                 record.reception_status = _format_date(record.picking_ids[-1].scheduled_date)
             else:
                 record.reception_status = _('Pending')
+                
+    @api.depends('state')
+    def _compute_status_status(self):
+        for record in self:
+            if record.state in 'purchase': 
+                record.status_status = _('Finished')
+            else:
+                record.status_status = _('In progress')
 
     @api.depends('state')
     def _compute_status_status(self):
