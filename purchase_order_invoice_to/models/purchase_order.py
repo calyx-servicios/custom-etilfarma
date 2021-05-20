@@ -116,19 +116,20 @@ class PurchaseOrder(models.Model):
     @api.multi
     def button_confirm_third_party(self):
         split_order_name= self.name.split("-")
-        order_name = "{}-{}".format(split_order_name[0],split_order_name[1])
-        original_order = self.env["purchase.order"].search([
-            ("name", "=", order_name)
-        ], limit=1)
-        for line in self.order_line:
-            if line.confirm_product:
-                for original_line in original_order.order_line:
-                    if original_line.product_id_origin == line.product_id_origin:
-                        original_line.confirm_product = True
-        self._check_requiered_fields()
-        self._check_order_line()
-        self.write({'state': 'no_invoice'})
-        return True
+        if len(split_order_name) >= 2:
+            order_name = "{}-{}".format(split_order_name[0],split_order_name[1])
+            original_order = self.env["purchase.order"].search([
+                ("name", "=", order_name)
+            ], limit=1)
+            for line in self.order_line:
+                if line.confirm_product:
+                    for original_line in original_order.order_line:
+                        if original_line.product_id_origin == line.product_id_origin:
+                            original_line.confirm_product = True
+            self._check_requiered_fields()
+            self._check_order_line()
+            self.write({'state': 'no_invoice'})
+            return True
 
     @api.multi
     def button_create_order(self):
@@ -142,37 +143,38 @@ class PurchaseOrder(models.Model):
         new_record = self.copy(default=vals)
         line_cont = 0
         split_order_name= self.name.split("-")
-        order_name = "{}-{}".format(split_order_name[0],split_order_name[1])
-        original_order = self.env["purchase.order"].search([
-            ("name", "like", order_name),("original", "=", True)
-        ], limit=1)
-        duplicated_order = self.env["purchase.order"].search([
-            ("name", "like", order_name),("copied", "=", True)
-        ], limit=1)
-        for line in original_order.order_line:
-            if not line.confirm_product and line.purchase_order_created and line.tracked_line:
-                line.write({'tracked_line': False})
-                line.write({'purchase_order_created': False})
-                if original_order.name != order_name:
-                   original_order.order_line = [(2,line.id ,0)]  
-        original_order.write({'original': False})  
-        for line in duplicated_order.order_line:
-            if not line.confirm_product and not line.purchase_order_created and line.tracked_line:
-                line.write({'tracked_line': False})
-            if not line.confirm_product and line.purchase_order_created and line.tracked_line:
-                line.write({'purchase_order_created': False})
-            if line.confirm_product and not line.purchase_order_created and line.tracked_line:
-                line.write({'tracked_line': False})
-            if not line.tracked_line:
-                duplicated_order.order_line = [(2,line.id ,0)]
-        duplicated_order.write({'copied': False})
-        return {
-                'type': 'ir.actions.act_window',
-                'res_model': 'purchase.order',
-                'res_id': new_record.id,
-                'view_mode': 'form',
-                "context":{'search_default_todo':1, 'show_purchase': True, 'show_invoice_to': 1,'ima': True},
-                }
+        if len(split_order_name) >= 2:
+            order_name = "{}-{}".format(split_order_name[0],split_order_name[1])
+            original_order = self.env["purchase.order"].search([
+                ("name", "like", order_name),("original", "=", True)
+            ], limit=1)
+            duplicated_order = self.env["purchase.order"].search([
+                ("name", "like", order_name),("copied", "=", True)
+            ], limit=1)
+            for line in original_order.order_line:
+                if not line.confirm_product and line.purchase_order_created and line.tracked_line:
+                    line.write({'tracked_line': False})
+                    line.write({'purchase_order_created': False})
+                    if original_order.name != order_name:
+                    original_order.order_line = [(2,line.id ,0)]  
+            original_order.write({'original': False})  
+            for line in duplicated_order.order_line:
+                if not line.confirm_product and not line.purchase_order_created and line.tracked_line:
+                    line.write({'tracked_line': False})
+                if not line.confirm_product and line.purchase_order_created and line.tracked_line:
+                    line.write({'purchase_order_created': False})
+                if line.confirm_product and not line.purchase_order_created and line.tracked_line:
+                    line.write({'tracked_line': False})
+                if not line.tracked_line:
+                    duplicated_order.order_line = [(2,line.id ,0)]
+            duplicated_order.write({'copied': False})
+            return {
+                    'type': 'ir.actions.act_window',
+                    'res_model': 'purchase.order',
+                    'res_id': new_record.id,
+                    'view_mode': 'form',
+                    "context":{'search_default_todo':1, 'show_purchase': True, 'show_invoice_to': 1,'ima': True},
+                    }
 
     @api.model
     def create(self, vals):
