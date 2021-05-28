@@ -164,7 +164,7 @@ class PurchaseOrder(models.Model):
                     line.write({'tracked_line': False})
                     line.write({'purchase_order_created': False})
                     if original_order.name != order_name:
-                    original_order.order_line = [(2,line.id ,0)]  
+                        original_order.order_line = [(2,line.id ,0)]  
             original_order.write({'original': False})  
             for line in duplicated_order.order_line:
                 if not line.confirm_product and not line.purchase_order_created and line.tracked_line:
