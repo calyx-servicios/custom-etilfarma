@@ -243,6 +243,23 @@ msgid "Date"
 msgstr "Fecha"
 
 #. module: foreign_purchase_order
+#: code:addons/foreign_purchase_order/models/purchase_order.py:768
+#, python-format
+msgid "Confirmed"
+msgstr "Confirmado"
+
+#. module: foreign_purchase_order
+#: code:addons/foreign_purchase_order/models/purchase_order.py:770
+#, python-format
+msgid "Finished"
+msgstr "Finalizado"
+
+#. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_status_status
+msgid "Status"
+msgstr "Estado"
+
+#. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_documents_date_shipment_originals
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Date of shipment of originals to dispatcher"
@@ -1090,6 +1107,21 @@ msgstr "purchase.booking.conveyance"
 msgid "res.config.settings"
 msgstr "res.config.settings"
 
+<<<<<<< HEAD
+#. modules: report_extended_sale, stock
+#: selection:ir.actions.report,sale_order_state:0
+#: selection:stock.inventory,state:0
+msgid "In Progress"
+msgstr "En Proceso"
+
+#. modules: foreign_purchase_order, crm, l10n_ar_account
+#: selection:base.partner.merge.automatic.wizard,state:0
+#: code:addons/foreign_purchase_order/models/purchase_order.py:769
+#: selection:res.partner.update.from.padron.wizard,state:0
+#, python-format
+msgid "Finished"
+msgstr "Finalizado"
+=======
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_expenses_currency_id
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_expenses_currency_id_expenses
@@ -1108,3 +1140,4 @@ msgstr "En proceso"
 #, python-format
 msgid "Finished"
 msgstr "Finalizado"
+>>>>>>> 11.0_customer_purchase_order

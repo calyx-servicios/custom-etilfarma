@@ -955,3 +955,25 @@ msgstr "Debes seleccionar líneas del mismo Deposito de ingreso."
 #, python-format
 msgid "You have to select lines from the same company."
 msgstr "Debes seleccionar líneas de la misma compañía."
+
+#. module: purchase
+#: model:ir.ui.view,arch_db:purchase.purchase_order_tree
+#: model:ir.ui.view,arch_db:purchase.view_purchase_order_filter
+msgid "Reference"
+msgstr "Orden de Compra"
+
+#. module: purchase
+#: model:ir.model.fields,field_description:purchase.field_purchase_order_date_planned
+#: model:ir.model.fields,field_description:purchase.field_purchase_order_line_date_planned
+msgid "Scheduled Date"
+msgstr "Requerido en Deposito"
+
+#. module: purchase
+#: model:ir.model.fields,field_description:purchase.field_purchase_order_line_qty_invoiced
+msgid "Billed Qty"
+msgstr "Cantidad facturada"
+
+#. module: purchase
+#: model:ir.model.fields,field_description:purchase.field_purchase_order_line_qty_received
+msgid "Received Qty"
+msgstr "Cantidad recibida"
