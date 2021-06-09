@@ -103,7 +103,7 @@ class PurchaseOrderLine(models.Model):
     name = fields.Text(required=False)
 
     product_nmc = fields.Char(
-        string="HS Code", related="product_id.product_nmc"
+        string="FABRICANTE", related="product_id.product_nmc"
     )
     country_id = fields.Char(
         string="Origin",

@@ -70,11 +70,11 @@
                     <strong>Order Reference:</strong>
                     <p t-field="doc.name"/>
                 </div>
-                <div t-if="doc.client_order_ref and doc.state in ['draft', 'sent'] or is_pro_forma" class="col-xs-3">
+                <div t-if="doc.client_order_ref and doc.state in ['draft', 'sent', 'done', 'sale'] or is_pro_forma" class="col-xs-3">
                     <strong>Your Reference:</strong>
                     <p t-field="doc.client_order_ref"/>
                 </div>
-                <div t-if="doc.customer_purchase_order and doc.state in ['draft', 'sent'] or is_pro_forma" class="col-xs-3">
+                <div t-if="doc.customer_purchase_order and doc.state in ['draft', 'sent', 'done', 'sale'] or is_pro_forma" class="col-xs-3">
                     <strong>Customer Purchase Order:</strong>
                     <p t-field="doc.customer_purchase_order"/>
                 </div>
@@ -87,7 +87,7 @@
                         <p t-field="doc.confirmation_date" t-field-options='{"format": "dd/MM/yyyy"}'/>                        
                     </t>   
                 </div>
-                <div t-if="doc.date_order and doc.state in ['draft','sent'] or is_pro_forma" class="col-xs-3 text-right">
+                <div t-if="doc.date_order and doc.state in ['draft', 'sent', 'done', 'sale'] or is_pro_forma" class="col-xs-3 text-right">
                     <strong>Date:</strong>
                     <t t-if="is_in_en_us">
                         <p t-field="doc.date_order" t-field-options='{"format": "yyyy/MM/dd"}'/>
