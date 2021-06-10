@@ -119,6 +119,7 @@
                             <th class="text-left">HS Code</th>
                             <th class="text-left">Origin</th>
                             <th class="text-left">Price Unit</th>
+                            <th class="text-left">Client Code</th>
                             <th class="text-left" groups="sale.group_show_price_subtotal">Total Amount</th>
                         </tr>
                    </thead>
@@ -146,6 +147,7 @@
                                     <td><span t-field="l.product_nmc"/></td>
                                     <td><span t-field="l.country_id"/></td>
                                     <td><span t-field="l.price_unit"/></td>
+                                    <td><span t-field="l.client_code"/></td>
                                     <td class="text-right" groups="sale.group_show_price_subtotal">
                                         <span t-field="l.price_subtotal" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.pricelist_id.currency_id}"/>
                                     </td>

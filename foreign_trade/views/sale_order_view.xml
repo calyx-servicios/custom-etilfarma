@@ -158,6 +158,7 @@
                 <field name="product_nmc" />
                 <field name="country_id" attrs="{'readonly': True}"/>
                 <field name="loot_name"/>
+                <field name="client_code"/>
                 <field name="life_date" widget="date"/>
             </xpath>
             <xpath expr="//field[@name='order_line']/tree//field[@name='product_tmpl_id']" position="before">

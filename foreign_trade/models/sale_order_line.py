@@ -102,6 +102,7 @@ class SaleOrderLine(models.Model):
     country_id = fields.Char(string="Origin", required=True, related="product_tmpl_id.country_id.name")
     observations = fields.Char(string="Observation")
     loot_name = fields.Char(string="Lot")
+    client_code = fields.Char(string="Client Code")
     life_date = fields.Datetime(string="Life Date")
     product_qty = fields.Float(digits=(12,2))
     qty_received = fields.Float(digits=(12,2))

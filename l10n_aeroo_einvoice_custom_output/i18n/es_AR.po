@@ -35,3 +35,8 @@ msgstr "Imprimir Factura Ingles"
 msgid "Sale order"
 msgstr "Orden de venta"
 
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_line_client_code
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+msgid "Client Code"
+msgstr "Código de cliente"
