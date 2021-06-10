@@ -27,16 +27,3 @@
         </field>
     </record>
 </odoo>
-
-
-<!-- trash
-    <div class='oe_clear' position = 'replace'>
-    
-    </div>
-    <attribute name="invisible">1</attribute>
-    <xpath expr="//div[contains(@class, 'oe_clear']) and contains (@label,'notes')" position="attributes">
-        <attribute name="invisible">1</attribute>
-    </xpath>
-    ) and contains (@label,'notes')
-</div>
--->

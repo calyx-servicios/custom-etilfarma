@@ -5,7 +5,7 @@
         changes purchase order's 'terms and conditions' field to 'internal client tracing'""",
 
     'author': 'Calyx Servicios S.A., Odoo Community Association (OCA)',
-    'maintainers': ['<marcooegg>'],
+    'maintainers': ['marcooegg'],
 
     'website': 'http://odoo.calyx-cloud.com.ar/',
     'license': 'AGPL-3',
@@ -13,7 +13,7 @@
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/11.0/odoo/addons/base/module/module_data.xml
     # for the full list
-    'category': 'Technical Settings',
+    'category': 'Purchase',
     'version': '11.0.1.0.0',
     # see https://odoo-community.org/page/development-status
     'development_status': 'Production/Stable',

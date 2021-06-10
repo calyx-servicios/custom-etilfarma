@@ -1,6 +1,6 @@
-=============
-New Module
-=============
+================
+Terms to Tracing
+================
 
 .. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
    !! This file is intended to be in every module    !!
@@ -23,17 +23,6 @@ New Module
 
 .. !!! Description must be max 2-3 paragraphs, and is required.
 
-This module extends the functionality of ... to support ... and to allow you to ...
-
-**Table of contents**
-
-.. contents::
-   :local:
-
-.. !!! Instalation: must only be present if there are very specific installation instructions, such as installing non-python dependencies.The audience is systems administrators. ] To install this module, you need to: !!!
-
-Install
-=======
 
 Do this ...
 
@@ -58,6 +47,8 @@ Bug Tracker
 ===========
 
 * Help Contact
+=======
+This module extends the functionality of Purchase. Changes notes for Client Tracing
 
 Credits
 =======
@@ -72,9 +63,10 @@ Contributors
 
 * `Calyx Servicios S.A. <http://odoo.calyx-cloud.com.ar/>`_
   
-  * Lucas Soto
   * Jhone Mendez
   * Federico Gregori
+  * Andres Andrade
+  * Marco Oegg
 
 Maintainers
 ~~~~~~~~~~~
