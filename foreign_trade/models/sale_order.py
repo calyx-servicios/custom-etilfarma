@@ -104,7 +104,7 @@ class SaleOrder(models.Model):
         ondelete="restrict",
         default=_default_order_type,
     )
-
+    
     customer_purchase_order = fields.Char(string="Customer Purchase Order")
 
     estimated_shipping_date = fields.Datetime(string="Estimated Shipping Date")

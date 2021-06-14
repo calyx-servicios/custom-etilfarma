@@ -156,5 +156,5 @@ msgstr "Orden de compra"
 #. module: purchase_order_booking_email
 #: model:ir.ui.view,arch_db:purchase_order_booking_email.purchase_order_form_foreign_fields
 msgid "Send Booking Information"
-msgstr "Enviar Info de Booking"
+msgstr "Enviar Info de Origen"
 

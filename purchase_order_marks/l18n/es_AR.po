@@ -1,0 +1,7 @@
+#. module: purchase_order_marks
+#: model:ir.model.fields,field_description:purchase_order_marks.field_purchase_order_marks
+#: model:ir.model.fields,field_description:purchase_order_marks.field_res_company_marks
+#: model:ir.model.fields,field_description:purchase_order_marks.field_res_partner_oct_marks
+#: model:ir.ui.view,arch_db:purchase_order_marks.purchase_order_form_marks_field
+msgid "Marks"
+msgstr "Marcas"
