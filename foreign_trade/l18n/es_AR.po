@@ -1,0 +1,4 @@
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+msgid "<strong>Customer Purchase Order:</strong>"
+msgstr "<strong>Orden de compra del cliente:</strong>"
