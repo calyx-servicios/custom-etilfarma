@@ -34,9 +34,3 @@ msgstr "Imprimir Factura Ingles"
 #: model:ir.model.fields,field_description:l10n_aeroo_einvoice_custom_output.field_account_invoice_sale_order_id
 msgid "Sale order"
 msgstr "Orden de venta"
-
-#. module: foreign_trade
-#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_line_client_code
-#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
-msgid "Client Code"
-msgstr "Código de cliente"
