@@ -1048,21 +1048,6 @@ msgstr "purchase.booking.conveyance"
 msgid "res.config.settings"
 msgstr "res.config.settings"
 
-<<<<<<< HEAD
-#. modules: report_extended_sale, stock
-#: selection:ir.actions.report,sale_order_state:0
-#: selection:stock.inventory,state:0
-msgid "In Progress"
-msgstr "En Proceso"
-
-#. modules: foreign_purchase_order, crm, l10n_ar_account
-#: selection:base.partner.merge.automatic.wizard,state:0
-#: code:addons/foreign_purchase_order/models/purchase_order.py:769
-#: selection:res.partner.update.from.padron.wizard,state:0
-#, python-format
-msgid "Finished"
-msgstr "Finalizado"
-=======
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_expenses_currency_id
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_expenses_currency_id_expenses
@@ -1081,9 +1066,6 @@ msgstr "En proceso"
 #, python-format
 msgid "Finished"
 msgstr "Finalizado"
-<<<<<<< HEAD
->>>>>>> 11.0_customer_purchase_order
-=======
 
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_description
