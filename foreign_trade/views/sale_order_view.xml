@@ -156,6 +156,7 @@
 
             <xpath expr="//field[@name='order_line']/tree//field[@name='product_uom']" position="after">
                 <field name="product_nmc" />
+                <field name="maker_id" />
                 <field name="country_id" attrs="{'readonly': True}"/>
                 <field name="loot_name"/>
                 <field name="life_date" widget="date"/>

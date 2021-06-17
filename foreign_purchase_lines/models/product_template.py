@@ -9,6 +9,8 @@ class ProductProduct(models.Model):
     _inherit = "product.template"
 
     product_nmc = fields.Char(string="HS Code")
+    hs_code = fields.Char(string="HS Code", help="Standardized code for international shipping and goods declaration")
+    maker_id = fields.Char(string="Maker")
     country_id = fields.Many2one(comodel_name="res.country", string="Origin")
 
     @api.model
