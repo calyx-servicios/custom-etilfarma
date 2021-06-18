@@ -11,7 +11,7 @@
                     name="invoice_en_print"
                     string="Print Invoice EN"
                     type="object"
-                    attrs="{'invisible':['|',('sent','=',True), ('state', 'not in', ('open','paid','draft'))]}"
+                    attrs="{'invisible':['|',('sent','=',True), ('state', 'not in', ('open','paid'))]}"
                     class="oe_highlight"
                     groups="base.group_user"/>
             </xpath>                
