@@ -74,8 +74,12 @@
                     <strong>Your Reference:</strong>
                     <p t-field="doc.client_order_ref"/>
                 </div>
-                <div t-if="doc.confirmation_date and doc.state not in ['draft','sent']" class="col-xs-3">
-                    <strong>Date Ordered:</strong>
+                <div t-if="doc.customer_purchase_order and doc.state in ['draft', 'sent', 'done', 'sale'] or is_pro_forma" class="col-xs-3">
+                    <strong>Customer Purchase Order:</strong>
+                    <p t-field="doc.customer_purchase_order"/>
+                </div>
+                <div t-if="doc.confirmation_date and doc.state in ['sale', 'done']" class="col-xs-3">
+                    <strong>Confirmation Date:</strong>
                     <t t-if="is_in_en_us">
                         <p t-field="doc.confirmation_date" t-field-options='{"format": "yyyy/MM/dd"}'/>
                     </t>
@@ -83,8 +87,8 @@
                         <p t-field="doc.confirmation_date" t-field-options='{"format": "dd/MM/yyyy"}'/>                        
                     </t>   
                 </div>
-                <div t-if="doc.date_order and doc.state in ['draft','sent']" class="col-xs-3">
-                    <strong>Quotation Date:</strong>
+                <div t-if="doc.date_order and doc.state in ['draft', 'sent', 'done', 'sale'] or is_pro_forma" class="col-xs-3 text-right">
+                    <strong>Date:</strong>
                     <t t-if="is_in_en_us">
                         <p t-field="doc.date_order" t-field-options='{"format": "yyyy/MM/dd"}'/>
                     </t>
