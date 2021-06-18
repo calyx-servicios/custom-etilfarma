@@ -109,3 +109,9 @@ msgstr "Tipos de empaquetado para Productos"
 #, python-format
 msgid "You cannot delete a attribute with packaging option, please contact an admin."
 msgstr "No puede eliminar un atributo que tenga activa la opcion de empaquetado, contacte a un administrador."
+
+#. module: foreign_purchase_lines
+#: model:ir.model.fields,field_description:foreign_purchase_lines.field_product_product_maker_id
+#: model:ir.model.fields,field_description:foreign_purchase_lines.field_product_template_maker_id
+msgid "Maker"
+msgstr "Fabricante"
