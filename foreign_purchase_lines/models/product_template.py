@@ -8,11 +8,7 @@ from odoo.exceptions import UserError
 class ProductProduct(models.Model):
     _inherit = "product.template"
 
-<<<<<<< HEAD
     product_nmc = fields.Char(string="HS Code")
-=======
-    product_nmc = fields.Char(string="FABRICANTE")
->>>>>>> dfe02f0207a4c3d2fd8054914087a36bfb5f23fb
     hs_code = fields.Char(string="HS Code", help="Standardized code for international shipping and goods declaration")
     maker_id = fields.Char(string="Maker")
     country_id = fields.Many2one(comodel_name="res.country", string="Origin")
