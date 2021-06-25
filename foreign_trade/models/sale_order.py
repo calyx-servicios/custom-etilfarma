@@ -326,6 +326,8 @@ class SaleOrder(models.Model):
     def action_confirm(self):
         res = super(SaleOrder, self).action_confirm()
         self._set_comfirmation()
+        for picking in self.picking_ids:
+            picking.do_unreserve()
         return res
 
     @api.model
