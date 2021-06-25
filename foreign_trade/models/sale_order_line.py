@@ -109,4 +109,4 @@ class SaleOrderLine(models.Model):
     qty_invoiced = fields.Float(digits=(12,2))
     qty_delivered = fields.Float(digits=(12,2))
     product_uom_qty = fields.Float(digits=(12,2))
-    maker_id = fields.Char(string="Maker")
+    maker_id = fields.Char(string="Maker", required=True, related="product_tmpl_id.maker_id")
