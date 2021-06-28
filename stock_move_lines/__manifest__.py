@@ -19,7 +19,8 @@
     },
     "depends": [
         "stock", 
-        "foreign_purchase_order"
+        "foreign_purchase_order",
+        "stock_voucher"
         ],
     "data": [
         "views/stock_move_line_view.xml",

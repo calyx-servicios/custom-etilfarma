@@ -2,7 +2,23 @@ from odoo import fields, models
 
 class StockPicking(models.Model):
     _inherit = "stock.move.line"
-
+        
+    voucher_ids = fields.One2many(
+        'stock.picking.voucher',
+        'picking_id',
+        'Vouchers',
+        copy=False,
+        related='picking_id.voucher_ids'
+    )
+    origin = fields.Char(
+        string="Source Document",
+        related='picking_id.origin'
+    )
+    partner_id = fields.Many2one(
+        'res.partner', 
+        'Partner', 
+        related='picking_id.partner_id'
+    )
     delivery_date = fields.Date(
         string="Delivery date",
     )
