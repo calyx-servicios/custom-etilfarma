@@ -6,18 +6,21 @@
         <field name="model">stock.move.line</field>
         <field name="arch" type="xml">
             <tree decoration-muted="state == 'cancel'" decoration-danger="(state not in ('cancel','done'))" string="Move Lines" create="0" editable="bottom" default_order="date">
-                <field name="date" readonly = "1" widget="date"/>
-                <field name="reception_date" invisible="context.get('is_reception') == False"/>
-                <field name="delivery_date" invisible="context.get('is_reception') == True"/>
+                <field name="date" readonly = "1" widget="date" invisible="1"/>
                 <field name="reference" string="Reference" readonly = "1"/>
+                <field name="voucher_ids" string="Voucher" widget="many2many_tags" readonly = "1"/>
                 <field name="product_id" readonly = "1"/>
                 <field name="location_id" readonly = "1"/>
+                <field name="warehouse_id" readonly = "1"/>
                 <field name="location_dest_id" readonly = "1"/>
+                <field name="partner_id" readonly = "1"/>
+                <field name="reception_date" invisible="context.get('is_reception') == False"/>
+                <field name="delivery_date" invisible="context.get('is_reception') == True"/>
+                <field name="origin" readonly = "1"/>                
                 <field name="qty_done" string="Quantity Done" readonly = "1"/>
                 <field name="product_uom_id" options="{'no_open': True, 'no_create': True}" string="Unit of Measure" groups="product.group_uom" readonly = "1"/>
                 <field name="state" readonly = "1"/>
                 <field name="picking_type_id" invisible="1"/>
-                <field name="warehouse_id"/>
                 <field name="picking_type_code" invisible="1"/>
             </tree>
         </field>
