@@ -1,16 +1,1792 @@
-#. module: foreign_trade
-<<<<<<< HEAD
-=======
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* foreign_trade
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-25 19:27+0000\n"
+"PO-Revision-Date: 2021-06-25 19:27+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
 
->>>>>>> 11.0_maker_field
+#. module: foreign_trade
+#: model:mail.template,body_html:foreign_trade.email_template_foreign_sale
+msgid "\n"
+"<p>Dear\n"
+"% if object.partner_id.is_company and object.partner_id.child_ids:\n"
+"    ${object.partner_id.child_ids[0].name}\n"
+"% else :\n"
+"    ${object.partner_id.name}\n"
+"% endif\n"
+",</p><p>\n"
+"Here is, in attachment, a ${object.state in ('draft', 'sent') and 'request for quotation' or 'sale order confirmation'} <strong>${object.name}</strong>\n"
+"% if object.partner_ref:\n"
+"    with reference: ${object.partner_ref}\n"
+"% endif\n"
+"% if object.origin:\n"
+"    (RFQ origin: ${object.origin})\n"
+"% endif\n"
+"amounting in <strong>${format_amount(object.amount_total, object.currency_id)}</strong>\n"
+"from ${object.company_id.name}.\n"
+"</p>\n"
+"\n"
+"<p>Do not hesitate to contact us if you have any further question.</p>\n"
+"<p>Best regards,</p>\n"
+"<p style=\"color:#888888;\">\n"
+"% if object.sudo().create_uid and object.sudo().create_uid.signature:\n"
+"    ${object.sudo().create_uid.signature | safe}\n"
+"% endif\n"
+"</p>\n"
+"            "
+msgstr "\n"
+"<p>Dear\n"
+"% if object.partner_id.is_company and object.partner_id.child_ids:\n"
+"    ${object.partner_id.child_ids[0].name}\n"
+"% else :\n"
+"    ${object.partner_id.name}\n"
+"% endif\n"
+",</p><p>\n"
+"Here is, in attachment, a ${object.state in ('draft', 'sent') and 'request for quotation' or 'sale order confirmation'} <strong>${object.name}</strong>\n"
+"% if object.partner_ref:\n"
+"    with reference: ${object.partner_ref}\n"
+"% endif\n"
+"% if object.origin:\n"
+"    (RFQ origin: ${object.origin})\n"
+"% endif\n"
+"amounting in <strong>${format_amount(object.amount_total, object.currency_id)}</strong>\n"
+"from ${object.company_id.name}.\n"
+"</p>\n"
+"\n"
+"<p>Do not hesitate to contact us if you have any further question.</p>\n"
+"<p>Best regards,</p>\n"
+"<p style=\"color:#888888;\">\n"
+"% if object.sudo().create_uid and object.sudo().create_uid.signature:\n"
+"    ${object.sudo().create_uid.signature | safe}\n"
+"% endif\n"
+"</p>\n"
+"            "
+
+#. module: foreign_trade
+#: model:mail.template,body_html:foreign_trade.email_template_foreign_sale_proforma
+msgid "\n"
+"<p>Dear\n"
+"% if object.partner_id.is_company and object.partner_id.child_ids:\n"
+"    ${object.partner_id.child_ids[0].name}\n"
+"% else :\n"
+"    ${object.partner_id.name}\n"
+"% endif\n"
+",</p><p>\n"
+"Here is, in attachment,a proforma order <strong>${object.name}</strong>\n"
+"% if object.partner_ref:\n"
+"    with reference: ${object.partner_ref}\n"
+"% endif\n"
+"% if object.origin:\n"
+"    (RFQ origin: ${object.origin})\n"
+"% endif\n"
+"amounting in <strong>${format_amount(object.amount_total, object.currency_id)}</strong>\n"
+"from ${object.company_id.name}.\n"
+"</p>\n"
+"\n"
+"<p>Do not hesitate to contact us if you have any further question.</p>\n"
+"<p>Best regards,</p>\n"
+"<p style=\"color:#888888;\">\n"
+"% if object.sudo().create_uid and object.sudo().create_uid.signature:\n"
+"    ${object.sudo().create_uid.signature | safe}\n"
+"% endif\n"
+"</p>\n"
+"            "
+msgstr "\n"
+"<p>Dear\n"
+"% if object.partner_id.is_company and object.partner_id.child_ids:\n"
+"    ${object.partner_id.child_ids[0].name}\n"
+"% else :\n"
+"    ${object.partner_id.name}\n"
+"% endif\n"
+",</p><p>\n"
+"Here is, in attachment,a proforma order <strong>${object.name}</strong>\n"
+"% if object.partner_ref:\n"
+"    with reference: ${object.partner_ref}\n"
+"% endif\n"
+"% if object.origin:\n"
+"    (RFQ origin: ${object.origin})\n"
+"% endif\n"
+"amounting in <strong>${format_amount(object.amount_total, object.currency_id)}</strong>\n"
+"from ${object.company_id.name}.\n"
+"</p>\n"
+"\n"
+"<p>Do not hesitate to contact us if you have any further question.</p>\n"
+"<p>Best regards,</p>\n"
+"<p style=\"color:#888888;\">\n"
+"% if object.sudo().create_uid and object.sudo().create_uid.signature:\n"
+"    ${object.sudo().create_uid.signature | safe}\n"
+"% endif\n"
+"</p>\n"
+"            "
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+msgid "#CO"
+msgstr "#CO"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+msgid "#PR"
+msgstr "#PR"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+msgid "#SO"
+msgstr "#SO"
+
+#. module: foreign_trade
+#: model:mail.template,subject:foreign_trade.email_template_foreign_sale_proforma
+msgid "${object.company_id.name} Proforma (Ref ${object.name or 'n/a' })"
+msgstr "${object.company_id.name} Proforma (Ref ${object.name or 'n/a' })"
+
+#. module: foreign_trade
+#: model:mail.template,subject:foreign_trade.email_template_foreign_sale
+msgid "${object.company_id.name} Sale Foreign Order (Ref ${object.name or 'n/a' })"
+msgstr "${object.company_id.name} Sale Foreign Order (Ref ${object.name or 'n/a' })"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+msgid "&amp;bull;"
+msgstr "&amp;bull;"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+msgid "&amp;nbsp;<span>on</span>&amp;nbsp;"
+msgstr "&amp;nbsp;<span>en</span>&amp;nbsp;"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list
+msgid "<span><strong>Address: </strong></span>"
+msgstr "<span><strong>Address: </strong></span>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list
+msgid "<span><strong>Addressee: </strong></span>"
+msgstr "<span><strong>Addressee: </strong></span>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list
+msgid "<span><strong>Carrier: </strong></span>"
+msgstr "<span><strong>Carrier: </strong></span>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list
+msgid "<span><strong>City: </strong></span>"
+msgstr "<span><strong>City: </strong></span>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list_es
+msgid "<span><strong>Ciudad: </strong></span>"
+msgstr "<span><strong>Ciudad: </strong></span>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list_es
+msgid "<span><strong>Codigo Postal: </strong></span>"
+msgstr "<span><strong>Codigo Postal: </strong></span>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list_es
+msgid "<span><strong>Condición de venta: </strong></span>"
+msgstr "<span><strong>Condición de venta: </strong></span>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list
+msgid "<span><strong>Country: </strong></span>"
+msgstr "<span><strong>Country: </strong></span>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list
+msgid "<span><strong>Delivery Term: </strong></span>"
+msgstr "<span><strong>Delivery Term: </strong></span>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list_es
+msgid "<span><strong>Destinatario: </strong></span>"
+msgstr "<span><strong>Destinatario: </strong></span>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list_es
+msgid "<span><strong>Dirección: </strong></span>"
+msgstr "<span><strong>Dirección: </strong></span>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list_es
+msgid "<span><strong>Importador: </strong></span>"
+msgstr "<span><strong>Importador: </strong></span>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list
+msgid "<span><strong>Importer: </strong></span>"
+msgstr "<span><strong>Importer: </strong></span>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list_es
+msgid "<span><strong>Lugar de entrega: </strong></span>"
+msgstr "<span><strong>Lugar de entrega: </strong></span>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list_es
+msgid "<span><strong>Pais: </strong></span>"
+msgstr "<span><strong>Pais: </strong></span>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list
+msgid "<span><strong>Place of Delivery: </strong></span>"
+msgstr "<span><strong>Place of Delivery: </strong></span>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list_es
+msgid "<span><strong>Plazo de entrega: </strong></span>"
+msgstr "<span><strong>Plazo de entrega: </strong></span>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list_es
+msgid "<span><strong>Portador: </strong></span>"
+msgstr "<span><strong>Portador: </strong></span>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list
+msgid "<span><strong>Postal Code: </strong></span>"
+msgstr "<span><strong>Postal Code: </strong></span>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list
+msgid "<span><strong>Sale Condition: </strong></span>"
+msgstr "<span><strong>Sale Condition: </strong></span>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list_es
+msgid "<span>LISTA DE EMPAQUE: </span>"
+msgstr "<span>LISTA DE EMPAQUE: </span>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list
+msgid "<span>PACKING LIST: </span>"
+msgstr "<span>PACKING LIST: </span>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+msgid "<span>Pro-Forma Invoice</span>"
+msgstr "<span>Factura Pro-Forma</span>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list_es
+msgid "<span>REF: </span>"
+msgstr "<span>REF: </span>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_sale_order_type_form
+msgid "<strong>\n"
+"                                    <i class=\"fa fa-bell-o\"/> In case of creating a new Sequence, select 'Sale Order Sequence'.\n"
+"                                </strong>"
+msgstr "<strong>\n"
+"                                    <i class=\"fa fa-bell-o\"/> In case of creating a new Sequence, select 'Sale Order Sequence'.\n"
+"                                </strong>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "<strong>\n"
+"                        <i class=\"fa fa-bell-o\"/> Using the edit button at the right side of the field, we can assign a diferent numeration.\n"
+"                    </strong>"
+msgstr "<strong>\n"
+"                        <i class=\"fa fa-bell-o\"/> Usando el botón de edición a la derecha del campo, podemos asignar distinta numeración.\n"
+"                    </strong>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list
+msgid "<strong>CONTAINER</strong>"
+msgstr "<strong>CONTAINER</strong>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list_es
+msgid "<strong>CONTENEDOR</strong>"
+msgstr "<strong>CONTENEDOR</strong>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+msgid "<strong>Confirmation Date:</strong>"
+msgstr "<strong>Fecha de Confirmación:</strong>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+msgid "<strong>Customer Purchase Order:</strong>"
+msgstr "<strong>Orden de Compra del Cliente:</strong>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+msgid "<strong>Date:</strong>"
+msgstr "<strong>Fecha:</strong>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list_es
+msgid "<strong>ENVIAR A: </strong>"
+msgstr "<strong>ENVIAR A: </strong>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list_es
+msgid "<strong>ENVÍO: </strong>"
+msgstr "<strong>ENVÍO: </strong>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list_es
+msgid "<strong>ESTADO</strong>"
+msgstr "<strong>ESTADO</strong>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+msgid "<strong>Expiration Date:</strong>"
+msgstr "<strong>Fecha de caducidad:</strong>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list_es
+msgid "<strong>FECHA DE ENVÍO</strong>"
+msgstr "<strong>FECHA DE ENVÍO</strong>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list_es
+msgid "<strong>ORDEN DE VENTA</strong>"
+msgstr "<strong>ORDEN DE VENTA</strong>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+msgid "<strong>Order Reference:</strong>"
+msgstr "<strong>Order Reference:</strong>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list
+msgid "<strong>SALE ORDER</strong>"
+msgstr "<strong>SALE ORDER</strong>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list
+msgid "<strong>SEND TO: </strong>"
+msgstr "<strong>SEND TO: </strong>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list
+msgid "<strong>SHIPPING DATE</strong>"
+msgstr "<strong>SHIPPING DATE</strong>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list
+msgid "<strong>SHIPPING: </strong>"
+msgstr "<strong>SHIPPING: </strong>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list
+msgid "<strong>SOLD TO: </strong>"
+msgstr "<strong>SOLD TO: </strong>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list
+msgid "<strong>STATE</strong>"
+msgstr "<strong>STATE</strong>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+msgid "<strong>Shipping address:</strong>"
+msgstr "<strong>Dirección de envío</strong>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+msgid "<strong>Subtotal</strong>"
+msgstr "<strong>Subtotal</strong>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+msgid "<strong>Total</strong>"
+msgstr "<strong>Total</strong>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list_es
+msgid "<strong>VENDIDO A: </strong>"
+msgstr "<strong>VENDIDO A: </strong>"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+msgid "<strong>Your Reference:</strong>"
+msgstr "<strong>Su referencia:</strong>"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_booking_conveyance_active
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_certificate_analysis_active
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_delivery_active
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_dispatcher_active
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_type_active
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_payment_instructions_active
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_shipment_active
+msgid "Active"
+msgstr "Activo"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_dispatcher_address
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_dispatcher_address
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Address"
+msgstr "Dirección"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "After Shipment"
+msgstr "Posterior al Envío"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_after_shipment_boarding_permit_date
+msgid "After Shipment Boarding Permit Date"
+msgstr "After Shipment Boarding Permit Date"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_after_shipment_customs_compliance_date
+msgid "After Shipment Customs Compliance Date"
+msgstr "After Shipment Customs Compliance Date"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_after_shipment_invoice_closing_date_AFIP
+msgid "After Shipment Invoice Closing Date"
+msgstr "After Shipment Invoice Closing Date"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_after_shipment_not_required
+msgid "After Shipment Not Required"
+msgstr "After Shipment Not Required"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_line_product_attr_id
+msgid "Attribute"
+msgstr "Atributo"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Bank"
+msgstr "Banco"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Boarding Permit Closing Date before AFIP"
+msgstr "Fecha de Cierre del Pago de Embarque ante AFIP"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_booking_conveyance_booking_conveyance
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_booking_conveyance_id
+msgid "Booking Conveyance"
+msgstr "Booking Medio de Transporte"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_booking_ETA_date
+msgid "Booking ETA Date"
+msgstr "Booking Fecha ETA"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_booking_ETD_date
+msgid "Booking ETD Date"
+msgstr "Booking Fecha ETD"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_booking_not_required
+msgid "Booking Not Required"
+msgstr "Booking No requerido"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_booking_transport_company
+msgid "Booking Transport Company"
+msgstr "Booking Compañía de Transporte"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Booking(Ship Reserve)"
+msgstr "Origen(Reserva de buque)"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list_es
+msgid "Cantidad"
+msgstr "Cantidad"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list_es
+msgid "Cantidad de Bultos"
+msgstr "Cantidad de Bultos"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list_es
+msgid "Cantidad de Pallets"
+msgstr "Cantidad de Pallets"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_stock_picking_carrier
+msgid "Carrier"
+msgstr "Forma de envío"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_carriers
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Carriers"
+msgstr "Empresa de Transporte"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+msgid "Carriers:"
+msgstr "Empresa de Transporte:"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Certificate Of Analysis"
+msgstr "Certificado de Analisis"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_certificate_of_analysis_not_required
+msgid "Certificate Of Analysis Not Required"
+msgstr "No se requiere Certificado de Analisis"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_certificate_of_analysis_shipment_date_to_customer
+msgid "Certificate Of Analysis Shipment Date to Customer"
+msgstr "Fecha de Envío al Cliente del Certificado de Analisis"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_certificate_analysis_certificate_of_analysis
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_certificate_of_analysis
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Certificate of Analysis"
+msgstr "Certificado de Análisis"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Channel"
+msgstr "Canal"
+
+#. module: foreign_trade
+#: model:ir.actions.act_window,help:foreign_trade.action_sale_certificate_of_analysis_view
+msgid "Click to set a new Certificate of Analysis."
+msgstr "Click to set a new Certificate of Analysis."
+
+#. module: foreign_trade
+#: model:ir.actions.act_window,help:foreign_trade.action_sale_booking_conveyance_view
+msgid "Click to set a new Sale Booking Conveyance."
+msgstr "Click to set a new Sale Booking Conveyance."
+
+#. module: foreign_trade
+#: model:ir.actions.act_window,help:foreign_trade.action_sale_dispatcher_view
+msgid "Click to set a new Sale Dispatcher."
+msgstr "Click to set a new Sale Dispatcher."
+
+#. module: foreign_trade
+#: model:ir.actions.act_window,help:foreign_trade.action_sale_payment_instructions_view
+msgid "Click to set a new sale Payment Instructions."
+msgstr "Click to set a new sale Payment Instructions."
+
+#. module: foreign_trade
+#: model:ir.actions.act_window,help:foreign_trade.action_sale_place_delivery_view
+msgid "Click to set a new sale Place of Delivery."
+msgstr "Haga click para colocar un nuevo Lugar de entrega."
+
+#. module: foreign_trade
+#: model:ir.actions.act_window,help:foreign_trade.action_sale_shipment_view
+msgid "Click to set a new sale Shipment."
+msgstr "Click to set a new sale Shipment."
+
+#. module: foreign_trade
+#: model:ir.actions.act_window,help:foreign_trade.action_sale_order_type_view
+msgid "Click to set a new type for sale order."
+msgstr "Click to set a new type for sale order."
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Client"
+msgstr "Cliente"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_line_client_code
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+msgid "Client Code"
+msgstr "Código de Cliente"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Collection"
+msgstr "Recaudación"
+
+#. module: foreign_trade
+#: code:addons/addons-custom/calyx/custom-etilfarma/foreign_trade/models/sale_order.py:390
+#: code:addons/addons-custom/calyx/custom-etilfarma/foreign_trade/models/sale_order.py:446
+#: code:addons/foreign_trade/models/sale_order.py:390
+#: code:addons/foreign_trade/models/sale_order.py:446
+#, python-format
+msgid "Compose Email"
+msgstr "Compose Email"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Concept"
+msgstr "Concepto de Pago"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Confirmation"
+msgstr "Confirmación"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_date_confirm
+msgid "Confirmation Date"
+msgstr "Fecha de confirmación"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_confirmation_not_required
+msgid "Confirmation Not Required"
+msgstr "Confirmación No requerida"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_confirmation_number
+msgid "Confirmation Number"
+msgstr "Número de Confirmación"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+msgid "Confirmed Quotation"
+msgstr "Presupuesto Confirmado"
+
+#. module: foreign_trade
+#: model:ir.model,name:foreign_trade.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_stock_picking_container
+msgid "Container"
+msgstr "Container"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Conveyance"
+msgstr "Medio de transporte"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_pallet_type_create_uid
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_booking_conveyance_create_uid
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_certificate_analysis_create_uid
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_delivery_create_uid
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_dispatcher_create_uid
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_type_create_uid
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_payment_instructions_create_uid
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_shipment_create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_pallet_type_create_date
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_booking_conveyance_create_date
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_certificate_analysis_create_date
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_delivery_create_date
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_dispatcher_create_date
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_type_create_date
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_payment_instructions_create_date
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_shipment_create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_customer_purchase_order
+msgid "Customer Purchase Order"
+msgstr "Nro Orden del Cliente"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Customs Compliance Date"
+msgstr "Fecha de Aceptación de Aduana"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Date"
+msgstr "Fecha"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_res_partner_default_bank
+#: model:ir.model.fields,field_description:foreign_trade.field_res_users_default_bank
+msgid "Default Bank"
+msgstr "Default Bank"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.res_partner_default_bank_form_view
+msgid "Default Bank Account"
+msgstr "Default Bank Account"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Delivery Date"
+msgstr "Fecha de entrega"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_stock_picking_delivery_term
+msgid "Delivery Term"
+msgstr "Delivery Term"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_type_description
+msgid "Description"
+msgstr "Descripción"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_expenses_dispatcher_fees
+msgid "Dispacher Fees"
+msgstr "Dispacher Fees"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_dispatcher_id
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Dispatcher"
+msgstr "Despachante"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Dispatcher Fees"
+msgstr "Honorarios despachante"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_dispatcher_not_required
+msgid "Dispatcher Not Required"
+msgstr "Despachante No requerido"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_dispatcher_reference
+msgid "Dispatcher Reference"
+msgstr "Dispatcher Reference"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_pallet_type_display_name
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_booking_conveyance_display_name
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_certificate_analysis_display_name
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_delivery_display_name
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_dispatcher_display_name
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_type_display_name
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_payment_instructions_display_name
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_shipment_display_name
+msgid "Display Name"
+msgstr "Mostrar Nombre"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "ETA Date"
+msgstr "Fecha ETA"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "ETD Date"
+msgstr "Fecha ETD"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_dispatcher_email
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_dispatcher_email
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Email"
+msgstr "Correo electrónico"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_type_sequence_id
+#: model:ir.ui.view,arch_db:foreign_trade.view_sale_order_type_search
+msgid "Entry Sequence"
+msgstr "Secuencia de Asiento"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_estimated_shipping_date
+msgid "Estimated Shipping Date"
+msgstr "Fecha Estimada de Envío"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+msgid "Estimated Shipping Date:"
+msgstr "Fecha Estimada de Envío:"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_expenses_expenses
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Expenses"
+msgstr "Gastos"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_expenses_not_required
+msgid "Expenses Not Required"
+msgstr "Gastos No requerido"
+
+#. module: foreign_trade
+#: model:ir.ui.menu,name:foreign_trade.menu_sale_order_foreign_in_config_sale
+msgid "Foreign Fields Configuration"
+msgstr "Configuracion de campos de compras extranjeras"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_order_type_foreign
+msgid "Foreign Order"
+msgstr "Orden Extranjera"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_type_foreign_order
+msgid "Foreign Order?"
+msgstr "¿Es Orden Extranjera?"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Foreign Sale"
+msgstr "Venta al Exterior"
+
+#. module: foreign_trade
+#: model:ir.actions.report,name:foreign_trade.action_foreign_sale_proforma_report
+#: model:ir.actions.report,name:foreign_trade.action_foreign_sale_report
+msgid "Foreign Sale Report"
+msgstr "Reporte de Ventas"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_stock_move_gross_weight
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list
+msgid "Gross Weight"
+msgstr "Peso bruto"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_sale_order_type_search
+msgid "Group By"
+msgstr "Agrupar por"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_line_product_nmc
+#: model:ir.model.fields,field_description:foreign_trade.field_stock_move_product_nmc_code
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+msgid "HS Code"
+msgstr "HS Code"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_pallet_type_id
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_booking_conveyance_id
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_certificate_analysis_id
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_delivery_id
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_dispatcher_id
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_type_id
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_payment_instructions_id
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_shipment_id
+msgid "ID"
+msgstr "ID"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "ITEM"
+msgstr "ITEM"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_incomplete_booking
+#: model:ir.ui.view,arch_db:foreign_trade.view_sale_order_tree_filter
+msgid "Incomplete Booking"
+msgstr "Incomplete Booking"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_incomplete_certificate_of_analysis
+#: model:ir.ui.view,arch_db:foreign_trade.view_sale_order_tree_filter
+msgid "Incomplete Certificate of Analysis"
+msgstr "Incomplete Certificate of Analysis"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_incomplete_confirmation
+msgid "Incomplete Confirmation"
+msgstr "Incomplete Confirmation"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_incomplete_dispatcher
+#: model:ir.ui.view,arch_db:foreign_trade.view_sale_order_tree_filter
+msgid "Incomplete Dispatcher"
+msgstr "Incomplete Dispatcher"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_incomplete_documents
+#: model:ir.ui.view,arch_db:foreign_trade.view_sale_order_tree_filter
+msgid "Incomplete Documents"
+msgstr "Documentos incompleto"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_incomplete_expenses
+#: model:ir.ui.view,arch_db:foreign_trade.view_sale_order_tree_filter
+msgid "Incomplete Expenses"
+msgstr "Gastos incompleto"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_incomplete_invoice
+#: model:ir.ui.view,arch_db:foreign_trade.view_sale_order_tree_filter
+msgid "Incomplete Invoice"
+msgstr "Incomplete Invoice"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_incomplete_license
+#: model:ir.ui.view,arch_db:foreign_trade.view_sale_order_tree_filter
+msgid "Incomplete License"
+msgstr "Incomplete License"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_incomplete_origin
+#: model:ir.ui.view,arch_db:foreign_trade.view_sale_order_tree_filter
+msgid "Incomplete Origin"
+msgstr "Incomplete Origin"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_incomplete_payment
+#: model:ir.ui.view,arch_db:foreign_trade.view_sale_order_tree_filter
+msgid "Incomplete Payment"
+msgstr "Incomplete Payment"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_incomplete_proform
+#: model:ir.ui.view,arch_db:foreign_trade.view_sale_order_tree_filter
+msgid "Incomplete Proform"
+msgstr "Incomplete Proform"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_incomplete_quotation
+#: model:ir.ui.view,arch_db:foreign_trade.view_sale_order_tree_filter
+msgid "Incomplete Quotation"
+msgstr "Incomplete Quotation"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_sale_order_tree_filter
+msgid "Incomplete Traking Order"
+msgstr "Seguimiento de orden incompleto"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_incomplete_traking_order_data
+msgid "Incomplete tracking order data"
+msgstr "Incomplete tracking order data"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_incoterm_id
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_type_incoterm_id
+#: model:ir.model.fields,field_description:foreign_trade.field_stock_picking_incoterm
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+#: model:ir.ui.view,arch_db:foreign_trade.view_sale_order_type_search
+msgid "Incoterm"
+msgstr "Incoterm"
+
+#. module: foreign_trade
+#: model:ir.model.fields,help:foreign_trade.field_stock_picking_incoterm
+msgid "Incoterm Standard Code"
+msgstr "Código estándar del Incoterm"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+msgid "Incoterm:"
+msgstr "Incoterm:"
+
+#. module: foreign_trade
+#: model:ir.ui.menu,name:foreign_trade.menu_incoterms_in_sale
+msgid "Incoterms"
+msgstr "Incoterms"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Invoice Closing Date before AFIP"
+msgstr "Fecha de Cierre de Factura ante AFIP"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_invoice_date
+msgid "Invoice Date"
+msgstr "Fecha de la factura"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_invoice_not_required
+msgid "Invoice Not Required"
+msgstr "Invoice Not Required"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_invoice_number
+msgid "Invoice Number"
+msgstr "Número de factura"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+msgid "Invoicing address:"
+msgstr "Dirección de facturación:"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+msgid "Invoicing and shipping address:"
+msgstr "Dirección de facturación y de envío:"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_stock_picking_order_type_foreign
+msgid "Is Foreign Trade Order"
+msgstr "Is Foreign Trade Order"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_sale_international
+msgid "Is sale International"
+msgstr "Is sale International"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_stock_move_stock_move_line_seq
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list_es
+msgid "Item"
+msgstr "Item"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list_es
+msgid "LISTA DE EMPAQUE"
+msgstr "LISTA DE EMPAQUE"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_pallet_type___last_update
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_booking_conveyance___last_update
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_certificate_analysis___last_update
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_delivery___last_update
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_dispatcher___last_update
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_type___last_update
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_payment_instructions___last_update
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_shipment___last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_pallet_type_write_uid
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_booking_conveyance_write_uid
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_certificate_analysis_write_uid
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_delivery_write_uid
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_dispatcher_write_uid
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_type_write_uid
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_payment_instructions_write_uid
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_shipment_write_uid
+msgid "Last Updated by"
+msgstr "Última actualización realizada por"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_pallet_type_write_date
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_booking_conveyance_write_date
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_certificate_analysis_write_date
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_delivery_write_date
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_dispatcher_write_date
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_type_write_date
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_payment_instructions_write_date
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_shipment_write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_line_life_date
+msgid "Life Date"
+msgstr "Fecha de Vencimiento"
+
+#. module: foreign_trade
+#: model:ir.actions.report,name:foreign_trade.packing_list_report_es
+msgid "Lista de Empaque"
+msgstr "Lista de Empaque"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_line_loot_name
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+msgid "Lot"
+msgstr "Lote"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_line_maker_id
+msgid "Maker"
+msgstr "Fabricante"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Merchandise Delivery"
+msgstr "Entrega de Mercadería"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_merchandise_delivery_date
+msgid "Merchandise Delivery Date"
+msgstr "Merchandise Delivery Date"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_merchandise_delivery_not_required
+msgid "Merchandise Delivery Not Required"
+msgstr "Merchandise Delivery Not Required"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list_es
+msgid "NMC"
+msgstr "NMC"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_dispatcher_name
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_type_name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_stock_move_net_weight
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list
+msgid "Net Weight"
+msgstr "Net Weight"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Not Required"
+msgstr "No Requerido"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Number"
+msgstr "Número"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_line_observations
+msgid "Observation"
+msgstr "Observación"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_observations
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Observations"
+msgstr "Observaciones"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+msgid "Observations:"
+msgstr "Observaciones:"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Official Date"
+msgstr "Fecha de oficialización"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_line_order_line_seq
+msgid "Order Line Seq"
+msgstr "Order Line Seq"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list_es
+msgid "Origen"
+msgstr "Origen"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_line_country_id
+#: model:ir.model.fields,field_description:foreign_trade.field_stock_move_country
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Origin"
+msgstr "Origen"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_origin_shipment_date
+msgid "Origin Date"
+msgstr "Origin Date"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_origin_not_required
+msgid "Origin Not Required"
+msgstr "Origin Not Required"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_origin_reference
+msgid "Origin Reference"
+msgstr "Origin Reference"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list
+msgid "PACKING LIST"
+msgstr "PACKING LIST"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_stock_move_packages_qty
+msgid "Packages Qty"
+msgstr "Packages Qty"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_line_product_attr_value_id
+#: model:ir.model.fields,field_description:foreign_trade.field_stock_move_packaging
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+msgid "Packaging"
+msgstr "Empaquetado"
+
+#. module: foreign_trade
+#: model:ir.actions.report,name:foreign_trade.packing_list_report
+#: model:ir.ui.view,arch_db:foreign_trade.stock_view_picking_form_foreign_trade
+msgid "Packing List"
+msgstr "Lista de empaque"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_stock_picking_packing_list_number
+msgid "Packing List Number"
+msgstr "Packing List Number"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_stock_move_pallet_qty
+msgid "Pallet Qty"
+msgstr "Pallet Qty"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_pallet_type_name
+#: model:ir.model.fields,field_description:foreign_trade.field_stock_move_pallet_type
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list
+msgid "Pallet Type"
+msgstr "Pallet Type"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_payment_bank
+msgid "Payment Bank"
+msgstr "Payment Bank"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_payment_concept
+msgid "Payment Concept"
+msgstr "Payment Concept"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_payment_date
+msgid "Payment Date"
+msgstr "Fecha de pago"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_payment_exchange_rate
+msgid "Payment Exchange Rate"
+msgstr "Payment Exchange Rate"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_payment_instructions_payment_instructions
+#: model:ir.ui.view,arch_db:foreign_trade.view_sale_payment_instructions_search
+#: model:ir.ui.view,arch_db:foreign_trade.view_sale_payment_instructions_tree
+msgid "Payment Instructions"
+msgstr "Payment Instructions"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+msgid "Payment Instructions:"
+msgstr "Instrucciones para el Pago:"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_payment_not_required
+msgid "Payment Not Required"
+msgstr "Pago No requerido"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_payment_tre
+msgid "Payment TRE"
+msgstr "Payment TRE"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_payment_transport_company
+msgid "Payment Transport Company"
+msgstr "Payment Transport Company"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_payment_instructions_id
+msgid "Payment instructions"
+msgstr "Payment instructions"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list_es
+msgid "Peso Bruto"
+msgstr "Peso Bruto"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list_es
+msgid "Peso Neto"
+msgstr "Peso Neto"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_dispatcher_phone_number
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_dispatcher_phone_number
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Phone Number"
+msgstr "Tefono"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_delivery_place_of_delivery
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_place_of_delivery_id
+#: model:ir.model.fields,field_description:foreign_trade.field_stock_picking_place_of_delivery
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Place of Delivery"
+msgstr "Lugar de entrega"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+msgid "Place of Delivery:"
+msgstr "Lugar de entrega:"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+msgid "Price Unit"
+msgstr "Precio de Unidad"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Print Foreign Report"
+msgstr "Imprimir OE"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Print Proforma"
+msgstr "Print Proforma"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_line_product_tmpl_id
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list
+msgid "Product"
+msgstr "Producto"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list_es
+msgid "Producto"
+msgstr "Producto"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Proforma"
+msgstr "Proforma"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_proforma_date
+msgid "Proforma Date"
+msgstr "Proforma Date"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_proforma_not_required
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Proforma Not Required"
+msgstr "Proforma No requerido"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_proforma_number
+msgid "Proforma Number"
+msgstr "Proforma Number"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_line_qty_received
+msgid "Qty Received"
+msgstr "Qty Received"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_line_product_qty
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list
+msgid "Quantity of Packages"
+msgstr "Quantity of Packages"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list
+msgid "Quantity of Pallets"
+msgstr "Quantity of Pallets"
+
+#. module: foreign_trade
+#: model:ir.model,name:foreign_trade.model_sale_order
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Quotation"
+msgstr "Presupuesto"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_quotation_client
+msgid "Quotation Client"
+msgstr "Quotation Client"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_quotation_date
+msgid "Quotation Date"
+msgstr "Fecha de presupuesto"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_quotation_not_required
+msgid "Quotation Not Required"
+msgstr "Quotation Not Required"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_quotation_number
+msgid "Quotation Number"
+msgstr "Número de presupuesto"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Reference"
+msgstr "Referencia"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_stock_picking_remarks_packing_list
+msgid "Remarks on Packing List"
+msgstr "Remarks on Packing List"
+
+#. module: foreign_trade
+#: model:mail.template,report_name:foreign_trade.email_template_foreign_sale
+#: model:mail.template,report_name:foreign_trade.email_template_foreign_sale_proforma
+msgid "SFO_${(object.name or '').replace('/','_')}"
+msgstr "SFO_${(object.name or '').replace('/','_')}"
+
+#. module: foreign_trade
+#: model:ir.actions.act_window,name:foreign_trade.action_sale_booking_conveyance_view
+#: model:ir.ui.menu,name:foreign_trade.menu_sale_booking_conveyance
+#: model:ir.ui.view,arch_db:foreign_trade.view_sale_booking_conveyance_search
+#: model:ir.ui.view,arch_db:foreign_trade.view_sale_booking_conveyance_tree
+msgid "Sale Booking Conveyance"
+msgstr "Sale Booking Conveyance"
+
+#. module: foreign_trade
+#: model:ir.actions.act_window,name:foreign_trade.action_sale_certificate_of_analysis_view
+#: model:ir.ui.menu,name:foreign_trade.menu_sale_certificate_of_analysis
+#: model:ir.ui.view,arch_db:foreign_trade.view_sale_certificate_of_analysis_search
+#: model:ir.ui.view,arch_db:foreign_trade.view_sale_certificate_of_analysis_tree
+msgid "Sale Certificate of Analysis"
+msgstr "Sale Certificate of Analysis"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_sale_code
+msgid "Sale Code"
+msgstr "Sale Code"
+
+#. module: foreign_trade
+#: model:ir.actions.act_window,name:foreign_trade.action_sale_dispatcher_view
+#: model:ir.ui.menu,name:foreign_trade.menu_sale_dispatcher
+#: model:ir.ui.view,arch_db:foreign_trade.view_sale_dispatcher_search
+#: model:ir.ui.view,arch_db:foreign_trade.view_sale_dispatcher_tree
+msgid "Sale Dispatcher"
+msgstr "Sale Dispatcher"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_ir_sequence_sale_seq
+msgid "Sale Order Sequence"
+msgstr "Sale Order Sequence"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_res_partner_sale_type
+#: model:ir.model.fields,field_description:foreign_trade.field_res_users_sale_type
+#: model:ir.ui.view,arch_db:foreign_trade.res_partner_sale_type_form_view
+msgid "Sale Order Type"
+msgstr "Sale Order Type"
+
+#. module: foreign_trade
+#: model:ir.actions.act_window,name:foreign_trade.action_sale_order_type_view
+#: model:ir.ui.menu,name:foreign_trade.menu_sale_order_type
+#: model:ir.ui.view,arch_db:foreign_trade.view_sale_order_type_search
+#: model:ir.ui.view,arch_db:foreign_trade.view_sale_order_type_tree
+msgid "Sale Order Types"
+msgstr "Sale Order Types"
+
+#. module: foreign_trade
+#: model:ir.actions.act_window,name:foreign_trade.action_sale_payment_instructions_view
+#: model:ir.ui.menu,name:foreign_trade.menu_sale_payment_instructions
+msgid "Sale Payment Instructions"
+msgstr "Sale Payment Instructions"
+
+#. module: foreign_trade
+#: model:ir.actions.act_window,name:foreign_trade.action_sale_place_delivery_view
+#: model:ir.ui.menu,name:foreign_trade.menu_sale_place_delivery
+#: model:ir.ui.view,arch_db:foreign_trade.view_sale_place_delivery_search
+#: model:ir.ui.view,arch_db:foreign_trade.view_sale_place_delivery_tree
+msgid "Sale Place of Delivery"
+msgstr "Lugar de Entrega de la venta"
+
+#. module: foreign_trade
+#: model:ir.actions.act_window,name:foreign_trade.action_sale_shipment_view
+#: model:ir.ui.menu,name:foreign_trade.menu_sale_shipment
+#: model:ir.ui.view,arch_db:foreign_trade.view_sale_shipment_search
+#: model:ir.ui.view,arch_db:foreign_trade.view_sale_shipment_tree
+msgid "Sale Shipment"
+msgstr "Sale Shipment"
+
+#. module: foreign_trade
+#: model:ir.ui.menu,name:foreign_trade.menu_sale_order_in_config_sale
+msgid "Sales Order"
+msgstr "Pedido de ventas"
+
+#. module: foreign_trade
+#: model:ir.model,name:foreign_trade.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Línea de orden de ventas"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Send SFR"
+msgstr "Send SFR"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Send proforma"
+msgstr "Send proforma"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_booking_conveyance_sequence
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_certificate_analysis_sequence
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_delivery_sequence
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_dispatcher_sequence
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_type_sequence
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_payment_instructions_sequence
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_shipment_sequence
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: foreign_trade
+#: model:ir.actions.act_window,name:foreign_trade.action_setting_pallets
+msgid "Setting Pallets"
+msgstr "Setting Pallets"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_ship_name
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Ship Name"
+msgstr "Buque"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_shipment_id
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_shipment_shipment
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Shipment"
+msgstr "Envío"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Shipment Date"
+msgstr "Fecha de Envío"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Shipment Date to Customer"
+msgstr "Fecha de Envío al Cliente"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+msgid "Shipment:"
+msgstr "Envío:"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_stock_picking_shipping
+msgid "Shipping"
+msgstr "Envío"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Shipping Document Date"
+msgstr "Fecha de Documentos de Envío"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Shipping License"
+msgstr "Shipping License"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_shipping_license_channel
+msgid "Shipping License Channel"
+msgstr "Shipping License Channel"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_shipping_license_not_required
+msgid "Shipping License Not Required"
+msgstr "Shipping License Not Required"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_shipping_license_number
+msgid "Shipping License Number"
+msgstr "Shipping License Number"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_shipping_license_official_date
+msgid "Shipping License Official Date"
+msgstr "Shipping License Official Date"
+
+#. module: foreign_trade
+#: model:ir.model,name:foreign_trade.model_stock_move
+msgid "Stock Move"
+msgstr "Movimiento de Stock"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "TRE"
+msgstr "TRE"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_term_payments
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Terms of Payment"
+msgstr "Términos de Pago"
+
+#. module: foreign_trade
+#: model:ir.ui.menu,name:foreign_trade.menu_payment_terms_in_sale
+msgid "Terms of Payments"
+msgstr "Términos de Pago"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+msgid "Terms of Payments:"
+msgstr "Términos de Pago:"
+
+#. module: foreign_trade
+#: model:ir.model.fields,help:foreign_trade.field_sale_order_line_country_id
+#: model:ir.model.fields,help:foreign_trade.field_stock_move_country
+msgid "The full name of the country."
+msgstr "El nombre completo del país."
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list_es
+msgid "Tipo de Pallet"
+msgstr "Tipo de Pallet"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+msgid "Total Amount"
+msgstr "Importe total"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Tracking Order"
+msgstr "Seguimiento de pedido"
+
+#. module: foreign_trade
+#: model:ir.model,name:foreign_trade.model_stock_picking
+msgid "Transfer"
+msgstr "Transferir"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Transport Company"
+msgstr "Compañía de transporte"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_transport_doc_date
+msgid "Transport Doc Date"
+msgstr "Transport Doc Date"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_transport_doc_documents
+msgid "Transport Doc Documents"
+msgstr "Transport Doc Documents"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_transport_doc_not_required
+msgid "Transport Doc Not Required"
+msgstr "Transport Doc Not Required"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Transport Documentation"
+msgstr "Documentación de Transporte"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Transport Documents"
+msgstr "Documentos de Transporte"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_order_type
+#: model:ir.ui.view,arch_db:foreign_trade.sale_order_view_search_inherit_quotation
+#: model:ir.ui.view,arch_db:foreign_trade.view_sale_booking_conveyance_form
+#: model:ir.ui.view,arch_db:foreign_trade.view_sale_certificate_of_analysis_form
+#: model:ir.ui.view,arch_db:foreign_trade.view_sale_dispatcher_form
+#: model:ir.ui.view,arch_db:foreign_trade.view_sale_order_type_form
+#: model:ir.ui.view,arch_db:foreign_trade.view_sale_payment_instructions_form
+#: model:ir.ui.view,arch_db:foreign_trade.view_sale_place_delivery_form
+#: model:ir.ui.view,arch_db:foreign_trade.view_sale_shipment_form
+msgid "Type"
+msgstr "Tipo"
+
+#. module: foreign_trade
+#: model:ir.model,name:foreign_trade.model_sale_order_type
+msgid "Type of sale order"
+msgstr "Type of sale order"
+
+#. module: foreign_trade
+#: model:ir.ui.menu,name:foreign_trade.menu_stock_picking_config_pallet
+msgid "Types of Pallet"
+msgstr "Types of Pallet"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_pallet_type_weight
+msgid "Weight"
+msgstr "Peso"
+
+#. module: foreign_trade
+#: code:addons/addons-custom/calyx/custom-etilfarma/foreign_trade/models/sale_booking_conveyance.py:19
+#: code:addons/addons-custom/calyx/custom-etilfarma/foreign_trade/models/sale_certificate_of_analysis.py:19
+#: code:addons/addons-custom/calyx/custom-etilfarma/foreign_trade/models/sale_dispatcher.py:31
+#: code:addons/addons-custom/calyx/custom-etilfarma/foreign_trade/models/sale_payment_instructions.py:21
+#: code:addons/addons-custom/calyx/custom-etilfarma/foreign_trade/models/sale_place_of_delivery.py:21
+#: code:addons/addons-custom/calyx/custom-etilfarma/foreign_trade/models/sale_shipment.py:19
+#: code:addons/foreign_trade/models/sale_booking_conveyance.py:19
+#: code:addons/foreign_trade/models/sale_certificate_of_analysis.py:19
+#: code:addons/foreign_trade/models/sale_dispatcher.py:31
+#: code:addons/foreign_trade/models/sale_payment_instructions.py:21
+#: code:addons/foreign_trade/models/sale_place_of_delivery.py:21
+#: code:addons/foreign_trade/models/sale_shipment.py:19
+#, python-format
+msgid "You are trying to delete a record that is still referenced in one o more sale, try to archive it."
+msgstr "You are trying to delete a record that is still referenced in one o more sale, try to archive it."
+
+#. module: foreign_trade
+#: code:addons/addons-custom/calyx/custom-etilfarma/foreign_trade/models/sale_order_line.py:79
+#: code:addons/foreign_trade/models/sale_order_line.py:79
+#, python-format
+msgid "You must define the 'Origin' field in the product template model."
+msgstr "You must define the 'Origin' field in the product template model."
+
+#. module: foreign_trade
+#: model:ir.model,name:foreign_trade.model_ir_sequence
+msgid "ir.sequence"
+msgstr "ir.sequence"
+
+#. module: foreign_trade
+#: model:ir.model,name:foreign_trade.model_pallet_type
+msgid "pallet.type"
+msgstr "pallet.type"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "payment exchange"
+msgstr "Intercambio de Pago"
+
+#. module: foreign_trade
+#: model:ir.model,name:foreign_trade.model_sale_booking_conveyance
+msgid "sale.booking.conveyance"
+msgstr "sale.booking.conveyance"
+
+#. module: foreign_trade
+#: model:ir.model,name:foreign_trade.model_sale_certificate_analysis
+msgid "sale.certificate.analysis"
+msgstr "sale.certificate.analysis"
+
+#. module: foreign_trade
+#: model:ir.model,name:foreign_trade.model_sale_delivery
+msgid "sale.delivery"
+msgstr "sale.delivery"
+
+#. module: foreign_trade
+#: model:ir.model,name:foreign_trade.model_sale_dispatcher
+msgid "sale.dispatcher"
+msgstr "sale.dispatcher"
+
+#. module: foreign_trade
+#: model:ir.model,name:foreign_trade.model_sale_payment_instructions
+msgid "sale.payment.instructions"
+msgstr "sale.payment.instructions"
+
+#. module: foreign_trade
+#: model:ir.model,name:foreign_trade.model_sale_shipment
+msgid "sale.shipment"
+msgstr "sale.shipment"
+
+#. module: foreign_trade
 #: model:ir.model.fields,field_description:foreign_trade.field_sale_order_line_client_code
 #: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
 msgid "Client Code"
 msgstr "Código de cliente"
-<<<<<<< HEAD
-=======
 
+#. module: foreign_trade
 #: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
 msgid "<strong>Customer Purchase Order:</strong>"
 msgstr "<strong>Orden de compra del cliente:</strong>"
->>>>>>> 11.0_maker_field
