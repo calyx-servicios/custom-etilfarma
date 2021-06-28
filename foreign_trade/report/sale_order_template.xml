@@ -70,7 +70,7 @@
                     <strong>Order Reference:</strong>
                     <p t-field="doc.name"/>
                 </div>
-                <div t-if="doc.client_order_ref" class="col-xs-3">
+                <div t-if="doc.client_order_ref and doc.state in ['draft', 'sent', 'done', 'sale'] or is_pro_forma" class="col-xs-3">
                     <strong>Your Reference:</strong>
                     <p t-field="doc.client_order_ref"/>
                 </div>

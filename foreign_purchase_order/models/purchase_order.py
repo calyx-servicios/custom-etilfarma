@@ -256,6 +256,10 @@ class PurchaseOrder(models.Model):
     dispatcher_not_required = fields.Boolean(string="Dispatcher Not Required")
 
     intervention_reference = fields.Char(string="Intervention Reference")
+    intervention_currency_id = fields.Selection(
+        [("eur", "EUR"), ("ars", "ARS"), ("usd", "USD")],
+        string="Intervention Currency"
+    )
     intervention_VPE_amount = fields.Char(string="Intervention VPE Amount")
     intervention_currency_id = fields.Selection(
         [("eur", "EUR"), ("ars", "ARS"), ("usd", "USD")],
@@ -263,6 +267,9 @@ class PurchaseOrder(models.Model):
     intervention_application_date = fields.Date(string="Intervention Application Date")
     intervention_approval_date = fields.Date(string="Intervention Approval Date")
     intervention_not_required = fields.Boolean(string="Intervention Not Required")
+    intervention_currency_id = fields.Selection(
+        [("eur", "EUR"), ("ars", "ARS"), ("usd", "USD")],
+        string="Expenses Currency")
 
     import_license_reference = fields.Char(string="Import License Reference")
     import_license_approval_date = fields.Date(string="Import License Approval Date")
@@ -766,6 +773,14 @@ class PurchaseOrder(models.Model):
             else:
                 record.status_status = _('In progress')
 
+    @api.depends('state')
+    def _compute_status_status(self):
+        for record in self:
+            if record.state in 'purchase': 
+                record.status_status = _('Finished')
+            else:
+                record.status_status = _('In progress')
+    
     @api.multi
     def button_confirm(self):
         self._check_requiered_fields()

@@ -20,7 +20,7 @@ class PurchaseOrder(models.Model):
     is_confirmation_delayed = fields.Boolean(default=False, compute='_compute_is_confirmation_delayed', store=True)
 
     @api.depends('state', 'date_order', 'reception_status', 'confirmation_number', 'confirmation_date',
-                 'confirmation_not_required')
+                 'confirmation_not_required', 'status_status')
     def _compute_is_confirmation_delayed(self):
         for record in self:
             if not record.confirmation_not_required:

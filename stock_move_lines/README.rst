@@ -1,6 +1,6 @@
-================
-Terms to Tracing
-================
+======================
+Stock Moves
+======================
 
 .. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
    !! This file is intended to be in every module    !!
@@ -21,22 +21,25 @@ Terms to Tracing
 
 |badge1| |badge2| |badge3|
 
-.. !!! Description must be max 2-3 paragraphs, and is required.
+This module adds within inventories (on delivery and receipt) a tree view per product line
+**Table of contents**
 
+.. contents::
+   :local:
 
-Do this ...
+.. !!! Instalation: must only be present if there are very specific installation instructions, such as installing non-python dependencies.The audience is systems administrators. ] To install this module, you need to: !!!
 
+Install
+=======
+
+Install the module
 .. !!! Configuration: This file is optional, it should explain how to configure the module before using it; it is aimed at advanced users. To configure this module, you need to:
 
 Configure
 =========
 
-Go to ...
+Go to purchase and select a delivery_date_planned_date, after that check the date_picker in inventory.
 
-Usage
-=====
-
-1. Go to ...
 
 Known issues / Roadmap
 ======================
@@ -47,8 +50,6 @@ Bug Tracker
 ===========
 
 * Help Contact
-=======
-This module extends the functionality of Purchase. Changes notes for Client Tracing
 
 Credits
 =======
@@ -65,8 +66,8 @@ Contributors
   
   * Jhone Mendez
   * Federico Gregori
-  * Andres Andrade
-  * Marco Oegg
+  * Milton Guzman
+  * Christian Paradiso
 
 Maintainers
 ~~~~~~~~~~~
@@ -80,4 +81,4 @@ This module is maintained by the Calyx Servicios S.A.
 CALYX SERVICIOS S.A. It is part of the PGK Consultores economic group, member of an important global network, a world organization positioned among the 20 largest consultant-studios in the world.
 The PGK Consultores group is one of the 20 largest consultant-studios in Argentina with nearly 200 professionals.
 
-This module is part of the `Odoo-Calyx <https://gitlab.com/calyxservicios-group/odoo/odoo-calyx>`_ project on Gitlab.
+This module is part of the `Calyx-Etilfarma <https://github.com/calyx-servicios/custom-etilfarma>`_ project on GitHub.

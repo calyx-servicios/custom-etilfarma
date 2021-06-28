@@ -1,6 +1,6 @@
-================
-Terms to Tracing
-================
+==============================
+Etilfarma Installation Modules
+==============================
 
 .. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
    !! This file is intended to be in every module    !!
@@ -23,20 +23,24 @@ Terms to Tracing
 
 .. !!! Description must be max 2-3 paragraphs, and is required.
 
+This module was build to rule them all, installs all Etilfarma customizations and their corresponding dependencies (base, oca and l10n_ar modules).
 
-Do this ...
+**Table of contents**
 
-.. !!! Configuration: This file is optional, it should explain how to configure the module before using it; it is aimed at advanced users. To configure this module, you need to:
+.. contents::
+   :local:
 
-Configure
-=========
+.. !!! Instalation: must only be present if there are very specific installation instructions, such as installing non-python dependencies.The audience is systems administrators. ] To install this module, you need to: !!!
 
-Go to ...
+Install
+=======
+
+Search Contract Sale Order in apps and install the module.
 
 Usage
 =====
 
-1. Go to ...
+Just install the module.
 
 Known issues / Roadmap
 ======================
@@ -47,8 +51,6 @@ Bug Tracker
 ===========
 
 * Help Contact
-=======
-This module extends the functionality of Purchase. Changes notes for Client Tracing
 
 Credits
 =======
@@ -61,12 +63,12 @@ Authors
 Contributors
 ~~~~~~~~~~~~
 
-* `Calyx Servicios S.A. <http://odoo.calyx-cloud.com.ar/>`_
+* `Calyx Servicios S.A. <http://www.calyxservicios.com.ar/>`_
   
   * Jhone Mendez
   * Federico Gregori
-  * Andres Andrade
-  * Marco Oegg
+  * Cristian Paradiso
+  * Milton Guzman
 
 Maintainers
 ~~~~~~~~~~~
@@ -75,9 +77,9 @@ This module is maintained by the Calyx Servicios S.A.
 
 .. image:: https://ss-static-01.esmsv.com/id/13290/galeriaimagenes/obtenerimagen/?width=120&height=40&id=sitio_logo&ultimaModificacion=2020-05-25+21%3A45%3A05
    :alt: Odoo Calyx Servicios S.A.
-   :target: http://odoo.calyx-cloud.com.ar/
+   :target: http://www.calyxservicios.com.ar/
 
 CALYX SERVICIOS S.A. It is part of the PGK Consultores economic group, member of an important global network, a world organization positioned among the 20 largest consultant-studios in the world.
 The PGK Consultores group is one of the 20 largest consultant-studios in Argentina with nearly 200 professionals.
 
-This module is part of the `Odoo-Calyx <https://gitlab.com/calyxservicios-group/odoo/odoo-calyx>`_ project on Gitlab.
+This module is part of the `Custom-Etilfarma <https://github.com/calyx-servicios/custom-etilfarma>`_ project on Github.

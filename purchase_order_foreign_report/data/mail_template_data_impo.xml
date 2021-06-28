@@ -113,7 +113,6 @@
                 ]]>
             </field>
         </record>
-
         <record id="email_template_fpo_pending_documents_original_impo" model="mail.template">
             <field name="name">Documentos originales pendientes</field>
             <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
