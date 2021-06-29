@@ -110,6 +110,9 @@ class PurchaseOrderLine(models.Model):
         required=True,
         related="product_tmpl_id.country_id.name",
     )
+    maker_id = fields.Char(
+        string="Maker", related="product_tmpl_id.maker_id",
+    )
     observations = fields.Char(string="Observation")
 
     intervention_types = fields.Many2many(
