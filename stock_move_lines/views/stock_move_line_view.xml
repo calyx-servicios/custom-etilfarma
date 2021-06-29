@@ -49,8 +49,8 @@
                     <filter string="Status" name="by_state" domain="[]" context="{'group_by':'state'}"/>
                     <filter string="Reference" name="by_reference" domain="[]" context="{'group_by':'reference'}"/>
                     <filter string="Product" name="by_product" domain="[]" context="{'group_by':'product_id'}"/>
-                    <filter string="From loc" name="by_from" domain="[]" context="{'group_by':'location_id'}"/>
-                    <filter string="To loc" name="by_to" domain="[]" context="{'group_by':'location_dest_id'}"/>
+                    <filter string="Desde Ubic" name="by_from" domain="[]" context="{'group_by':'location_id'}"/>
+                    <filter string="Hasta Ubic" name="by_to" domain="[]" context="{'group_by':'location_dest_id'}"/>
                     <filter string="Reception date" name="by_reception" domain="[]" context="{'group_by':'reception_date'}"/>
                     <filter string="Delivery date" name="by_delivery_date" domain="[]" context="{'group_by':'delivery_date'}"/>
                     <filter string="Date" name="by_create_date" domain="[]" context="{'group_by':'date'}"/>
