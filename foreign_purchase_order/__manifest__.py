@@ -7,11 +7,11 @@
         number in purchase invoice.
         """,
     "author": "Calyx Servicios S.A.",
-    "maintainers": ["JhoneM", "LucasSoto"],
+    "maintainers": ["JhoneM", "paradisocrist"],
     "website": "http://odoo.calyx-cloud.com.ar/",
     "license": "AGPL-3",
     "category": "Purchase",
-    "version": "11.0.3.1.4",
+    "version": "11.0.4.1.1",
     "development_status": "Production/Stable",
     "application": False,
     "installable": True,
@@ -21,6 +21,7 @@
         "purchase_order_types",
         "stock",
         "l10n_ar_account",
+        "base_exception",
     ],
     "data": [
         "security/ir.model.access.csv",
