@@ -19,6 +19,7 @@
     "depends": [
         "purchase",
         "purchase_order_types",
+        "purchase_exception",
         "stock",
         "l10n_ar_account",
         "base_exception",
