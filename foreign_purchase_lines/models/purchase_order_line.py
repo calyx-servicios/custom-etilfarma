@@ -113,6 +113,9 @@ class PurchaseOrderLine(models.Model):
     maker_id = fields.Char(
         string="Maker", related="product_tmpl_id.maker_id",
     )
+    default_code = fields.Char(
+        string="Internal Reference", related="product_tmpl_id.default_code",
+    )
     observations = fields.Char(string="Observation")
 
     intervention_types = fields.Many2many(
