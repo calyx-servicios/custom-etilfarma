@@ -444,17 +444,17 @@ msgstr "Posterior al Envío"
 #. module: foreign_trade
 #: model:ir.model.fields,field_description:foreign_trade.field_sale_order_after_shipment_boarding_permit_date
 msgid "After Shipment Boarding Permit Date"
-msgstr "Fecha del Permiso de Abordaje Posterior al Envío"
+msgstr "After Shipment Boarding Permit Date"
 
 #. module: foreign_trade
 #: model:ir.model.fields,field_description:foreign_trade.field_sale_order_after_shipment_customs_compliance_date
 msgid "After Shipment Customs Compliance Date"
-msgstr "Fecha de Aceptación de Aduana Posterior al Envío"
+msgstr "After Shipment Customs Compliance Date"
 
 #. module: foreign_trade
 #: model:ir.model.fields,field_description:foreign_trade.field_sale_order_after_shipment_invoice_closing_date_AFIP
 msgid "After Shipment Invoice Closing Date"
-msgstr "Fecha de Cierre de Factura Posterior al Envío"
+msgstr "After Shipment Invoice Closing Date"
 
 #. module: foreign_trade
 #: model:ir.model.fields,field_description:foreign_trade.field_sale_order_after_shipment_not_required
@@ -490,7 +490,7 @@ msgstr "Booking Fecha ETA"
 #. module: foreign_trade
 #: model:ir.model.fields,field_description:foreign_trade.field_sale_order_booking_ETD_date
 msgid "Booking ETD Date"
-msgstr "Reserva Fecha ETD"
+msgstr "Booking Fecha ETD"
 
 #. module: foreign_trade
 #: model:ir.model.fields,field_description:foreign_trade.field_sale_order_booking_not_required
@@ -499,12 +499,7 @@ msgstr "Booking No requerido"
 
 #. module: foreign_trade
 #: model:ir.model.fields,field_description:foreign_trade.field_sale_order_booking_transport_company
-msgid "Booking Transport Company"
-msgstr "Booking Compañía de Transporte"
-
-#. module: foreign_trade
-#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
-msgid "Booking(Ship Reserve)"
+msgid "Booking Transport Company"@
 msgstr "Origen(Reserva de buque)"
 
 #. module: foreign_trade
@@ -738,7 +733,7 @@ msgstr "Descripción"
 #. module: foreign_trade
 #: model:ir.model.fields,field_description:foreign_trade.field_sale_order_expenses_dispatcher_fees
 msgid "Dispacher Fees"
-msgstr "Honorarios Despachante"
+msgstr "Dispacher Fees"
 
 #. module: foreign_trade
 #: model:ir.model.fields,field_description:foreign_trade.field_sale_order_dispatcher_id
@@ -1139,7 +1134,7 @@ msgstr "No Requerido"
 #. module: foreign_trade
 #: model:ir.ui.view,arch_db:foreign_trade.view_order_form
 msgid "Number"
-msgstr "Número de Permiso de Embarque"
+msgstr "Número"
 
 #. module: foreign_trade
 #: model:ir.model.fields,field_description:foreign_trade.field_sale_order_line_observations
@@ -1194,7 +1189,7 @@ msgstr "Origin Not Required"
 #. module: foreign_trade
 #: model:ir.model.fields,field_description:foreign_trade.field_sale_order_origin_reference
 msgid "Origin Reference"
-msgstr "Referencia de Origen"
+msgstr "Origin Reference"
 
 #. module: foreign_trade
 #: model:ir.ui.view,arch_db:foreign_trade.report_packing_list
@@ -1276,7 +1271,7 @@ msgstr "Pago No requerido"
 #. module: foreign_trade
 #: model:ir.model.fields,field_description:foreign_trade.field_sale_order_payment_tre
 msgid "Payment TRE"
-msgstr "Recaudación TRE"
+msgstr "Payment TRE"
 
 #. module: foreign_trade
 #: model:ir.model.fields,field_description:foreign_trade.field_sale_order_payment_transport_company
@@ -1303,7 +1298,7 @@ msgstr "Peso Neto"
 #: model:ir.model.fields,field_description:foreign_trade.field_sale_order_dispatcher_phone_number
 #: model:ir.ui.view,arch_db:foreign_trade.view_order_form
 msgid "Phone Number"
-msgstr "Telefono"
+msgstr "Tefono"
 
 #. module: foreign_trade
 #: model:ir.model.fields,field_description:foreign_trade.field_sale_delivery_place_of_delivery
@@ -1364,7 +1359,7 @@ msgstr "Proforma No requerido"
 #. module: foreign_trade
 #: model:ir.model.fields,field_description:foreign_trade.field_sale_order_proforma_number
 msgid "Proforma Number"
-msgstr "Número de Proforma"
+msgstr "Proforma Number"
 
 #. module: foreign_trade
 #: model:ir.model.fields,field_description:foreign_trade.field_sale_order_line_qty_received
@@ -1519,13 +1514,7 @@ msgstr "Send SFR"
 
 #. module: foreign_trade
 #: model:ir.ui.view,arch_db:foreign_trade.view_order_form
-msgid "Send proforma"
-msgstr "Send proforma"
-
-#. module: foreign_trade
-#: model:ir.model.fields,field_description:foreign_trade.field_sale_booking_conveyance_sequence
-#: model:ir.model.fields,field_description:foreign_trade.field_sale_certificate_analysis_sequence
-#: model:ir.model.fields,field_description:foreign_trade.field_sale_delivery_sequence
+msgid "Send p@odel.fields,field_description:foreign_trade.field_sale_delivery_sequence
 #: model:ir.model.fields,field_description:foreign_trade.field_sale_dispatcher_sequence
 #: model:ir.model.fields,field_description:foreign_trade.field_sale_order_type_sequence
 #: model:ir.model.fields,field_description:foreign_trade.field_sale_payment_instructions_sequence
@@ -1579,7 +1568,7 @@ msgstr "Fecha de Documentos de Envío"
 #. module: foreign_trade
 #: model:ir.ui.view,arch_db:foreign_trade.view_order_form
 msgid "Shipping License"
-msgstr "Licencia de Envío"
+msgstr "Shipping License"
 
 #. module: foreign_trade
 #: model:ir.model.fields,field_description:foreign_trade.field_sale_order_shipping_license_channel
@@ -1594,7 +1583,7 @@ msgstr "Shipping License Not Required"
 #. module: foreign_trade
 #: model:ir.model.fields,field_description:foreign_trade.field_sale_order_shipping_license_number
 msgid "Shipping License Number"
-msgstr "Número de Permiso de Embarque"
+msgstr "Shipping License Number"
 
 #. module: foreign_trade
 #: model:ir.model.fields,field_description:foreign_trade.field_sale_order_shipping_license_official_date
@@ -1604,10 +1593,13 @@ msgstr "Shipping License Official Date"
 #. module: foreign_trade
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 11.0_maker_field
 =======
+=======
+>>>>>>> d8ffe54f1dc80d3b3d243b5105676055b9fddea6
 #: model:ir.model,name:foreign_trade.model_stock_move
 msgid "Stock Move"
 msgstr "Movimiento de Stock"
@@ -1672,7 +1664,7 @@ msgstr "Transport Doc Date"
 #. module: foreign_trade
 #: model:ir.model.fields,field_description:foreign_trade.field_sale_order_transport_doc_documents
 msgid "Transport Doc Documents"
-msgstr "Documentos de Transporte"
+msgstr "Transport Doc Documents"
 
 #. module: foreign_trade
 #: model:ir.model.fields,field_description:foreign_trade.field_sale_order_transport_doc_not_required
@@ -1787,16 +1779,16 @@ msgid "sale.shipment"
 msgstr "sale.shipment"
 
 #. module: foreign_trade
+<<<<<<< HEAD
 >>>>>>> 11.0_fields_in_sale_order
+=======
+>>>>>>> d8ffe54f1dc80d3b3d243b5105676055b9fddea6
 #: model:ir.model.fields,field_description:foreign_trade.field_sale_order_line_client_code
 #: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
 msgid "Client Code"
 msgstr "Código de cliente"
-<<<<<<< HEAD
-=======
 
 #. module: foreign_trade
 #: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
 msgid "<strong>Customer Purchase Order:</strong>"
 msgstr "<strong>Orden de compra del cliente:</strong>"
->>>>>>> 11.0_maker_field
