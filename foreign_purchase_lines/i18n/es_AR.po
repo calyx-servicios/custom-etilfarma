@@ -115,3 +115,8 @@ msgstr "No puede eliminar un atributo que tenga activa la opcion de empaquetado,
 #: model:ir.model.fields,field_description:foreign_purchase_lines.field_product_template_maker_id
 msgid "Maker"
 msgstr "Fabricante"
+
+#. module: foreign_purchase_lines
+#: model:ir.model.fields,field_description:foreign_purchase_lines.field_purchase_order_line_default_code
+msgid "Internal reference"
+msgstr "Referencia Interna"
