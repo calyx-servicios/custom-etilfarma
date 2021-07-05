@@ -499,12 +499,7 @@ msgstr "Booking No requerido"
 
 #. module: foreign_trade
 #: model:ir.model.fields,field_description:foreign_trade.field_sale_order_booking_transport_company
-msgid "Booking Transport Company"
-msgstr "Booking Compañía de Transporte"
-
-#. module: foreign_trade
-#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
-msgid "Booking(Ship Reserve)"
+msgid "Booking Transport Company"@
 msgstr "Origen(Reserva de buque)"
 
 #. module: foreign_trade
@@ -1519,13 +1514,7 @@ msgstr "Send SFR"
 
 #. module: foreign_trade
 #: model:ir.ui.view,arch_db:foreign_trade.view_order_form
-msgid "Send proforma"
-msgstr "Send proforma"
-
-#. module: foreign_trade
-#: model:ir.model.fields,field_description:foreign_trade.field_sale_booking_conveyance_sequence
-#: model:ir.model.fields,field_description:foreign_trade.field_sale_certificate_analysis_sequence
-#: model:ir.model.fields,field_description:foreign_trade.field_sale_delivery_sequence
+msgid "Send p@odel.fields,field_description:foreign_trade.field_sale_delivery_sequence
 #: model:ir.model.fields,field_description:foreign_trade.field_sale_dispatcher_sequence
 #: model:ir.model.fields,field_description:foreign_trade.field_sale_order_type_sequence
 #: model:ir.model.fields,field_description:foreign_trade.field_sale_payment_instructions_sequence
