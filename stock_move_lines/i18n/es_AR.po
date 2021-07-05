@@ -1,0 +1,103 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* stock_move_lines
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-29 13:20+0000\n"
+"PO-Revision-Date: 2021-06-29 13:20+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: stock_move_lines
+#: model:ir.ui.view,arch_db:stock_move_lines.stock_picking_type_kanban
+msgid "<span>Move Line</span>"
+msgstr "<span>Lineas de Producto</span>"
+
+#. module: stock_move_lines
+#: model:ir.model,name:stock_move_lines.model_stock_move_line
+msgid "Packing Operation"
+msgstr "Operación de empaquetado"
+
+#. module: stock_move_lines
+#: model:ir.model.fields,field_description:stock_move_lines.field_stock_move_line_partner_id
+msgid "Partner"
+msgstr "Empresa"
+
+#. module: stock_move_lines
+#: model:ir.model.fields,help:stock_move_lines.field_stock_move_line_origin
+msgid "Reference of the document"
+msgstr "Referencia del documento"
+
+#. module: stock_move_lines
+#: model:ir.model.fields,field_description:stock_move_lines.field_stock_move_line_origin
+msgid "Source Document"
+msgstr "Documento origen"
+
+#. module: stock_move_lines
+#: model:ir.model,name:stock_move_lines.model_stock_picking_type
+msgid "The operation type determines the picking view"
+msgstr "El tipo de operación determina la vista de la operación"
+
+#. module: stock_move_lines
+#: code:addons/stock_move_lines/models/stock_move_line.py:9
+#: model:ir.model.fields,field_description:stock_move_lines.field_stock_move_line_voucher_ids
+#, python-format
+msgid "Vouchers"
+msgstr "Remitos"
+
+#. module: stock_move_lines
+#: code:addons/stock_move_lines/models/stock_move_line.py:9
+#: model:ir.model.fields,field_description:stock_move_lines.field_stock_move_line_origin
+#, python-format
+msgid "Source Document"
+msgstr "Origen"
+
+#. module: stock_move_lines
+#: code:addons/stock_move_lines/models/stock_move_line.py:9
+#: model:ir.model.fields,field_description:stock_move_lines.field_stock_move_line_partner_id
+#, python-format
+msgid "Partner"
+msgstr "Compania"
+
+#. module: stock_move_lines
+#: code:addons/stock_move_lines/models/stock_move_line.py:9
+#: model:ir.model.fields,field_description:stock_move_lines.field_stock_move_line_delivery_date
+#, python-format
+msgid "Delivery date"
+msgstr "Fecha de entrega"
+
+#. module: stock_move_lines
+#: code:addons/stock_move_lines/models/stock_move_line.py:9
+#: model:ir.model.fields,field_description:stock_move_lines.field_stock_move_line_reception_date
+#, python-format
+msgid "Reception date"
+msgstr "Fecha de recepción"
+
+#. module: stock_move_lines
+#: code:addons/stock_move_lines/models/stock_move_line.py:9
+#: model:ir.model.fields,field_description:stock_move_lines.field_stock_move_line_warehouse_id
+#, python-format
+msgid "Warehouse"
+msgstr "Almacén"
+
+#. module: stock_move_lines
+#: model:ir.ui.view,arch_db:stock_move_line_view_search
+msgid "To Do"
+msgstr "Para hacer"
+
+#. module: stock_move_lines
+#: model:ir.ui.view,arch_db:stock_move_line_view_search
+msgid "From loc"
+msgstr "Desde Ubic"
+
+#. module: stock_move_lines
+#: model:ir.ui.view,arch_db:stock_move_line_view_search
+msgid "To Loc"
+msgstr "Para Ubic"

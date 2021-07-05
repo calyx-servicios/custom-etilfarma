@@ -1146,6 +1146,11 @@ msgid "Date"
 msgstr "Fecha"
 
 #. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_delivery_date_planned_date
+msgid "Date Picker"
+msgstr "Fecha de llegada al Depósito"
+
+#. module: foreign_purchase_order
 #: code:addons/addons-custom/calyx/custom-etilfarma/foreign_purchase_order/models/purchase_order.py:38
 #: code:addons/foreign_purchase_order/models/purchase_order.py:38
 #: selection:purchase.order,delivery_date_planned:0
