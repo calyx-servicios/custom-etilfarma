@@ -143,11 +143,11 @@
                                         <td><span t-field="l.order_line_seq"/></td>
                                     </t>    
                                     <td><span t-field="l.product_tmpl_id"/></td>
-                                    <td><span t-field="l.product_attr_value_id"/></td>
+                                    <td><span t-field="l.product_attr_value_id.name"/></td>
                                     <t t-if="doc.state not in ['draft','sent'] and not is_pro_forma ">
                                         <td><span t-field="l.loot_name"/></td>
                                     </t>   
-                                    <td><span t-field="l.product_uom_qty"/></td>
+                                    <td><span t-field="l.product_uom_qty"/><span t-field="l.product_uom"/></td>
                                     <td><span t-field="l.product_nmc"/></td>
                                     <td><span t-field="l.country_id"/></td>
                                     <td><span t-field="l.price_unit"/></td>
