@@ -18,6 +18,7 @@
         "bin": [],
     },
     "depends": [
+        "l10n_ar_stock",
         "stock",
         "foreign_purchase_order",
         "foreign_trade",
