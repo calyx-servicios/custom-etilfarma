@@ -8,6 +8,9 @@
             <xpath expr="//field[@name='line_lot_name']" position="after">
                 <field name="line_dispatch_name"/>
             </xpath>
+            <field name="dispatch_number" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
         </field>
     </record>
 </odoo>
