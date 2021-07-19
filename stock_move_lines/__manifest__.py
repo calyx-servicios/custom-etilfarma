@@ -18,7 +18,6 @@
         "bin": [],
     },
     "depends": [
-        "web_widget_url_advanced",
         "stock", 
         "foreign_purchase_order",
         "stock_voucher",
