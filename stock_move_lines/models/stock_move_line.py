@@ -49,12 +49,22 @@ class StockPicking(models.Model):
                 if line.name == origin:
                     return line.id
         base_url = http.request.env['ir.config_parameter'].get_param('web.base.url')
-        action_id = self.env.ref('sale.action_quotations')
-        menu_id = self.env.ref('sale.menu_sale_quotations')
-        move_ids = self.env['sale.order'].search([])
+        # If move is purchase
+        purchase_action_id = self.env.ref('	purchase.purchase_form_action')
+        purchase_menu_id = self.env.ref('purchase.menu_purchase_form_action')
+        purchase_move_ids = self.env['purchase.order'].search([])
+        # If move is sale
+        sales_action_id = self.env.ref('sale.action_quotations')
+        sales_menu_id = self.env.ref('sale.menu_sale_quotations')
+        sales_move_ids = self.env['sale.order'].search([])
         for line in self:
-            move_id = get_move(move_ids,line.origin)
-            line.url = '%s/web#id=%s&view_type=form&model=sale.order&menu_id=%s&action=%s'%(base_url,move_id,menu_id.id,action_id.id)
+            if line.origin_sale:
+                move_id = get_move(sales_move_ids,line.origin)
+                line.url = '%s/web#id=%s&view_type=form&model=sale.order&menu_id=%s&action=%s'%(base_url,move_id,sales_menu_id.id,sales_action_id.id)
+            if line.origin_purchase:
+                move_id = get_move(purchase_move_ids,line.origin)
+                line.url = '%s/web#id=%s&view_type=form&model=sale.order&menu_id=%s&action=%s'%(base_url,move_id,purchase_menu_id.id,purchase_action_id.id)     
+
 
     
     url = fields.Char(

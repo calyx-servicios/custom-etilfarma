@@ -16,6 +16,8 @@
                 <field name="partner_id" readonly = "1"/>
                 <field name="reception_date" invisible="context.get('is_reception') == False"/>
                 <field name="delivery_date" invisible="context.get('is_reception') == True"/>
+                <field name="origin_sale" />
+                <field name="origin_purchase" />
                 <field name="origin" readonly = "1"/>
                 <field name="url" widget="url"/>                
                 <field name="qty_done" string="Quantity Done" readonly = "1"/>
