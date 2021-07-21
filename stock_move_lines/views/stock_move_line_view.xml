@@ -17,7 +17,8 @@
                 <field name="reception_date" invisible="context.get('is_reception') == False"/>
                 <field name="delivery_date" invisible="context.get('is_reception') == True"/>
                 <field name="origin" readonly = "1"/>
-                <field name="url" widget="url" />                
+                <!-- <field name="url" widget="url" />                 -->
+                <button name="get_link_action" string="view order" class="oe_highlight" type="object"/>
                 <field name="qty_done" string="Quantity Done" readonly = "1"/>
                 <field name="product_uom_id" options="{'no_open': True, 'no_create': True}" string="Unit of Measure" groups="product.group_uom" readonly = "1"/>
                 <field name="state" readonly = "1"/>
