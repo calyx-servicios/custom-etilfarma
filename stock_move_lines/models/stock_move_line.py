@@ -42,50 +42,6 @@ class StockPicking(models.Model):
         readonly=True)
 
 
-    @api.multi
-    def get_link(self):
-        def get_move(records,origin):
-            for line in records:
-                if line.name == origin:
-                    return line.id
-        base_url = http.request.env['ir.config_parameter'].get_param('web.base.url')
-        # If move is purchase
-        purchase_action_id = self.env.ref('purchase.purchase_form_action')
-        purchase_menu_id = self.env.ref('purchase.menu_purchase_form_action')
-        purchase_move_ids = self.env['purchase.order'].search([])
-        # If move is sale
-        sales_action_id = self.env.ref('sale.action_quotations')
-        sales_menu_id = self.env.ref('sale.menu_sale_quotations')
-        sales_move_ids = self.env['sale.order'].search([])
-        #Get Sale and Purchase sequence prefix
-        sales_prefix = self.env['ir.sequence'].search([('sale_seq','=',True)])
-        purchase_prefix = self.env['ir.sequence'].search([('purchase_seq','=',True)])
-        for line in self:
-            if "SO" in line.origin:
-                move_id = get_move(sales_move_ids,line.origin)
-                line.url = '%s/web#id=%s&view_type=form&model=sale.order&menu_id=%s&action=%s'%(base_url,move_id,sales_menu_id.id,sales_action_id.id)
-                #line.url = 
-            elif "OC" or "p" in line.origin:
-                move_id = get_move(purchase_move_ids,line.origin)
-                #line.url = '%s/web#id=%s&view_type=form&model=purchase.order&menu_id=%s&action=%s'%(base_url,move_id,purchase_menu_id.id,purchase_action_id.id)     
-
-
-    def get_url(self):
-        base_url = base_url = http.request.env['ir.config_parameter'].get_param('web.base.url')
-        sales_action_id = self.env.ref('sale.action_quotations')
-        sales_move_id = self.env['sale.order'].search([('name','=',self.origin)])
-        sales_menu_id = self.env.ref('sale.menu_sale_quotations')
-        purchase_action_id = self.env.ref('purchase.purchase_form_action')
-        purchase_menu_id = self.env.ref('purchase.menu_purchase_form_action')
-        purchase_move_id = self.env['purchase.order'].search([('name','=',self.origin)])
-        if "SO" in self.origin:
-            #move_id = get_move(sales_move_ids,self.origin)
-            return ('%s/web#id=%s&view_type=form&model=sale.order&menu_id=%s&action=%s'%(base_url,sales_move_id,sales_menu_id.id,sales_action_id.id))
-            #self.url = 
-        elif "OC" or "p" in self.origin:
-            #move_id = get_move(purchase_move_ids,self.origin)
-            return ('%s/web#id=%s&view_type=form&model=purchase.order&menu_id=%s&action=%s'%(base_url,purchase_move_id,purchase_menu_id.id,purchase_action_id.id))
-
     @api.depends('origin')
     def get_link_action(self):
         base_url = base_url = http.request.env['ir.config_parameter'].get_param('web.base.url')
@@ -119,8 +75,3 @@ class StockPicking(models.Model):
                 (base_url,purchase_move_id.id,purchase_action_id.id),
                 "target" : "new"
             }
-
-    url = fields.Char(
-        'url',
-        compute = 'get_link'
-    )
