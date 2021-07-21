@@ -155,8 +155,8 @@
             </xpath>
 
             <xpath expr="//field[@name='order_line']/tree//field[@name='product_uom']" position="after">
-                <field name="product_nmc" />
-                <field name="default_code" attrs="{'readonly': True}"/>
+                <field name="product_nmc" attrs="{'column_invisible': [('parent.order_type_foreign', '=', False)]}"/>
+                <field name="default_code" attrs="{'readonly': True}" invisible="1"/>
                 <field name="maker_id" attrs="{'readonly': True}"/>
                 <field name="country_id" attrs="{'readonly': True}"/>
                 <field name="loot_name"/>
