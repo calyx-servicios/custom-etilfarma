@@ -18,12 +18,12 @@
         "bin": [],
     },
     "depends": [
-        "l10n_ar_stock",
         "stock",
         "foreign_purchase_order",
         "foreign_trade",
         "purchase",
-        "stock_move_lines"
+        "stock_move_lines",
+        "l10n_ar_stock",
         ],
     "data": [
         "security/ir.model.access.csv",
@@ -31,5 +31,7 @@
         "views/stock_move_line_views.xml",
         "views/stock_picking_views.xml",
         "views/sale_order_views.xml",
+        "views/stock_production_lot_view.xml",
+        "views/stock_change_product_views.xml",
         ],
 }
