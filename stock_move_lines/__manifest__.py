@@ -20,7 +20,7 @@
     "depends": [
         "stock", 
         "foreign_purchase_order",
-        "stock_voucher"
+        "stock_voucher",
         ],
     "data": [
         "views/stock_move_line_view.xml",
