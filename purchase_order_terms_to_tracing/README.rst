@@ -48,6 +48,7 @@ Bug Tracker
 
 * Help Contact
 =======
+
 This module extends the functionality of Purchase. Changes notes for Client Tracing
 
 Credits
