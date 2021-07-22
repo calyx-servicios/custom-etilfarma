@@ -111,3 +111,5 @@ class SaleOrderLine(models.Model):
     product_uom_qty = fields.Float(digits=(12,2))
     maker_id = fields.Char(string="Maker", required=True, related="product_tmpl_id.maker_id")
     default_code = fields.Char(string="Internal Reference", required=True, related="product_tmpl_id.default_code")
+    order_date = fields.Date(string="Order date", required=True, related="product_tmpl_id.order_date")
+    # customer_purchase_order = fields.Char(string="Customer Purchase Order", related="product_tmpl_id.customer_purchase_order")
