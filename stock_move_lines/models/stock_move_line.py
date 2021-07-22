@@ -1,4 +1,6 @@
-from odoo import fields, models, api, http
+from odoo import fields, models, api, http, _
+from odoo.exceptions import UserError
+
 
 class StockPicking(models.Model):
     _inherit = "stock.move.line"
@@ -55,23 +57,27 @@ class StockPicking(models.Model):
         purchase_prefixes = []
         for x in purchase_prefix_ids:
             purchase_prefixes.append(x.prefix)
-        
-        if any(prefix in self.origin for prefix in sale_prefixes):
-            sales_action_id = self.env.ref('sale.action_quotations')
-            sales_move_id = self.env['sale.order'].search([('name','=',self.origin)])
-            return {
-                "type": "ir.actions.act_url",
-                "url" : "%s/web#id=%s&view_type=form&model=sale.order&action=%s" % 
-                (base_url,sales_move_id.id,sales_action_id.id),
-                "target" : "new"
-            }
-            
-        elif any(prefix in self.origin for prefix in purchase_prefixes):
-            purchase_action_id = self.env.ref('purchase.purchase_form_action')
-            purchase_move_id = self.env['purchase.order'].search([('name','=',self.origin)])
-            return {
-                "type": "ir.actions.act_url",
-                "url" : "%s/web#id=%s&view_type=form&model=purchase.order&action=%s" % 
-                (base_url,purchase_move_id.id,purchase_action_id.id),
-                "target" : "new"
-            }
+        if self.origin:
+            if any(prefix in self.origin for prefix in sale_prefixes):
+                sales_action_id = self.env.ref('sale.action_quotations')
+                sales_move_id = self.env['sale.order'].search([('name','=',self.origin)])
+                return {
+                    "type": "ir.actions.act_url",
+                    "url" : "%s/web#id=%s&view_type=form&model=sale.order&action=%s" % 
+                    (base_url,sales_move_id.id,sales_action_id.id),
+                    "target" : "new"
+                }
+                
+            elif any(prefix in self.origin for prefix in purchase_prefixes):
+                purchase_action_id = self.env.ref('purchase.purchase_form_action')
+                purchase_move_id = self.env['purchase.order'].search([('name','=',self.origin)])
+                return {
+                    "type": "ir.actions.act_url",
+                    "url" : "%s/web#id=%s&view_type=form&model=purchase.order&action=%s" % 
+                    (base_url,purchase_move_id.id,purchase_action_id.id),
+                    "target" : "new"
+                }
+            else:
+                raise UserError(_('Can only view sale or purchase orders'))
+        else:
+            raise UserError(_('Move has no origin'))
