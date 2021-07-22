@@ -90,6 +90,8 @@ class StockMove(models.Model):
     )
     comments = fields.Char(sring="Comments")
     
+    # customer_purchase_order = fields.Char(string="Customer Purchase Order", related="sale_order.customer_purchase_order_id")
+    
     @api.depends('net_weight','pallet_qty','pallet_type')
     def _compute_gross_weigth(self):
         for rec in self:
@@ -99,8 +101,3 @@ class StockMove(models.Model):
     def _compute_net_weight(self):
         for rec in self:
             rec.net_weight = rec.product_qty * rec.product_id.weight
-
-# class SaleOrderLine(models.Model):
-#     _inherit = "sale.order.line"
-
-#     order_date = fields.Date(string="Order date")
