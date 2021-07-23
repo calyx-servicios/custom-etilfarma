@@ -101,3 +101,17 @@ msgstr "Desde Ubic"
 #: model:ir.ui.view,arch_db:stock_move_line_view_search
 msgid "To Loc"
 msgstr "Para Ubic"
+
+#. module: stock_move_lines
+#: code:addons/addons-custom/calyx/custom-etilfarma/stock_move_lines/models/stock_move_line.py:83
+#: code:addons/stock_move_lines/models/stock_move_line.py:83
+#, python-format
+msgid "Move has no origin"
+msgstr "El movimiento no tiene documento de Origen"
+
+#. module: stock_move_lines
+#: code:addons/addons-custom/calyx/custom-etilfarma/stock_move_lines/models/stock_move_line.py:81
+#: code:addons/stock_move_lines/models/stock_move_line.py:81
+#, python-format
+msgid "Can only view sale or purchase orders"
+msgstr "Solo puede ver ordenes de Compra o Venta"
