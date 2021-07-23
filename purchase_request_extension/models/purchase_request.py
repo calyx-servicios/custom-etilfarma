@@ -127,7 +127,6 @@ class PurchaseRequestLine(models.Model):
                     record.product_id = product.id
                     record.product_id_default_code = product.default_code
                     break
-        return True
     # Exact copy of the method defined on foreign_purchase_lines.
     @api.depends("product_tmpl_id")
     def _available_product_attribute(self):
