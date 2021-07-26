@@ -80,18 +80,7 @@ class StockMove(models.Model):
         sring="Pallet Type",
         comodel_name="pallet.type"
     )
-    maker_id = fields.Char(
-        string="Maker", 
-        related="product_tmpl_id.maker_id",
-    )
-    order_date = fields.Date(
-        string="Order date", 
-        related="product_tmpl_id.order_date",
-    )
-    comments = fields.Char(sring="Comments")
-    
-    # customer_purchase_order = fields.Char(string="Customer Purchase Order", related="sale_order.customer_purchase_order_id")
-    
+     
     @api.depends('net_weight','pallet_qty','pallet_type')
     def _compute_gross_weigth(self):
         for rec in self:

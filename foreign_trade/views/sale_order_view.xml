@@ -163,9 +163,6 @@
                 <field name="client_code"/>
                 <field name="life_date" widget="date"/>
             </xpath>
-            <xpath expr="//field[@name='order_line']/tree//field[@name='price_subtotal']" position="after">
-                <field name="order_date"/>
-            </xpath>
             <xpath expr="//field[@name='order_line']/tree//field[@name='product_tmpl_id']" position="before">
                 <field name="order_line_seq" string="ITEM" readonly="1" />
             </xpath>

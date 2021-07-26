@@ -20,10 +20,13 @@
     "depends": [
         "stock", 
         "foreign_purchase_order",
-        "stock_voucher"
+        "stock_voucher",
+        "foreign_trade",
+        "purchase_order_invoice_to"
         ],
     "data": [
         "views/stock_move_line_view.xml",
         "views/stock_picking_type_view.xml",
+        "views/sale_order_line_view.xml",
         ],
 }
