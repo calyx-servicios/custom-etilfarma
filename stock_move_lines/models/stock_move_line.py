@@ -40,7 +40,9 @@ class StockPicking(models.Model):
         ('internal', 'Internal')], 
         related='picking_id.picking_type_id.code',
         readonly=True)
-    comments = fields.Char(sring="Comments")
+    comments = fields.Char(
+        string="Comments"
+    )
     order_date = fields.Date(string="Order date", 
         related="move_id.order_date",
         store=True
