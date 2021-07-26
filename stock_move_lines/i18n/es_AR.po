@@ -127,3 +127,16 @@ msgstr "Nro Orden del Cliente"
 #: model:ir.model.fields,field_description:stock_move_lines.field_stock_move_line_shipping_address
 msgid "Shipping Address"
 msgstr "Dirección de envío"
+
+#: code:addons/addons-custom/calyx/custom-etilfarma/stock_move_lines/models/stock_move_line.py:83
+#: code:addons/stock_move_lines/models/stock_move_line.py:83
+#, python-format
+msgid "Move has no origin"
+msgstr "El movimiento no tiene documento de Origen"
+
+#. module: stock_move_lines
+#: code:addons/addons-custom/calyx/custom-etilfarma/stock_move_lines/models/stock_move_line.py:81
+#: code:addons/stock_move_lines/models/stock_move_line.py:81
+#, python-format
+msgid "Can only view sale or purchase orders"
+msgstr "Solo puede ver ordenes de Compra o Venta"

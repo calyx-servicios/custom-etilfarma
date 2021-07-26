@@ -21,7 +21,7 @@ class StockProductionLot(models.Model):
         records = self.env['stock.production.lot'].search([
                     ('product_id','=',vals['product_id'])])
         for record in records:
-            if record.dispatch_id.id == vals['dispatch_id'] and record.name == vals['name']:
+            if record.dispatch_id.id == vals.get('dispatch_id',self.dispatch_id.id) and record.name == vals['name']:
                 raise UserError(
                     _("The combination of serial number, product and dispatch number must be unique"))
         return super(StockProductionLot, self).create(vals)

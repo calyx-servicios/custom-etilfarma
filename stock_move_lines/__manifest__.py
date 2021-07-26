@@ -21,8 +21,9 @@
         "stock", 
         "foreign_purchase_order",
         "stock_voucher",
-        "foreign_trade",
         "purchase_order_invoice_to"
+        "purchase_order_types",
+        "foreign_trade"
         ],
     "data": [
         "views/stock_move_line_view.xml",
