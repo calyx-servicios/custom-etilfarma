@@ -23,6 +23,11 @@
                 <field name="state" readonly = "1"/>
                 <field name="picking_type_id" invisible="1"/>
                 <field name="picking_type_code" invisible="1"/>
+                <field name="comments"/>
+                <field name="order_date"/>
+                <field name="customer_purchase_order"/>
+                <field name="invoice_status"/>
+                <field name="shipping_address"/>
             </tree>
         </field>
     </record>

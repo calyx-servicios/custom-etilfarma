@@ -101,3 +101,29 @@ msgstr "Desde Ubic"
 #: model:ir.ui.view,arch_db:stock_move_line_view_search
 msgid "To Loc"
 msgstr "Para Ubic"
+
+#. module: stock_move_lines
+#: model:ir.model.fields,field_description:stock_move_lines.field_stock_move_line_order_date
+#: model:ir.model.fields,field_description:stock_move_lines.field_stock_move_order_date
+msgid "Order date"
+msgstr "Fecha de pedido"
+
+#. module: stock_move_lines
+#: model:ir.model.fields,field_description:stock_move_lines.field_stock_move_invoice_status
+msgid "invoice status"
+msgstr "Estado a facturar"
+
+#. module: stock_move_lines
+#: model:ir.model.fields,field_description:stock_move_lines.field_stock_move_line_comments
+msgid "Comments"
+msgstr "Comentarios"
+
+#. module: stock_move_lines
+#: model:ir.model.fields,field_description:stock_move_lines.field_stock_move_line_customer_purchase_order
+msgid "Customer Purchase Order"
+msgstr "Nro Orden del Cliente"
+
+#. module: stock_move_lines
+#: model:ir.model.fields,field_description:stock_move_lines.field_stock_move_line_shipping_address
+msgid "Shipping Address"
+msgstr "Dirección de envío"
