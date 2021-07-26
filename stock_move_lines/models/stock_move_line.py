@@ -1,10 +1,7 @@
-<<<<<<< HEAD
 from odoo import fields, models, api
-=======
 from odoo import fields, models, api, http, _
 from odoo.exceptions import UserError
 
->>>>>>> 37d399f30e4058188c01558b92107a832dd65fa2
 
 class StockPicking(models.Model):
     _inherit = "stock.move.line"
