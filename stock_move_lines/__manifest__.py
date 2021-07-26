@@ -21,7 +21,7 @@
         "stock", 
         "foreign_purchase_order",
         "stock_voucher",
-        "purchase_order_invoice_to"
+        "purchase_order_invoice_to",
         "purchase_order_types",
         "foreign_trade"
         ],
