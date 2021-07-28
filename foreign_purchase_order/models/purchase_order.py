@@ -71,11 +71,15 @@ class PurchaseOrder(models.Model):
     )
 
     def _get_partner_default_bank(self):
-        self.payment_bank = self.partner_id.default_bank.bank_id.name
-
+        #self.payment_bank = self.partner_id.default_bank.bank_id.name
+        self.payment_bank = self.invoice_ids.payment_ids.journal_id
+        #invoice_ids.payment_ids.journal_id
+        #invoice_ids.partner_bank_id.acc_number no era
+        
     def _get_account_bank(self):
-        self.payment_account = self.partner_id.default_bank.acc_number
-
+        self.payment_account = self.invoice_ids.payment_ids.communication
+        #invoice_ids.payment_ids.communication
+        #partner_id.default_bank.acc_number
 
     def _get_currency_payment_list(self, list_currency):
         """ It returns the elements of the 
@@ -237,6 +241,7 @@ class PurchaseOrder(models.Model):
     proforma_not_required = fields.Boolean(string="Proforma Not Required")
 
     payment_bank = fields.Char(string="Payment Bank", compute="_get_partner_default_bank")
+    #payment_bank = fields.Many2one(string="Payment Bank",comodel_name="")
     payment_account = fields.Char(string="Payment Account", compute="_get_account_bank")
     payment_application_number = fields.Char(string="Payment Application number", compute="_compute_payment_fields")
     payment_date = fields.Char(string="Payment Date", compute="_compute_payment_fields")
