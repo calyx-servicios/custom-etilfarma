@@ -104,10 +104,10 @@
                         <group name="payment" string="Payment">
                             <field name="payment_not_required" type="checkbox" string="Not Required"/>
                             <field name="payment_bank" string="Bank" attrs="{'readonly': 1, 'invisible': 1}" force_save="1"/>
-                            <field name="bank_and_account" attrs="{'readonly': 1, 'invisible': [('journal_type','!=','bank')]}" force_save="1"/>
-                            <field name="journal_type" invisible= '1'/>
                             <field name="payment_account" string="Account" attrs="{'readonly': 1, 'invisible': 1}" force_save="1"/>
-                            <field name="concept_and_request" attrs="{'readonly': 1}" force_save="1"/>
+                            <field name="payment_journal_type" invisible= '1' force_save="1"/>
+                            <field name="payment_bank_and_account" attrs="{'readonly': 1, 'invisible': [('payment_journal_type','ilike','cash')]}" force_save="1"/>
+                            <field name="payment_communication" attrs="{'readonly': 1}" force_save="1"/>
                             <field name="payment_application_number" string="Application Number" attrs="{'readonly': 1, 'invisible': 1}" force_save="1"/>
                             <field name="payment_date" string="Date" attrs="{'readonly': 1}" force_save="1"/>
                             <field name="payment_reference" string="Reference" attrs="{'readonly': 1}" force_save="1"/>
