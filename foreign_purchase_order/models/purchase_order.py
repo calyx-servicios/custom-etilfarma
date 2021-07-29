@@ -238,6 +238,7 @@ class PurchaseOrder(models.Model):
 
     payment_bank = fields.Char(string="Payment Bank", compute="_get_partner_default_bank")
     bank_and_account = fields.Char(string="Bank and Account",related="invoice_ids.payment_ids.journal_id.name")
+    journal_type = fields.Selection(string="Journal Type", related="invoice_ids.payment_ids.journal_id.type")
     payment_account = fields.Char(string="Payment Account", compute="_get_account_bank")
     concept_and_request= fields.Char(string="Payment Concept / Request", related="invoice_ids.payment_ids.communication")
     payment_application_number = fields.Char(string="Payment Application number", compute="_compute_payment_fields")
