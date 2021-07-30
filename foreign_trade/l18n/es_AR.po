@@ -1790,3 +1790,8 @@ msgstr "Código de cliente"
 #: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
 msgid "<strong>Customer Purchase Order:</strong>"
 msgstr "<strong>Orden de compra del cliente:</strong>"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_line_order_date
+msgid "Order date"
+msgstr "Fecha de pepido"

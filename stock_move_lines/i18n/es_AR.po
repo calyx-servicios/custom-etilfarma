@@ -103,6 +103,31 @@ msgid "To Loc"
 msgstr "Para Ubic"
 
 #. module: stock_move_lines
+#: model:ir.model.fields,field_description:stock_move_lines.field_stock_move_line_order_date
+#: model:ir.model.fields,field_description:stock_move_lines.field_stock_move_order_date
+msgid "Order date"
+msgstr "Fecha de pedido"
+
+#. module: stock_move_lines
+#: model:ir.model.fields,field_description:stock_move_lines.field_stock_move_invoice_status
+msgid "invoice status"
+msgstr "Estado a facturar"
+
+#. module: stock_move_lines
+#: model:ir.model.fields,field_description:stock_move_lines.field_stock_move_line_comments
+msgid "Comments"
+msgstr "Comentarios"
+
+#. module: stock_move_lines
+#: model:ir.model.fields,field_description:stock_move_lines.field_stock_move_line_customer_purchase_order
+msgid "Customer Purchase Order"
+msgstr "Nro Orden del Cliente"
+
+#. module: stock_move_lines
+#: model:ir.model.fields,field_description:stock_move_lines.field_stock_move_line_shipping_address
+msgid "Shipping Address"
+msgstr "Dirección de envío"
+
 #: code:addons/addons-custom/calyx/custom-etilfarma/stock_move_lines/models/stock_move_line.py:83
 #: code:addons/stock_move_lines/models/stock_move_line.py:83
 #, python-format
@@ -115,3 +140,4 @@ msgstr "El movimiento no tiene documento de Origen"
 #, python-format
 msgid "Can only view sale or purchase orders"
 msgstr "Solo puede ver ordenes de Compra o Venta"
+
