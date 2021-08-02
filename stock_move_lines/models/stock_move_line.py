@@ -42,6 +42,9 @@ class StockPicking(models.Model):
         ('internal', 'Internal')], 
         related='picking_id.picking_type_id.code',
         readonly=True)
+    packaging = fields.Char(
+        string="Packaging",
+        related="move_id.packaging")
 
 
     @api.depends('origin')
