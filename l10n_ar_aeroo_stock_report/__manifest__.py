@@ -19,7 +19,10 @@
     'application': False,
     'installable': True,
     
-    'depends': ['l10n_ar_aeroo_stock'],
+    'depends': [
+        'l10n_ar_aeroo_stock',
+        'foreign_trade'
+        ],
 
     'data': [
         'views/report_configuration_defaults_data.xml',
