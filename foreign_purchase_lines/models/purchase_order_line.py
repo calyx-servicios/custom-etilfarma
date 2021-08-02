@@ -95,7 +95,9 @@ class PurchaseOrderLine(models.Model):
         compute="_available_product_attribute",
     )
     product_attr_value_id = fields.Many2one(
-        comodel_name="product.attribute.value", string="Packaging"
+        comodel_name="product.attribute.value", 
+        string="Packaging", 
+        # related="product_id.product_attr_value_id",
     )
 
     product_id_default_code = fields.Char(string="Default Code")
