@@ -178,14 +178,8 @@
                                             </td>
                                             <td>
                                                 <span t-field="move.gross_weight"/>
-                                                <!-- <t t-esc="sum(move.pallet_qty for move in o.move_lines.sorted(key=lambda m: m.product_id.id)) " /> -->
                                             </td>
                                         </tr>
-                                        <!-- <t t-foreach="o._compute_report_total()" t-as="grand_total">
-                                            <td> 
-                                                <span t-field="grand_total.pallet_qty"/>
-                                            </td>
-                                        </t> -->
                                     </tbody>
                                     <tfoot>
                                         <td/>
