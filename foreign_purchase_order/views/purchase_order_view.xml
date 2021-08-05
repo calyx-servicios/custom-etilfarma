@@ -103,15 +103,18 @@
                         </group>
                         <group name="payment" string="Payment">
                             <field name="payment_not_required" type="checkbox" string="Not Required"/>
-                            <field name="payment_bank" string="Bank" attrs="{'readonly': [('payment_not_required','=',True)]}" force_save="1"/>
-                            <field name="payment_account" string="Account" attrs="{'readonly': [('payment_not_required','=',True)]}" force_save="1"/>
-                            <field name="payment_application_number" string="Application Number" attrs="{'readonly': [('payment_not_required','=',True)]}" force_save="1"/>
-                            <field name="payment_date" string="Date" attrs="{'readonly': [('payment_not_required','=',True)]}" force_save="1"/>
-                            <field name="payment_reference" string="Reference" attrs="{'readonly': [('payment_not_required','=',True)]}" force_save="1"/>
-                            <field name="payment_concept" string="Concept" attrs="{'readonly': [('payment_not_required','=',True)]}" force_save="1"/>
-                            <field name="payment_currency" string="Payment Currency" attrs="{'readonly': [('payment_not_required','=',True)]}" force_save="1"/>
-                            <field name="payment_TTE_amount" string="TTE Paid Value'" attrs="{'readonly': [('payment_not_required','=',True)]}" force_save="1"/>
-                            <field name="payment_TC" string="TC" attrs="{'readonly': [('payment_not_required','=',True)]}" force_save="1"/>
+                            <field name="payment_bank" string="Bank" attrs="{'readonly': 1, 'invisible': 1}" force_save="1"/>
+                            <field name="payment_account" string="Account" attrs="{'readonly': 1, 'invisible': 1}" force_save="1"/>
+                            <field name="payment_journal_type" invisible= '1' force_save="1"/>
+                            <field name="payment_bank_and_account" attrs="{'readonly': 1, 'invisible': [('payment_journal_type','ilike','cash')]}" force_save="1"/>
+                            <field name="payment_communication" attrs="{'readonly': 1}" force_save="1"/>
+                            <field name="payment_application_number" string="Application Number" attrs="{'readonly': 1, 'invisible': 1}" force_save="1"/>
+                            <field name="payment_date" string="Date" attrs="{'readonly': 1}" force_save="1"/>
+                            <field name="payment_reference" string="Reference" attrs="{'readonly': 1}" force_save="1"/>
+                            <field name="payment_concept" string="Concept" attrs="{'readonly': 1, 'invisible': 1}" force_save="1"/>
+                            <field name="payment_currency" string="Payment Currency" attrs="{'readonly': 1}" force_save="1"/>
+                            <field name="payment_TTE_amount" string="TTE Paid Value'" attrs="{'readonly': 1}" force_save="1"/>
+                            <field name="payment_TC" string="TC" attrs="{'readonly': 1}" force_save="1"/>
                         </group>
                         <group name="dispatcher" string="Dispatcher">
                             <field name="dispatcher_not_required" type="checkbox" string="Not Required"/>
