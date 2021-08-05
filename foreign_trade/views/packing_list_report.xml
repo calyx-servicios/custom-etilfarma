@@ -180,7 +180,27 @@
                                                 <span t-field="move.gross_weight"/>
                                             </td>
                                         </tr>
-                                  </tbody>
+                                    </tbody>
+                                    <tfoot>
+                                        <td/>
+                                        <td/>
+                                        <td/>
+                                        <td/>
+                                        <td />
+                                        <td><strong>Grand Total</strong></td>
+                                        <td> 
+                                            <span t-esc="sum(move.pallet_qty for move in o.move_lines)"/>
+                                        </td>
+                                        <td> 
+                                            <span t-esc="sum(move.packages_qty for move in o.move_lines)"/>
+                                        </td>
+                                        <td> 
+                                            <span t-esc="sum(move.net_weight for move in o.move_lines)"/>
+                                        </td>
+                                        <td> 
+                                            <span t-esc="sum(move.gross_weight for move in o.move_lines)"/>
+                                        </td>
+                                    </tfoot>
                                 </table>
                             </div>
                         </t>
@@ -370,6 +390,26 @@
                                             </td>
                                         </tr>
                                   </tbody>
+                                  <tfoot>
+                                    <td/>
+                                    <td/>
+                                    <td/>
+                                    <td/>
+                                    <td />
+                                    <td><strong>Totales</strong></td>
+                                    <td> 
+                                        <span t-esc="sum(move.pallet_qty for move in o.move_lines)"/>
+                                    </td>
+                                    <td> 
+                                        <span t-esc="sum(move.packages_qty for move in o.move_lines)"/>
+                                    </td>
+                                    <td> 
+                                        <span t-esc="sum(move.net_weight for move in o.move_lines)"/>
+                                    </td>
+                                    <td> 
+                                        <span t-esc="sum(move.gross_weight for move in o.move_lines)"/>
+                                    </td>
+                                </tfoot>
                                 </table>
                             </div>
                         </t>
