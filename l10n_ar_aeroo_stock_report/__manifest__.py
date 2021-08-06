@@ -1,11 +1,10 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
-    'name': 'Aeroo Stock report Origin & Destination',
-    'summary': """ Adds the fields origin and destination 
-        of the internal transfer to aeroo report""",
+    'name': 'Aeroo Stock report',
+    'summary': """Add the variant, lot, origin, dispatch and manufacturer fields to the shipment report""",
 
     'author': 'Calyx Servicios S.A., Odoo Community Association (OCA)',
-    'maintainers': ['Paradiso Cristian'],
+    'maintainers': ['Paradiso Cristian']['Andres Andrade'],
 
     'website': 'http://odoo.calyx-cloud.com.ar/',
     'license': 'AGPL-3',
