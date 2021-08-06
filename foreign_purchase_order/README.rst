@@ -1,6 +1,6 @@
-=============
+=============================
 Purchase Order Foreign Fields
-=============
+=============================
 
 .. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
    !! This file is intended to be in every module    !!
@@ -71,7 +71,9 @@ Contributors
   
   * Jhone Mendez
   * Federico Gregori
-  * Lucas Soto
+  * Cristian Paradiso
+  * Andres Andrade
+  * Marco Oegg
 
 Maintainers
 ~~~~~~~~~~~

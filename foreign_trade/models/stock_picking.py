@@ -80,7 +80,7 @@ class StockMove(models.Model):
         sring="Pallet Type",
         comodel_name="pallet.type"
     )
-    
+     
     @api.depends('net_weight','pallet_qty','pallet_type')
     def _compute_gross_weigth(self):
         for rec in self:

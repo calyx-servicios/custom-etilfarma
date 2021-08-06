@@ -115,6 +115,9 @@ class PurchaseOrderLine(models.Model):
     maker_id = fields.Char(
         string="Maker", related="product_tmpl_id.maker_id",
     )
+    order_date = fields.Date(
+        string="Order date", related="product_tmpl_id.order_date",
+    )
     default_code = fields.Char(
         string="Internal Reference", related="product_tmpl_id.default_code",
     )
