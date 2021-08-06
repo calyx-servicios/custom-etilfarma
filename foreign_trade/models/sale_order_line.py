@@ -110,4 +110,4 @@ class SaleOrderLine(models.Model):
     qty_delivered = fields.Float(digits=(12,2))
     product_uom_qty = fields.Float(digits=(12,2))
     maker_id = fields.Char(string="Maker", required=True, related="product_tmpl_id.maker_id")
-    default_code = fields.Char(string="Internal Reference", required=True, related="product_tmpl_id.default_code")
+    default_code = fields.Char(string="Internal Reference", required=True, related="product_id.default_code")
