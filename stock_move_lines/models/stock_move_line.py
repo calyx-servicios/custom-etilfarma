@@ -107,29 +107,7 @@ class StockPicking(models.Model):
                 'name': record.partner_id.name,
             }
             record.shipping_address = address_format % args
-class StockMove(models.Model):
-    _inherit = "stock.move"
-
-    order_date = fields.Date(string="Order date", related="sale_line_id.order_date")
-    invoice_status = fields.Selection(string="invoice status", related="sale_line_id.invoice_status")
-
-    name = fields.Char(index=True)
-    type = fields.Selection(
-        [('contact', 'Contact'),
-         ('invoice', 'Invoice address'),
-         ('delivery', 'Shipping address'),
-         ('other', 'Other address'),
-         ("private", "Private Address"),
-         ], string='Address Type',
-        default='invoice',
-        help="Used to select automatically the right address according to the context in sales and purchases documents.")
-    street = fields.Char()
-    state_id = fields.Many2one("res.country.state", string='State', ondelete='restrict')
-    country_id = fields.Many2one('res.country', string='Country', ondelete='restrict')
-    city = fields.Char()
-    zip = fields.Char()
-    street2 = fields.Char()
-
+    
     @api.depends('origin')
     def get_link_action(self):
         base_url = base_url = http.request.env['ir.config_parameter'].get_param('web.base.url')
@@ -167,3 +145,27 @@ class StockMove(models.Model):
                 raise UserError(_('Can only view sale or purchase orders'))
         else:
             raise UserError(_('Move has no origin'))
+            
+class StockMove(models.Model):
+    _inherit = "stock.move"
+
+    order_date = fields.Date(string="Order date", related="sale_line_id.order_date")
+    invoice_status = fields.Selection(string="invoice status", related="sale_line_id.invoice_status")
+
+    name = fields.Char(index=True)
+    type = fields.Selection(
+        [('contact', 'Contact'),
+         ('invoice', 'Invoice address'),
+         ('delivery', 'Shipping address'),
+         ('other', 'Other address'),
+         ("private", "Private Address"),
+         ], string='Address Type',
+        default='invoice',
+        help="Used to select automatically the right address according to the context in sales and purchases documents.")
+    street = fields.Char()
+    state_id = fields.Many2one("res.country.state", string='State', ondelete='restrict')
+    country_id = fields.Many2one('res.country', string='Country', ondelete='restrict')
+    city = fields.Char()
+    zip = fields.Char()
+    street2 = fields.Char()
+
