@@ -126,6 +126,7 @@
                             <th class="text-left">Client Code</th>
                             <th class="text-left">Maker</th>
                             <th class="text-left">Internal Reference</th>
+                            <th class="text-left">Order Date</th>
                             <th class="text-left" groups="sale.group_show_price_subtotal">Total Amount</th>
                         </tr>
                    </thead>
@@ -144,7 +145,7 @@
                                     <t t-if="doc.state not in ['draft','sent'] or is_pro_forma">
                                         <td><span t-field="l.order_line_seq"/></td>
                                     </t>    
-                                    <td><span t-field="l.product_tmpl_id"/></td>
+                                    <td><span t-field="l.product_tmpl_id.name"/></td>
                                     <td><span t-field="l.product_attr_value_id.name"/></td>
                                     <t t-if="doc.state not in ['draft','sent'] and not is_pro_forma ">
                                         <td><span t-field="l.loot_name"/></td>
@@ -156,6 +157,7 @@
                                     <td><span t-field="l.client_code"/></td>
                                     <td><span t-field="l.maker_id"/></td>
                                     <td><span t-field="l.default_code"/></td>
+                                    <td><span t-field="l.order_date"/></td>
                                     <td class="text-right" groups="sale.group_show_price_subtotal">
                                         <span t-field="l.price_subtotal" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.pricelist_id.currency_id}"/>
                                     </td>

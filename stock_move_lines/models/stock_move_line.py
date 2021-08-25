@@ -1,7 +1,11 @@
+
 from odoo import fields, models, api
 from odoo import fields, models, api, http, _
 from odoo.exceptions import UserError
+<<<<<<< HEAD
 
+=======
+>>>>>>> dfa9ae6615ba2995b1625698bd54410f962a34e5
 
 class StockPicking(models.Model):
     _inherit = "stock.move.line"
@@ -42,7 +46,12 @@ class StockPicking(models.Model):
         ('outgoing', 'Customers'),
         ('internal', 'Internal')], 
         related='picking_id.picking_type_id.code',
-        readonly=True)
+        readonly=True,
+    )
+    packaging = fields.Char(
+        string="Packaging",
+        related="move_id.packaging"
+    )
     comments = fields.Char(
         string="Comments"
     )
@@ -102,28 +111,6 @@ class StockPicking(models.Model):
                 'name': record.partner_id.name,
             }
             record.shipping_address = address_format % args
-class StockMove(models.Model):
-    _inherit = "stock.move"
-
-    order_date = fields.Date(string="Order date", related="sale_line_id.order_date")
-    invoice_status = fields.Selection(string="invoice status", related="sale_line_id.invoice_status")
-
-    name = fields.Char(index=True)
-    type = fields.Selection(
-        [('contact', 'Contact'),
-         ('invoice', 'Invoice address'),
-         ('delivery', 'Shipping address'),
-         ('other', 'Other address'),
-         ("private", "Private Address"),
-         ], string='Address Type',
-        default='invoice',
-        help="Used to select automatically the right address according to the context in sales and purchases documents.")
-    street = fields.Char()
-    state_id = fields.Many2one("res.country.state", string='State', ondelete='restrict')
-    country_id = fields.Many2one('res.country', string='Country', ondelete='restrict')
-    city = fields.Char()
-    zip = fields.Char()
-    street2 = fields.Char()
     
     @api.depends('origin')
     def get_link_action(self):
@@ -162,3 +149,68 @@ class StockMove(models.Model):
                 raise UserError(_('Can only view sale or purchase orders'))
         else:
             raise UserError(_('Move has no origin'))
+            
+class StockMove(models.Model):
+    _inherit = "stock.move"
+
+    order_date = fields.Date(string="Order date", related="sale_line_id.order_date")
+    invoice_status = fields.Selection(string="invoice status", related="sale_line_id.invoice_status")
+
+    name = fields.Char(index=True)
+    type = fields.Selection(
+        [('contact', 'Contact'),
+         ('invoice', 'Invoice address'),
+         ('delivery', 'Shipping address'),
+         ('other', 'Other address'),
+         ("private", "Private Address"),
+         ], string='Address Type',
+        default='invoice',
+        help="Used to select automatically the right address according to the context in sales and purchases documents.")
+    street = fields.Char()
+    state_id = fields.Many2one("res.country.state", string='State', ondelete='restrict')
+    country_id = fields.Many2one('res.country', string='Country', ondelete='restrict')
+    city = fields.Char()
+    zip = fields.Char()
+    street2 = fields.Char()
+<<<<<<< HEAD
+    
+    @api.depends('origin')
+    def get_link_action(self):
+        base_url = base_url = http.request.env['ir.config_parameter'].get_param('web.base.url')
+        
+        sales_prefix_ids = self.env['ir.sequence'].search([('sale_seq','=',True)])
+        sale_prefixes = []
+        for x in sales_prefix_ids:
+            sale_prefixes.append(x.prefix)
+        
+        purchase_prefix_ids = self.env['ir.sequence'].search([('purchase_seq','=',True)])
+        purchase_prefixes = []
+        for x in purchase_prefix_ids:
+            purchase_prefixes.append(x.prefix)
+        if self.origin:
+            if any(prefix in self.origin for prefix in sale_prefixes):
+                sales_action_id = self.env.ref('sale.action_quotations')
+                sales_move_id = self.env['sale.order'].search([('name','=',self.origin)])
+                return {
+                    "type": "ir.actions.act_url",
+                    "url" : "%s/web#id=%s&view_type=form&model=sale.order&action=%s" % 
+                    (base_url,sales_move_id.id,sales_action_id.id),
+                    "target" : "new"
+                }
+                
+            elif any(prefix in self.origin for prefix in purchase_prefixes):
+                purchase_action_id = self.env.ref('purchase.purchase_form_action')
+                purchase_move_id = self.env['purchase.order'].search([('name','=',self.origin)])
+                return {
+                    "type": "ir.actions.act_url",
+                    "url" : "%s/web#id=%s&view_type=form&model=purchase.order&action=%s" % 
+                    (base_url,purchase_move_id.id,purchase_action_id.id),
+                    "target" : "new"
+                }
+            else:
+                raise UserError(_('Can only view sale or purchase orders'))
+        else:
+            raise UserError(_('Move has no origin'))
+=======
+
+>>>>>>> dfa9ae6615ba2995b1625698bd54410f962a34e5

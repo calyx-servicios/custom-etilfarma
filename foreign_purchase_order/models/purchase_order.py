@@ -71,10 +71,10 @@ class PurchaseOrder(models.Model):
     )
 
     def _get_partner_default_bank(self):
-        self.payment_bank = self.partner_id.default_bank.bank_id.name
-
+       self.payment_bank = self.partner_id.default_bank.bank_id.name
+        
     def _get_account_bank(self):
-        self.payment_account = self.partner_id.default_bank.acc_number
+         self.payment_account = self.partner_id.default_bank.acc_number
 
 
     def _get_currency_payment_list(self, list_currency):
@@ -113,6 +113,9 @@ class PurchaseOrder(models.Model):
         for rec in self:            
             payment_tte_amount = 0
             payment_application_numbers = ''
+            payment_bank_and_account = ''
+            payment_journal_type = ''
+            payment_communication = ''
             payment_date = ''
             payment_reference = ''
             payment_concept = []
@@ -139,10 +142,21 @@ class PurchaseOrder(models.Model):
                         payment_TC += (str(payment_line.amount) + ' ')
                         payment_TC += (str(payment_line.currency_id.name) + ' - ')
                         payment_TC += ('T/C ' + str(payment_line.exchange_rate) + '\r' + '\n')
-                       
+
+                
+                payment_ids = invoice.payment_ids
+                for payment_id in payment_ids:
+                    payment_bank_and_account += (payment_id.journal_id.name + '  ')
+                    payment_journal_type += (payment_id.journal_id.type + ' ')
+                    if payment_id.communication:
+                        payment_communication += (payment_id.communication + '  ')
+
             rec.payment_application_number = payment_application_numbers
             rec.payment_TTE_amount = payment_tte_amount
             rec.payment_date = payment_date
+            rec.payment_journal_type = payment_journal_type
+            rec.payment_bank_and_account = payment_bank_and_account
+            rec.payment_communication = payment_communication
             rec.payment_reference = payment_reference
             rec.payment_concept = rec._get_invoices_list(payment_concept)
             rec.payment_currency = rec._get_currency_payment_list(payment_currency)
@@ -237,7 +251,10 @@ class PurchaseOrder(models.Model):
     proforma_not_required = fields.Boolean(string="Proforma Not Required")
 
     payment_bank = fields.Char(string="Payment Bank", compute="_get_partner_default_bank")
+    payment_bank_and_account = fields.Char(string="Bank and Account", compute="_compute_payment_fields")
+    payment_journal_type = fields.Char(string = 'Is Journal a Bank', compute="_compute_payment_fields")
     payment_account = fields.Char(string="Payment Account", compute="_get_account_bank")
+    payment_communication = fields.Char(string="Payment Concept / Request", compute="_compute_payment_fields")
     payment_application_number = fields.Char(string="Payment Application number", compute="_compute_payment_fields")
     payment_date = fields.Char(string="Payment Date", compute="_compute_payment_fields")
     payment_reference = fields.Char(string="Payment Reference", compute="_compute_payment_fields")

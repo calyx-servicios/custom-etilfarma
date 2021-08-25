@@ -95,7 +95,9 @@ class SaleOrderLine(models.Model):
         compute="_available_product_attribute",
     )
     product_attr_value_id = fields.Many2one(
-        comodel_name="product.attribute.value", string="Packaging"
+        comodel_name="product.attribute.value", 
+        string="Packaging", 
+        # related="product_id.product_attr_value_id",
     )
 
     product_nmc = fields.Char(string="HS Code", related="product_id.product_nmc")
@@ -110,4 +112,4 @@ class SaleOrderLine(models.Model):
     qty_delivered = fields.Float(digits=(12,2))
     product_uom_qty = fields.Float(digits=(12,2))
     maker_id = fields.Char(string="Maker", required=True, related="product_tmpl_id.maker_id")
-    default_code = fields.Char(string="Internal Reference", required=True, related="product_tmpl_id.default_code")
+    default_code = fields.Char(string="Internal Reference", required=True, related="product_id.default_code")
