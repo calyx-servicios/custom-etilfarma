@@ -1779,10 +1779,6 @@ msgid "sale.shipment"
 msgstr "sale.shipment"
 
 #. module: foreign_trade
-<<<<<<< HEAD
->>>>>>> 11.0_fields_in_sale_order
-=======
->>>>>>> d8ffe54f1dc80d3b3d243b5105676055b9fddea6
 #: model:ir.model.fields,field_description:foreign_trade.field_sale_order_line_client_code
 #: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
 msgid "Client Code"
