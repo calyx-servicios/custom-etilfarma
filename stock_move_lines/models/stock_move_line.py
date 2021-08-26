@@ -2,10 +2,6 @@
 from odoo import fields, models, api
 from odoo import fields, models, api, http, _
 from odoo.exceptions import UserError
-<<<<<<< HEAD
-
-=======
->>>>>>> dfa9ae6615ba2995b1625698bd54410f962a34e5
 
 class StockPicking(models.Model):
     _inherit = "stock.move.line"
@@ -172,7 +168,6 @@ class StockMove(models.Model):
     city = fields.Char()
     zip = fields.Char()
     street2 = fields.Char()
-<<<<<<< HEAD
     
     @api.depends('origin')
     def get_link_action(self):
@@ -211,6 +206,3 @@ class StockMove(models.Model):
                 raise UserError(_('Can only view sale or purchase orders'))
         else:
             raise UserError(_('Move has no origin'))
-=======
-
->>>>>>> dfa9ae6615ba2995b1625698bd54410f962a34e5

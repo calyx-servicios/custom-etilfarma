@@ -1311,9 +1311,6 @@ msgstr "Notas"
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Booking(Ship Reserve)"
 msgstr "Origen(Reserva de buque)"
-<<<<<<< HEAD
->>>>>>> 11.0_customer_purchase_order_field
-=======
 
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_payment_communication

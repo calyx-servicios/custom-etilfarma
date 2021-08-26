@@ -140,7 +140,3 @@ msgstr "El movimiento no tiene documento de Origen"
 #, python-format
 msgid "Can only view sale or purchase orders"
 msgstr "Solo puede ver ordenes de Compra o Venta"
-<<<<<<< HEAD
-=======
-
->>>>>>> dfa9ae6615ba2995b1625698bd54410f962a34e5

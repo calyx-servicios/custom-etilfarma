@@ -1591,15 +1591,6 @@ msgid "Shipping License Official Date"
 msgstr "Shipping License Official Date"
 
 #. module: foreign_trade
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> 11.0_maker_field
-=======
-=======
->>>>>>> d8ffe54f1dc80d3b3d243b5105676055b9fddea6
 #: model:ir.model,name:foreign_trade.model_stock_move
 msgid "Stock Move"
 msgstr "Movimiento de Stock"
