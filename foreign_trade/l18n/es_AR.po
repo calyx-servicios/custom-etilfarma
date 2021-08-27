@@ -1212,7 +1212,7 @@ msgstr "Empaquetado"
 #: model:ir.actions.report,name:foreign_trade.packing_list_report
 #: model:ir.ui.view,arch_db:foreign_trade.stock_view_picking_form_foreign_trade
 msgid "Packing List"
-msgstr "Lista de empaque"
+msgstr "Packing List"
 
 #. module: foreign_trade
 #: model:ir.model.fields,field_description:foreign_trade.field_stock_picking_packing_list_number
