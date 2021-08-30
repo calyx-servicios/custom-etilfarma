@@ -34,5 +34,5 @@ class ProductionDispatch(models.Model):
         compute='_compute_lot_id') 
 
     _sql_constraints = [
-        ('name_ref_uniq', 'unique(name)', 'Dispatch must be unique!'),
+        ('name_ref_uniq', 'Check(1=1)', 'The combination of serial number and product must be unique !'),
     ]
