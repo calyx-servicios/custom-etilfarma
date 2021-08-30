@@ -11,6 +11,10 @@ class ProductionDispatch(models.Model):
     _inherit = ['mail.thread']
     _description = 'Import Dispatch'
 
+    def _compute_lot_id(self):
+        lot_id = self.env['stock.production.lot'].search([('dispatch_id.name','=',self.name),('product_id.id','=',self.product_id.id)],limit=1)
+        self.lot_id = lot_id 
+    
     name = fields.Char(
         'Import Dispatch',
         required=True, help="Unique Import Dispatch")
@@ -25,31 +29,10 @@ class ProductionDispatch(models.Model):
         'stock.quant', 'lot_id', 'Quants', readonly=True)
     create_date = fields.Datetime('Creation Date')
     product_qty = fields.Float('Quantity')
+    lot_id = fields.Many2one(
+        'stock.production.lot',
+        compute='_compute_lot_id') 
 
     _sql_constraints = [
-        ('name_ref_uniq', 'Check(1=1)',
-         'The combination of serial number and product must be unique !'),
+        ('name_ref_uniq', 'unique(name)', 'Dispatch must be unique!'),
     ]
-
-    @api.model
-    def create(self, vals):
-        active_picking_id = self.env.context.get('active_picking_id', False)
-        if active_picking_id:
-            picking_id = self.env['stock.picking'].browse(active_picking_id)
-            if picking_id and not picking_id.picking_type_id.use_create_lots:
-                raise UserError(
-                    _("You are not allowed to create a lot for this picking type"))
-        return super(ProductionDispatch, self).create(vals)
-
-    @api.multi
-    def write(self, vals):
-        if 'product_id' in vals:
-            move_lines = self.env['stock.move.line'].search(
-                [('dispatch_id', 'in', self.ids), ('product_id', '!=', vals['product_id'])])
-            if move_lines:
-                raise UserError(_(
-                    'You are not allowed to change the product linked to a serial or lot number '
-                    + 'if some stock moves have already been created with that number. '
-                    + 'This would lead to inconsistencies in your stock.'
-                ))
-        return super(ProductionDispatch, self).write(vals)

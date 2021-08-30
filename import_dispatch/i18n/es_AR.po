@@ -50,12 +50,18 @@ msgstr "Despacho"
 
 #. module: import_dispatch
 #: model:ir.model.fields,field_description:import_dispatch.field_sale_order_line_line_dispatch_name
+#: model:ir.model.fields,field_description:import_dispatch.field_stock_change_product_qty_dispatch_name
 #: model:ir.model.fields,field_description:import_dispatch.field_stock_move_dispatch_name
 #: model:ir.model.fields,field_description:import_dispatch.field_stock_move_line_dispatch_name
-#: model:ir.model.fields,field_description:import_dispatch.field_stock_move_line_dispatch_name_11250
+#: model:ir.model.fields,field_description:import_dispatch.field_stock_move_line_dispatch_name_11950
 #: model:ir.model.fields,field_description:import_dispatch.field_stock_picking_line_dispatch_name
 msgid "Dispatch Name"
 msgstr "Numero de Despacho"
+
+#. module: import_dispatch
+#: sql_constraint:stock.production.dispatch:0
+msgid "Dispatch must be unique!"
+msgstr "El numero de Despacho tiene que ser unico!"
 
 #. module: import_dispatch
 #: model:ir.model.fields,field_description:import_dispatch.field_stock_production_dispatch_display_name
@@ -73,6 +79,12 @@ msgid "ID"
 msgstr "ID"
 
 #. module: import_dispatch
+#: code:addons/import_dispatch/models/stock_change_product_qty.py:58
+#, python-format
+msgid "INV: %s"
+msgstr "INV: %s"
+
+#. module: import_dispatch
 #: model:ir.actions.act_window,name:import_dispatch.action_production_dispatch_form
 #: model:ir.model,name:import_dispatch.model_stock_production_dispatch
 #: model:ir.model.fields,field_description:import_dispatch.field_stock_production_dispatch_name
@@ -81,7 +93,7 @@ msgstr "ID"
 #: model:ir.ui.view,arch_db:import_dispatch.view_production_dispatch_form_simple
 #: model:ir.ui.view,arch_db:import_dispatch.view_production_dispatch_tree
 msgid "Import Dispatch"
-msgstr "Número de despacho"
+msgstr "Importar Despacho"
 
 #. module: import_dispatch
 #: model:ir.model.fields,field_description:import_dispatch.field_stock_production_dispatch_ref
@@ -104,9 +116,29 @@ msgid "Last Updated on"
 msgstr "Última actualización el"
 
 #. module: import_dispatch
+#: model:ir.model.fields,field_description:import_dispatch.field_stock_production_dispatch_lot_id
+msgid "Lot"
+msgstr "Lote"
+
+#. module: import_dispatch
+#: model:ir.model.fields,field_description:import_dispatch.field_stock_change_product_qty_lot_name
+msgid "Lot Name"
+msgstr "Numero de Lote"
+
+#. module: import_dispatch
 #: model:ir.model,name:import_dispatch.model_stock_production_lot
 msgid "Lot/Serial"
 msgstr "Lote/Número de serie"
+
+#. module: import_dispatch
+#: selection:stock.change.product.qty,type_update:0
+msgid "New Dispatch"
+msgstr "Nuevo Despacho"
+
+#. module: import_dispatch
+#: selection:stock.change.product.qty,type_update:0
+msgid "New Lot"
+msgstr "Nuevo Lote"
 
 #. module: import_dispatch
 #: model:ir.model,name:import_dispatch.model_stock_move_line
@@ -122,18 +154,18 @@ msgstr "Producto"
 #. module: import_dispatch
 #: model:ir.ui.view,arch_db:import_dispatch.search_product_dispatch_filter
 msgid "Product dispatchs"
-msgstr "Despachos de producto"
+msgstr "Despacho de Producto"
 
 #. module: import_dispatch
 #: model:ir.ui.view,arch_db:import_dispatch.search_product_dispatch_filter
 msgid "Product dispatchs Filter"
-msgstr "Filtro despachos de producto"
+msgstr "Despacho de Producto Filtro"
 
 #. module: import_dispatch
 #: model:ir.ui.view,arch_db:import_dispatch.view_production_dispatch_form
 #: model:ir.ui.view,arch_db:import_dispatch.view_production_dispatch_form_simple
 msgid "Product this dispatch/serial number contains. You cannot change it anymore if it has already been moved."
-msgstr "Existe un producto que contiene este envío / número de serie. Ya no puede cambiarlo si ya se ha movido."
+msgstr "Producto que contiene este envío / número de serie. Ya no puede cambiarlo si ya se ha movido."
 
 #. module: import_dispatch
 #: model:ir.model,name:import_dispatch.model_purchase_order_line
@@ -148,7 +180,7 @@ msgstr "Cantidad"
 #. module: import_dispatch
 #: model:ir.model.fields,field_description:import_dispatch.field_stock_production_dispatch_quant_ids
 msgid "Quants"
-msgstr "Quants"
+msgstr "Cantidad"
 
 #. module: import_dispatch
 #: model:ir.model,name:import_dispatch.model_sale_order_line
@@ -161,17 +193,9 @@ msgid "Stock Move"
 msgstr "Movimiento de Stock"
 
 #. module: import_dispatch
-#: sql_constraint:stock.production.dispatch:0
 #: sql_constraint:stock.production.lot:0
 msgid "The combination of serial number and product must be unique !"
 msgstr "¡La combinación de número de serie y producto debe ser única!"
-
-#. module: import_dispatch
-#: code:addons/import_dispatch/models/stock_production_lot.py:26
-#: code:addons/import_dispatch/models/stock_production_lot.py:36
-#, python-format
-msgid "The combination of serial number, product and dispatch number must be unique"
-msgstr "La combinación de número de serie, producto y número de despacho debe ser única."
 
 #. module: import_dispatch
 #: model:ir.actions.act_window,help:import_dispatch.action_production_dispatch_form
@@ -186,9 +210,14 @@ msgid "Transfer"
 msgstr "Transferir"
 
 #. module: import_dispatch
+#: model:ir.model.fields,field_description:import_dispatch.field_stock_change_product_qty_type_update
+msgid "Type Update"
+msgstr "Tipo de Actualización"
+
+#. module: import_dispatch
 #: model:ir.model.fields,help:import_dispatch.field_stock_production_dispatch_name
 msgid "Unique Import Dispatch"
-msgstr "Número de despacho"
+msgstr "Despacho de importación único"
 
 #. module: import_dispatch
 #: model:ir.model.fields,field_description:import_dispatch.field_stock_production_dispatch_product_uom_id
@@ -196,16 +225,9 @@ msgid "Unit of Measure"
 msgstr "Unidad de medida"
 
 #. module: import_dispatch
-#: code:addons/import_dispatch/models/stock_production_dispatch.py:50
-#, python-format
-msgid "You are not allowed to change the product linked to a serial or lot number if some stock moves have already been created with that number. This would lead to inconsistencies in your stock."
-msgstr "No esta permitido cambiar el producto relacionado a un numero de lote/serie si ya se han generado movimientos de existencias con ese numero. Eso llevaría a inconsistencias en su inventario."
-
-#. module: import_dispatch
-#: code:addons/import_dispatch/models/stock_production_dispatch.py:41
-#, python-format
-msgid "You are not allowed to create a lot for this picking type"
-msgstr "No se le permite crear un lote para este tipo de albarán"
+#: selection:stock.change.product.qty,type_update:0
+msgid "Update"
+msgstr "Actualizar"
 
 #. module: import_dispatch
 #: model:ir.ui.view,arch_db:import_dispatch.view_production_dispatch_form
