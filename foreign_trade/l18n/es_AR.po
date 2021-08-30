@@ -1326,7 +1326,7 @@ msgstr "Precio de Unidad"
 #. module: foreign_trade
 #: model:ir.ui.view,arch_db:foreign_trade.view_order_form
 msgid "Print Foreign Report"
-msgstr "Imprimir OE"
+msgstr "Print Foreign Report"
 
 #. module: foreign_trade
 #: model:ir.ui.view,arch_db:foreign_trade.view_order_form
