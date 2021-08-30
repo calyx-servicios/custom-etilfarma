@@ -13,7 +13,7 @@ class StockProductionLot(models.Model):
         lot_id = self.env['stock.production.lot'].search([
             ('dispatch_id','=',vals.get("dispatch_id.id",self.dispatch_id.id)),
             ('name','=',vals.get("name",self.name)),
-            ('product_id','=',vals.get("product_id",self.product_id)),
+            ('product_id','=',vals.get("product_id.id",self.product_id.id)),
             ])        
         if len(lot_id.ids)>0:
             raise ValidationError('The combination of serial number and product must be unique !')
@@ -24,7 +24,7 @@ class StockProductionLot(models.Model):
         lot_id = self.env['stock.production.lot'].search([
             ('dispatch_id.name','=',vals.get("dispatch_id.name",self.dispatch_id.name)),
             ('name','=',vals.get("name",self.name)),
-            ('product_id','=',vals.get("product_id",self.product_id)),
+            ('product_id','=',vals.get("product_id.id",self.product_id.id)),
             ])
         if len(lot_id.ids)>1:
             raise ValidationError('The combination of serial number and product must be unique !')
