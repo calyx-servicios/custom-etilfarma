@@ -43,10 +43,7 @@ class StockMove(models.Model):
     life_date = fields.Datetime(
         string='End of Life Date',
         help='This is the date on which the goods with this Serial Number may '
-             'become dangerous and must not be consumed.',
-        # compute='_compute_life_date',
-        # inverse='_inverse_life_date',
-    )
+             'become dangerous and must not be consumed.',)
 
     @api.multi
     def production_lot_from_name(self, create_lot=True):
