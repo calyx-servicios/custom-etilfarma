@@ -24,7 +24,6 @@
         "purchase",
         "stock_move_lines",
         "l10n_ar_stock",
-        "stock_move",
         ],
     "data": [
         "security/ir.model.access.csv",
