@@ -11,7 +11,7 @@ class StockProductionLot(models.Model):
     @api.model
     def create(self, vals):
         lot_id = self.env['stock.production.lot'].search([
-            ('dispatch_id','=',vals.get("dispatch_id",self.dispatch_id)),
+            ('dispatch_id','=',vals.get("dispatch_id.id",self.dispatch_id.id)),
             ('name','=',vals.get("name",self.name)),
             ('product_id','=',vals.get("product_id",self.product_id)),
             ])        
