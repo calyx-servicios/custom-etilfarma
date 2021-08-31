@@ -39,20 +39,3 @@ class StockMove(models.Model):
     dispatch_name = fields.Char(
         string='Dispatch Name',
     )
-
-    @api.multi
-    def production_lot_from_name(self, create_lot=True):
-        StockProductionLot = self.env['stock.production.lot']
-        if not self.line_lot_name:
-            return StockProductionLot.browse()
-        lot = StockProductionLot.search([
-            ('product_id', '=', self.product_id.id),
-            ('name', '=', self.line_lot_name),
-        ], limit=1)
-        if not lot and create_lot:
-            lot = lot.create({
-                'name': self.line_lot_name,
-                'product_id': self.product_id.id,
-                'life_date': self.life_date,
-            })
-        return lot

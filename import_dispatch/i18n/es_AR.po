@@ -123,7 +123,7 @@ msgstr "Lote"
 #. module: import_dispatch
 #: model:ir.model.fields,field_description:import_dispatch.field_stock_change_product_qty_lot_name
 msgid "Lot Name"
-msgstr "Numero de Lote"
+msgstr "Lote/Número de serie"
 
 #. module: import_dispatch
 #: model:ir.model,name:import_dispatch.model_stock_production_lot
