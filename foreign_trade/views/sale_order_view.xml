@@ -15,10 +15,10 @@
                 <attribute name="attrs">{'invisible': ['|',('order_type_foreign','=',True)]}</attribute>
             </xpath>
             <xpath expr="//button[@name='action_quotation_send'][2]" position="attributes">
-                <attribute name="attrs">{'invisible': ['|','|', ('state', '!=', 'draft'), ('invoice_count','&gt;=',1),('order_type_foreign','=',True)]}</attribute>
+                <attribute name="attrs">{'invisible': 1}</attribute>
             </xpath>
             <xpath expr="//button[@name='action_quotation_send'][3]" position="attributes">
-                <attribute name="attrs">{'invisible': ['|','|', ('state', '=', 'draft'), ('invoice_count','&gt;=',1),('order_type_foreign','=',True)]}</attribute>
+                <attribute name="attrs">{'invisible': ['|',('order_type_foreign','=',True)]}</attribute>
             </xpath>
             <xpath expr="//button[@name='action_quotation_send'][4]" position="attributes">
                 <attribute name="attrs">{'invisible': ['|',('order_type_foreign','=',True)]}</attribute>
