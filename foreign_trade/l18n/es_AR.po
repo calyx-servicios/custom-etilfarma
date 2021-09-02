@@ -1794,7 +1794,7 @@ msgstr "Referencia interna"
 #. module: foreign_trade
 #: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
 msgid "Source"
-msgstr "Fuente"
+msgstr "Prueba"
 
 #. module: foreign_trade
 #: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
