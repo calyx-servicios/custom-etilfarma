@@ -24,29 +24,35 @@ class StockChangeProductQty(models.TransientModel):
             product = wizard.product_id.with_context(location=wizard.location_id.id, lot_id=wizard.lot_id.id)
             lot_id = self.env['stock.production.lot'].search([('dispatch_id.name','=',wizard.dispatch_id.name),('name','=',wizard.lot_id.name)])
             if wizard.type_update == "update":
-                lot_id = self.env['stock.production.lot'].search([('dispatch_id.name','=',wizard.dispatch_id.name),('name','=',wizard.lot_id.name)])
+                lot_id = self.env['stock.production.lot'].search([('dispatch_id.name','=',wizard.dispatch_id.name),('name','=',wizard.lot_id.name),('product_id','=',wizard.product_id.id)])
                 wizard.dispatch_id.product_qty = wizard.new_quantity
-                self.lot_id = self.env['stock.production.lot'].search([('dispatch_id.name','=',wizard.dispatch_id.name),('name','=',wizard.lot_id.name)])
+                self.lot_id = lot_id
             if wizard.type_update == "new_lot":
                 dispatch_id = self.env['stock.production.dispatch'].create({
                         'name': wizard.dispatch_name,
                         'product_id': wizard.product_id.id,
                         'product_qty':wizard.new_quantity,
                     })
-                lot = self.env['stock.production.lot'].create({
+                lot_id = self.env['stock.production.lot'].create({
                         'name': wizard.lot_name,
                         'product_id': wizard.product_id.id,
                         'product_qty':wizard.new_quantity,
                         'dispatch_id':dispatch_id.id,
                     })
-                self.lot_id = self.env['stock.production.lot'].search([('dispatch_id.name','=',wizard.dispatch_name),('name','=',wizard.lot_name)])
+                self.lot_id = lot_id
             if wizard.type_update == "new_dispatch":
                 dispatch_id = self.env['stock.production.dispatch'].create({
                         'name': wizard.dispatch_name,
                         'product_id': wizard.product_id.id,
                         'product_qty':wizard.new_quantity,
                     })
-                self.lot_id.dispatch_id = dispatch_id.id
+                lot_id = self.env['stock.production.lot'].create({
+                        'name': wizard.lot_id.name,
+                        'product_id': wizard.product_id.id,
+                        'product_qty':wizard.new_quantity,
+                        'dispatch_id':dispatch_id.id,
+                    })
+                self.lot_id = lot_id
             if wizard.product_id.id and lot_id.id:
                 inventory_filter = 'none'
             elif wizard.product_id.id:
