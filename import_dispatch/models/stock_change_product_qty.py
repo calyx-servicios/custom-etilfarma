@@ -70,3 +70,11 @@ class StockChangeProductQty(models.TransientModel):
             })
             inventory.action_done()
         return {'type': 'ir.actions.act_window_close'}
+
+class StockQuant(models.Model):
+    _inherit = 'stock.quant'
+    
+    dispatch_id = fields.Many2one(
+        'stock.production.dispatch',
+        related='lot_id.dispatch_id'
+    )
