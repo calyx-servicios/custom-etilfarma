@@ -15,7 +15,11 @@ class StockChangeProductQty(models.TransientModel):
         ("new_lot", "New Lot"),
         ("new_dispatch", "New Dispatch")]
         ,default="update")
-
+    life_date = fields.Datetime(
+        string='End of Life Date',
+        help='This is the date on which the goods with this Serial Number may '
+             'become dangerous and must not be consumed.',
+    )
 
     def change_product_qty(self):
         """ Changes the Product Quantity by making a Physical Inventory. """
@@ -38,6 +42,7 @@ class StockChangeProductQty(models.TransientModel):
                         'product_id': wizard.product_id.id,
                         'product_qty':wizard.new_quantity,
                         'dispatch_id':dispatch_id.id,
+                        'life_date':wizard.life_date,
                     })
                 self.lot_id = lot_id
             if wizard.type_update == "new_dispatch":
@@ -51,6 +56,7 @@ class StockChangeProductQty(models.TransientModel):
                         'product_id': wizard.product_id.id,
                         'product_qty':wizard.new_quantity,
                         'dispatch_id':dispatch_id.id,
+                        'life_date':wizard.lot_id.life_date,
                     })
                 self.lot_id = lot_id
             if wizard.product_id.id and lot_id.id:
@@ -70,6 +76,7 @@ class StockChangeProductQty(models.TransientModel):
             })
             inventory.action_done()
         return {'type': 'ir.actions.act_window_close'}
+
 
 class StockQuant(models.Model):
     _inherit = 'stock.quant'
