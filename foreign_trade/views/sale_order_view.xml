@@ -15,7 +15,11 @@
                 <attribute name="attrs">{'invisible': ['|',('order_type_foreign','=',True)]}</attribute>
             </xpath>
             <xpath expr="//button[@name='action_quotation_send'][2]" position="attributes">
+<<<<<<< HEAD
                 <attribute name="attrs">{'invisible': 1}</attribute>
+=======
+                <attribute name="attrs">{'invisible': True}</attribute>
+>>>>>>> 11.0_foreign_trade_payment_fields
             </xpath>
             <xpath expr="//button[@name='action_quotation_send'][3]" position="attributes">
                 <attribute name="attrs">{'invisible': ['|',('order_type_foreign','=',True)]}</attribute>
@@ -83,11 +87,14 @@
                         </group>
                         <group name="payment" string="Collection">
                             <field name="payment_not_required" type="checkbox" string="Not Required"/>
-                            <field name="payment_bank" string="Bank" attrs="{'invisible': [('payment_not_required','=',True)]}" force_save="1"/>
+                            <field name="payment_bank" string="Bank" attrs="{'invisible': 1}" force_save="1"/>
                             <field name="payment_tre" string="TRE" attrs="{'invisible': [('payment_not_required','=',True)]}" force_save="1"/>
                             <field name="payment_date" string="Date" attrs="{'invisible': [('payment_not_required','=',True)]}" force_save="1"/>
-                            <field name="payment_concept" string="Concept" attrs="{'invisible': [('payment_not_required','=',True)]}" force_save="1"/>
-                            <field name="payment_exchange_rate" string="payment exchange" attrs="{'invisible': [('payment_not_required','=',True)]}" force_save="1"/>                        
+                            <field name="payment_concept" string="Concept" attrs="{'invisible': 1}" force_save="1"/>
+                            <field name="payment_exchange_rate" string="payment exchange" attrs="{'invisible': [('payment_not_required','=',True)]}" force_save="1"/>
+                            <field name="payment_journal_type" invisible= '1' force_save="1"/>
+                            <field name="payment_bank_and_account" attrs="{'readonly': 1, 'invisible': [('payment_journal_type','!=','bank')]}" force_save="1"/>
+                            <field name="payment_communication" attrs="{'readonly': 1}" force_save="1"/>          
                         </group>
                         <group name="dispatcher" string="Dispatcher">
                             <field name="dispatcher_not_required" type="checkbox" string="Not Required"/>
