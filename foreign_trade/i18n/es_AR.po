@@ -1812,3 +1812,13 @@ msgstr "Fuente"
 #: model:ir.ui.view,arch_db:foreign_trade.view_order_form
 msgid "Delivery Date"
 msgstr "Fecha de entrega"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_payment_communication
+msgid "Payment Concept / Request"
+msgstr "Nro de Solicitud / Concepto de Pago"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_payment_bank_and_account
+msgid "Bank and Account"
+msgstr "Banco y Cuenta"
