@@ -26,6 +26,7 @@
         "view/report_config_parameter.xml",
         "report/purchase_order_foreign_template.xml",
         "report/purchase_order_foreign_report.xml",
+        "report/purchase_reports.xml",
         "data/mail_template_data.xml",
         "data/mail_template_data_impo.xml",
         "data/report_header_parameters.xml",
