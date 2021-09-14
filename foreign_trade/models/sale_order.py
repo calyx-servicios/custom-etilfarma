@@ -52,7 +52,7 @@ class SaleOrder(models.Model):
             for invoice in invoices:
                 payments = invoice.payment_group_ids
                 for payment in payments:
-                    payments_tre += (payment.notes + '  ')
+                    payments_tre += (payment.notes + '  ') if payment.notes else ''
                     payment_date += (payment.payment_date + '  ')
                     imputed_vouchers = payment.matched_move_line_ids
                     for imputed_voucher in imputed_vouchers:
