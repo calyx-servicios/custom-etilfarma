@@ -18,7 +18,7 @@ class StockPicking(models.Model):
                 for line in lines_to_check:
                     product = line.product_id
                     if product:
-                        if not line.life_date:
+                        if not line.editable_life_date:
                             raise UserError(_('You need to supply a life date for %s.') % product.display_name)
                 if not record.delivery_number:
                     raise UserError(_('You need to supply a delivery number'))        
