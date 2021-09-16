@@ -29,7 +29,6 @@
         "security/ir.model.access.csv",
         "views/stock_production_dispatch_views.xml",
         "views/stock_move_line_views.xml",
-        "views/stock_picking_views.xml",
         "views/sale_order_views.xml",
         "views/stock_production_lot_view.xml",
         "views/stock_change_product_views.xml",

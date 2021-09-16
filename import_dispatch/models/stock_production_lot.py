@@ -10,25 +10,15 @@ class StockProductionLot(models.Model):
 
     @api.model
     def create(self, vals):
-        lot_id = self.env['stock.production.lot'].search([
-            ('dispatch_id','=',vals.get("dispatch_id.id",self.dispatch_id.id)),
-            ('name','=',vals.get("name",self.name)),
-            ('product_id','=',vals.get("product_id.id",self.product_id.id)),
-            ])        
-        if len(lot_id.ids)>0:
-            raise ValidationError('The combination of serial number and product must be unique !')
-        return super(StockProductionLot, self).create(vals)
-
-    @api.multi
-    def write(self, vals):
-        lot_id = self.env['stock.production.lot'].search([
-            ('dispatch_id.name','=',vals.get("dispatch_id.name",self.dispatch_id.name)),
-            ('name','=',vals.get("name",self.name)),
-            ('product_id','=',vals.get("product_id.id",self.product_id.id)),
+        dispatch = self.env['stock.production.dispatch'].search([('id','=',vals.get("dispatch_id",False))])
+        lot_ids = self.env['stock.production.lot'].search([
+            ('name','=',vals.get("name",False)),
+            ('product_id','=',vals.get("product_id",False)),
             ])
-        if len(lot_id.ids)>1:
-            raise ValidationError('The combination of serial number and product must be unique !')
-        return super(StockProductionLot, self).write(vals)
+        for lot_id in lot_ids:
+            if lot_id.dispatch_id.name and lot_id.dispatch_id.name == dispatch.name:
+                raise ValidationError(_('The combination of serial number and product must be unique !'))
+        return super(StockProductionLot, self).create(vals)
     
     _sql_constraints = [
         ('name_ref_uniq', 'Check(1=1)', 'The combination of serial number and product must be unique !'),

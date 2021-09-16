@@ -4,6 +4,8 @@
 from odoo import api, fields, models, _
 from odoo.tools.float_utils import float_compare
 from odoo.exceptions import UserError
+from odoo.exceptions import ValidationError
+
 
 class StockMove(models.Model):
     _inherit = "stock.move"
@@ -39,3 +41,27 @@ class StockMove(models.Model):
     dispatch_name = fields.Char(
         string='Dispatch Name',
     )
+    editable_life_date = fields.Datetime(
+        string='End of Life Date',
+        help='This is the date on which the goods with this Serial Number may '
+             'become dangerous and must not be consumed.',
+    )
+    @api.multi
+    def production_lot_from_name(self, create_lot=True):
+        StockProductionLot = self.env['stock.production.lot']
+        if not self.line_lot_name:
+            if self.move_line_ids:
+                return StockProductionLot.browse()
+        lot = StockProductionLot.search([
+            ('product_id', '=', self.product_id.id),
+            ('name', '=', self.line_lot_name),
+        ], limit=1)
+        if not lot and create_lot:
+            lot = lot.create({
+                'name': self.line_lot_name,
+                'product_id': self.product_id.id,
+                'life_date': self.life_date,
+            })
+        return lot
+    
+
