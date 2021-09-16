@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-30 12:32+0000\n"
-"PO-Revision-Date: 2021-08-30 12:32+0000\n"
+"POT-Creation-Date: 2021-09-16 01:03+0000\n"
+"PO-Revision-Date: 2021-09-16 01:03+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -45,6 +45,7 @@ msgstr "Unidad de medida predeterminada utilizada para todas las operaciones de 
 #: model:ir.model.fields,field_description:import_dispatch.field_stock_move_dispatch_id
 #: model:ir.model.fields,field_description:import_dispatch.field_stock_move_line_dispatch_id
 #: model:ir.model.fields,field_description:import_dispatch.field_stock_production_lot_dispatch_id
+#: model:ir.model.fields,field_description:import_dispatch.field_stock_quant_dispatch_id
 msgid "Dispatch"
 msgstr "Despacho"
 
@@ -53,7 +54,7 @@ msgstr "Despacho"
 #: model:ir.model.fields,field_description:import_dispatch.field_stock_change_product_qty_dispatch_name
 #: model:ir.model.fields,field_description:import_dispatch.field_stock_move_dispatch_name
 #: model:ir.model.fields,field_description:import_dispatch.field_stock_move_line_dispatch_name
-#: model:ir.model.fields,field_description:import_dispatch.field_stock_move_line_dispatch_name_11950
+#: model:ir.model.fields,field_description:import_dispatch.field_stock_move_line_dispatch_name_11953
 #: model:ir.model.fields,field_description:import_dispatch.field_stock_picking_line_dispatch_name
 msgid "Dispatch Name"
 msgstr "Numero de Despacho"
@@ -69,6 +70,12 @@ msgid "Display Name"
 msgstr "Mostrar Nombre"
 
 #. module: import_dispatch
+#: model:ir.model.fields,field_description:import_dispatch.field_stock_change_product_qty_life_date
+#: model:ir.model.fields,field_description:import_dispatch.field_stock_move_editable_life_date
+msgid "End of Life Date"
+msgstr "Fecha de caducidad"
+
+#. module: import_dispatch
 #: model:ir.ui.view,arch_db:import_dispatch.search_product_dispatch_filter
 msgid "Group By"
 msgstr "Agrupar por"
@@ -79,7 +86,7 @@ msgid "ID"
 msgstr "ID"
 
 #. module: import_dispatch
-#: code:addons/import_dispatch/models/stock_change_product_qty.py:58
+#: code:addons/import_dispatch/models/stock_change_product_qty.py:70
 #, python-format
 msgid "INV: %s"
 msgstr "INV: %s"
@@ -128,7 +135,7 @@ msgstr "Numero de Lote"
 #. module: import_dispatch
 #: model:ir.model,name:import_dispatch.model_stock_production_lot
 msgid "Lot/Serial"
-msgstr "Lote/Número de serie"
+msgstr "Lote/Nº de serie"
 
 #. module: import_dispatch
 #: selection:stock.change.product.qty,type_update:0
@@ -178,6 +185,7 @@ msgid "Quantity"
 msgstr "Cantidad"
 
 #. module: import_dispatch
+#: model:ir.model,name:import_dispatch.model_stock_quant
 #: model:ir.model.fields,field_description:import_dispatch.field_stock_production_dispatch_quant_ids
 msgid "Quants"
 msgstr "Cantidad"
@@ -193,9 +201,18 @@ msgid "Stock Move"
 msgstr "Movimiento de Stock"
 
 #. module: import_dispatch
+#: code:addons/import_dispatch/models/stock_picking.py:33
+#: code:addons/import_dispatch/models/stock_production_lot.py:20
 #: sql_constraint:stock.production.lot:0
+#, python-format
 msgid "The combination of serial number and product must be unique !"
 msgstr "¡La combinación de número de serie y producto debe ser única!"
+
+#. module: import_dispatch
+#: model:ir.model.fields,help:import_dispatch.field_stock_change_product_qty_life_date
+#: model:ir.model.fields,help:import_dispatch.field_stock_move_editable_life_date
+msgid "This is the date on which the goods with this Serial Number may become dangerous and must not be consumed."
+msgstr "Ésta es la fecha en la que los bienes con este nº de serie se convierten en peligrosos, y no deben ser consumidos."
 
 #. module: import_dispatch
 #: model:ir.actions.act_window,help:import_dispatch.action_production_dispatch_form
