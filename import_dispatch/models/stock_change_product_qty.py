@@ -56,7 +56,7 @@ class StockChangeProductQty(models.TransientModel):
                         'product_id': wizard.product_id.id,
                         'product_qty':wizard.new_quantity,
                         'dispatch_id':dispatch_id.id,
-                        'life_date':wizard.lot_id.life_date,
+                        'life_date':wizard.life_date,
                     })
                 self.lot_id = lot_id
             if wizard.product_id.id and lot_id.id:
