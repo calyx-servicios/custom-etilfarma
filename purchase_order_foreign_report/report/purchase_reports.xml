@@ -3,7 +3,7 @@
     <data>
         <report 
             string="Pedido de Compra" 
-            id="action_report_purchase_order" 
+            id="purchase.action_report_purchase_order" 
             model="purchase.order" 
             report_type="qweb-pdf"
             name="purchase.report_purchaseorder" 
@@ -15,7 +15,7 @@
 
         <report 
             string="Solicitud de presupuesto" 
-            id="report_purchase_quotation" 
+            id="purchase.report_purchase_quotation" 
             model="purchase.order" 
             report_type="qweb-pdf"
             name="purchase.report_purchasequotation" 
