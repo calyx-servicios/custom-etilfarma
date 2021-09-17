@@ -1,0 +1,253 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* import_dispatch
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-16 01:03+0000\n"
+"PO-Revision-Date: 2021-09-16 01:03+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: import_dispatch
+#: model:ir.model,name:import_dispatch.model_stock_change_product_qty
+msgid "Change Product Quantity"
+msgstr "Cambiar cantidad de producto"
+
+#. module: import_dispatch
+#: model:ir.actions.act_window,help:import_dispatch.action_production_dispatch_form
+msgid "Click to add a dispatch/serial number."
+msgstr "Click to add a dispatch/serial number."
+
+#. module: import_dispatch
+#: model:ir.model.fields,field_description:import_dispatch.field_stock_production_dispatch_create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: import_dispatch
+#: model:ir.model.fields,field_description:import_dispatch.field_stock_production_dispatch_create_date
+msgid "Creation Date"
+msgstr "Fecha de Creación"
+
+#. module: import_dispatch
+#: model:ir.model.fields,help:import_dispatch.field_stock_production_dispatch_product_uom_id
+msgid "Default Unit of Measure used for all stock operation."
+msgstr "Unidad de medida predeterminada utilizada para todas las operaciones de stock."
+
+#. module: import_dispatch
+#: model:ir.model.fields,field_description:import_dispatch.field_stock_change_product_qty_dispatch_id
+#: model:ir.model.fields,field_description:import_dispatch.field_stock_move_dispatch_id
+#: model:ir.model.fields,field_description:import_dispatch.field_stock_move_line_dispatch_id
+#: model:ir.model.fields,field_description:import_dispatch.field_stock_production_lot_dispatch_id
+#: model:ir.model.fields,field_description:import_dispatch.field_stock_quant_dispatch_id
+msgid "Dispatch"
+msgstr "Despacho"
+
+#. module: import_dispatch
+#: model:ir.model.fields,field_description:import_dispatch.field_sale_order_line_line_dispatch_name
+#: model:ir.model.fields,field_description:import_dispatch.field_stock_change_product_qty_dispatch_name
+#: model:ir.model.fields,field_description:import_dispatch.field_stock_move_dispatch_name
+#: model:ir.model.fields,field_description:import_dispatch.field_stock_move_line_dispatch_name
+#: model:ir.model.fields,field_description:import_dispatch.field_stock_move_line_dispatch_name_11953
+#: model:ir.model.fields,field_description:import_dispatch.field_stock_picking_line_dispatch_name
+msgid "Dispatch Name"
+msgstr "Numero de Despacho"
+
+#. module: import_dispatch
+#: sql_constraint:stock.production.dispatch:0
+msgid "Dispatch must be unique!"
+msgstr "El numero de Despacho tiene que ser unico!"
+
+#. module: import_dispatch
+#: model:ir.model.fields,field_description:import_dispatch.field_stock_production_dispatch_display_name
+msgid "Display Name"
+msgstr "Mostrar Nombre"
+
+#. module: import_dispatch
+#: model:ir.model.fields,field_description:import_dispatch.field_stock_change_product_qty_life_date
+#: model:ir.model.fields,field_description:import_dispatch.field_stock_move_editable_life_date
+msgid "End of Life Date"
+msgstr "Fecha de caducidad"
+
+#. module: import_dispatch
+#: model:ir.ui.view,arch_db:import_dispatch.search_product_dispatch_filter
+msgid "Group By"
+msgstr "Agrupar por"
+
+#. module: import_dispatch
+#: model:ir.model.fields,field_description:import_dispatch.field_stock_production_dispatch_id
+msgid "ID"
+msgstr "ID"
+
+#. module: import_dispatch
+#: code:addons/import_dispatch/models/stock_change_product_qty.py:70
+#, python-format
+msgid "INV: %s"
+msgstr "INV: %s"
+
+#. module: import_dispatch
+#: model:ir.actions.act_window,name:import_dispatch.action_production_dispatch_form
+#: model:ir.model,name:import_dispatch.model_stock_production_dispatch
+#: model:ir.model.fields,field_description:import_dispatch.field_stock_production_dispatch_name
+#: model:ir.ui.menu,name:import_dispatch.menu_action_production_dispatch_form
+#: model:ir.ui.view,arch_db:import_dispatch.view_production_dispatch_form
+#: model:ir.ui.view,arch_db:import_dispatch.view_production_dispatch_form_simple
+#: model:ir.ui.view,arch_db:import_dispatch.view_production_dispatch_tree
+msgid "Import Dispatch"
+msgstr "Importar Despacho"
+
+#. module: import_dispatch
+#: model:ir.model.fields,field_description:import_dispatch.field_stock_production_dispatch_ref
+msgid "Internal Reference"
+msgstr "Referencia interna"
+
+#. module: import_dispatch
+#: model:ir.model.fields,field_description:import_dispatch.field_stock_production_dispatch___last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: import_dispatch
+#: model:ir.model.fields,field_description:import_dispatch.field_stock_production_dispatch_write_uid
+msgid "Last Updated by"
+msgstr "Última actualización realizada por"
+
+#. module: import_dispatch
+#: model:ir.model.fields,field_description:import_dispatch.field_stock_production_dispatch_write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: import_dispatch
+#: model:ir.model.fields,field_description:import_dispatch.field_stock_production_dispatch_lot_id
+msgid "Lot"
+msgstr "Lote"
+
+#. module: import_dispatch
+#: model:ir.model.fields,field_description:import_dispatch.field_stock_change_product_qty_lot_name
+msgid "Lot Name"
+msgstr "Numero de Lote"
+
+#. module: import_dispatch
+#: model:ir.model,name:import_dispatch.model_stock_production_lot
+msgid "Lot/Serial"
+msgstr "Lote/Nº de serie"
+
+#. module: import_dispatch
+#: selection:stock.change.product.qty,type_update:0
+msgid "New Dispatch"
+msgstr "Nuevo Despacho"
+
+#. module: import_dispatch
+#: selection:stock.change.product.qty,type_update:0
+msgid "New Lot"
+msgstr "Nuevo Lote"
+
+#. module: import_dispatch
+#: model:ir.model,name:import_dispatch.model_stock_move_line
+msgid "Packing Operation"
+msgstr "Operación de empaquetado"
+
+#. module: import_dispatch
+#: model:ir.model.fields,field_description:import_dispatch.field_stock_production_dispatch_product_id
+#: model:ir.ui.view,arch_db:import_dispatch.search_product_dispatch_filter
+msgid "Product"
+msgstr "Producto"
+
+#. module: import_dispatch
+#: model:ir.ui.view,arch_db:import_dispatch.search_product_dispatch_filter
+msgid "Product dispatchs"
+msgstr "Despacho de Producto"
+
+#. module: import_dispatch
+#: model:ir.ui.view,arch_db:import_dispatch.search_product_dispatch_filter
+msgid "Product dispatchs Filter"
+msgstr "Despacho de Producto Filtro"
+
+#. module: import_dispatch
+#: model:ir.ui.view,arch_db:import_dispatch.view_production_dispatch_form
+#: model:ir.ui.view,arch_db:import_dispatch.view_production_dispatch_form_simple
+msgid "Product this dispatch/serial number contains. You cannot change it anymore if it has already been moved."
+msgstr "Producto que contiene este envío / número de serie. Ya no puede cambiarlo si ya se ha movido."
+
+#. module: import_dispatch
+#: model:ir.model,name:import_dispatch.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr "Línea de pedido de compra"
+
+#. module: import_dispatch
+#: model:ir.model.fields,field_description:import_dispatch.field_stock_production_dispatch_product_qty
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: import_dispatch
+#: model:ir.model,name:import_dispatch.model_stock_quant
+#: model:ir.model.fields,field_description:import_dispatch.field_stock_production_dispatch_quant_ids
+msgid "Quants"
+msgstr "Cantidad"
+
+#. module: import_dispatch
+#: model:ir.model,name:import_dispatch.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Línea de orden de ventas"
+
+#. module: import_dispatch
+#: model:ir.model,name:import_dispatch.model_stock_move
+msgid "Stock Move"
+msgstr "Movimiento de Stock"
+
+#. module: import_dispatch
+#: code:addons/import_dispatch/models/stock_picking.py:33
+#: code:addons/import_dispatch/models/stock_production_lot.py:20
+#: sql_constraint:stock.production.lot:0
+#, python-format
+msgid "The combination of serial number and product must be unique !"
+msgstr "¡La combinación de número de serie y producto debe ser única!"
+
+#. module: import_dispatch
+#: model:ir.model.fields,help:import_dispatch.field_stock_change_product_qty_life_date
+#: model:ir.model.fields,help:import_dispatch.field_stock_move_editable_life_date
+msgid "This is the date on which the goods with this Serial Number may become dangerous and must not be consumed."
+msgstr "Ésta es la fecha en la que los bienes con este nº de serie se convierten en peligrosos, y no deben ser consumidos."
+
+#. module: import_dispatch
+#: model:ir.actions.act_window,help:import_dispatch.action_production_dispatch_form
+msgid "This is the list of all the production dispatchs you recorded. When\n"
+"            you select a dispatch, you can get the traceability of the products contained in dispatch."
+msgstr "Esta es la lista de todos los despachos de producción que registró. Cuando\n"
+"            selecciona un envío, puede obtener la trazabilidad de los productos contenidos en el envío."
+
+#. module: import_dispatch
+#: model:ir.model,name:import_dispatch.model_stock_picking
+msgid "Transfer"
+msgstr "Transferir"
+
+#. module: import_dispatch
+#: model:ir.model.fields,field_description:import_dispatch.field_stock_change_product_qty_type_update
+msgid "Type Update"
+msgstr "Tipo de Actualización"
+
+#. module: import_dispatch
+#: model:ir.model.fields,help:import_dispatch.field_stock_production_dispatch_name
+msgid "Unique Import Dispatch"
+msgstr "Despacho de importación único"
+
+#. module: import_dispatch
+#: model:ir.model.fields,field_description:import_dispatch.field_stock_production_dispatch_product_uom_id
+msgid "Unit of Measure"
+msgstr "Unidad de medida"
+
+#. module: import_dispatch
+#: selection:stock.change.product.qty,type_update:0
+msgid "Update"
+msgstr "Actualizar"
+
+#. module: import_dispatch
+#: model:ir.ui.view,arch_db:import_dispatch.view_production_dispatch_form
+#: model:ir.ui.view,arch_db:import_dispatch.view_production_dispatch_form_simple
+msgid "e.g. dispatch/0001/20121"
+msgstr "e.g. dispatch/0001/20121"
