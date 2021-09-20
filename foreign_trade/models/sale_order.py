@@ -22,18 +22,18 @@ class SaleOrder(models.Model):
     def _compute_partner_default_bank(self):
         self.payment_bank = self.partner_id.default_bank.bank_id.name
 
-    def _get_invoices_list(self, invoice_list):
-        """ It returns the elements of the 
-            list that are not repeated """
-        invoice_list_sorted = sorted(invoice_list)
-        string_list_invoice = ''
-        previous_item = ''
-        for invoice in invoice_list_sorted:
-            if invoice != previous_item:
-                string_list_invoice += invoice
-            previous_item = invoice
+    # def _get_invoices_list(self, invoice_list):
+    #     """ It returns the elements of the 
+    #         list that are not repeated """
+    #     #invoice_list_sorted = sorted(invoice_list)
+    #     string_list_invoice = ''
+    #     previous_item = ''
+    #     for invoice in invoice_list:
+    #         if invoice != previous_item:
+    #             string_list_invoice += invoice
+    #         previous_item = invoice
 
-        return string_list_invoice
+    #     return string_list_invoice
 
     @api.multi
     def _compute_payment_fields(self):
@@ -43,7 +43,7 @@ class SaleOrder(models.Model):
         for rec in self:            
             payments_tre = ''
             payment_date = ''
-            payment_concept = []
+            # payment_concept = []
             payment_exchange_rate = ''
             payment_bank_and_account = ''
             payment_journal_type = 'cash'
@@ -55,8 +55,8 @@ class SaleOrder(models.Model):
                     payments_tre += (payment.notes + '  ') if payment.notes else ''
                     payment_date += (payment.payment_date + '  ')
                     imputed_vouchers = payment.matched_move_line_ids
-                    for imputed_voucher in imputed_vouchers:
-                        payment_concept.append(imputed_voucher.invoice_id.display_name)
+                    # for imputed_voucher in imputed_vouchers:
+                    #     payment_concept.append(imputed_voucher.invoice_id.display_name)
                     # We extract the exchange rate information from each of the payment 
                     # lines that was made in each payment group.
                     payments_line = payment.payment_ids
@@ -81,7 +81,7 @@ class SaleOrder(models.Model):
             rec.payment_communication = payment_communication
             rec.payment_tre = payments_tre
             rec.payment_date = payment_date
-            rec.payment_concept = self._get_invoices_list(payment_concept)
+            # rec.payment_concept = self._get_invoices_list(payment_concept)
             rec.payment_exchange_rate = payment_exchange_rate
 
 
