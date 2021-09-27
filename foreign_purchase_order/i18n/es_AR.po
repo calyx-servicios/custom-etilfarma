@@ -1294,3 +1294,13 @@ msgstr "Notas"
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Booking(Ship Reserve)"
 msgstr "Origen(Reserva de buque)"
+
+#. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_payment_communication
+msgid "Payment Concept / Request"
+msgstr "Nro de Solicitud / Concepto de Pago"
+
+#. module: foreign_purchase_order
+#: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_payment_bank_and_account
+msgid "Bank and Account"
+msgstr "Banco y Cuenta"

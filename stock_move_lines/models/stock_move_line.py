@@ -42,7 +42,12 @@ class StockPicking(models.Model):
         ('outgoing', 'Customers'),
         ('internal', 'Internal')], 
         related='picking_id.picking_type_id.code',
-        readonly=True)
+        readonly=True,
+    )
+    packaging = fields.Char(
+        string="Packaging",
+        related="move_id.packaging"
+    )
     comments = fields.Char(
         string="Comments"
     )
@@ -124,7 +129,6 @@ class StockMove(models.Model):
     city = fields.Char()
     zip = fields.Char()
     street2 = fields.Char()
-
 
     @api.depends('origin')
     def get_link_action(self):

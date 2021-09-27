@@ -41,6 +41,7 @@
         'views/packing_list_report.xml',
         'report/sale_order_template.xml',
         'report/sale_order_report.xml',
+        'report/sale_report.xml',
         'views/stock_picking_form_view.xml',
         'data/mail_template_data.xml',
     ],

@@ -1217,7 +1217,7 @@ msgstr "Empaquetado"
 #: model:ir.actions.report,name:foreign_trade.packing_list_report
 #: model:ir.ui.view,arch_db:foreign_trade.stock_view_picking_form_foreign_trade
 msgid "Packing List"
-msgstr "Lista de empaque"
+msgstr "Packing List"
 
 #. module: foreign_trade
 #: model:ir.model.fields,field_description:foreign_trade.field_stock_picking_packing_list_number
@@ -1326,7 +1326,7 @@ msgstr "Precio de Unidad"
 #. module: foreign_trade
 #: model:ir.ui.view,arch_db:foreign_trade.view_order_form
 msgid "Print Foreign Report"
-msgstr "Imprimir OE"
+msgstr "Print Foreign Report"
 
 #. module: foreign_trade
 #: model:ir.ui.view,arch_db:foreign_trade.view_order_form
@@ -1795,3 +1795,20 @@ msgstr "<strong>Orden de compra del cliente:</strong>"
 #: model:ir.model.fields,field_description:foreign_trade.field_sale_order_line_order_date
 msgid "Order date"
 msgstr "Fecha de pepido"
+
+#. module: foreign_trade
+#: model:ir.model.fields,field_description:foreign_trade.field_sale_order_line_default_code
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+msgid "Internal Reference"
+msgstr "Referencia interna"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+msgid "Source"
+msgstr "Fuente"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Delivery Date"
+msgstr "Fecha de entrega"
