@@ -22,18 +22,18 @@ class SaleOrder(models.Model):
     def _compute_partner_default_bank(self):
         self.payment_bank = self.partner_id.default_bank.bank_id.name
 
-    def _get_invoices_list(self, invoice_list):
-        """ It returns the elements of the 
-            list that are not repeated """
-        invoice_list_sorted = sorted(invoice_list)
-        string_list_invoice = ''
-        previous_item = ''
-        for invoice in invoice_list_sorted:
-            if invoice != previous_item:
-                string_list_invoice += invoice
-            previous_item = invoice
+    # def _get_invoices_list(self, invoice_list):
+    #     """ It returns the elements of the 
+    #         list that are not repeated """
+    #     #invoice_list_sorted = sorted(invoice_list)
+    #     string_list_invoice = ''
+    #     previous_item = ''
+    #     for invoice in invoice_list:
+    #         if invoice != previous_item:
+    #             string_list_invoice += invoice
+    #         previous_item = invoice
 
-        return string_list_invoice
+    #     return string_list_invoice
 
     @api.multi
     def _compute_payment_fields(self):
@@ -43,17 +43,20 @@ class SaleOrder(models.Model):
         for rec in self:            
             payments_tre = ''
             payment_date = ''
-            payment_concept = []
+            # payment_concept = []
             payment_exchange_rate = ''
+            payment_bank_and_account = ''
+            payment_journal_type = 'cash'
+            payment_communication = ''
             invoices = rec.invoice_ids
             for invoice in invoices:
                 payments = invoice.payment_group_ids
                 for payment in payments:
-                    payments_tre += (payment.display_name + '  ')
+                    payments_tre += (payment.notes + '  ') if payment.notes else ''
                     payment_date += (payment.payment_date + '  ')
                     imputed_vouchers = payment.matched_move_line_ids
-                    for imputed_voucher in imputed_vouchers:
-                        payment_concept.append(imputed_voucher.invoice_id.display_name)
+                    # for imputed_voucher in imputed_vouchers:
+                    #     payment_concept.append(imputed_voucher.invoice_id.display_name)
                     # We extract the exchange rate information from each of the payment 
                     # lines that was made in each payment group.
                     payments_line = payment.payment_ids
@@ -62,10 +65,23 @@ class SaleOrder(models.Model):
                         payment_exchange_rate += (str(payment_line.amount) + ' ')
                         payment_exchange_rate += (str(payment_line.currency_id.name) + ' - ')
                         payment_exchange_rate += ('T/C ' + str(payment_line.exchange_rate) + '\r' + '\n')
+                
+                payment_ids = invoice.payment_ids
+                for payment_id in payment_ids:
+                    if payment_id.journal_id.type != "cash":
+                        payment_journal_type = 'bank'
+                        payment_bank_and_account += (payment_id.journal_id.name + '  ')
+                    # payment_journal_type += (payment_id.journal_id.type + ' ')
+                    if payment_id.communication:
+                        payment_communication += (payment_id.communication + '  ')
 
+            rec.payment_journal_type = payment_journal_type
+            # if "cash" not in rec.payment_journal_type:
+            rec.payment_bank_and_account = payment_bank_and_account
+            rec.payment_communication = payment_communication
             rec.payment_tre = payments_tre
             rec.payment_date = payment_date
-            rec.payment_concept = self._get_invoices_list(payment_concept)
+            # rec.payment_concept = self._get_invoices_list(payment_concept)
             rec.payment_exchange_rate = payment_exchange_rate
 
 
@@ -133,6 +149,10 @@ class SaleOrder(models.Model):
 
     payment_not_required = fields.Boolean(string="Payment Not Required")
     payment_bank = fields.Char(string="Payment Bank", compute="_compute_partner_default_bank")
+    payment_bank_and_account = fields.Char(string="Bank and Account", compute="_compute_payment_fields")
+    payment_journal_type = fields.Char(string = 'Is Journal a Bank', compute="_compute_payment_fields")
+    payment_communication = fields.Char(string="Payment Concept / Request", compute="_compute_payment_fields")
+    
     payment_tre = fields.Char(string="Payment TRE", compute="_compute_payment_fields")
     payment_date = fields.Char(string="Payment Date", compute="_compute_payment_fields")
     payment_concept = fields.Char(string="Payment Concept", compute="_compute_payment_fields")
@@ -184,7 +204,7 @@ class SaleOrder(models.Model):
     after_shipment_boarding_permit_date = fields.Date(string="After Shipment Boarding Permit Date")
 
     sale_code = fields.Char(compute="_onchange_update_sale_code")
-
+    
     @api.constrains('payment_exchange_rate')
     def _check_format_payment_exchange_rate(self):
         for rec in self:
@@ -208,7 +228,6 @@ class SaleOrder(models.Model):
                 match = re.match("^[0-9]+([,][0-9]+)?$", rec.expenses_expenses)
                 if match == None:
                     raise UserError("expenses invalid format")
-
 
     @api.onchange('term_payments')
     def _onchange_update_payment_term_id(self):
@@ -270,7 +289,6 @@ class SaleOrder(models.Model):
             if rec.state in "draft" or not rec.proforma_date:
                 rec.proforma_number= "PRE" + ''.join(filter(str.isdigit, rec.name))
                 rec.proforma_date= fields.Datetime.now()
-
 
     @api.depends('name')
     def _onchange_update_sale_code(self):
