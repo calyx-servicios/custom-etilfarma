@@ -178,7 +178,7 @@
                     <span t-esc="line.product_nmc"/>
                 </td>
                 <td>
-                    <span t-esc="line.country_id"/>
+                    <span t-if="line.country_id" t-esc="country_dict[line.country_id]"/>
                 </td>
                 <td style="text-align:right">
                     <span t-esc="line.price_unit" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>

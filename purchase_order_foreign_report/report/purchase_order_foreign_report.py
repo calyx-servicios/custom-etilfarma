@@ -25,7 +25,9 @@ class PurchaseOrderForeignReport(models.AbstractModel):
         header_name = str(header_parameters_obj.name)
         header_mail = str(header_parameters_obj.mail)
         header_phone = str(header_parameters_obj.phone)
-
+        countries_translations = self.env['ir.translation'].search([('name','=','res.country,name')])
+        country_dict = {name.value : name.src for name in countries_translations}
+        
         return {
             "doc_ids": docids,
             "doc_model": self.env["purchase.order"],
@@ -34,5 +36,6 @@ class PurchaseOrderForeignReport(models.AbstractModel):
             "header_name": header_name,
             "header_mail": header_mail,
             "header_phone": header_phone,
+            "country_dict": country_dict,
         }
 

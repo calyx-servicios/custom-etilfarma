@@ -4,11 +4,11 @@
     "summary": """
         New purchase custom report""",
     "author": "Calyx Servicios S.A.",
-    "maintainers": ["JhoneM"],
+    "maintainers": ["marcooegg"],
     "website": "http://odoo.calyx-cloud.com.ar/",
     "license": "AGPL-3",
     "category": "Report",
-    "version": "11.0.1.1.2",
+    "version": "11.0.1.1.3",
     "development_status": "Production/Stable",
     "application": False,
     "installable": True,
