@@ -2,10 +2,11 @@
 {
     "name": "Import Dispatch",
     "summary": """
-        Creates "Import Dispatch" within the product base, 
-        with the same batch logic.""",
+    This module adds the dispatch field which is related to lots. with the aim of being 
+    able to have several lots with the same name but with different dispatches
+    """,
     "author": "Calyx Servicios S.A.",
-    "maintainers": ["JhoneM"],
+    "maintainers": ["Paradiso Cristian"],
     "website": "http://odoo.calyx-cloud.com.ar/",
     "license": "AGPL-3",
     "category": "Inventory",

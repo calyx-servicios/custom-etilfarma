@@ -1,5 +1,5 @@
 ======================
-Stock Moves
+Import Dispatch
 ======================
 
 .. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -21,7 +21,8 @@ Stock Moves
 
 |badge1| |badge2| |badge3|
 
-Creates "Import Dispatch" within the product base with the same batch logic.
+This module adds the dispatch field which is related to lots. with the aim of being 
+able to have several lots with the same name but with different dispatches
 
 **Table of contents**
 
@@ -64,10 +65,8 @@ Contributors
 
 * `Calyx Servicios S.A. <http://odoo.calyx-cloud.com.ar/>`_
   
-  * Jhone Mendez
   * Federico Gregori
-  * Milton Guzman
-  * Christian Paradiso
+  * Cristian Paradiso
 
 Maintainers
 ~~~~~~~~~~~
