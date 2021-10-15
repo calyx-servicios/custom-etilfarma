@@ -85,3 +85,8 @@ class StockQuant(models.Model):
         'stock.production.dispatch',
         related='lot_id.dispatch_id'
     )
+
+# class SaleOrderLine(models.Model):
+#     _inherit = "sale.order.line"
+
+#     life_date = fields.Datetime(string="Life Date", related="stock.production.lot.life_date")

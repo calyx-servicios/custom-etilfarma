@@ -8,6 +8,6 @@ from odoo.exceptions import UserError
 class SaleOrderLine(models.Model):
     _inherit = "sale.order.line"
 
-    line_dispatch_name = fields.Char(
+    line_dispatch_name = fields.Many2one('stock.production.dispatch',
         string='Dispatch Name',
     )
