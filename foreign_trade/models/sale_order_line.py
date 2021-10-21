@@ -100,12 +100,43 @@ class SaleOrderLine(models.Model):
         # related="product_id.product_attr_value_id",
     )
 
+    @api.onchange("product_id")
+    def _get_lot_by_product(self):
+            names = []
+            filter_ids = []
+            lot_ids = self.env["stock.production.lot"].search([("product_id", "=", self.product_id.id)])
+            for lot_id in lot_ids:
+                if lot_id.name not in names:
+                    filter_ids.append(lot_id.id)
+                    names.append(lot_id.name)
+                    
+            self.lot_filter = [(6,0, filter_ids)]
+
+    lot_filter = fields.Many2many(
+        'stock.production.lot')
+    
+    @api.onchange("loot_name")
+    def _get_dispatch_by_product(self):
+            names = []
+            filter_ids = []
+            dispatch_ids = self.env["stock.production.dispatch"].search([("product_id", "=", self.product_id.id)])
+            for dispatch_id in dispatch_ids:
+                if dispatch_id.name not in names:
+                    #  and dispatch_id.lot_id.id == self.loot_name.dispatch_id.id
+                    filter_ids.append(dispatch_id.id)
+                    names.append(dispatch_id.name)
+                    
+            self.dispatch_filter = [(6,0, filter_ids)]
+
+    dispatch_filter = fields.Many2many(
+        'stock.production.lot')
+
     product_nmc = fields.Char(string="HS Code", related="product_id.product_nmc")
     country_id = fields.Char(string="Origin", required=True, related="product_tmpl_id.country_id.name")
     observations = fields.Char(string="Observation")
-    loot_name = fields.Many2one('stock.production.lot', string="Lot")
+    loot_name = fields.Many2one("stock.production.lot", string="Lot")
     client_code = fields.Char(string="Client Code")
-    life_date = fields.Datetime(string="Life Date", related='loot_name.life_date', store=True)
+    life_date = fields.Datetime(string="Life Date", related="loot_name.life_date")
     product_qty = fields.Float(digits=(12,2))
     qty_received = fields.Float(digits=(12,2))
     qty_invoiced = fields.Float(digits=(12,2))
@@ -113,3 +144,12 @@ class SaleOrderLine(models.Model):
     product_uom_qty = fields.Float(digits=(12,2))
     maker_id = fields.Char(string="Maker", required=True, related="product_tmpl_id.maker_id")
     default_code = fields.Char(string="Internal Reference", required=True, related="product_id.default_code")
+    
+
+# class StockQuant(models.Model):
+#     _inherit = 'stock.quant'
+    
+#     dispatch_id = fields.Many2one(
+#         'stock.production.dispatch',
+#         related='lot_id.dispatch_id'
+#     )
