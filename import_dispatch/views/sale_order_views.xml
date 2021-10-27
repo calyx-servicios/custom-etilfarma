@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="sale.view_order_form" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='order_line']/tree/field[@name='client_code']" position="before">
-                <field name="line_dispatch_name" domain="[('id' , '=', dispatch_filter)]"/>
+                <field name="line_dispatch_name" domain="[('id' , '=', dispatch_filter)]" options="{'no_open':True,'no_create': True,'no_create_edit':1}"/>
             </xpath>
         </field>
     </record>

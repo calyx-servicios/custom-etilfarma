@@ -162,7 +162,7 @@
                 <field name="default_code" attrs="{'readonly': True}" invisible="1"/>
                 <field name="maker_id" attrs="{'readonly': True}"/>
                 <field name="country_id" attrs="{'readonly': True}"/>
-                <field name="loot_name" domain="[('id' , '=', lot_filter)]" />
+                <field name="loot_name" domain="[('id' , '=', lot_filter)]" options="{'no_open':True,'no_create': True,'no_create_edit':1}"/>
                 <field name="client_code"/>
                 <field name="lot_filter"/>
                 <field name="dispatch_filter" />
