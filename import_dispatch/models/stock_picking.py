@@ -37,7 +37,7 @@ class StockPicking(models.Model):
                     'life_date': move.move_id.editable_life_date,
                 })
         if self.picking_type_code == 'outgoing':                   
-            for move in self.move_id.date:
+            for move in self.move_lines:
                 dispatch = self.env['stock.production.dispatch'].search([('name','=',move.dispatch_name),('product_id','=', move.product_id.id)])
                 if dispatch:
                     dispatch.write({'product_qty': dispatch.product_qty - move.qty_done})
