@@ -162,7 +162,7 @@
                 <field name="default_code" attrs="{'readonly': True}" invisible="1"/>
                 <field name="maker_id" attrs="{'readonly': True}"/>
                 <field name="country_id" attrs="{'readonly': True}"/>
-                <field name="loot_name"/>
+                <field name="loot_name" invisible="1"/>
                 <field name="client_code"/>
                 <field name="life_date" widget="date"/>
             </xpath>
