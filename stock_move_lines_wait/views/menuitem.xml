@@ -1,16 +1,18 @@
 <odoo>
     <data>
 
-        <record model="ir.actions.act_window" id="purchase_lines_window_4">
+        <record model="ir.actions.act_window" id="purchase_lines_window_8">
             <field name="name">Purchase lines in wait</field>
-            <field name="res_model">stock.move.line</field>
+            <field name="res_model">stock.picking</field>
             <field name="view_mode">tree</field>
+            <field name="view_id" ref="stock.view_move_line_tree_prueba44"/>
+            <field name="domain">[('state','=',"confirmed")]</field>
         </record>
 
-        <menuitem id="menu_purchase_lines_4"
+        <menuitem id="menu_purchase_lines_8"
 	        name="Purchase lines"
 	        sequence="3"
-	        action="purchase_lines_window_4"
+	        action="purchase_lines_window_8"
 	    />
 
     </data>
