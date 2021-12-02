@@ -8,6 +8,10 @@
             <xpath expr="//field[@name='line_lot_name']" position="after">
                 <field name="line_dispatch_name"/>
             </xpath>
+            <xpath expr="//field[@name='line_dispatch_name']" position="attributes">
+                <attribute name="attrs"></attribute>
+                <attribute name="readonly">False</attribute>
+            </xpath>
             <xpath expr="//field[@name='line_lot_name']" position="attributes">
                 <attribute name="readonly">1</attribute>
             </xpath>

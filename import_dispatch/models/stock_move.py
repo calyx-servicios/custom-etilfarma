@@ -32,6 +32,7 @@ class StockMove(models.Model):
     line_dispatch_name = fields.Char(
         string='Dispatch Name',
         compute=_compute_line_dispatch_name,
+        store=True,
         related='sale_line_id.line_dispatch_name.name'
     )
 
