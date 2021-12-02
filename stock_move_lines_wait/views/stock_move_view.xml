@@ -27,7 +27,6 @@
                 <field name="customer_purchase_order"/>
                 <field name="invoice_status"/>
                 <field name="shipping_address"/>
-                <field name="qty_done" string="Quantity Done" readonly = "1"/>
             </tree>
         </field>
     </record>
