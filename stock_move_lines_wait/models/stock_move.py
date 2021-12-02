@@ -67,10 +67,10 @@ class StockMove(models.Model):
         string="Unit of Measure",
         related="sale_line_id.product_uom",
     )
-    # qty_done = fields.Many2one(
-    #     string="Quantity Done",
-    #     related="sale_line_id.product_uom_qty",
-    # )
+    qty_done = fields.Float(
+        string="Quantity Done",
+        related="sale_line_id.product_uom_qty",
+    )
 
     @api.depends('origin')
     def get_link_action(self):
