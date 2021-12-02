@@ -27,7 +27,7 @@
         "stock_move_lines",
         ],
     "data": [
-        "views/stock_picking_view.xml",
+        "views/stock_move_view.xml",
         "views/menuitem.xml",
         ],
 }

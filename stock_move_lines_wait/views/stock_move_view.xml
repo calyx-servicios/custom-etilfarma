@@ -3,9 +3,9 @@
 
     <record id="stock.view_move_line_tree_wait" model="ir.ui.view">
         <field name="name">stock.move.line.tree</field>
-        <field name="model">stock.picking</field>
+        <field name="model">stock.move</field>
         <field name="arch" type="xml">
-            <tree decoration-muted="state == 'cancel'" decoration-danger="(state not in ('cancel'))" string="Move Lines" create="0" editable="bottom" default_order="date">
+            <tree string="Move Lines" create="0" editable="bottom" default_order="date">
                 <field name="date" readonly = "1" widget="date" invisible="1"/>
                 <field name="name" string="Reference" readonly = "1"/>
                 <field name="voucher_ids" string="Voucher" widget="many2many_tags" readonly = "1"/>
@@ -23,7 +23,7 @@
                 <field name="comments"/>
                 <field name="order_date"/>
                 <field name="customer_purchase_order"/>
-                <!-- <field name="invoice_status"/> -->
+                <field name="invoice_status"/>
                 <field name="shipping_address"/>
             </tree>
         </field>

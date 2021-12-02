@@ -3,8 +3,8 @@ from odoo import fields, models, api
 from odoo import fields, models, api, http, _
 from odoo.exceptions import UserError
 
-class StockPicking(models.Model):
-    _inherit = "stock.picking"
+class StockMove(models.Model):
+    _inherit = "stock.move"
 
     voucher_ids = fields.One2many(
         'stock.picking.voucher',
@@ -59,7 +59,7 @@ class StockPicking(models.Model):
         store=True,
     )
     customer_purchase_order = fields.Char(
-        related="sale_id.customer_purchase_order",
+        related="picking_id.sale_id.customer_purchase_order",
         # compute="_customer_purchase_order",
         store=True,
     )
@@ -148,9 +148,7 @@ class StockPicking(models.Model):
                 'name': record.partner_id.name,
             }
             record.shipping_address = address_format % args
-class StockMove(models.Model):
-    _inherit = "stock.move"
-
+            
     order_date = fields.Date(string="Order date", related="sale_line_id.order_date")
     invoice_status = fields.Selection(string="invoice status", related="sale_line_id.invoice_status")
 
@@ -170,11 +168,3 @@ class StockMove(models.Model):
     city = fields.Char()
     zip = fields.Char()
     street2 = fields.Char()
-
-class SaleOrderLine(models.Model):
-    _inherit = "sale.order.line"
-    
-    order_date = fields.Date(string="Order date")
-
-
-    # self.env['sale.order.line'].search([('picking_id','=',self.id)],limit=1).order_id.date_order 
