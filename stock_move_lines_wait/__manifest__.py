@@ -1,11 +1,10 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
-    "name": "Stock Moves",
+    "name": "Purchase lines in wait",
     "summary": """
-        Add within inventories (on delivery and receipt) 
-        a tree view per product line""",
+        shows a tree view of the product lines in the waiting state""",
     "author": "Calyx Servicios S.A.",
-    "maintainers": ["JhoneM"],
+    "maintainers": ["Andres Andrade"],
     "website": "http://odoo.calyx-cloud.com.ar/",
     "license": "AGPL-3",
     "category": "Inventory",
@@ -22,12 +21,13 @@
         "foreign_purchase_order",
         "stock_voucher",
         "foreign_trade",
-        "purchase_order_invoice_to"
+        "purchase_order_invoice_to",
+        "stock_move_lines",
+        "purchase",
+        "stock_move_lines",
         ],
     "data": [
-        "views/stock_move_line_view.xml",
-        "views/stock_picking_type_view.xml",
-        "views/sale_order_line_view.xml",
+        "views/stock_picking_view.xml",
         "views/menuitem.xml",
         ],
 }

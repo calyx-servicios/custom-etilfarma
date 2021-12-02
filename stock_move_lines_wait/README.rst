@@ -1,11 +1,10 @@
 ======================
-Stock Moves
+Purchase lines in wait
 ======================
 
-.. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-   !! This file is intended to be in every module    !!
-   !! to explain why and how it works.               !!
-   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+.. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   !! shows a tree view of the product lines in the waiting state  !!
+   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
 .. User https://shields.io for badge creation.
@@ -38,8 +37,6 @@ Install the module
 Configure
 =========
 
-Go to purchase and select a delivery_date_planned_date, after that check the date_picker in inventory.
-
 
 Known issues / Roadmap
 ======================
@@ -64,10 +61,7 @@ Contributors
 
 * `Calyx Servicios S.A. <http://odoo.calyx-cloud.com.ar/>`_
   
-  * Jhone Mendez
-  * Federico Gregori
-  * Milton Guzman
-  * Christian Paradiso
+  * Andres Andrade
 
 Maintainers
 ~~~~~~~~~~~
