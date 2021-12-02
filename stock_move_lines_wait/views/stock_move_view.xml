@@ -25,6 +25,8 @@
                 <field name="customer_purchase_order"/>
                 <field name="invoice_status"/>
                 <field name="shipping_address"/>
+                <!-- <field name="qty_done" string="Quantity Done" readonly = "1"/> -->
+                <field name="product_uom_id" options="{'no_open': True, 'no_create': True}" string="Unit of Measure" groups="product.group_uom" readonly = "1"/>
             </tree>
         </field>
     </record>

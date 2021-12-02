@@ -11,19 +11,16 @@ class StockMove(models.Model):
         'picking_id',
         'Vouchers',
         copy=False,
-        # related='picking_id.voucher_ids'
     )
     name = fields.Char(
         string="Referencia",
     )
     origin = fields.Char(
         string="Source Document",
-        # related='picking_id.origin'
     )
     partner_id = fields.Many2one(
         'res.partner', 
         'Partner', 
-        # related='picking_id.partner_id'
     )
     delivery_date = fields.Date(
         string="Delivery date",
@@ -34,33 +31,28 @@ class StockMove(models.Model):
     warehouse_id = fields.Many2one(
         'stock.warehouse', 
         'Warehouse',
-        # related='picking_id.picking_type_id.warehouse_id'
     )
     picking_type_id = fields.Many2one(
-        # related='picking_id.picking_type_id',
         store=True,
     )
     picking_type_code = fields.Selection([
         ('incoming', 'Vendors'),
         ('outgoing', 'Customers'),
         ('internal', 'Internal')], 
-        # related='picking_id.picking_type_id.code',
         readonly=True,
     )
     packaging = fields.Char(
         string="Packaging",
-        # related="move_id.packaging"
     )
     comments = fields.Char(
         string="Comments"
     )
-    order_date = fields.Datetime(string="Order date", 
-        # related="sale_id.date_order",
+    order_date = fields.Datetime(
+        string="Order date", 
         store=True,
     )
     customer_purchase_order = fields.Char(
         related="picking_id.sale_id.customer_purchase_order",
-        # compute="_customer_purchase_order",
         store=True,
     )
     invoice_status = fields.Char(
@@ -71,6 +63,14 @@ class StockMove(models.Model):
         compute="_compute_address",
         store=True,
     )
+    product_uom_id = fields.Many2one(
+        string="Unit of Measure",
+        related="sale_line_id.product_uom",
+    )
+    # qty_done = fields.Many2one(
+    #     string="Quantity Done",
+    #     related="sale_line_id.product_uom_qty",
+    # )
 
     @api.depends('origin')
     def get_link_action(self):
@@ -109,28 +109,6 @@ class StockMove(models.Model):
                 raise UserError(_('Can only view sale or purchase orders'))
         else:
             raise UserError(_('Move has no origin'))
-
-
-    # @api.depends("picking_id")
-    # def _customer_purchase_order(self):
-    #     for record in self:
-    #         if record.picking_id:
-    #             record.customer_purchase_order = record.picking_id.sale_id.customer_purchase_order
-    #         else:
-    #             record.customer_purchase_order = ""
-
-    # @api.depends("sale_id")
-    # def _invoice_status(self):
-    #     for record in self:
-    #         if record.sale_id:
-    #             if record.sale_id.state == "draft":
-    #                 record.state = "Presupuesto"
-    #             elif record.sale_id.state == "sent":
-    #                 record.state = "Presupuesto Enviado"
-    #             elif record.sale_id.state == "Sale":
-    #                 record.state = "Pedido Enviado"
-    #         else:
-    #             record.state = ""
 
     @api.depends('partner_id')
     def _compute_address(self):
