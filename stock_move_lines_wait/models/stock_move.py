@@ -47,7 +47,8 @@ class StockMove(models.Model):
     comments = fields.Char(
         string="Comments"
     )
-    order_date = fields.Datetime(string="Order date", 
+    order_date = fields.Datetime(
+        string="Order date", 
         store=True,
     )
     customer_purchase_order = fields.Char(
@@ -62,6 +63,14 @@ class StockMove(models.Model):
         compute="_compute_address",
         store=True,
     )
+    product_uom_id = fields.Many2one(
+        string="Unit of Measure",
+        related="sale_line_id.product_uom",
+    )
+    # qty_done = fields.Many2one(
+    #     string="Quantity Done",
+    #     related="sale_line_id.product_uom_qty",
+    # )
 
     @api.depends('origin')
     def get_link_action(self):
