@@ -115,15 +115,15 @@ class StockMove(models.Model):
         for record in self:
             address_format = "%(name)s\n %(street)s\n%(street2)s\n%(city)s\n%(state_name)s\n%(country_name)s"
             args = {
-                'street': record.partner_id.street,
-                'street2': record.partner_id.street2,
+                'street': record.partner_id.street or '',
+                'street2': record.partner_id.street2 or '',
                 'state_code': record.partner_id.state_id.code or '',
                 'state_name': record.partner_id.state_id.name or '',
                 'city': record.partner_id.city or '',
                 'country_code': record.partner_id.country_id.code or '',
                 'zip': record.partner_id.zip or '',
-                'country_name': record.partner_id.country_id.display_name,
-                'name': record.partner_id.name,
+                'country_name': record.partner_id.country_id.display_name or '',
+                'name': record.partner_id.name or '',
             }
             record.shipping_address = address_format % args
             
