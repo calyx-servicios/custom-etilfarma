@@ -5,12 +5,15 @@
         <field name="model">stock.picking</field>
         <field name="inherit_id" ref="stock.view_picking_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='move_lines']/tree//field[@name='product_id']" position="after">
-                <field name="has_tracking" invisible="1"/>
-                <field name="has_move_lines" invisible="1"/>
-                <field name="line_lot_name" attrs="{'readonly': ['|', ('has_tracking', '=', 'none'), ('has_move_lines', '=', False)]}"/>
-                <field name="life_date" attrs="{'column_invisible': [('parent.picking_type_code', '!=', 'incoming')], 'readonly': ['|', ('has_tracking','=', 'none'), ('has_move_lines', '=', False)]}"/>
-            </xpath>
+        <xpath expr="//field[@name='move_lines']/tree//field[@name='product_id']" position="after">
+            <field name="has_tracking" invisible="1"/>
+            <field name="has_move_lines" invisible="1"/>
+            <!-- <field name="line_lot_name" attrs="{'readonly': ['|', ('has_tracking', '=', 'none'), ('has_move_lines', '=', False)]}"/> -->
+            <field name="life_date" attrs="{'column_invisible': [('parent.picking_type_code', '!=', 'incoming')], 'readonly': ['|', ('has_tracking','=', 'none'), ('has_move_lines', '=', False)]}" invisible="1"/>
+            <field name="line_lot_name"/>
+            <field name="editable_life_date"/>
+            <field name="line_dispatch_name" domain="[('id' , '=', dispatch_filter)]"/>
+        </xpath>
         </field>
     </record>
     

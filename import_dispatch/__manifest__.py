@@ -33,5 +33,6 @@
         "views/sale_order_views.xml",
         "views/stock_production_lot_view.xml",
         "views/stock_change_product_views.xml",
+        "views/stock_picking.xml",
         ],
 }

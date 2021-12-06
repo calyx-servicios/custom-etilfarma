@@ -12,18 +12,18 @@
                 <attribute name="attrs"></attribute>
                 <attribute name="readonly">False</attribute>
             </xpath>
-            <xpath expr="//field[@name='line_dispatch_name']" position="attributes">
+            <!-- <xpath expr="//field[@name='line_dispatch_name']" position="attributes">
                 <attribute name="attrs"></attribute>
                 <attribute name="force_save">1</attribute>
-            </xpath>
+            </xpath> -->
             <!-- <xpath expr="//field[@name='editable_life_date']" position="attributes">
                 <attribute name="attrs"></attribute>
                 <attribute name="force_save">1</attribute>
             </xpath> -->
-            <xpath expr="//field[@name='line_lot_name']" position="attributes">
+            <!-- <xpath expr="//field[@name='line_lot_name']" position="attributes">
                 <attribute name="attrs"></attribute>
                 <attribute name="readonly">False</attribute>
-            </xpath>
+            </xpath> -->
             <xpath expr="//field[@name='life_date']" position="after">
                 <field name="editable_life_date" widget="date"/>
             </xpath>
