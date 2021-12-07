@@ -726,7 +726,7 @@ msgstr "Payment TC"
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_payment_TTE_amount
 msgid "Payment TTE Amount"
-msgstr "Payment TTE Amount"
+msgstr "Total Pago TTE"
 
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_dispatcher_phone_number
@@ -1119,7 +1119,7 @@ msgstr "Factura Comercial"
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_documents_shipping_document_status
 #: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
 msgid "Shipping Document"
-msgstr "Documentación Original"
+msgstr "Documento de Embarque"
 
 #. module: foreign_purchase_order
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_delivery_number_status
@@ -1321,3 +1321,8 @@ msgstr "Nro de Solicitud / Concepto de Pago"
 #: model:ir.model.fields,field_description:foreign_purchase_order.field_purchase_order_payment_bank_and_account
 msgid "Bank and Account"
 msgstr "Banco y Cuenta"
+
+#. module: foreign_purchase_order
+#: model:ir.ui.view,arch_db:foreign_purchase_order.purchase_order_form_foreign_fields
+msgid "TTE Paid Value"
+msgstr "Total Pago TTE"

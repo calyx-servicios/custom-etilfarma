@@ -31,8 +31,7 @@ class StockMove(models.Model):
                     
     line_dispatch_name = fields.Char(
         string='Dispatch Name',
-        compute=_compute_line_dispatch_name,
-        store=True,
+        compute="_compute_line_dispatch_name",
         related='sale_line_id.line_dispatch_name.name'
     )
 
@@ -53,6 +52,7 @@ class StockMove(models.Model):
         help='This is the date on which the goods with this Serial Number may '
              'become dangerous and must not be consumed.',
     )
+    
     @api.multi
     def production_lot_from_name(self, create_lot=True):
         StockProductionLot = self.env['stock.production.lot']

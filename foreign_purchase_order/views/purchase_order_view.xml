@@ -113,7 +113,7 @@
                             <field name="payment_reference" string="Reference" attrs="{'readonly': 1}" force_save="1"/>
                             <field name="payment_concept" string="Concept" attrs="{'readonly': 1, 'invisible': 1}" force_save="1"/>
                             <field name="payment_currency" string="Payment Currency" attrs="{'readonly': 1}" force_save="1"/>
-                            <field name="payment_TTE_amount" string="TTE Paid Value'" attrs="{'readonly': 1}" force_save="1"/>
+                            <field name="payment_TTE_amount" string="TTE Paid Value" attrs="{'readonly': 1}" force_save="1"/>
                             <field name="payment_TC" string="TC" attrs="{'readonly': 1}" force_save="1"/>
                         </group>
                         <group name="dispatcher" string="Dispatcher">
