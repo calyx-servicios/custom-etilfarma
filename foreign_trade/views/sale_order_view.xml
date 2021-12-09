@@ -38,7 +38,7 @@
                 <attribute name="widget">date</attribute>
             </xpath>
             <xpath expr="//notebook" position="inside">
-                <page string='Foreign Sale' attrs="{'invisible': [('order_type_foreign','=',False)]}">
+                <page string='Foreign Sale'>
                     <group>
                         <group>
                             <field name="order_type_foreign" invisible="1"/>
