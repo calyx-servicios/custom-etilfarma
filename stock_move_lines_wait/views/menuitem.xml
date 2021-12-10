@@ -10,8 +10,8 @@
         </record>
 
         <menuitem id="menu_purchase_lines"
-	        name="Product lines"
-	        sequence="3"
+	        name="Sale Lines"
+	        sequence="4"
             parent="sale.sale_order_menu"
 	        action="purchase_lines_window"
 	    />
