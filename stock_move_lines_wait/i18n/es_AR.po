@@ -44,7 +44,7 @@ msgstr "Fecha de entrega"
 #. module: stock_move_lines_wait
 #: selection:stock.move,picking_type_code:0
 msgid "Internal"
-msgstr "InternO"
+msgstr "Interno"
 
 #. module: stock_move_lines_wait
 #: code:addons/stock_move_lines_wait/models/stock_move.py:111
