@@ -9,7 +9,7 @@
             <xpath expr="//button[@name='action_invoice_sent'][1]" position="after">
                 <button 
                     name="invoice_en_print"
-                    string="Print Invoice EN 1"
+                    string="Print Invoice EN"
                     type="object"
                     attrs="{'invisible':['|',('sent','=',True), ('state', 'not in', ('open','paid'))]}"
                     class="oe_highlight"
@@ -19,31 +19,12 @@
             <xpath expr="//button[@name='action_invoice_sent'][2]" position="after">
                 <button 
                     name="invoice_en_print"
-                    string="Print Invoice EN 2"
+                    string="Print Invoice EN"
                     type="object"
                     attrs="{'invisible':['|',('sent','=',False), ('state', 'not in', ('open','paid'))]}"
                     groups="base.group_user"/>
-            </xpath>         
-
-            <xpath expr="//button[@name='action_invoice_sent']" position="after">
-                <button name="invoice_print" string="Print Invoice prueba 1" type="object" attrs="{'invisible':['|',('sent','=',True), ('state', 'not in', ('open','paid'))]}" class="oe_highlight" groups="base.group_user"/>
-            </xpath>   
-            <xpath expr="//button[@name='action_invoice_sent']" position="after">
-                <button name="invoice_print" string="Print Invoice prueba 2" type="object" attrs="{'invisible':['|',('sent','=',True), ('state', 'not in', ('open','paid'))]}" class="oe_highlight" groups="base.group_user"/>
-            </xpath>  
-            <!-- <xpath expr="//button[@name='action_invoice_sent'][7]" position="after">
-                <button 
-                    name="invoice_en_print"
-                    string="Prueba es"
-                    type="object"
-                    attrs="{'invisible':['|',('sent','=',True), ('state', 'not in', ('open','paid'))]}"
-                    class="oe_highlight"
-                    groups="base.group_user"/>
-            </xpath>              -->
+            </xpath>                
         </field>
     </record>
 
 </odoo>
-<!-- <button name="invoice_print" string="Print Invoice" type="object" attrs="{'invisible':['|',('sent','=',True), ('state', 'not in', ('open','paid'))]}" class="oe_highlight" groups="base.group_user"/>
-                    <button name="action_invoice_sent" type="object" string="Send by Email" attrs="{'invisible':['|',('sent','=',False), ('state', 'not in', ('open','paid'))]}" groups="base.group_user"/>
-                    <button name="invoice_print" string="Print Invoice" type="object" attrs="{'invisible':['|',('sent','=',False), ('state', 'not in', ('open','paid'))]}" groups="base.group_user"/> -->
