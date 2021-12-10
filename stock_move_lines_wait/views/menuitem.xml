@@ -2,7 +2,7 @@
     <data>
 
         <record model="ir.actions.act_window" id="purchase_lines_window">
-            <field name="name">Lineas de Productos</field>
+            <field name="name">Sale Lines</field>
             <field name="res_model">stock.move</field>
             <field name="view_mode">tree</field>
             <field name="view_id" ref="stock.view_move_line_tree_wait"/>
@@ -10,8 +10,9 @@
         </record>
 
         <menuitem id="menu_purchase_lines"
-	        name="Purchase lines"
-	        sequence="3"
+	        name="Sale Lines"
+	        sequence="4"
+            parent="sale.sale_order_menu"
 	        action="purchase_lines_window"
 	    />
 
