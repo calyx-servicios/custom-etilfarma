@@ -1,11 +1,10 @@
-======================
-Purchase lines in wait
-======================
+==================
+Customer field crm
+==================
 
-.. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-   !! shows a tree view of the product lines in the waiting state  !!
-   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
+.. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   !! Show customer field always  !!
+   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 .. User https://shields.io for badge creation.
 .. |badge1| image:: https://img.shields.io/badge/maturity-Stable-brightgreen
@@ -19,9 +18,6 @@ Purchase lines in wait
     :alt: calyxservicios-group/odoo/odoo-calyx
 
 |badge1| |badge2| |badge3|
-
-This module adds within inventories (on delivery and receipt) a tree view per product line
-**Table of contents**
 
 .. contents::
    :local:
