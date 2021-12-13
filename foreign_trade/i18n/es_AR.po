@@ -1822,3 +1822,8 @@ msgstr "Nro de Solicitud / Concepto de Pago"
 #: model:ir.model.fields,field_description:foreign_trade.field_sale_order_payment_bank_and_account
 msgid "Bank and Account"
 msgstr "Banco y Cuenta"
+
+#. module: foreign_trade
+#: model:ir.ui.view,arch_db:foreign_trade.view_order_form
+msgid "Extra information"
+msgstr "Información extra"

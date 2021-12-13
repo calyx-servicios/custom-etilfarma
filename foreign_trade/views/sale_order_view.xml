@@ -54,6 +54,22 @@
                         </group>
                     </group>
                 </page>
+                <page string='Extra information' attrs="{'invisible': [('order_type_foreign','=',True)]}">
+                    <group>
+                        <group>
+                            <field name="order_type_foreign" invisible="1"/>
+                            <field name="incoterm_id" string="Incoterm" options="{'no_open':True,'no_create': True,'no_create_edit':1}"/>
+                            <field name="observations" string="Observations" style=' min-height: 100px; word-break: break-word' />
+                            <field name="shipment_id" string="Shipment" options="{'no_open':True,'no_create': True,'no_create_edit':1}"/>
+                            <field name="certificate_of_analysis" string="Certificate of Analysis"/>
+                        </group>
+                        <group>
+                            <field name="place_of_delivery_id" string="Place of Delivery" options="{'no_open':True,'no_create': True,'no_create_edit':1}"/>
+                            <field name="carriers" string="Carriers" style='min-height: 130px; word-break: break-word'/>
+                            <field name="term_payments" string="Terms of Payment" options="{'no_open':True,'no_create':1,'no_create_edit':1}"/>
+                        </group>
+                    </group>
+                </page>
                 <page string='Tracking Order' attrs="{'invisible': [('order_type_foreign','=',False)]}">
                     <group>
                         <group name="quotation" string="Quotation">
