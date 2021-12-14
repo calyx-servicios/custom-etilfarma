@@ -12,7 +12,7 @@
             <field name="life_date" attrs="{'column_invisible': [('parent.picking_type_code', '!=', 'incoming')], 'readonly': ['|', ('has_tracking','=', 'none'), ('has_move_lines', '=', False)]}" invisible="1"/>
             <field name="line_lot_name"/>
             <field name="editable_life_date"/>
-            <field name="dispatch_filter)"/>
+            <field name="dispatch_filter"/>
             <field name="line_dispatch_name" domain="[('id' , '=', dispatch_filter)]"/>
         </xpath>
         </field>
