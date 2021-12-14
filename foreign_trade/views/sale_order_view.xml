@@ -11,6 +11,11 @@
                 <button name="print_foreign_sale_proforma_report" string="Print Proforma" type="object" attrs="{'invisible': [('order_type_foreign','=',False)]}" class="oe_highlight" groups="base.group_user"/>
                 <button string="Send proforma" name="action_proforma_send" type="object" attrs="{'invisible': [('order_type_foreign','=',False)]}" class="oe_highlight" groups="base.group_user"/>
             </xpath>
+            <xpath expr="//button[@name='action_confirm']" position="replace">
+            <button name="action_confirm"
+                    string="Confirm Sale" type="object"
+                    attrs="{'invisible': [('state', 'not in', ['sale'])]}"/>
+            </xpath>
             <xpath expr="//button[@name='action_quotation_send'][1]" position="attributes">
                 <attribute name="attrs">{'invisible': ['|',('order_type_foreign','=',True)]}</attribute>
             </xpath>
