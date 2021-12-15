@@ -2,7 +2,7 @@
 {
     "name": "Customer field crm",
     "summary": """
-        """,
+       Show customer field always """,
     "author": "Calyx Servicios S.A.",
     "maintainers": ["Andres Andrade"],
     "website": "http://odoo.calyx-cloud.com.ar/",
