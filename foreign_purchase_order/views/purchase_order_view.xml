@@ -6,7 +6,7 @@
         <field name="arch" type="xml">
 
             <button id="draft_confirm" position="replace">
-                <button name="button_confirm" type="object" states="draft" string="Closing order" id="draft_confirm"/>
+                <button name="button_confirm" type="object" states="draft,purchase" string="Closing order" id="draft_confirm"/>
             </button>
 
             <field name="picking_type_id" position="after">
