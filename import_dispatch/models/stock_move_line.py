@@ -14,7 +14,7 @@ class StockMoveLine(models.Model):
     dispatch_name = fields.Char(
         string='Dispatch Name',
     )
-    life_date = fields.Datetime(
+    life_date = fields.Date(
         string='Life Date'
     )
     @api.onchange('lot_name')
