@@ -52,6 +52,7 @@ class StockMove(models.Model):
                     lines.line_lot_name = ','.join(name)
                 else:
                     lines.line_lot_name = ""
+                    
     line_dispatch_name = fields.Char(
         string='Dispatch Name',
         compute="_compute_line_dispatch_name",
