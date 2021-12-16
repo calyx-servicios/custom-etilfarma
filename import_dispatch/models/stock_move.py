@@ -32,7 +32,7 @@ class StockMove(models.Model):
     line_dispatch_name = fields.Char(
         string='Dispatch Name',
         compute="_compute_line_dispatch_name",
-        related='sale_line_id.line_dispatch_name.name'
+        # related='sale_line_id.line_dispatch_name.name'
     )
 
     dispatch_id = fields.Many2one(
@@ -44,11 +44,11 @@ class StockMove(models.Model):
     )
     line_lot_name = fields.Char(
         string='Lot Name',
-        related='sale_line_id.loot_name.name'
+        # related='sale_line_id.loot_name.name'
     )
     editable_life_date = fields.Datetime(
         string='End of Life Date',
-        related='sale_line_id.life_date',
+        # related='sale_line_id.life_date',
         help='This is the date on which the goods with this Serial Number may '
              'become dangerous and must not be consumed.',
     )
