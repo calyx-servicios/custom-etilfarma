@@ -52,6 +52,30 @@ class StockMove(models.Model):
                 else:
                     lines.line_lot_name = ""
                     
+    @api.multi
+    def _compute_life_date(self):
+        for lines in self:
+            name = []
+            for line in lines.move_line_ids:
+                name.append(line.life_date)
+            if len(name)>0:
+                if name[0]:
+                    lines.editable_life_date = ','.join(name)
+                else:
+                    lines.editable_life_date = ""
+
+    @api.multi
+    def _compute_lot_name(self):
+        for lines in self:
+            name = []
+            for line in lines.move_line_ids:
+                name.append(line.lot_name)
+            if len(name)>0:
+                if name[0]:
+                    lines.line_lot_name = ','.join(name)
+                else:
+                    lines.line_lot_name = ""
+                    
     line_dispatch_name = fields.Char(
         string='Dispatch Name',
         compute="_compute_line_dispatch_name",
@@ -73,6 +97,7 @@ class StockMove(models.Model):
     editable_life_date = fields.Datetime(
         string='End of Life Date',
         compute="_compute_life_date",
+        # related='sale_line_id.life_date',
         help='This is the date on which the goods with this Serial Number may '
              'become dangerous and must not be consumed.',
     )
