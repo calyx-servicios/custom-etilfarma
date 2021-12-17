@@ -36,6 +36,8 @@ class StockPicking(models.Model):
                     'dispatch_id': rec.id,
                     'life_date': move.move_id.editable_life_date,
                 })
+                move.dispatch_id = rec.id
+                move.lot_id = lot_name.id
         if self.picking_type_code == 'outgoing':                   
             for move in self.move_lines:
                 dispatch = self.env['stock.production.dispatch'].search([('name','=',move.dispatch_name),('product_id','=', move.product_id.id)])
