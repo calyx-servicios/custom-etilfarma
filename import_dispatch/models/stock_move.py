@@ -28,6 +28,7 @@ class StockMove(models.Model):
                     lines.line_dispatch_name = ','.join(name_id)
                 else:
                     lines.line_dispatch_name = ""
+
     @api.multi
     def _compute_life_date(self):
         for lines in self:
@@ -51,6 +52,18 @@ class StockMove(models.Model):
                     lines.line_lot_name = ','.join(name)
                 else:
                     lines.line_lot_name = ""
+    
+    # @api.multi
+    # def _compute_lot_name(self):
+    #     for lines in self:
+    #         name = []
+    #         for line in lines.move_line_ids:
+    #             name.append(line.loot_name)
+    #         if len(name)>0:
+    #             if name[0]:
+    #                 lines.line_lot_name = ','.join(name)
+    #             else:
+    #                 lines.line_lot_name = ""
                     
     line_dispatch_name = fields.Char(
         string='Dispatch Name',
