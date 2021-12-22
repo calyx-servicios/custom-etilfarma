@@ -17,9 +17,7 @@ class StockMoveLine(models.Model):
     life_date = fields.Date(
         string='Life Date'
     )
-    life_date_sale_order = fields.Date(
-        string='prueba'
-    )
+    
     @api.onchange('lot_name')
     def onchange_document_number(self):
         for rec in self.picking_id.move_lines:
