@@ -45,13 +45,32 @@ class StockMove(models.Model):
     def _compute_lot_name(self):
         for lines in self:
             name = []
+            name_id = []
             for line in lines.move_line_ids:
-                name.append(line.lot_name)
+                name.append(line.lot_id.name)
+                name_id.append(line.lot_name)
             if len(name)>0:
                 if name[0]:
                     lines.line_lot_name = ','.join(name)
                 else:
                     lines.line_lot_name = ""
+            if len(name_id)>0 and lines.line_lot_name == "":
+                if name_id[0]:
+                    lines.line_lot_name = ','.join(name_id)
+                else:
+                    lines.line_lot_name = ""
+
+    # @api.multi
+    # def _compute_lot_name(self):
+    #     for lines in self:
+    #         name = []
+    #         for line in lines.move_line_ids:
+    #             name.append(line.lot_name)
+    #         if len(name)>0:
+    #             if name[0]:
+    #                 lines.line_lot_name = ','.join(name)
+    #             else:
+    #                 lines.line_lot_name = ""
     
     # @api.multi
     # def _compute_lot_name(self):
@@ -84,6 +103,20 @@ class StockMove(models.Model):
     editable_life_date = fields.Date(
         string='End of Life Date',
         compute="_compute_life_date",
+        help='This is the date on which the goods with this Serial Number may '
+             'become dangerous and must not be consumed.',
+    )
+    dispatch_name_in_stock_move = fields.Char(
+        string='PRUEBA DESPACHO',
+        # compute="_compute_line_dispatch_name",
+    )
+    lot_name_in_stock_move = fields.Char(
+        string='PRUEBA LOTE',
+        # compute="_compute_lot_name",
+    )
+    life_date_in_stock_move = fields.Date(
+        string='PRUEBA FECHA',
+        # compute="_compute_life_date",
         help='This is the date on which the goods with this Serial Number may '
              'become dangerous and must not be consumed.',
     )

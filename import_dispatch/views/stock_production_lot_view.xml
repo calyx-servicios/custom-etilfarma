@@ -40,6 +40,15 @@
             <xpath expr="//field[@name='life_date']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
+            <xpath expr="//field[@name='editable_life_date']" position="after">
+                <field name="life_date_in_stock_move" widget="date" readonly = "1"/>
+            </xpath>
+            <xpath expr="//field[@name='editable_life_date']" position="after">
+                <field name="dispatch_name_in_stock_move"/>
+            </xpath>
+            <xpath expr="//field[@name='editable_life_date']" position="after">
+                <field name="lot_name_in_stock_move"/>
+            </xpath>
         </field>
     </record>
 
