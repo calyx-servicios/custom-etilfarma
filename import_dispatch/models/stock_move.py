@@ -108,14 +108,17 @@ class StockMove(models.Model):
     )
     dispatch_name_in_stock_move = fields.Char(
         string='PRUEBA DESPACHO',
+        related='sale_line_id.line_dispatch_name.name'
         # compute="_compute_line_dispatch_name",
     )
     lot_name_in_stock_move = fields.Char(
         string='PRUEBA LOTE',
+        related='sale_line_id.loot_name.name',
         # compute="_compute_lot_name",
     )
-    life_date_in_stock_move = fields.Date(
+    life_date_in_stock_move = fields.Datetime(
         string='PRUEBA FECHA',
+        related='sale_line_id.life_date',
         # compute="_compute_life_date",
         help='This is the date on which the goods with this Serial Number may '
              'become dangerous and must not be consumed.',
