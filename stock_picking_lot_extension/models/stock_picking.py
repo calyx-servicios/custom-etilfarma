@@ -39,9 +39,11 @@ class StockPicking(models.Model):
                     # date = line.editable_life_date
                     # dates = line.life_date_in_stock_move
                     if dispatch != dispatchs:
-                        raise UserError(('The dispatch must coincide with the sales order'))  
+                        # raise UserError(('The dispatch must coincide with the sales order')) 
+                        raise UserError(_('The dispatch must coincide with the sales order %s.') % product.display_name) 
                     if lot != lots:
-                        raise UserError(('The lot must coincide with the sales order'))   
+                        # raise UserError(('The lot must coincide with the sales order')) 
+                        raise UserError(_('The lot must coincide with the sales order %s.') % product.display_name)  
                     # if date != dates:
                     #     raise UserError(('The life date must coincide with the sales order'))       
         res = super(StockPicking, self).button_validate() 

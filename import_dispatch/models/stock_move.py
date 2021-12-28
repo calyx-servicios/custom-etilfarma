@@ -12,12 +12,16 @@ class StockMove(models.Model):
 
     @api.multi
     def _compute_line_dispatch_name(self):
+        # import wdb
+        # wdb.set_trace()
         for lines in self:
             name = []
             name_id = []
             for line in lines.move_line_ids:
-                name.append(line.dispatch_name)
-                name_id.append(line.dispatch_id.name)
+                # if line.dispatch_name:
+                    name.append(line.dispatch_name)
+                # if line.dispatch_id.name:
+                    name_id.append(line.dispatch_id.name)
             if len(name)>0:
                 if name[0]:
                     lines.line_dispatch_name = ','.join(name)
