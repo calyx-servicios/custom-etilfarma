@@ -12,15 +12,12 @@ class StockMove(models.Model):
 
     @api.multi
     def _compute_line_dispatch_name(self):
-        # import wdb
-        # wdb.set_trace()
         for lines in self:
             name = []
             name_id = []
             for line in lines.move_line_ids:
-                # if line.dispatch_name:
+                if line.dispatch_name or line.dispatch_id.name:
                     name.append(line.dispatch_name)
-                # if line.dispatch_id.name:
                     name_id.append(line.dispatch_id.name)
             if len(name)>0:
                 if name[0]:
@@ -33,12 +30,33 @@ class StockMove(models.Model):
                 else:
                     lines.line_dispatch_name = ""
 
+    # @api.multi
+    # def _compute_line_dispatch_name(self):
+    #     for lines in self:
+    #         name = []
+    #         name_id = []
+    #         for line in lines.move_line_ids:
+    #             if line.dispatch_id.name or line.dispatch_name:
+    #                 name.append(line.dispatch_id.name)
+    #                 name_id.append(line.dispatch_name)
+    #         if len(name)>0:
+    #             if name[0]:
+    #                 lines.line_dispatch_name = ','.join(name)
+    #             else:
+    #                 lines.line_dispatch_name = ""
+    #         if len(name_id)>0 and lines.line_dispatch_name == "":
+    #             if name_id[0]:
+    #                 lines.line_dispatch_name = ','.join(name_id)
+    #             else:
+    #                 lines.line_dispatch_name = ""
+
     @api.multi
     def _compute_life_date(self):
         for lines in self:
             name = []
             for line in lines.move_line_ids:
-                name.append(line.life_date)
+                if line.life_date:
+                    name.append(line.life_date)
             if len(name)>0:
                 if name[0]:
                     lines.editable_life_date = ','.join(name)
