@@ -13,7 +13,7 @@ class StockPicking(models.Model):
         string='Dispatch Name',
     )
 
-    @api.multi
+@api.multi
     def button_validate(self):
         res = super(StockPicking, self).button_validate() 
         if self.picking_type_code == 'incoming':
@@ -31,7 +31,7 @@ class StockPicking(models.Model):
                 for lot_id in lot_ids:
                     if lot_id.dispatch_id.name == move.dispatch_name:
                         raise ValidationError(_('The combination of serial number and product must be unique !'))               
-                lot_name =  self.env['stock.production.lot'].search([('name','=',move.lot_name),('product_id','=', move.product_id.id),('dispatch_id','=', False)],limit=1)
+                lot_name =  self.env['stock.production.lot'].search([('name','=',move.lot_name),('product_id','=', move.product_id.id),('dispatch_id','=', False)])
                 if not lot_name:
                     lot_name = self.env['stock.production.lot'].create({
                     'name': move.lot_name,
@@ -48,11 +48,10 @@ class StockPicking(models.Model):
                     })        
                 move.dispatch_id = rec.id
                 move.lot_id = lot_name.id
-                
         if self.picking_type_code == 'outgoing':                   
             for move in self.move_lines:
                 dispatch = self.env['stock.production.dispatch'].search([('name','=',move.dispatch_name),('product_id','=', move.product_id.id)])
                 if dispatch:
                     dispatch.write({'product_qty': dispatch.product_qty - move.qty_done})
 
-        return res    
+        return res
