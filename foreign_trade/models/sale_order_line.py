@@ -100,6 +100,54 @@ class SaleOrderLine(models.Model):
         # related="product_id.product_attr_value_id",
     )
 
+    @api.onchange("product_id")
+    def _get_lot_by_product(self):
+        # if self.product_id:
+            # import wdb
+            # wdb.set_trace()
+        names = []
+        filter_ids = []
+        lot_ids = self.env["stock.production.lot"].search([("product_id", "=", self.product_id.id)])
+        for lot_id in lot_ids:
+            if lot_id.name not in names:
+                filter_ids.append(lot_id.id)
+                names.append(lot_id.name)
+                    
+        self.lot_filter = [(6,0, filter_ids)]
+
+    lot_filter = fields.Many2many(
+        'stock.production.lot')
+    
+    @api.onchange("loot_name")
+    def _get_dispatch_by_product(self):
+        names = []
+        filter_ids = []
+        for rec in self:
+            if rec.loot_name:
+                # import wdb
+                # wdb.set_trace()
+                dispatch_ids = self.env["stock.production.dispatch"].search([("product_id", "=", rec.product_id.id),("lot_id", "=", rec.loot_name.id)])
+                lot_ids = self.env["stock.production.lot"].search([("product_id", "=", rec.product_id.id),("name", "=", rec.loot_name.name)])
+                for dispatch_id in dispatch_ids:
+                    for lot_id in lot_ids:
+                        if dispatch_id.id == lot_id.dispatch_id.id: 
+                            if dispatch_id.name not in names:
+                                filter_ids.append(dispatch_id.id)
+                                names.append(dispatch_id.name)
+                    
+                    
+            rec.dispatch_filter = [(6,0, filter_ids)]
+
+    dispatch_filter = fields.Many2many(
+        'stock.production.lot')
+
+    @api.onchange("line_dispatch_name")
+    def _get_lot_by_dispatch(self):
+        # import wdb
+        # wdb.set_trace()
+        if self.loot_name and self.line_dispatch_name:
+            self.loot_name = self.line_dispatch_name.lot_id
+
     product_nmc = fields.Char(string="HS Code", related="product_id.product_nmc")
     country_id = fields.Char(string="Origin", required=True, related="product_tmpl_id.country_id.name")
     observations = fields.Char(string="Observation")
@@ -113,3 +161,12 @@ class SaleOrderLine(models.Model):
     product_uom_qty = fields.Float(digits=(12,2))
     maker_id = fields.Char(string="Maker", required=True, related="product_tmpl_id.maker_id")
     default_code = fields.Char(string="Internal Reference", required=True, related="product_id.default_code")
+    
+
+# class StockQuant(models.Model):
+#     _inherit = 'stock.quant'
+    
+#     dispatch_id = fields.Many2one(
+#         'stock.production.dispatch',
+#         related='lot_id.dispatch_id'
+#     )

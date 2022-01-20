@@ -183,8 +183,10 @@
                 <field name="default_code" attrs="{'readonly': True}" invisible="1"/>
                 <field name="maker_id" attrs="{'readonly': True}"/>
                 <field name="country_id" attrs="{'readonly': True}"/>
-                <field name="loot_name" invisible="1"/>
+                <field name="loot_name" domain="[('id' , '=', lot_filter)]" options="{'no_open':True,'no_create': True,'no_create_edit':1}"/>
                 <field name="client_code"/>
+                <field name="lot_filter" invisible="1"/>
+                <field name="dispatch_filter" invisible="1"/>
                 <field name="life_date" widget="date"/>
             </xpath>
             <xpath expr="//field[@name='order_line']/tree//field[@name='product_tmpl_id']" position="before">

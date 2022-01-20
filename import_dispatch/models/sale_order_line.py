@@ -10,6 +10,7 @@ class SaleOrderLine(models.Model):
 
     line_dispatch_name = fields.Many2one('stock.production.dispatch',
         string='Dispatch Name',
+        # related='lot_id.dispatch_id'
     )
 
     @api.onchange("product_id")
