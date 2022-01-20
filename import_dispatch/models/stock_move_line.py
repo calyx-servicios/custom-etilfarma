@@ -4,7 +4,6 @@
 from odoo import api, fields, models, _
 from odoo.tools.float_utils import float_compare
 from odoo.exceptions import UserError
-from openerp.tools.translate import _
 
 class StockMoveLine(models.Model):
     _inherit = "stock.move.line"
@@ -15,6 +14,7 @@ class StockMoveLine(models.Model):
     dispatch_name = fields.Char(
         string='Dispatch Name',
     )
+
     life_date = fields.Date(
         string='Life Date',
         # related="lot_id.name.life_date"
@@ -22,11 +22,13 @@ class StockMoveLine(models.Model):
     lot_id = fields.Many2one(
         string='lote prueba'
     )
+
     @api.onchange('lot_name')
     def onchange_document_number(self):
         for rec in self.picking_id.move_lines:
             if self.product_id.id == rec.product_id.id and rec.dispatch_name and not self.dispatch_name:
                 self.dispatch_name = rec.dispatch_name
+
 
     @api.onchange('dispatch_id')
     def onchange_dispatch_id(self):
@@ -153,3 +155,4 @@ class StockMoveLine(models.Model):
     # def _get_lot_by_dispatch(self):
     #     if self.loot_name and self.line_dispatch_name:
     #         self.loot_name = self.line_dispatch_name.lot_id
+

@@ -16,9 +16,8 @@ class StockMove(models.Model):
             name = []
             name_id = []
             for line in lines.move_line_ids:
-                if line.dispatch_name or line.dispatch_id.name:
-                    name.append(line.dispatch_name)
-                    name_id.append(line.dispatch_id.name)
+                name.append(line.dispatch_name)
+                name_id.append(line.dispatch_id.name)
             if len(name)>0:
                 if name[0]:
                     lines.line_dispatch_name = ','.join(name)
@@ -105,10 +104,12 @@ class StockMove(models.Model):
     #                 lines.line_lot_name = ','.join(name)
     #             else:
     #                 lines.line_lot_name = ""
+
                     
     line_dispatch_name = fields.Char(
         string='Dispatch Name',
         compute="_compute_line_dispatch_name",
+        related='sale_line_id.line_dispatch_name.name'
     )
 
     dispatch_id = fields.Many2one(
@@ -120,10 +121,11 @@ class StockMove(models.Model):
     )
     line_lot_name = fields.Char(
         string='Lot Name',
-        compute="_compute_lot_name",
+        related='sale_line_id.loot_name.name'
     )
-    editable_life_date = fields.Date(
+    editable_life_date = fields.Datetime(
         string='End of Life Date',
+
         compute="_compute_life_date",
         help='This is the date on which the goods with this Serial Number may '
              'become dangerous and must not be consumed.',

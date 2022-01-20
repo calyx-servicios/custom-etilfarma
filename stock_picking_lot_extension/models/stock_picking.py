@@ -28,6 +28,7 @@ class StockPicking(models.Model):
         order_type = self.origin
         lines_to_check = self.move_lines
         if order_type:
+
             if order_type[0:3] == "SOE" or order_type[0:3] == "SOL":
                 record = self.env['purchase.order'].search([('name', '=', order_type)])
                 for line in lines_to_check:
@@ -47,4 +48,5 @@ class StockPicking(models.Model):
                     # if date != dates:
                     #     raise UserError(('The life date must coincide with the sales order'))       
         res = super(StockPicking, self).button_validate() 
-        return res
+        return res             
+            
