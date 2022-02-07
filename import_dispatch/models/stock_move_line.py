@@ -16,8 +16,7 @@ class StockMoveLine(models.Model):
     )
 
     life_date = fields.Date(
-        string='Life Date',
-        # related="lot_id.name.life_date"
+        string='Life Date'
     )
     lot_id = fields.Many2one(
         string='lote prueba'
