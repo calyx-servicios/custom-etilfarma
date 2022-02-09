@@ -16,8 +16,9 @@ class StockMove(models.Model):
             name = []
             name_id = []
             for line in lines.move_line_ids:
-                name.append(line.dispatch_name)
-                name_id.append(line.dispatch_id.name)
+                if line.dispatch_name or line.dispatch_id.name:
+                    name.append(line.dispatch_name)
+                    name_id.append(line.dispatch_id.name)
             if len(name)>0:
                 if name[0]:
                     lines.line_dispatch_name = ','.join(name)
@@ -28,26 +29,6 @@ class StockMove(models.Model):
                     lines.line_dispatch_name = ','.join(name_id)
                 else:
                     lines.line_dispatch_name = ""
-
-    # @api.multi
-    # def _compute_line_dispatch_name(self):
-    #     for lines in self:
-    #         name = []
-    #         name_id = []
-    #         for line in lines.move_line_ids:
-    #             if line.dispatch_id.name or line.dispatch_name:
-    #                 name.append(line.dispatch_id.name)
-    #                 name_id.append(line.dispatch_name)
-    #         if len(name)>0:
-    #             if name[0]:
-    #                 lines.line_dispatch_name = ','.join(name)
-    #             else:
-    #                 lines.line_dispatch_name = ""
-    #         if len(name_id)>0 and lines.line_dispatch_name == "":
-    #             if name_id[0]:
-    #                 lines.line_dispatch_name = ','.join(name_id)
-    #             else:
-    #                 lines.line_dispatch_name = ""
 
     @api.multi
     def _compute_life_date(self):
@@ -80,36 +61,10 @@ class StockMove(models.Model):
                     lines.line_lot_name = ','.join(name_id)
                 else:
                     lines.line_lot_name = ""
-
-    # @api.multi
-    # def _compute_lot_name(self):
-    #     for lines in self:
-    #         name = []
-    #         for line in lines.move_line_ids:
-    #             name.append(line.lot_name)
-    #         if len(name)>0:
-    #             if name[0]:
-    #                 lines.line_lot_name = ','.join(name)
-    #             else:
-    #                 lines.line_lot_name = ""
-    
-    # @api.multi
-    # def _compute_lot_name(self):
-    #     for lines in self:
-    #         name = []
-    #         for line in lines.move_line_ids:
-    #             name.append(line.loot_name)
-    #         if len(name)>0:
-    #             if name[0]:
-    #                 lines.line_lot_name = ','.join(name)
-    #             else:
-    #                 lines.line_lot_name = ""
-
                     
     line_dispatch_name = fields.Char(
         string='Dispatch Name',
         compute="_compute_line_dispatch_name",
-        related='sale_line_id.line_dispatch_name.name'
     )
 
     dispatch_id = fields.Many2one(
@@ -121,29 +76,25 @@ class StockMove(models.Model):
     )
     line_lot_name = fields.Char(
         string='Lot Name',
-        related='sale_line_id.loot_name.name'
+        compute="_compute_lot_name",
     )
-    editable_life_date = fields.Datetime(
+    editable_life_date = fields.Date(
         string='End of Life Date',
-
         compute="_compute_life_date",
         help='This is the date on which the goods with this Serial Number may '
              'become dangerous and must not be consumed.',
     )
     dispatch_name_in_stock_move = fields.Char(
-        string='PRUEBA DESPACHO',
+        string='Dispatch',
         related='sale_line_id.line_dispatch_name.name'
-        # compute="_compute_line_dispatch_name",
     )
     lot_name_in_stock_move = fields.Char(
-        string='PRUEBA LOTE',
+        string='Lot',
         related='sale_line_id.loot_name.name',
-        # compute="_compute_lot_name",
     )
     life_date_in_stock_move = fields.Datetime(
-        string='PRUEBA FECHA',
+        string='Life date',
         related='sale_line_id.life_date',
-        # compute="_compute_life_date",
         help='This is the date on which the goods with this Serial Number may '
              'become dangerous and must not be consumed.',
     )
