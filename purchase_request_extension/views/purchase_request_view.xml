@@ -42,7 +42,7 @@ License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl-3.0) -->
             </xpath>
 
             <xpath expr="//field[@name='line_ids']/form//field[@name='product_uom_id']" position="attributes">
-                <attribute name="readonly">1</attribute>
+                <attribute name="readonly">False</attribute>
                 <attribute name="options">{'no_open':True,'no_create': True,'no_create_edit':1}</attribute>
             </xpath>
 
