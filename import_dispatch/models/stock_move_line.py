@@ -19,8 +19,9 @@ class StockMoveLine(models.Model):
         string='Life Date',
     )
     lot_id = fields.Many2one(
-        string='lote prueba'
+        string='lot'
     )
+
     @api.onchange('lot_name')
     def onchange_document_number(self):
         for rec in self.picking_id.move_lines:
