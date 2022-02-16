@@ -4,7 +4,7 @@
     <data>
         <!--Email template -->
 
-        <record id="email_template_fpo_sending_purchase_order" model="mail.template">
+        <record id="email_template_fpo_sending_new_purchase_order" model="mail.template">
             <field name="name">Sending a new purchase order</field>
             <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
             <field name="subject">Purchase order "${object.name or 'n/a' }" | ${object.invoice_to.name or 'Etilfarma S.A.' }</field>
@@ -60,8 +60,8 @@
             </field>
         </record>
 
-        <record id="email_template_fpo_pending_booking" model="mail.template">
-            <field name="name">Booking details</field>
+        <record id="email_template_fpo_booking_data" model="mail.template">
+            <field name="name">Booking Request</field>
             <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
             <field name="subject">Purchase order "${object.name or 'n/a' }" | ${object.invoice_to.name or 'Etilfarma S.A.' }| Booking details</field>
             <field name="partner_to">${object.partner_id.id}</field>
@@ -89,8 +89,8 @@
             </field>
         </record>
 
-        <record id="email_template_fpo_pending_documents_copy" model="mail.template">
-            <field name="name">Copy of documents</field>
+        <record id="email_template_fpo_documents_request" model="mail.template">
+            <field name="name">Document request</field>
             <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
             <field name="subject">Purchase order "${object.name or 'n/a' }" | ${object.invoice_to.name or 'Etilfarma S.A.' }| Copy of documents</field>
             <field name="partner_to">${object.partner_id.id}</field>
