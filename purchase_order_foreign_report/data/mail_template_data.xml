@@ -3,218 +3,11 @@
 
     <data>
         <!--Email template -->
-        <record id="email_template_foreign_purchase" model="mail.template">
-            <field name="name">Purchase Foreign Order - Send by Email</field>
-            <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
-            <field name="subject">${object.company_id.name} Purchase Foreign Order (Ref ${object.name or 'n/a' })</field>
-            <field name="partner_to">${object.partner_id.id}</field>
-            <field name="model_id" ref="purchase.model_purchase_order"/>
-            <field name="auto_delete" eval="True"/>
-            <field name="report_template" ref="purchase_order_foreign_report.action_report_purchase_foreign"/>
-            <field name="report_name">PFO_${(object.name or '').replace('/','_')}</field>
-            <field name="lang">${object.partner_id.lang}</field>
-            <field name="body_html"><![CDATA[
-                <p>Dear
-                % if object.partner_id.is_company and object.partner_id.child_ids:
-                    ${object.partner_id.child_ids[0].name}
-                % else :
-                    ${object.partner_id.name}
-                % endif
-                ,</p><p>
-                Here is, in attachment, a ${object.state in ('draft', 'sent') and 'request for quotation' or 'purchase order confirmation'} <strong>${object.name}</strong>
-                % if object.partner_ref:
-                    with reference: ${object.partner_ref}
-                % endif
-                % if object.origin:
-                    (RFQ origin: ${object.origin})
-                % endif
-                amounting in <strong>${format_amount(object.amount_total, object.currency_id)}</strong>
-                from ${object.company_id.name}.
-                </p>
 
-                <p>Do not hesitate to contact us if you have any further question.</p>
-                <p>Best regards,</p>
-                <p style="color:#888888;">
-                % if object.sudo().create_uid and object.sudo().create_uid.signature:
-                    ${object.sudo().create_uid.signature | safe}
-                % endif
-                </p>
-                ]]>
-            </field>
-        </record>
-
-        <record id="email_template_fporder_peding_confirmation" model="mail.template">
-            <field name="name">Order pending of confirmation</field>
-            <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
-            <field name="subject">Order (Ref ${object.name or 'n/a' }) is pending of confirmation.</field>
-            <field name="partner_to">${object.partner_id.id}</field>
-            <field name="model_id" ref="purchase.model_purchase_order"/>
-            <field name="auto_delete" eval="True"/>
-            <field name="lang">${object.partner_id.lang}</field>
-            <field name="body_html"><![CDATA[
-                <p>Dear
-                % if object.partner_id.is_company and object.partner_id.child_ids:
-                    ${object.partner_id.child_ids[0].name}
-                % else :
-                    ${object.partner_id.name}
-                % endif
-                ,</p>
-                <p>Kindly note that 
-                % if object.invoice_to: 
-                    order <strong>${object.name}</strong> from customer <strong>${object.invoice_to.name}</strong> 
-                % else:
-                    our order <strong>${object.name}</strong> is pending of confirmation.</p>
-                % endif
-                                
-                <p>Looking forward to receiving your feedback.</p>
-                
-                <p>Thank you.</p>
-                <p>Best regards,</p>
-                <p>Foreign Trade Department</p>
-                <p>ETILFARMA S.A.</p>
-                ]]>
-            </field>
-        </record>
-
-        <record id="email_template_fpo_pending_proforma" model="mail.template">
-            <field name="name">Pending to receive the proforma</field>
-            <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
-            <field name="subject">Pending to receive the proforma invoice for order (Ref ${object.name or 'n/a' }).</field>
-            <field name="partner_to">${object.partner_id.id}</field>
-            <field name="model_id" ref="purchase.model_purchase_order"/>
-            <field name="auto_delete" eval="True"/>
-            <field name="lang">${object.partner_id.lang}</field>
-            <field name="body_html"><![CDATA[
-                <p>Dear
-                % if object.partner_id.is_company and object.partner_id.child_ids:
-                    ${object.partner_id.child_ids[0].name}
-                % else :
-                    ${object.partner_id.name}
-                % endif
-                ,</p>
-                <p>Please be so kind to send the proforma invoice for
-                
-                % if object.invoice_to:
-                    order <strong>${object.name}</strong> from customer <strong>${object.invoice_to.name}</strong>.</p>
-                % else:
-                    our order <strong>${object.name}</strong>.</p>
-                % endif
-
-                <p>Looking forward to receiving your feedback.</p>
-                
-                <p>Thank you.</p>
-                <p>Best regards,</p>
-                <p>Foreign Trade Department</p>
-                <p>ETILFARMA S.A.</p>
-                ]]>
-            </field>
-        </record>
-
-        <record id="email_template_fpo_pending_booking" model="mail.template">
-            <field name="name">Pending to receive booking details</field>
-            <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
-            <field name="subject">Pending to receive booking details for order (Ref ${object.name or 'n/a' }).</field>
-            <field name="partner_to">${object.partner_id.id}</field>
-            <field name="model_id" ref="purchase.model_purchase_order"/>
-            <field name="auto_delete" eval="True"/>
-            <field name="lang">${object.partner_id.lang}</field>
-            <field name="body_html"><![CDATA[
-                <p>Dear
-                % if object.partner_id.is_company and object.partner_id.child_ids:
-                    ${object.partner_id.child_ids[0].name}
-                % else :
-                    ${object.partner_id.name}
-                % endif
-                ,</p>
-                <p>Please be so kind to confirm booking details for 
-                
-                % if object.invoice_to:
-                    order <strong>${object.name}</strong> from customer <strong>${object.invoice_to.name}</strong>.</p>
-                % else
-                    our order <strong>${object.name}</strong>.</p>
-                % endif
-
-                <p>Looking forward to receiving your feedback.</p>
-                
-                <p>Thank you.</p>
-                <p>Best regards,</p>
-                <p>Foreign Trade Department</p>
-                <p>ETILFARMA S.A.</p>
-                ]]>
-            </field>
-        </record>
-
-        <record id="email_template_fpo_pending_documents_copy" model="mail.template">
-            <field name="name">Pending to receive copy of documents</field>
-            <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
-            <field name="subject">Pending to receive copy of documents for our order (Ref ${object.name or 'n/a' }).</field>
-            <field name="partner_to">${object.partner_id.id}</field>
-            <field name="model_id" ref="purchase.model_purchase_order"/>
-            <field name="auto_delete" eval="True"/>
-            <field name="lang">${object.partner_id.lang}</field>
-            <field name="body_html"><![CDATA[
-                <p>Dear
-                % if object.partner_id.is_company and object.partner_id.child_ids:
-                    ${object.partner_id.child_ids[0].name}
-                % else :
-                    ${object.partner_id.name}
-                % endif
-                ,</p>
-                <p>Please be so kind to send the copy of documents for 
-                
-                % if object.invoice_to:
-                    order <strong>${object.name}</strong> from customer <strong>${object.invoice_to.name}</strong>.</p>
-                % else
-                    our order <strong>${object.name}</strong>.</p>
-                % endif
-
-                <p>Looking forward to receiving your feedback.</p>
-                
-                <p>Thank you.</p>
-                <p>Best regards,</p>
-                <p>Foreign Trade Department</p>
-                <p>ETILFARMA S.A.</p>
-                ]]>
-            </field>
-        </record>
-
-        <record id="email_template_fpo_pending_documents_original" model="mail.template">
-            <field name="name">Pending to receive original of documents</field>
-            <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
-            <field name="subject">Pending to receive original documents for order (Ref ${object.name or 'n/a' }).</field>
-            <field name="partner_to">${object.partner_id.id}</field>
-            <field name="model_id" ref="purchase.model_purchase_order"/>
-            <field name="auto_delete" eval="True"/>
-            <field name="lang">${object.partner_id.lang}</field>
-            <field name="body_html"><![CDATA[
-                <p>Dear
-                % if object.partner_id.is_company and object.partner_id.child_ids:
-                    ${object.partner_id.child_ids[0].name}
-                % else :
-                    ${object.partner_id.name}
-                % endif
-                ,</p>
-                <p>Please be so kind to inform tracking number for the original documents of 
-                
-                % if object.invoice_to:
-                    order <strong>${object.name}</strong> from customer <strong>${object.invoice_to.name}</strong>.</p>
-                % else
-                    our order <strong>${object.name}</strong>.</p>
-                % endif
-
-                <p>Looking forward to receiving your feedback.</p>
-                
-                <p>Thank you.</p>
-                <p>Best regards,</p>
-                <p>Foreign Trade Department</p>
-                <p>ETILFARMA S.A.</p>
-                ]]>
-            </field>
-        </record>
         <record id="email_template_fpo_sending_purchase_order" model="mail.template">
             <field name="name">Sending a new purchase order</field>
             <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
-            <field name="subject">Sending a new purchase order(Ref ${object.name or 'n/a' }).</field>
+            <field name="subject">Purchase order "${object.name or 'n/a' }" | ${object.invoice_to.name or 'Etilfarma S.A.' }</field>
             <field name="partner_to">${object.partner_id.id}</field>
             <field name="model_id" ref="purchase.model_purchase_order"/>
             <field name="auto_delete" eval="True"/>
@@ -227,8 +20,93 @@
                     ${object.partner_id.name}
                 % endif
                 ,</p>
-                <p>Kindly find attached our new order: <strong>${object.name}</strong>.</p>
+                <p>Kindly find attached our new order <strong>${object.name}</strong>.</p>
                 <p>Please send proforma invoice to process the import license. We will keep you informed about the status to advance in the coordination of the shipment. </p>
+
+                <p>Looking forward to receiving your feedback.</p>
+                
+                <p>Thank you.</p>
+                <p>Best regards,</p>
+                <p>Foreign Trade Department</p>
+                <p>ETILFARMA S.A.</p>
+                ]]>
+            </field>
+        </record>
+
+        <record id="email_template_fpo_payment_notice" model="mail.template">
+            <field name="name">Payment Notice</field>
+            <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
+            <field name="subject">Purchase order "${object.name or 'n/a' }" | ${object.invoice_to.name or 'Etilfarma S.A.' }| Payment Notice </field>
+            <field name="partner_to">${object.partner_id.id}</field>
+            <field name="model_id" ref="purchase.model_purchase_order"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="body_html"><![CDATA[
+                <p>Dear: 
+                % if object.partner_id.is_company and object.partner_id.child_ids:
+                    ${object.partner_id.child_ids[0].name}
+                % else :
+                    ${object.partner_id.name}
+                % endif
+                ,</p>
+                <p>Kindly find attached SWIFT copy for our order <strong>${object.name}</strong>.</p>
+                <p>We remain attentive to the shipping information once available. </p>
+                
+                <p>Thank you.</p>
+                <p>Best regards,</p>
+                <p>Foreign Trade Department</p>
+                <p>ETILFARMA S.A.</p>
+                ]]>
+            </field>
+        </record>
+
+        <record id="email_template_fpo_pending_booking" model="mail.template">
+            <field name="name">Booking details</field>
+            <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
+            <field name="subject">Purchase order "${object.name or 'n/a' }" | ${object.invoice_to.name or 'Etilfarma S.A.' }| Booking details</field>
+            <field name="partner_to">${object.partner_id.id}</field>
+            <field name="model_id" ref="purchase.model_purchase_order"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="body_html"><![CDATA[
+                <p>Dear
+                % if object.partner_id.is_company and object.partner_id.child_ids:
+                    ${object.partner_id.child_ids[0].name}
+                % else :
+                    ${object.partner_id.name}
+                % endif
+                ,</p>
+                <p>This is a reminder about our order <strong>${object.name}</strong>.</p>
+                <p>Please be so kind as to inform booking details. </p>
+
+                <p>Looking forward to receiving your feedback.</p>
+                
+                <p>Thank you.</p>
+                <p>Best regards,</p>
+                <p>Foreign Trade Department</p>
+                <p>ETILFARMA S.A.</p>
+                ]]>
+            </field>
+        </record>
+
+        <record id="email_template_fpo_pending_documents_copy" model="mail.template">
+            <field name="name">Copy of documents</field>
+            <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
+            <field name="subject">Purchase order "${object.name or 'n/a' }" | ${object.invoice_to.name or 'Etilfarma S.A.' }| Copy of documents</field>
+            <field name="partner_to">${object.partner_id.id}</field>
+            <field name="model_id" ref="purchase.model_purchase_order"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="body_html"><![CDATA[
+                <p>Dear
+                % if object.partner_id.is_company and object.partner_id.child_ids:
+                    ${object.partner_id.child_ids[0].name}
+                % else :
+                    ${object.partner_id.name}
+                % endif
+                ,</p>
+                <p>This is a reminder about our order <strong>${object.name}</strong>.</p>
+                <p>Please be so kind as to send copy of documents ASAP. </p>
 
                 <p>Looking forward to receiving your feedback.</p>
                 
