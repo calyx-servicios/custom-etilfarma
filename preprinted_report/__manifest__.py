@@ -15,8 +15,6 @@
     "installable": True,
     "external_dependencies": {"python": ["num2words"], "bin": []},
     "depends": [
-        "l10n_ar_afipws_fe",
-        "l10n_ar_aeroo_einvoice",
         "l10n_ar_aeroo_stock",
         "foreign_trade"
     ],

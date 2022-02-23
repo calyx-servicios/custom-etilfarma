@@ -25,6 +25,6 @@
         eval="([ref('pre_printed')])"
         id="preprinted_lines"
         model="ir.actions.report"
-        name="preprinted_lines"/>
+        name="update_lines_that_apply"/>
 
 </odoo>
