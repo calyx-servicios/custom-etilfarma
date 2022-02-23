@@ -16,7 +16,7 @@
         <field name="use_background_image" eval="True"/>
         <field name="stock_report_type">voucher</field>
         <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
-        <field name="print_report_name">'Remito ' + (','.join(object.voucher_ids.mapped('number')))</field>
+        <field name="print_report_name">'Preimpreso Remito ' + (','.join(object.voucher_ids.mapped('number')))</field>
     </record>
 
     <!-- Iniciamos los key values sin update-->

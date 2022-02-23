@@ -13,5 +13,5 @@ class StockPicking(models.Model):
         """
         self.sent = True
         return self.env.ref(
-            "prueba_preprinted.pre_printed"
+            "preprinted_report.pre_printed"
         ).report_action(self)

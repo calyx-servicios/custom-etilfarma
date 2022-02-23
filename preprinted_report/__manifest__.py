@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
-    "name": "Einvoice custom Output",
+    "name": "Preprinted report",
     "summary": """
-        Custom Output in einvoice""",
+        Preprinted report""",
     "author": "Calyx Servicios S.A.",
-    "maintainers": ["JhoneM"],
+    "maintainers": ["DarwinAndrade"],
     "website": "http://odoo.calyx-cloud.com.ar/",
     "license": "AGPL-3",
     "category": "Report",
