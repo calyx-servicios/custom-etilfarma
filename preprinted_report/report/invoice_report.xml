@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="pre_printed" model="ir.actions.report">
+        <field name="name">Preprinted Report</field>
+        <field name="model">stock.picking</field>
+        <field name="sequence" eval="7"/>
+        <field name="report_name">preprinted_report</field>
+        <field name="report_type">aeroo</field>
+        <field name="in_format">oo-odt</field>
+        <field name="report_file">preprinted_report/report/pre_impreso.odt</field>
+        <!-- <field name="report_file">preprinted_report/report/stock_picking.odt</field> -->
+        <field name="tml_source">file</field>
+        <field name="print_logo">company_logo</field> <!-- Or 'company_logo' or ''  -->
+        <field name="background_image" type="base64" file="preprinted_report/stock_picking.png"/>
+        <field name="process_sep" eval="True"/>
+        <field name="use_background_image" eval="True"/>
+        <field name="stock_report_type">voucher</field>
+        <field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+        <field name="print_report_name">'Preimpreso Remito ' + (','.join(object.voucher_ids.mapped('number')))</field>
+    </record>
+
+    <!-- Iniciamos los key values sin update-->
+    <function
+        eval="([ref('pre_printed')])"
+        id="preprinted_lines"
+        model="ir.actions.report"
+        name="update_lines_that_apply"/>
+
+</odoo>
