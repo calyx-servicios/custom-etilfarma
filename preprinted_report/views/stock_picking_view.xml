@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="pre_printed_button" model="ir.ui.view">
+        <field name="name">pre.printed.button</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <data>
+            <xpath expr="//button[@name='action_send_confirmation_email']" position="after">
+                <button 
+                    name="pre_print"
+                    string="PRE IMPRESO"
+                    type="object"
+                    class="oe_highlight"
+                    groups="base.group_user"/>
+            </xpath>               
+            </data>          
+        </field>
+    </record>
+
+</odoo>
