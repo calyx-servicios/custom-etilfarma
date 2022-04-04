@@ -5,7 +5,7 @@
         <!--Email template -->
 
         <record id="email_template_fpo_sending_new_purchase_order" model="mail.template">
-            <field name="name">Sending a new purchase order</field>
+            <field name="name">Envío de Orden de Compra (EN)</field>
             <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
             <field name="subject">Purchase order "${object.name or 'n/a' }" | ${object.invoice_to.name or 'Etilfarma S.A.' }</field>
             <field name="partner_to">${object.partner_id.id}</field>
@@ -34,7 +34,7 @@
         </record>
 
         <record id="email_template_fpo_payment_notice" model="mail.template">
-            <field name="name">Payment Notice</field>
+            <field name="name">Aviso de Pago (EN)</field>
             <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
             <field name="subject">Purchase order "${object.name or 'n/a' }" | ${object.invoice_to.name or 'Etilfarma S.A.' }| Payment Notice </field>
             <field name="partner_to">${object.partner_id.id}</field>
@@ -61,7 +61,7 @@
         </record>
 
         <record id="email_template_fpo_booking_data" model="mail.template">
-            <field name="name">Booking Request</field>
+            <field name="name">Solicitud de Booking (EN)</field>
             <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
             <field name="subject">Purchase order "${object.name or 'n/a' }" | ${object.invoice_to.name or 'Etilfarma S.A.' }| Booking details</field>
             <field name="partner_to">${object.partner_id.id}</field>
@@ -90,7 +90,7 @@
         </record>
 
         <record id="email_template_fpo_documents_request" model="mail.template">
-            <field name="name">Document request</field>
+            <field name="name">Solicitud de Documentos (EN)</field>
             <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
             <field name="subject">Purchase order "${object.name or 'n/a' }" | ${object.invoice_to.name or 'Etilfarma S.A.' }| Copy of documents</field>
             <field name="partner_to">${object.partner_id.id}</field>
