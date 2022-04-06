@@ -4,7 +4,7 @@
     <data>
 
         <record id="email_template_fpo_sending_new_purchase_order_impo" model="mail.template">
-            <field name="name">Envio de Orden de Compra</field>
+            <field name="name">Envío de Orden de Compra (ES)</field>
             <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
             <field name="subject">Orden de Compra "${object.name or 'n/a' }" | ${object.invoice_to.name or 'Etilfarma S.A.' }</field>
             <field name="partner_to">${object.partner_id.id}</field>
@@ -33,7 +33,7 @@
         </record>
 
         <record id="email_template_fpo_payment_notice_impo" model="mail.template">
-            <field name="name">Aviso de Pago</field>
+            <field name="name">Aviso de Pago (ES)</field>
             <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
             <field name="subject">Orden de Compra "${object.name or 'n/a' }" | ${object.invoice_to.name or 'Etilfarma S.A.' }| Aviso de Pago </field>
             <field name="partner_to">${object.partner_id.id}</field>
@@ -60,7 +60,7 @@
         </record>
 
         <record id="email_template_fpo_booking_data_impo" model="mail.template">
-            <field name="name">Solicitud de Datos de embarque</field>
+            <field name="name">Solicitud de Booking (ES)</field>
             <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
             <field name="subject">Orden de Compra "${object.name or 'n/a' }" | ${object.invoice_to.name or 'Etilfarma S.A.' }| Datos de embarque</field>
             <field name="partner_to">${object.partner_id.id}</field>
@@ -89,7 +89,7 @@
         </record>
 
         <record id="email_template_fpo_documents_request_impo" model="mail.template">
-            <field name="name">Solicitud de Documentos</field>
+            <field name="name">Solicitud de Documentos (ES)</field>
             <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
             <field name="subject">Orden de Compra "${object.name or 'n/a' }" | ${object.invoice_to.name or 'Etilfarma S.A.' }| Copia de documentos</field>
             <field name="partner_to">${object.partner_id.id}</field>
@@ -171,7 +171,7 @@
         </record>
 
         <record id="email_template_fpo_booking_statistics_impo" model="mail.template">
-            <field name="name">Booking Estadística</field>
+            <field name="name">Booking Estadistica</field>
             <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
             <field name="subject">Orden de Compra "${object.name or 'n/a' }" ${object.invoice_to.name or '' }| Confirmación ${object.confirmation_date or '' } | Datos de Embarque</field>
             <field name="partner_to">${object.partner_id.id}</field>
