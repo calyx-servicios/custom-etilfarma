@@ -1,10 +1,9 @@
 =======================
-Einvoice custom Output
+Preprinted report
 =======================
 
 .. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-   !! This file is intended to be in every module    !!
-   !! to explain why and how it works.               !!
+   !! This module adds the pre-printed remit         !!
    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
@@ -41,7 +40,7 @@ Go to app menu and install.
 Usage
 =====
 
-1. Go to invoice, print invoice
+1. Go to inventory, print Preprinted
 
 Known issues / Roadmap
 ======================
@@ -66,10 +65,7 @@ Contributors
 
 * `Calyx Servicios S.A. <http://www.calyxservicios.com.ar/>`_
   
-  * Lucas Soto
-  * Jhone Mendez
-  * Federico Gregori
-  * Cris Paradiso
+  * Darwin Andrade
 
 Maintainers
 ~~~~~~~~~~~
