@@ -14,7 +14,7 @@
             <xpath expr="//button[@name='action_confirm']" position="replace">
             <button name="action_confirm"
                     string="Confirm Sale" type="object"
-                    attrs="{'invisible': [('state', 'not in', ['sale'])]}"/>
+                    attrs="{'invisible': [('state', 'in', ['done', 'cancel'])]}"/>
             </xpath>
             <xpath expr="//button[@name='action_quotation_send'][1]" position="attributes">
                 <attribute name="attrs">{'invisible': ['|',('order_type_foreign','=',True)]}</attribute>
