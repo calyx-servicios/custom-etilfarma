@@ -21,6 +21,12 @@ class StockMoveLine(models.Model):
     lot_id = fields.Many2one(
         string='lot'
     )
+    def create(self, vals):
+        rec = super(StockMoveLine, self).create(vals)
+        if rec.move_id.lot_name_in_stock_move and rec.move_id.dispatch_name_in_stock_move:
+            rec.lot_id = rec.move_id.lot_name_in_stock_move
+            rec.dispatch_id = rec.move_id.dispatch_name_in_stock_move
+        return rec
 
     @api.onchange('lot_name')
     def onchange_document_number(self):
@@ -39,9 +45,13 @@ class StockMoveLine(models.Model):
         lot_ids = self.env["stock.production.lot"].search([("product_id", "=", self.product_id.id)])
         for lot_id in lot_ids:
             if lot_id.name not in names:
-                filter_ids.append(lot_id.id)
-                names.append(lot_id.name)
-                    
+                if self.picking_type_code != 'outgoing':
+                    filter_ids.append(lot_id.id)
+                    names.append(lot_id.name)
+                elif lot_id.product_qty > 0:
+                    filter_ids.append(lot_id.id)
+                    names.append(lot_id.name)
+
         self.lot_filter = [(6,0, filter_ids)]
 
     lot_filter = fields.Many2many(
@@ -59,8 +69,12 @@ class StockMoveLine(models.Model):
                     for lot_id in lot_ids:
                         if dispatch_id.id == lot_id.dispatch_id.id: 
                             if dispatch_id.name not in names:
-                                filter_ids.append(dispatch_id.id)
-                                names.append(dispatch_id.name)
+                                if self.picking_type_code != 'outgoing':
+                                    filter_ids.append(lot_id.id)
+                                    names.append(lot_id.name)
+                                elif lot_id.product_qty > 0:
+                                    filter_ids.append(lot_id.id)
+                                    names.append(lot_id.name)
                     
                     
             rec.dispatch_filter = [(6,0, filter_ids)]
