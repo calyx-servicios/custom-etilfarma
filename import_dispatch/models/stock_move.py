@@ -84,13 +84,13 @@ class StockMove(models.Model):
         help='This is the date on which the goods with this Serial Number may '
              'become dangerous and must not be consumed.',
     )
-    dispatch_name_in_stock_move = fields.Char(
-        string='Dispatch',
-        related='sale_line_id.line_dispatch_name.name'
+    dispatch_name_in_stock_move = fields.Many2one(
+        'stock.production.dispatch',
+        related='sale_line_id.line_dispatch_name'
     )
-    lot_name_in_stock_move = fields.Char(
-        string='Lot',
-        related='sale_line_id.loot_name.name',
+    lot_name_in_stock_move = fields.Many2one(
+        'stock.production.lot',
+        related='sale_line_id.loot_name'
     )
     life_date_in_stock_move = fields.Datetime(
         string='Life date',
@@ -117,4 +117,3 @@ class StockMove(models.Model):
             })
         return lot
     
-
