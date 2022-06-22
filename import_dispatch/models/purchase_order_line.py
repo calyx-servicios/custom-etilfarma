@@ -58,13 +58,3 @@ class PurchaseOrderLine(models.Model):
                 template['product_uom_qty'] = diff_quantity
             res.append(template)
         return res
-
-# class PurchaseOrder(models.Model):
-#     _inherit = "purchase.order"
-
-#     @api.model
-#     def write(self, vals):
-#         res = super(PurchaseOrder, self).write(vals)
-#             if self.picking_count > 0: 
-#         raise UserError("aaaaaaaaaaaa")
-#         return res
