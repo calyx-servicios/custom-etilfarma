@@ -8,11 +8,10 @@
     "website": "http://odoo.calyx-cloud.com.ar/",
     "license": "AGPL-3",
     "category": "Purchase",
-    "version": "11.0.4.2.0",
+    "version": "11.0.1.0.0",
     "development_status": "Production/Stable",
     "application": False,
     "installable": True,
-    "external_dependencies": {"python": [], "bin": []},
     "depends": [
         "base",
         "purchase",
