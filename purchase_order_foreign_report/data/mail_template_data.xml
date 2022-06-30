@@ -11,6 +11,8 @@
             <field name="partner_to">${object.partner_id.id}</field>
             <field name="model_id" ref="purchase.model_purchase_order"/>
             <field name="auto_delete" eval="True"/>
+            <field name="report_template" ref="purchase.report_purchase_quotation"/>
+            <field name="report_name">PC_${(object.name or '').replace('/','_')}</field>
             <field name="lang">${object.partner_id.lang}</field>
             <field name="body_html"><![CDATA[
                 <p>Dear: 
@@ -40,6 +42,8 @@
             <field name="partner_to">${object.partner_id.id}</field>
             <field name="model_id" ref="purchase.model_purchase_order"/>
             <field name="auto_delete" eval="True"/>
+            <field name="report_template" ref="purchase.report_purchase_quotation"/>
+            <field name="report_name">PC_${(object.name or '').replace('/','_')}</field>
             <field name="lang">${object.partner_id.lang}</field>
             <field name="body_html"><![CDATA[
                 <p>Dear: 
@@ -67,6 +71,8 @@
             <field name="partner_to">${object.partner_id.id}</field>
             <field name="model_id" ref="purchase.model_purchase_order"/>
             <field name="auto_delete" eval="True"/>
+            <field name="report_template" ref="purchase.report_purchase_quotation"/>
+            <field name="report_name">PC_${(object.name or '').replace('/','_')}</field>
             <field name="lang">${object.partner_id.lang}</field>
             <field name="body_html"><![CDATA[
                 <p>Dear
@@ -96,6 +102,8 @@
             <field name="partner_to">${object.partner_id.id}</field>
             <field name="model_id" ref="purchase.model_purchase_order"/>
             <field name="auto_delete" eval="True"/>
+            <field name="report_template" ref="purchase.report_purchase_quotation"/>
+            <field name="report_name">PC_${(object.name or '').replace('/','_')}</field>
             <field name="lang">${object.partner_id.lang}</field>
             <field name="body_html"><![CDATA[
                 <p>Dear
