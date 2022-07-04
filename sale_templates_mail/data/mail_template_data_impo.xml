@@ -3,7 +3,6 @@
 
   <data>
 
-    <!-- Envio de proforma ES -->
     <record id="template_proforma_shipping_es" model="mail.template">
       <field name="name">Envio de Proforma (ES)</field>
       <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
@@ -33,8 +32,6 @@
       </field>
     </record>
 
-
-    <!-- Envio de confirmacion ES -->
     <record id="template_confimation_shipping_es" model="mail.template">
       <field name="name">Envio de Confirmación (ES)</field>
       <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
@@ -64,8 +61,6 @@
       </field>
     </record>
 
-
-    <!-- Envío de Datos Embarque ES -->
     <record id="template_shipment_shipping_es" model="mail.template">
       <field name="name">Envío de Datos Embarque (ES)</field>
       <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
@@ -108,7 +103,6 @@
                     ${object.booking_extra_notes}
                     </p>
                 % endif
-
 
                 <p>Quedamos a disposición.</p>
                 <p>Saludos Cordiales,</p>

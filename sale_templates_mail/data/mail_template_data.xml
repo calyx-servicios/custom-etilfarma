@@ -3,7 +3,6 @@
 
   <data>
 
-    <!-- Envio de proforma EN -->
     <record id="template_proforma_shipping_en" model="mail.template">
       <field name="name">Envio de Proforma (EN)</field>
       <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
@@ -34,8 +33,6 @@
       </field>
     </record>
 
-
-    <!-- Envio de confirmacion EN -->
     <record id="template_confimation_shipping_en" model="mail.template">
       <field name="name">Envio de Confirmación (EN)</field>
       <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
@@ -65,8 +62,6 @@
       </field>
     </record>
 
-
-    <!-- Envío de Datos Embarque NS -->
     <record id="template_shipment_shipping_en" model="mail.template">
       <field name="name">Envío de Datos Embarque (EN)</field>
       <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
@@ -109,7 +104,6 @@
                       ${object.booking_extra_notes}
                     </p>
                 % endif
-
 
                 <p>We remain at your disposal.</p>
                 <p>Thank you.</p>

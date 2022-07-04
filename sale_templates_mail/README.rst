@@ -1,10 +1,10 @@
-=========================
+===================
 Sale Templates Mail
-=========================
+===================
 
-.. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+.. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
    !! Module for Sale template Etilfarma !!
-   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
 .. User https://shields.io for badge creation.
@@ -25,7 +25,7 @@ Install
 
 * Go to applications
 
-* Find module "sale_templates_mail_report"
+* Find module "sale_templates_mail"
 
 * Press Install
 
