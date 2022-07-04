@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="purchase_order_form_foreign_inherit" model="ir.ui.view">
+        <field name="model">purchase.order</field>
+        <field name="name">Purchase Order Form Inherit</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='interventions']" position="replace">
+                <group name="interventions" string="Interventions">
+                    <field name="intervention_not_required" type="checkbox" string="Not Required"/>
+                    <field name="intervention_reference" string="Reference" attrs="{'readonly': [('intervention_not_required','=',True)]}" force_save="1"/>
+                    <field name="intervention_currency_id" string="Payment Currency" attrs="{'readonly': [('intervention_not_required','=',True)]}" force_save="1"/>
+                    <field name="intervention_VPE_amount" string="VPE Amount" attrs="{'readonly': [('intervention_not_required','=',True)]}" force_save="1"/>
+                    <field name="intervention_currency_id" string="Currency" attrs="{'readonly': [('intervention_not_required','=',True)]}" force_save="1"/>
+                    <field name="intervention_application_date" string="Application Date" attrs="{'readonly': [('intervention_not_required','=',True)]}" force_save="1"/>
+                    <field name="intervention_approval_date" string="Approval Date" attrs="{'readonly': [('intervention_not_required','=',True)]}" force_save="1"/>
+                </group>
+            </xpath>
+            <xpath expr="//group[@name='booking']" position="replace">
+                <group name="booking" string="Booking">
+                    <field name="booking_not_required" type="checkbox" string="Not Required"/>
+                    <field name="booking_conveyance_id" string="Conveyance" attrs="{'readonly': [('booking_not_required','=',True)]}" options="{'no_open':True,'no_create': True,'no_create_edit':1}" force_save="1"/>
+                    <field name="booking_origin" string="Origin" attrs="{'readonly': [('booking_not_required','=',True)]}" force_save="1"/>
+                    <field name="booking_ETD_date" string="ETD Date" attrs="{'readonly': [('booking_not_required','=',True)]}" force_save="1"/>
+                    <field name="booking_ETA_date" string="ETA Date" attrs="{'readonly': [('booking_not_required','=',True)]}" force_save="1"/>
+                    <field name="booking_transport_company" string="Transport Company" attrs="{'readonly': [('booking_not_required','=',True)]}" force_save="1"/>
+                    <field name="booking_ship_name" string="Ship Name" attrs="{'readonly': [('booking_not_required','=',True)]}" force_save="1"/>
+                    <field name="booking_extra_notes" string="Intern Notes" attrs="{'readonly': [('booking_not_required','=',True)]}" force_save="1"/>
+                    <button string="Send Booking Information"
+                        name="action_booking_send"
+                        type="object"
+                        attrs="{'invisible': [('booking_not_required','=',True)]}"
+                        class="oe_highlight"
+                        groups="base.group_user"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="purchase_order_tree_foreign_inherit" model="ir.ui.view">
+        <field name="model">purchase.order</field>
+        <field name="name">Purchase Order Tree Inherit</field>
+        <field name="inherit_id" ref="purchase.purchase_order_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='term_payments']" position="replace">
+                <field name="term_payments" string="Payment Condition"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
