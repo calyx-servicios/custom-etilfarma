@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <!--Email template -->
+
+        <record id="email_template_fpo_sending_new_purchase_order" model="mail.template">
+            <field name="name">Envío de Orden de Compra (EN)</field>
+            <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
+            <field name="subject">Purchase order "${object.name or 'n/a' }" | ${object.invoice_to.name or 'Etilfarma S.A.' }</field>
+            <field name="partner_to">${object.partner_id.id}</field>
+            <field name="model_id" ref="purchase.model_purchase_order"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="body_html"><![CDATA[
+                <p>Dear: 
+                % if object.partner_id.is_company and object.partner_id.child_ids:
+                    ${object.partner_id.child_ids[0].name}
+                % else :
+                    ${object.partner_id.name}
+                % endif
+                ,</p>
+                <p>Kindly find attached our new order <strong>${object.name}</strong>.</p>
+                <p>Please send proforma invoice to process the import license. We will keep you informed about the status to advance in the coordination of the shipment. </p>
+
+                <p>Looking forward to receiving your feedback.</p>
+                
+                <p>Thank you.</p>
+                <p>Best regards,</p>
+                <p>Foreign Trade Department</p>
+                <p>ETILFARMA S.A.</p>
+                ]]>
+            </field>
+        </record>
+
+        <record id="email_template_fpo_payment_notice" model="mail.template">
+            <field name="name">Aviso de Pago (EN)</field>
+            <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
+            <field name="subject">Purchase order "${object.name or 'n/a' }" | ${object.invoice_to.name or 'Etilfarma S.A.' }| Payment Notice </field>
+            <field name="partner_to">${object.partner_id.id}</field>
+            <field name="model_id" ref="purchase.model_purchase_order"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="body_html"><![CDATA[
+                <p>Dear: 
+                % if object.partner_id.is_company and object.partner_id.child_ids:
+                    ${object.partner_id.child_ids[0].name}
+                % else :
+                    ${object.partner_id.name}
+                % endif
+                ,</p>
+                <p>Kindly find attached SWIFT copy for our order <strong>${object.name}</strong>.</p>
+                <p>We remain attentive to the shipping information once available. </p>
+                
+                <p>Thank you.</p>
+                <p>Best regards,</p>
+                <p>Foreign Trade Department</p>
+                <p>ETILFARMA S.A.</p>
+                ]]>
+            </field>
+        </record>
+
+        <record id="email_template_fpo_booking_data" model="mail.template">
+            <field name="name">Solicitud de Booking (EN)</field>
+            <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
+            <field name="subject">Purchase order "${object.name or 'n/a' }" | ${object.invoice_to.name or 'Etilfarma S.A.' }| Booking details</field>
+            <field name="partner_to">${object.partner_id.id}</field>
+            <field name="model_id" ref="purchase.model_purchase_order"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="body_html"><![CDATA[
+                <p>Dear
+                % if object.partner_id.is_company and object.partner_id.child_ids:
+                    ${object.partner_id.child_ids[0].name}
+                % else :
+                    ${object.partner_id.name}
+                % endif
+                ,</p>
+                <p>This is a reminder about our order <strong>${object.name}</strong>.</p>
+                <p>Please be so kind as to inform booking details. </p>
+
+                <p>Looking forward to receiving your feedback.</p>
+                
+                <p>Thank you.</p>
+                <p>Best regards,</p>
+                <p>Foreign Trade Department</p>
+                <p>ETILFARMA S.A.</p>
+                ]]>
+            </field>
+        </record>
+
+        <record id="email_template_fpo_documents_request" model="mail.template">
+            <field name="name">Solicitud de Documentos (EN)</field>
+            <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
+            <field name="subject">Purchase order "${object.name or 'n/a' }" | ${object.invoice_to.name or 'Etilfarma S.A.' }| Copy of documents</field>
+            <field name="partner_to">${object.partner_id.id}</field>
+            <field name="model_id" ref="purchase.model_purchase_order"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="body_html"><![CDATA[
+                <p>Dear
+                % if object.partner_id.is_company and object.partner_id.child_ids:
+                    ${object.partner_id.child_ids[0].name}
+                % else :
+                    ${object.partner_id.name}
+                % endif
+                ,</p>
+                <p>This is a reminder about our order <strong>${object.name}</strong>.</p>
+                <p>Please be so kind as to send copy of documents ASAP. </p>
+
+                <p>Looking forward to receiving your feedback.</p>
+                
+                <p>Thank you.</p>
+                <p>Best regards,</p>
+                <p>Foreign Trade Department</p>
+                <p>ETILFARMA S.A.</p>
+                ]]>
+            </field>
+        </record>
+    </data>
+
+</odoo>

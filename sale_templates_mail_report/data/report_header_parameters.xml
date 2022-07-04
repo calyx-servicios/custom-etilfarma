@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record model="purchase.report.header.parameter" id="report_header_parameters">
+        <field name="name">ETILFARMA S.A</field>
+        <field name="phone">3322-5544</field>
+        <field name="mail">admin@etilfarma.com</field>
+    </record>
+</odoo>
