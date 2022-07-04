@@ -10,6 +10,8 @@
             <field name="partner_to">${object.partner_id.id}</field>
             <field name="model_id" ref="purchase.model_purchase_order"/>
             <field name="auto_delete" eval="True"/>
+            <field name="report_template" ref="purchase_order_foreign_report.action_report_purchase_foreign"/>
+            <field name="report_name">PC_${(object.name or '').replace('/','_')}</field>
             <field name="lang">${object.partner_id.lang}</field>
             <field name="body_html"><![CDATA[
                 <p>Estimado/a
@@ -39,6 +41,8 @@
             <field name="partner_to">${object.partner_id.id}</field>
             <field name="model_id" ref="purchase.model_purchase_order"/>
             <field name="auto_delete" eval="True"/>
+            <field name="report_template" ref="purchase_order_foreign_report.action_report_purchase_foreign"/>
+            <field name="report_name">PC_${(object.name or '').replace('/','_')}</field>
             <field name="lang">${object.partner_id.lang}</field>
             <field name="body_html"><![CDATA[
                 <p>Estimado/a
@@ -66,6 +70,8 @@
             <field name="partner_to">${object.partner_id.id}</field>
             <field name="model_id" ref="purchase.model_purchase_order"/>
             <field name="auto_delete" eval="True"/>
+            <field name="report_template" ref="purchase_order_foreign_report.action_report_purchase_foreign"/>
+            <field name="report_name">PC_${(object.name or '').replace('/','_')}</field>
             <field name="lang">${object.partner_id.lang}</field>
             <field name="body_html"><![CDATA[
                 <p>Estimado/a
@@ -95,6 +101,8 @@
             <field name="partner_to">${object.partner_id.id}</field>
             <field name="model_id" ref="purchase.model_purchase_order"/>
             <field name="auto_delete" eval="True"/>
+            <field name="report_template" ref="purchase_order_foreign_report.action_report_purchase_foreign"/>
+            <field name="report_name">PC_${(object.name or '').replace('/','_')}</field>
             <field name="lang">${object.partner_id.lang}</field>
             <field name="body_html"><![CDATA[
                 <p>Estimado/a
@@ -118,12 +126,14 @@
         </record>
 
         <record id="email_template_fpo_booking_impo" model="mail.template">
-            <field name="name">Booking IMPO</field>
+            <field name="name">Booking IMPO (ES)</field>
             <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
             <field name="subject">Orden de Compra "${object.name or 'n/a' }" | Datos de Embarque</field>
             <field name="partner_to">${object.partner_id.id}</field>
             <field name="model_id" ref="purchase.model_purchase_order"/>
             <field name="auto_delete" eval="True"/>
+            <field name="report_template" ref="purchase_order_foreign_report.action_report_purchase_foreign"/>
+            <field name="report_name">PC_${(object.name or '').replace('/','_')}</field>
             <field name="lang">${object.partner_id.lang}</field>
             <field name="body_html"><![CDATA[
                 <p>Estimado/a
@@ -171,12 +181,14 @@
         </record>
 
         <record id="email_template_fpo_booking_statistics_impo" model="mail.template">
-            <field name="name">Booking Estadistica</field>
+            <field name="name">Booking Estadistica (ES)</field>
             <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
             <field name="subject">Orden de Compra "${object.name or 'n/a' }" ${object.invoice_to.name or '' }| Confirmación ${object.confirmation_date or '' } | Datos de Embarque</field>
             <field name="partner_to">${object.partner_id.id}</field>
             <field name="model_id" ref="purchase.model_purchase_order"/>
             <field name="auto_delete" eval="True"/>
+            <field name="report_template" ref="purchase_order_foreign_report.action_report_purchase_foreign"/>
+            <field name="report_name">PC_${(object.name or '').replace('/','_')}</field>
             <field name="lang">${object.partner_id.lang}</field>
             <field name="body_html"><![CDATA[
                 <p>Estimado/a
