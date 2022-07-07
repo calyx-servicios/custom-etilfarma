@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <data>
+
+    <record id="template_proforma_shipping_es" model="mail.template">
+      <field name="name">Envio de Proforma (ES)</field>
+      <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
+      <field name="subject">Orden de Compra "${object.customer_purchase_order or 'n/a' }" | Proforma "${object.proforma_number or 'n/a' }" | ${ 'Etilfarma S.A.' }</field>
+      <field name="partner_to">${object.partner_id.id}</field>
+      <field name="model_id" ref="sale.model_sale_order"/>
+      <field name="auto_delete" eval="True"/>
+      <field name="lang">${object.partner_id.lang}</field>
+      <field name="body_html"><![CDATA[
+                <p>Estimado/a
+                % if object.partner_id.is_company and object.partner_id.child_ids:
+                    ${object.partner_id.child_ids[0].name}
+                % else :
+                    ${object.partner_id.name}
+                % endif
+                ,</p>
+
+                <p>Gracias por su Orden de Compra <strong>${object.customer_purchase_order}</strong>.</p>
+                <p>Por favor encuentre adjunta la factura proforma <strong>"${object.proforma_number }"</strong>.</p>
+
+
+                <p>Quedamos a disposición.</p>
+                <p>Saludos Cordiales,</p>
+                <p>Departamento de Comercio Exterior.</p>
+                <p>ETILFARMA S.A.</p>
+                ]]>
+      </field>
+    </record>
+
+    <record id="template_confimation_shipping_es" model="mail.template">
+      <field name="name">Envio de Confirmación (ES)</field>
+      <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
+      <field name="subject">Orden de Compra "${object.customer_purchase_order or 'n/a' }" | Confirmación "${object.confirmation_number or 'n/a' }" | ${ 'Etilfarma S.A.' }</field>
+      <field name="partner_to">${object.partner_id.id}</field>
+      <field name="model_id" ref="sale.model_sale_order"/>
+      <field name="auto_delete" eval="True"/>
+      <field name="lang">${object.partner_id.lang}</field>
+      <field name="body_html"><![CDATA[
+                <p>Estimado/a
+                % if object.partner_id.is_company and object.partner_id.child_ids:
+                    ${object.partner_id.child_ids[0].name}
+                % else :
+                    ${object.partner_id.name}
+                % endif
+                ,</p>
+
+                <p>En relación a su Orden de Compra <strong>${object.customer_purchase_order}</strong>, por favor encuentre adjunta la confirmación de orden <strong>${object.confirmation_number}</strong>.</p>
+
+
+                <p>Quedamos a disposición.</p>
+                <p>Muchas gracias.</p>
+                <p>Saludos Cordiales,</p>
+                <p>Departamento de Comercio Exterior.</p>
+                <p>ETILFARMA S.A.</p>
+                ]]>
+      </field>
+    </record>
+
+    <record id="template_shipment_shipping_es" model="mail.template">
+      <field name="name">Envío de Datos Embarque (ES)</field>
+      <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
+      <field name="subject">Orden de Compra "${object.customer_purchase_order or 'n/a' }" | Datos de Embarque | ${ 'Etilfarma S.A.' }</field>
+      <field name="partner_to">${object.partner_id.id}</field>
+      <field name="model_id" ref="sale.model_sale_order"/>
+      <field name="auto_delete" eval="True"/>
+      <field name="lang">${object.partner_id.lang}</field>
+      <field name="body_html"><![CDATA[
+                <p>Estimado/a
+                % if object.partner_id.is_company and object.partner_id.child_ids:
+                    ${object.partner_id.child_ids[0].name}
+                % else :
+                    ${object.partner_id.name}
+                % endif
+                ,</p>
+                <p>A continuación, informamos los datos de embarque correspondientes a su Orden de Compra <strong>${object.customer_purchase_order}</strong>.</p>
+                 % if object.booking_ship_name:
+                    <p>
+                    Nombre de buque:  <strong>${object.booking_ship_name}</strong>
+                    </p>
+                % endif
+                % if object.booking_ETD_date:
+                    <p>
+                    Fecha ETD: <strong>${object.booking_ETD_date}</strong>
+                    </p>
+                % endif 
+                % if object.booking_ETA_date:
+                    <p>
+                    Fecha ETA: <strong>${object.booking_ETA_date}</strong>
+                    </p>
+                % endif
+                % if object.booking_transport_company:
+                    <p>
+                  Medio de Transporte:  <strong>${object.booking_transport_company}</strong>
+                    </p>
+                % endif
+                % if object.booking_extra_notes:
+                    <p>
+                    ${object.booking_extra_notes}
+                    </p>
+                % endif
+
+                <p>Quedamos a disposición.</p>
+                <p>Saludos Cordiales,</p>
+                <p>Departamento de Comercio Exterior.</p>
+                <p>ETILFARMA S.A.</p>
+                ]]>
+      </field>
+    </record>
+
+  </data>
+</odoo>
