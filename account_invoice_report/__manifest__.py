@@ -19,5 +19,6 @@
     "data": [
         "data/mail_template_data.xml",
         "data/mail_template_data_impo.xml",
+        "report/invoice_report.xml",
     ],
 }
