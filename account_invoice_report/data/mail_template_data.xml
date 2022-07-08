@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <!--Email template -->
+
+        <record id="email_template_packing_list" model="mail.template">
+            <field name="name">Envio de Factura y Lista de Empaque (EN)</field>
+            <field name="email_from">${(object.sudo().create_uid.email and '&quot;%s&quot; &lt;%s&gt;' % (object.sudo().create_uid.name, object.sudo().create_uid.email) or '')|safe}</field>
+            <field name="subject">Purchase order "${object.display_name or 'n/a' }" | Documents | Etilfarma S.A.</field>
+            <field name="partner_to">${object.partner_id.id}</field>
+            <field name="model_id" ref="account.model_account_invoice"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="report_template" ref="l10n_aeroo_einvoice_custom_output.action_aeroo_report_ar_einvoice_en"/>
+            <field name="report_name">Invoice_${(object.number or '').replace('/','_')}_${object.state == 'draft' and 'draft' or ''}</field>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="body_html"><![CDATA[
+                <p>Dear: <strong>${object.partner_id.name}</strong></p>
+                
+                <p>Please find attached the Commercial Invoice <strong>${object.display_name}</strong></p>
+                <p>and the complementary documents corresponding to your Purchase Order </p>
+
+                <p>Looking forward to receiving your feedback.</p>
+                
+                <p>Best regards,</p>
+                <p>Foreign Trade Department</p>
+                <p>ETILFARMA S.A.</p>
+                ]]>
+            </field>
+        </record>
+
+    </data>
+
+</odoo>
