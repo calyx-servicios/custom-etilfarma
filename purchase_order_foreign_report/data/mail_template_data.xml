@@ -163,7 +163,7 @@
                 % endif
                 % if object.booking_conveyance_id:
                     <p>
-                    Transport Company: <strong>${object.booking_conveyance_id.display_name}</strong>
+                    Conveyance: <strong>${object.booking_conveyance_id.display_name}</strong>
                     </p>
                 % endif
                 % if object.booking_extra_notes:
@@ -218,7 +218,7 @@
                 % endif
                 % if object.booking_conveyance_id:
                     <p>
-                    Transport Company: <strong>${object.booking_conveyance_id.display_name}</strong>
+                    Conveyance: <strong>${object.booking_conveyance_id.display_name}</strong>
                     </p>
                 % endif
                 % if object.booking_extra_notes:
