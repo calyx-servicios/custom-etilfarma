@@ -25,6 +25,18 @@
                     <field name="booking_transport_company" string="Transport Company" attrs="{'readonly': [('booking_not_required','=',True)]}" force_save="1"/>
                     <field name="booking_ship_name" string="Ship Name" attrs="{'readonly': [('booking_not_required','=',True)]}" force_save="1"/>
                     <field name="booking_extra_notes" string="Intern Notes" attrs="{'readonly': [('booking_not_required','=',True)]}" force_save="1"/>
+                </group>
+            </xpath>
+            <xpath expr="//group[@name='booking']" position="replace">
+                <group name="booking" string="Booking">
+                    <field name="booking_not_required" type="checkbox" string="Not Required"/>
+                    <field name="booking_conveyance_id" string="Conveyance" attrs="{'readonly': [('booking_not_required','=',True)]}" options="{'no_open':True,'no_create': True,'no_create_edit':1}" force_save="1"/>
+                    <field name="booking_origin" string="Origin" attrs="{'readonly': [('booking_not_required','=',True)]}" force_save="1"/>
+                    <field name="booking_ETD_date" string="ETD Date" attrs="{'readonly': [('booking_not_required','=',True)]}" force_save="1"/>
+                    <field name="booking_ETA_date" string="ETA Date" attrs="{'readonly': [('booking_not_required','=',True)]}" force_save="1"/>
+                    <field name="booking_transport_company" string="Transport Company" attrs="{'readonly': [('booking_not_required','=',True)]}" force_save="1"/>
+                    <field name="booking_ship_name" string="Ship Name" attrs="{'readonly': [('booking_not_required','=',True)]}" force_save="1"/>
+                    <field name="booking_extra_notes" string="Intern Notes" attrs="{'readonly': [('booking_not_required','=',True)]}" force_save="1"/>
                     <button string="Send Booking Information"
                         name="action_booking_send"
                         type="object"
