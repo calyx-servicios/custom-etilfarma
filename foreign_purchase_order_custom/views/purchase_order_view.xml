@@ -11,7 +11,6 @@
                     <field name="intervention_reference" string="Reference" attrs="{'readonly': [('intervention_not_required','=',True)]}" force_save="1"/>
                     <field name="intervention_currency_id" string="Payment Currency" attrs="{'readonly': [('intervention_not_required','=',True)]}" force_save="1"/>
                     <field name="intervention_VPE_amount" string="VPE Amount" attrs="{'readonly': [('intervention_not_required','=',True)]}" force_save="1"/>
-                    <field name="intervention_currency_id" string="Currency" attrs="{'readonly': [('intervention_not_required','=',True)]}" force_save="1"/>
                     <field name="intervention_application_date" string="Application Date" attrs="{'readonly': [('intervention_not_required','=',True)]}" force_save="1"/>
                     <field name="intervention_approval_date" string="Approval Date" attrs="{'readonly': [('intervention_not_required','=',True)]}" force_save="1"/>
                 </group>
