@@ -161,9 +161,9 @@
                     ETA date: <strong>${object.booking_ETA_date}</strong>
                     </p>
                 % endif
-                % if object.booking_transport_company:
+                % if object.booking_conveyance_id:
                     <p>
-                    Transport Company:  <strong>${object.booking_transport_company}</strong>
+                    Conveyance: <strong>${object.booking_conveyance_id.display_name}</strong>
                     </p>
                 % endif
                 % if object.booking_extra_notes:
@@ -216,9 +216,9 @@
                     ETA date: <strong>${object.booking_ETA_date}</strong>
                     </p>
                 % endif
-                % if object.booking_transport_company:
+                % if object.booking_conveyance_id:
                     <p>
-                    Transport Company:  <strong>${object.booking_transport_company}</strong>
+                    Conveyance: <strong>${object.booking_conveyance_id.display_name}</strong>
                     </p>
                 % endif
                 % if object.booking_extra_notes:
