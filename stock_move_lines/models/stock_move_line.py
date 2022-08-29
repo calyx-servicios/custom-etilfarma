@@ -67,6 +67,14 @@ class StockPicking(models.Model):
         compute="_compute_address",
         store=True,
     )
+    remaining_amount = fields.Integer(
+        string="Remaining amount",
+        store=True
+    )
+    order_priority = fields.Integer(
+        string="Order of priority",
+        store=True
+    )
 
     @api.depends("picking_id")
     def _customer_purchase_order(self):

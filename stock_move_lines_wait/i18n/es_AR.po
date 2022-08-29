@@ -62,10 +62,6 @@ msgstr "Operación de empaquetado"
 msgid "Picking Type Code"
 msgstr "Código de tipo de selección"
 
-#. module: stock_move_lines_wait
-#: model:ir.model.fields,field_description:stock_move_lines_wait.field_stock_move_qty_done
-msgid "Quantity Done"
-msgstr "Cantidad hecha"
 
 #. module: stock_move_lines_wait
 #: model:ir.model.fields,field_description:stock_move_lines_wait.field_stock_move_reception_date
@@ -117,3 +113,18 @@ msgstr "Vendors"
 #: model:ir.model.fields,field_description:stock_move_lines_wait.field_stock_move_voucher_ids
 msgid "Vouchers"
 msgstr "Remitos"
+
+#. module: stock_move_lines_wait
+#: model:ir.model.fields,field_description:stock_move_lines_wait.field_stock_move_qty_done
+msgid "Quantity Done"
+msgstr "Cantidad pedida"
+
+#. module: stock_move_lines_wait
+#: model:ir.model.fields,field_description:stock_move_lines_wait.field_stock_move_remaining_amount
+msgid "Remaining amount"
+msgstr "Cantidad restante"
+
+#. module: stock_move_lines_wait
+#: model:ir.model.fields,field_description:stock_move_lines_wait.field_stock_move_order_priority
+msgid "Order of priority"
+msgstr "Orden de prioridad"
