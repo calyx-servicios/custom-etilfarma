@@ -36,7 +36,7 @@ class PurchaseOrder(models.Model):
     delivery_date_planned = fields.Selection([
         ('month', _('Month')),
         ('week', _('Week')),
-        ('date', _('Date'))], string='Delivery Date Planned', default='date')
+        ('date', _('Date'))], string='Delivery Date Planned', default='date', readonly=True)
 
     delivery_date_planned_month = fields.Selection([
         (1, 'January'),
