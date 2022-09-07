@@ -29,7 +29,6 @@
             </xpath>
             <!-- Add invisible for keep_description field -->
             <xpath expr="//field[@name='item_ids']/tree/field[@name='keep_description']" position="attributes">
-                <field name="keep_description" invisible="1"/>
                 <attribute name="invisible">1</attribute>
             </xpath>
         </field>
