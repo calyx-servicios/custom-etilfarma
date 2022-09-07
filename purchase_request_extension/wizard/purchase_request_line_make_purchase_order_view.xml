@@ -27,6 +27,11 @@
                 <field name="product_tmpl_id" readonly="1"/>
                 <field name="product_attr_value_id" readonly="1"/>
             </xpath>
+            <!-- Add invisible for keep_description field -->
+            <xpath expr="//field[@name='item_ids']/tree/field[@name='keep_description']" position="attributes">
+                <field name="keep_description" invisible="1"/>
+                <attribute name="invisible">1</attribute>
+            </xpath>
         </field>
     </record>
 
