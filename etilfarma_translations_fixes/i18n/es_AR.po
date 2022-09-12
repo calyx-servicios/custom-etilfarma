@@ -6,6 +6,7 @@
 #   * purchase
 #   * stock_move_quick_lotw
 #   * import_dispatch
+#   * crm
 #
 msgid ""
 msgstr ""
@@ -989,3 +990,9 @@ msgstr "Lote"
 #: model:ir.model.fields,field_description:import_dispatch.field_stock_move_line_life_date
 msgid "Life Date"
 msgstr "Fecha de caducidad"
+
+#. module: crm
+#: model:ir.ui.menu,name:crm.menu_crm_leads
+#: model:ir.actions.act_window,name:crm.crm_lead_all_leads
+msgid "Leads"
+msgstr "Contact Report"
