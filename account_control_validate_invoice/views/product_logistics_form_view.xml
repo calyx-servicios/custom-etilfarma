@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_logistics_form_view" model="ir.ui.view">
+        <field name="name">product_logistics_form_view</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='group_lots_and_weight']" position="inside">
+             <label for="gross_weight"/>
+                <div class="o_row" name="gross_weight">
+                    <field name="gross_weight"/>
+                        <span>kg</span>
+                </div>
+                <field name="quantity_per_package"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
