@@ -29,7 +29,7 @@ msgstr "Comentarios"
 #. module: stock_move_lines_wait
 #: model:ir.model.fields,field_description:stock_move_lines_wait.field_stock_move_customer_purchase_order
 msgid "Customer Purchase Order"
-msgstr "Nro Orden del Cliente"
+msgstr "OC Cliente"
 
 #. module: stock_move_lines_wait
 #: selection:stock.move,picking_type_code:0
