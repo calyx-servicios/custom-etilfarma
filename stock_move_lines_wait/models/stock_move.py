@@ -71,6 +71,14 @@ class StockMove(models.Model):
         string="Quantity Done",
         related="sale_line_id.product_uom_qty",
     )
+    remaining_amount = fields.Integer(
+        string="Remaining amount",
+        store=True
+    )
+    order_priority = fields.Integer(
+        string="Order of priority",
+        store=True
+    )
 
     @api.depends('origin')
     def get_link_action(self):
