@@ -15,10 +15,7 @@
           </footer>
         </form>
       </field>
-    </record>
-
-    <act_window id="wizard_bulk_edit_action_window" name="Mass edit by date" res_model="purchase.order.bulk.edit.wizard" view_mode="form" target="new"/>
-    <menuitem id="wizard_bulk_edit_menu" name="Mass edit by date" sequence="120" parent="purchase.menu_purchase_root" action="wizard_bulk_edit_action_window"/>
+    </record>      
 
   </data>
 </odoo>
