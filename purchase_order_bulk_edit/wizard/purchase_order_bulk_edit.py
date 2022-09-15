@@ -1,17 +1,15 @@
-from odoo import models, fields, api, _
-from odoo.exceptions import UserError
+from odoo import models, fields
 
 
-class PurchaseOrderBulkEdit(models.TransientModel):
-    _name = 'purchase.order.bulk.edit.wizard'
-    _description = 'Mass edit wizard by date'
+class MassEditPlannedDeliveryDate(models.TransientModel):
+    _name = 'mass.edit.planned.delivery.date'
+    _description = 'Mass edit planned delivery date'
 
-    edition_date = fields.Date(
-        string="Date for edition records",
-    )
+    new_date = fields.Date()
 
-    def generate_bulk_edit_record(self):
-        if self.edition_date:
-            data= self.env['purchase.order'].search([])
-            for rec in data:
-                rec.write({'delivery_date_planned_date': self.edition_date})
+    def confirm(self):
+        context = dict(self._context or {})
+        active_ids = context.get('active_ids', []) or []
+
+        purchase_orders = self.env['purchase.order'].browse(active_ids)
+        purchase_orders.write({'delivery_date_planned_date':self.new_date})

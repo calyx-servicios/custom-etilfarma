@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-15 19:46+0000\n"
-"PO-Revision-Date: 2022-09-15 19:46+0000\n"
+"POT-Creation-Date: 2022-09-15 23:44+0000\n"
+"PO-Revision-Date: 2022-09-15 23:44+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,63 +16,71 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: purchase_order_bulk_edit
-#: model:ir.ui.view,arch_db:purchase_order_bulk_edit.purchase_order_bulk_edit_wizard_view
+#: model:ir.ui.view,arch_db:purchase_order_bulk_edit.mass_edit_planned_delivery_date_view
 msgid "Cancel"
 msgstr "Cancelar"
 
 #. module: purchase_order_bulk_edit
-#: model:ir.ui.view,arch_db:purchase_order_bulk_edit.purchase_order_bulk_edit_wizard_view
+#: model:ir.ui.view,arch_db:purchase_order_bulk_edit.mass_edit_planned_delivery_date_view
 msgid "Confirm"
 msgstr "Confirmar"
 
 #. module: purchase_order_bulk_edit
-#: model:ir.model.fields,field_description:purchase_order_bulk_edit.field_purchase_order_bulk_edit_wizard_create_uid
+#: model:ir.model.fields,field_description:purchase_order_bulk_edit.field_mass_edit_planned_delivery_date_create_uid
 msgid "Created by"
 msgstr "Creado por"
 
 #. module: purchase_order_bulk_edit
-#: model:ir.model.fields,field_description:purchase_order_bulk_edit.field_purchase_order_bulk_edit_wizard_create_date
+#: model:ir.model.fields,field_description:purchase_order_bulk_edit.field_mass_edit_planned_delivery_date_create_date
 msgid "Created on"
 msgstr "Creado en"
 
 #. module: purchase_order_bulk_edit
-#: model:ir.model.fields,field_description:purchase_order_bulk_edit.field_purchase_order_bulk_edit_wizard_edition_date
-msgid "Date for edition records"
-msgstr "Fecha para edicion de registros"
-
-#. module: purchase_order_bulk_edit
-#: model:ir.model.fields,field_description:purchase_order_bulk_edit.field_purchase_order_bulk_edit_wizard_display_name
+#: model:ir.model.fields,field_description:purchase_order_bulk_edit.field_mass_edit_planned_delivery_date_display_name
 msgid "Display Name"
 msgstr "Mostrar Nombre"
 
 #. module: purchase_order_bulk_edit
-#: model:ir.model.fields,field_description:purchase_order_bulk_edit.field_purchase_order_bulk_edit_wizard_id
+#: model:ir.model.fields,field_description:purchase_order_bulk_edit.field_mass_edit_planned_delivery_date_id
 msgid "ID"
 msgstr "ID"
 
 #. module: purchase_order_bulk_edit
-#: model:ir.model.fields,field_description:purchase_order_bulk_edit.field_purchase_order_bulk_edit_wizard___last_update
+#: model:ir.model.fields,field_description:purchase_order_bulk_edit.field_mass_edit_planned_delivery_date___last_update
 msgid "Last Modified on"
 msgstr "Última modificación en"
 
 #. module: purchase_order_bulk_edit
-#: model:ir.model.fields,field_description:purchase_order_bulk_edit.field_purchase_order_bulk_edit_wizard_write_uid
+#: model:ir.model.fields,field_description:purchase_order_bulk_edit.field_mass_edit_planned_delivery_date_write_uid
 msgid "Last Updated by"
 msgstr "Última actualización realizada por"
 
 #. module: purchase_order_bulk_edit
-#: model:ir.model.fields,field_description:purchase_order_bulk_edit.field_purchase_order_bulk_edit_wizard_write_date
+#: model:ir.model.fields,field_description:purchase_order_bulk_edit.field_mass_edit_planned_delivery_date_write_date
 msgid "Last Updated on"
 msgstr "Última actualización el"
 
 #. module: purchase_order_bulk_edit
-#: model:ir.actions.act_window,name:purchase_order_bulk_edit.wizard_bulk_edit_action_window
-#: model:ir.ui.menu,name:purchase_order_bulk_edit.wizard_bulk_edit_menu
-msgid "Mass edit by date"
-msgstr "Edición masiva de registros por fecha"
+#: model:ir.model,name:purchase_order_bulk_edit.model_mass_edit_planned_delivery_date
+msgid "Mass edit planned delivery date"
+msgstr "Mass edit planned delivery date"
 
 #. module: purchase_order_bulk_edit
 #: model:ir.model,name:purchase_order_bulk_edit.model_purchase_order_bulk_edit_wizard
 msgid "Mass edit wizard by date"
-msgstr ""
+msgstr "Mass edit wizard by date"
 
+#. module: purchase_order_bulk_edit
+#: model:ir.model.fields,field_description:purchase_order_bulk_edit.field_mass_edit_planned_delivery_date_new_date
+msgid "New Date"
+msgstr "New Date"
+
+#. module: purchase_order_bulk_edit
+#: model:ir.ui.view,arch_db:purchase_order_bulk_edit.mass_edit_planned_delivery_date_view
+msgid "New Planned Delivery Date"
+msgstr "New Planned Delivery Date"
+
+#. module: purchase_order_bulk_edit
+#: model:ir.actions.act_window,name:purchase_order_bulk_edit.action_mass_edit_date
+msgid "Set delivery date planned"
+msgstr "Set delivery date planned"

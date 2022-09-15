@@ -20,6 +20,5 @@
     "data": [
         'security/ir.model.access.csv',
         "wizard/purchase_order_bulk_edit.xml",
-        "wizard/menu_bulk_edit.xml",
     ],
 }
