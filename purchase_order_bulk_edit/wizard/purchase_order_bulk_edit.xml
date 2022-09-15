@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="purchase_order_bulk_edit_wizard_view" model="ir.ui.view">
+      <field name="name">Mass edit by date</field>
+      <field name="model">purchase.order.bulk.edit.wizard</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="edition_date"/>
+          </group>
+          <footer>
+            <button string="Confirm" name="generate_bulk_edit_record" type="object" default_focus="1" class="btn-primary"/>
+            <button string="Cancel" class="btn-secondary" special="cancel"/>
+          </footer>
+        </form>
+      </field>
+    </record>
+
+    <act_window id="wizard_bulk_edit_action_window" name="Mass edit by date" res_model="purchase.order.bulk.edit.wizard" view_mode="form" target="new"/>
+    <menuitem id="wizard_bulk_edit_menu" name="Mass edit by date" sequence="120" parent="purchase.menu_purchase_root" action="wizard_bulk_edit_action_window"/>
+
+  </data>
+</odoo>

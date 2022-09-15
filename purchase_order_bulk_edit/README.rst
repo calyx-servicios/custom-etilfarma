@@ -1,10 +1,10 @@
-=================
-Partner Hyperlink
-=================
+========================
+Purchase Order Bulk Edit
+========================
 
-.. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-   !! Add hyperlink to a partner within delivery orders !!
-   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+.. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   !! Adding mass edit wizard by date !!
+   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 .. User https://shields.io for badge creation.
 .. |badge1| image:: https://img.shields.io/badge/maturity-Stable-brightgreen

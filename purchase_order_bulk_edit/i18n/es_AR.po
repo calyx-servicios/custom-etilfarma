@@ -1,0 +1,78 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* purchase_order_bulk_edit
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-09-15 19:46+0000\n"
+"PO-Revision-Date: 2022-09-15 19:46+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: purchase_order_bulk_edit
+#: model:ir.ui.view,arch_db:purchase_order_bulk_edit.purchase_order_bulk_edit_wizard_view
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: purchase_order_bulk_edit
+#: model:ir.ui.view,arch_db:purchase_order_bulk_edit.purchase_order_bulk_edit_wizard_view
+msgid "Confirm"
+msgstr "Confirmar"
+
+#. module: purchase_order_bulk_edit
+#: model:ir.model.fields,field_description:purchase_order_bulk_edit.field_purchase_order_bulk_edit_wizard_create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: purchase_order_bulk_edit
+#: model:ir.model.fields,field_description:purchase_order_bulk_edit.field_purchase_order_bulk_edit_wizard_create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: purchase_order_bulk_edit
+#: model:ir.model.fields,field_description:purchase_order_bulk_edit.field_purchase_order_bulk_edit_wizard_edition_date
+msgid "Date for edition records"
+msgstr "Fecha para edicion de registros"
+
+#. module: purchase_order_bulk_edit
+#: model:ir.model.fields,field_description:purchase_order_bulk_edit.field_purchase_order_bulk_edit_wizard_display_name
+msgid "Display Name"
+msgstr "Mostrar Nombre"
+
+#. module: purchase_order_bulk_edit
+#: model:ir.model.fields,field_description:purchase_order_bulk_edit.field_purchase_order_bulk_edit_wizard_id
+msgid "ID"
+msgstr "ID"
+
+#. module: purchase_order_bulk_edit
+#: model:ir.model.fields,field_description:purchase_order_bulk_edit.field_purchase_order_bulk_edit_wizard___last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: purchase_order_bulk_edit
+#: model:ir.model.fields,field_description:purchase_order_bulk_edit.field_purchase_order_bulk_edit_wizard_write_uid
+msgid "Last Updated by"
+msgstr "Última actualización realizada por"
+
+#. module: purchase_order_bulk_edit
+#: model:ir.model.fields,field_description:purchase_order_bulk_edit.field_purchase_order_bulk_edit_wizard_write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: purchase_order_bulk_edit
+#: model:ir.actions.act_window,name:purchase_order_bulk_edit.wizard_bulk_edit_action_window
+#: model:ir.ui.menu,name:purchase_order_bulk_edit.wizard_bulk_edit_menu
+msgid "Mass edit by date"
+msgstr "Edición masiva de registros por fecha"
+
+#. module: purchase_order_bulk_edit
+#: model:ir.model,name:purchase_order_bulk_edit.model_purchase_order_bulk_edit_wizard
+msgid "Mass edit wizard by date"
+msgstr ""
+

@@ -1,14 +1,13 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
-    "name": "Partner Hyperlink",
+    "name": "Purchase Order Bulk Edit",
     "summary": """
-        Add hyperlink to the partner_id field 
-        within a delivery order.""",
+        Adding mass edit wizard by date.""",
     "author": "Calyx Servicios S.A.",
     "maintainers": ["DeykerGil"],
     "website": "http://odoo.calyx-cloud.com.ar/",
     "license": "AGPL-3",
-    "category": "Inventory",
+    "category": "Purchase",
     "version": "11.0.1.0.0",
     "development_status": "Production/Stable",
     "application": False,
@@ -17,8 +16,8 @@
         "python": [],
         "bin": [],
     },
-    "depends": ["stock"],
+    "depends": ["purchase"],
     "data": [
-        "views/stock_picking.xml"
+        "wizard/purchase_order_bulk_edit.xml",
     ],
 }
