@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+      <record id="challege_report_vehicle_view" model="ir.ui.view">
+        <field name="name">Print vehicle report</field>
+        <field name="model">challenge.report.vehicle.wizard</field>
+        <field name="arch" type="xml">
+          <form>
+            <group>
+              <field name="from_date"/>
+              <field name="to_date"/>
+            </group>
+            <footer>
+              <button string="Confirm" name="generate_report_vehicle" type="object" default_focus="1" class="btn-primary"/>
+              <button string="Cancel" class="btn-secondary" special="cancel"/>
+            </footer>
+          </form>
+        </field>
+      </record>
+
+        <act_window 
+          id="report_vehicle_action_window"
+			    res_model="challenge.report.vehicle.wizard"
+          name="Print vehicle report"
+          view_mode="form"
+          target="new"
+			  />
+
+    </data>
+</odoo>
