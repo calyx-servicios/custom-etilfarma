@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+  
+    <record id="mass_edit_planned_delivery_date_view" model="ir.ui.view">
+      <field name="name">Mass edit planned delivery date</field>
+      <field name="model">mass.edit.planned.delivery.date</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="new_date" string="New Planned Delivery Date"/>
+          </group>
+          <footer>
+            <button string="Confirm" name="confirm" type="object" default_focus="1" class="btn-primary"/>
+            <button string="Cancel" class="btn-secondary" special="cancel"/>
+          </footer>
+        </form>
+      </field>
+    </record>      
+
+    <act_window id="action_mass_edit_date"
+      multi="True"
+      name="Set delivery date planned"
+      res_model="mass.edit.planned.delivery.date" 
+      src_model="purchase.order"
+      view_mode="form" 
+      target="new" 
+      view_type="form" 
+    />
+
+  </data>
+</odoo>
