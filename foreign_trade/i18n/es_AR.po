@@ -1222,14 +1222,14 @@ msgstr "Packing List Number"
 #. module: foreign_trade
 #: model:ir.model.fields,field_description:foreign_trade.field_stock_move_pallet_qty
 msgid "Pallet Qty"
-msgstr "Pallet Qty"
+msgstr "Cantidad de Pallet"
 
 #. module: foreign_trade
 #: model:ir.model.fields,field_description:foreign_trade.field_pallet_type_name
 #: model:ir.model.fields,field_description:foreign_trade.field_stock_move_pallet_type
 #: model:ir.ui.view,arch_db:foreign_trade.report_packing_list
 msgid "Pallet Type"
-msgstr "Pallet Type"
+msgstr "Tipo de Pallet"
 
 #. module: foreign_trade
 #: model:ir.model.fields,field_description:foreign_trade.field_sale_order_payment_bank
