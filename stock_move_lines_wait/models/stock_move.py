@@ -74,6 +74,7 @@ class StockMove(models.Model):
     remaining_amount = fields.Integer(
         string="Remaining amount",
         store=True,
+        compute="_compute_remaining_amount",
         readonly=True
     )
     order_priority = fields.Integer(
@@ -81,6 +82,12 @@ class StockMove(models.Model):
         store=True
     )
 
+    @api.depends('remaining_amount')
+    def _compute_remaining_amount(self):
+        record = self.env['sale.order'].search([('name','=',self.origin)], limit=1).order_line
+        for rec in record:
+            self.remaining_amount = rec.product_uom_qty - rec.qty_delivered
+    
     @api.depends('origin')
     def get_link_action(self):
         base_url = base_url = http.request.env['ir.config_parameter'].get_param('web.base.url')
