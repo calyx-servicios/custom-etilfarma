@@ -73,7 +73,8 @@ class StockMove(models.Model):
     )
     remaining_amount = fields.Integer(
         string="Remaining amount",
-        store=True
+        store=True,
+        readonly=True
     )
     order_priority = fields.Integer(
         string="Order of priority",
