@@ -14,7 +14,7 @@ class StockPicking(models.Model):
     def _compute_packages_qty(self):
         for rec in self:
             rec.packages_qty = rec.quantity_done / rec.product_id.quantity_per_package
-            rec.net_weight = rec.packages_qty * rec.product_id.gross_weight
+            rec.net_weight = rec.packages_qty * rec.product_id.weight
             rec.gross_weight =  rec.packages_qty * rec.product_id.gross_weight
 
     @api.depends('gross_weight_pallet')
