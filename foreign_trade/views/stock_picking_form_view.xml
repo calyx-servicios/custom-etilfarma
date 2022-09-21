@@ -17,6 +17,7 @@
                         <field name="delivery_term"/>
                         <field name="carrier"/>
                         <field name="remarks_packing_list"/>
+                        <field name="seq"/>
                     </group>
                 </page>
             </xpath>

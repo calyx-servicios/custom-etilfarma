@@ -21,4 +21,13 @@
     <record model="ir.sequence" id="sale.seq_sale_order">
         <field name="sale_seq">True</field>
     </record>
+
+    <record model="ir.sequence" id="stock_picking_report_secuence">
+        <field name="name">Stock picking Report</field>
+        <field name="implementation">no_gap</field>
+        <field name="prefix">PL</field>
+        <field name="padding">2</field>
+        <field name="number_increment">1</field>
+    </record>
+
 </odoo>

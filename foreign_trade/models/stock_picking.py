@@ -43,6 +43,18 @@ class StockPicking(models.Model):
         string="Container"
     )
 
+    seq = fields.Char(
+        string="Sequence",
+        required=True,
+    )
+
+    @api.model
+    def create(self, vals):
+        if not vals.get('seq'):
+            vals['seq'] = self.env['ir.sequence'].next_by_code(
+                'stock.picking')
+
+
 class StockMove(models.Model):
     _inherit = "stock.move"
 

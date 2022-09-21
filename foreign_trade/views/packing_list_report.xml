@@ -223,8 +223,7 @@
                             <div class="page">
                                 <h1 style="margin-bottom:50px" class="bg-primary text-center align-items-center">LISTA DE EMPAQUE</h1>
                                 <h4>
-                                    <span>LISTA DE EMPAQUE: </span>
-                                    <span t-field="o.packing_list_number"/>
+                                    <span>LISTA DE EMPAQUE: PL</span><span t-field="o.seq"/>
                                 </h4>    
                                 <h4>
                                     <span>REF: </span>
@@ -234,7 +233,7 @@
                                 <thead>
                                     <tr>
                                         <th t-if="o.origin"><strong>ORDEN DE VENTA</strong></th>
-                                        <th><strong>ESTADO</strong></th>
+                                        <th><strong>OC CLIENTE</strong></th>
                                         <th><strong>FECHA DE ENVÍO</strong></th>
                                         <th><strong>CONTENEDOR</strong></th>
                                     </tr>
@@ -245,7 +244,7 @@
                                             <span t-field="o.origin"/>
                                         </td>
                                         <td>
-                                            <span t-field="o.state"/>
+                                            <span t-field="o.sale_id.customer_purchase_order"/>
                                         </td>
                                         <td>
                                             <span t-field="o.sale_id.estimated_shipping_date" t-options='{"format": "dd/MM/yyyy"}'/>
@@ -260,7 +259,7 @@
                                 <div class="row">
                                     <div class="col-xs-4">
                                         <div t-if="o.picking_type_id.code=='outgoing' and o.partner_id">
-                                            <h5><strong>VENDIDO A: </strong></h5>
+                                            <h5><strong>FACTURADO A: </strong></h5>
                                             <div>
                                                 <span><strong>Importador: </strong></span>
                                                 <span t-field="o.partner_id.parent_id.name"/>
@@ -285,13 +284,13 @@
                                     </div>
                                     <div class="col-xs-4">
                                         <div>
-                                            <h5><strong>ENVIAR A: </strong></h5>
+                                            <h5><strong>ENVIADO A: </strong></h5>
                                             <div>
                                                 <span><strong>Destinatario: </strong></span>
                                                 <span t-field="o.partner_id.name"/>
                                             </div>
                                             <div>
-                                                <span><strong>Dirección: </strong></span>
+                                                <span><strong>Medio de Transporte: </strong></span>
                                                 <span t-field="o.partner_id.street"/>
                                             </div>
                                             <div>
@@ -310,9 +309,8 @@
                                     </div>
                                     <div class="col-xs-4">
                                         <div>
-                                            <h5><strong>ENVÍO: </strong></h5>
                                             <div>
-                                                <span><strong>Condición de venta: </strong></span>
+                                                <span><strong>Condición de venta por Icoterm: </strong></span>
                                                 <span t-field="o.incoterm"/>
                                             </div>
                                             <div>
@@ -320,7 +318,7 @@
                                                 <span t-field="o.shipping"/>
                                             </div>
                                             <div>
-                                                <span><strong>Portador: </strong></span> 
+                                                <span><strong>Transportista: </strong></span> 
                                                 <span t-field="o.carrier"/>
                                             </div>
                                             <div>
@@ -342,10 +340,11 @@
                                   <thead>
                                     <tr>
                                         <th>Item</th>
-                                        <th>NMC</th>
+                                        <!-- <th>NMC</th> -->
                                         <th width="15%">Producto</th>
-                                        <th>Origen</th>
-                                        <th>Cantidad</th>
+                                        <!-- <th>Origen</th> -->
+                                        <!-- <th>Cantidad</th> -->
+                                        <th>Presentación</th>
                                         <th>Tipo de Pallet</th>
                                         <th>Cantidad de Pallets</th>
                                         <th>Cantidad de Bultos</th>
@@ -358,9 +357,9 @@
                                             <td>
                                                 <span t-field="move.stock_move_line_seq"/>
                                             </td>
-                                            <td>
+                                            <!-- <td>
                                                 <span t-field="move.product_nmc_code"/>
-                                            </td>
+                                            </td> -->
                                             <td>
                                                 <span t-field="move.product_id.display_name"/><br/>
                                                 <span t-field="move.product_id.description_picking"/>
