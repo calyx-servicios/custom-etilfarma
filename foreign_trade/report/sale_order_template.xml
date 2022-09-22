@@ -16,7 +16,7 @@
                     <span t-if="doc.state in ['draft','sent']">Quotation</span>
                 </t>
                 <t t-if="env.context.get('proforma', False) or is_pro_forma">
-                    <span>Pro-Forma Invoice</span>
+                    <span>Proforma Invoice</span>
                 </t>
             </h1>
         </xpath>
