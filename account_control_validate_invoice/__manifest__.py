@@ -16,8 +16,9 @@
         "python": [],
         "bin": [],
     },
-    "depends": ["stock"],
+    "depends": ["stock", "foreign_trade"],
     'data': [
-         'views/product_logistics_form_view.xml',
+        'views/product_logistics_form_view.xml',
+        'views/stock_picking_view.xml',
     ],
 }
