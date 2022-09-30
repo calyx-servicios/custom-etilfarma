@@ -18,6 +18,7 @@ class AccountInvoice(models.Model):
         else:
             self.sale_order_id = False
  
+ 
 
     sale_order_id = fields.Many2one(
         "sale.order", string="Sale order", compute="_get_sale_id"
