@@ -53,6 +53,7 @@ class StockPicking(models.Model):
         if not vals.get('seq'):
             vals['seq'] = self.env['ir.sequence'].next_by_code(
                 'stock.picking')
+        return super(StockPicking, self).create(vals)
 
 
 class StockMove(models.Model):
