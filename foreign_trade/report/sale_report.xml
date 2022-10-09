@@ -13,7 +13,7 @@
 
         <report
             id="sale.action_report_pro_forma_invoice"
-            string="PRO-FORMA Invoice"
+            string="PROFORMA Invoice"
             model="sale.order"
             report_type="qweb-pdf"
             groups="sale.group_proforma_sales"
