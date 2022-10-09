@@ -251,23 +251,18 @@
                                         <div t-if="o.picking_type_id.code=='outgoing' and o.partner_id">
                                             <h5><strong>FACTURADO A: </strong></h5>
                                             <div>
-                                                <!-- <span><strong>Importador: </strong></span> -->
                                                 <span t-field="o.partner_id.parent_id.name"/>
                                             </div>    
                                             <div>
-                                                <!-- <span><strong>Dirección: </strong></span> -->
                                                 <span t-field="o.partner_id.parent_id.street"/>
                                             </div> 
                                             <div>
-                                                <!-- <span><strong>Ciudad: </strong></span> -->
                                                 <span t-field="o.partner_id.parent_id.city"/>
                                             </div> 
                                             <div>
-                                                <!-- <span><strong>Codigo Postal: </strong></span> -->
                                                 <span t-field="o.partner_id.parent_id.zip"/>
                                             </div> 
                                             <div>
-                                                <!-- <span><strong>Pais: </strong></span> -->
                                                 <span t-field="o.partner_id.parent_id.country_id.name"/>
                                             </div> 
                                             <div>
@@ -279,23 +274,18 @@
                                         <div>
                                             <h5><strong>ENVIADO A: </strong></h5>
                                             <div>
-                                                <!-- <span><strong>Destinatario: </strong></span> -->
                                                 <span t-field="o.partner_id.name"/>
                                             </div>
                                             <div>
-                                                <!-- <span><strong>Medio de Transporte: </strong></span> -->
                                                 <span t-field="o.partner_id.street"/>
                                             </div>
                                             <div>
-                                                <!-- <span><strong>Ciudad: </strong></span> -->
                                                 <span t-field="o.partner_id.city"/>
                                             </div>
                                             <div>
-                                                <!-- <span><strong>Codigo Postal: </strong></span> -->
                                                 <span t-field="o.partner_id.zip"/>
                                             </div>
                                             <div>
-                                                <!-- <span><strong>Pais: </strong></span> -->
                                                 <span t-field="o.partner_id.country_id.name"/>
                                             </div>
                                             <div>
@@ -317,10 +307,6 @@
                                                 <span><strong>Transportista: </strong></span> 
                                                 <span t-field="o.carrier"/>
                                             </div>
-                                            <!-- <div>
-                                                <span><strong>Plazo de entrega: </strong></span>
-                                                <span t-field="o.delivery_term"/>
-                                            </div> -->
                                             <div>
                                                 <span><strong>Lugar de entrega: </strong></span>
                                                 <span t-field="o.place_of_delivery"/>
@@ -359,11 +345,6 @@
                                             <td>
                                                 <span t-field="move.packaging"/>
                                             </td>
-                                            <!-- <td>
-                                                <span t-if="move.product_qty" t-field="move.product_qty"/>
-                                                <span t-if="not move.product_qty" t-esc="move.product_uom._compute_quantity(move.quantity_done, move.product_id.uom_id, rounding_method='HALF-UP')"/>
-                                                <span t-field="move.product_id.uom_id" groups="product.group_uom"/>
-                                            </td> -->
                                             <td>
                                                 <span t-field="move.pallet_type.name"/>
                                             </td>
