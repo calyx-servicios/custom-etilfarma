@@ -18,9 +18,9 @@ class StockMove(models.Model):
     origin = fields.Char(
         string="Source Document",
     )
-    partner_id = fields.Many2one(
+    partner_client_id = fields.Many2one(
         'res.partner', 
-        'Partner', 
+        'Client', 
     )
     delivery_date = fields.Date(
         string="Delivery date",
