@@ -277,7 +277,7 @@ msgstr "<span>PACKING LIST: </span>"
 #. module: foreign_trade
 #: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
 msgid "<span>Pro-Forma Invoice</span>"
-msgstr "<span>Factura Pro-Forma</span>"
+msgstr "<span>Factura Proforma</span>"
 
 #. module: foreign_trade
 #: model:ir.ui.view,arch_db:foreign_trade.report_packing_list
