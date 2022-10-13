@@ -86,7 +86,7 @@ class StockMove(models.Model):
     def _compute_remaining_amount(self):
         record = self.env['sale.order'].search([('name','=',self.origin)], limit=1).order_line
         for rec in record:
-            self.remaining_amount = rec.product_uom_qty - rec.qty_delivered
+            rec.remaining_amount = rec.product_uom_qty - rec.qty_delivered
     
     @api.depends('origin')
     def get_link_action(self):
