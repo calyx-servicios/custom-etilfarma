@@ -67,8 +67,8 @@
                                                 <span t-field="o.partner_id.parent_id.country_id.name"/>
                                             </div> 
                                             <div>
-                                                <span t-field="o.partner_id.main_id_number"/>
-                                            </div>
+                                                <span t-field="o.partner_id.parent_id.main_id_number"/>
+                                            </div> 
                                         </div>
                                     </div>
                                     <div class="col-xs-4">
@@ -90,7 +90,12 @@
                                                 <span t-field="o.partner_id.country_id.name"/>
                                             </div>
                                             <div>
+                                              <t t-if="o.partner_id.main_id_number">
                                                 <span t-field="o.partner_id.main_id_number"/>
+                                              </t>
+                                              <t t-else="">
+                                                  <span t-field="o.partner_id.parent_id.main_id_number"/>
+                                              </t>
                                             </div>
                                         </div>
                                     </div>
@@ -117,7 +122,7 @@
                                 </div>
                                 <br/>                                                              
                                 <br/>
-                                <table class="table table-condensed" t-if="o.move_line_ids">
+                                <table class="table table-condensed" t-if="o.move_line_ids" id="table-en">
                                   <t t-set="has_barcode" t-value="any([move_lines.product_id and move_lines.product_id.sudo().barcode or move_lines.package_id for move_lines in o.move_line_ids])"/>
                                   <t t-set="has_serial_number" t-value="o.move_line_ids.filtered(lambda ml: ml.lot_id or ml.lot_name)" groups="stock.group_production_lot"/>
                                   <thead>
@@ -266,7 +271,7 @@
                                                 <span t-field="o.partner_id.parent_id.country_id.name"/>
                                             </div> 
                                             <div>
-                                                <span t-field="o.partner_id.main_id_number"/>
+                                                <span t-field="o.partner_id.parent_id.main_id_number"/>
                                             </div>
                                         </div>
                                     </div>
@@ -289,7 +294,12 @@
                                                 <span t-field="o.partner_id.country_id.name"/>
                                             </div>
                                             <div>
+                                              <t t-if="o.partner_id.main_id_number">
                                                 <span t-field="o.partner_id.main_id_number"/>
+                                              </t>
+                                              <t t-else="">
+                                                  <span t-field="o.partner_id.parent_id.main_id_number"/>
+                                              </t>
                                             </div>
                                         </div>
                                     </div>
@@ -316,7 +326,7 @@
                                 </div>
                                 <br/>                                                              
                                 <br/>
-                                <table class="table table-condensed" t-if="o.move_line_ids">
+                                <table class="table table-condensed" t-if="o.move_line_ids" id="table-es">
                                   <t t-set="has_barcode" t-value="any([move_lines.product_id and move_lines.product_id.sudo().barcode or move_lines.package_id for move_lines in o.move_line_ids])"/>
                                   <t t-set="has_serial_number" t-value="o.move_line_ids.filtered(lambda ml: ml.lot_id or ml.lot_name)" groups="stock.group_production_lot"/>
                                   <thead>
