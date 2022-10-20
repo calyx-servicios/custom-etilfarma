@@ -1227,7 +1227,6 @@ msgstr "Pallet Qty"
 #. module: foreign_trade
 #: model:ir.model.fields,field_description:foreign_trade.field_pallet_type_name
 #: model:ir.model.fields,field_description:foreign_trade.field_stock_move_pallet_type
-#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list
 msgid "Pallet Type"
 msgstr "Pallet Type"
 
@@ -1331,7 +1330,6 @@ msgstr "Print Proforma"
 #. module: foreign_trade
 #: model:ir.model.fields,field_description:foreign_trade.field_sale_order_line_product_tmpl_id
 #: model:ir.ui.view,arch_db:foreign_trade.foreign_trade_report
-#: model:ir.ui.view,arch_db:foreign_trade.report_packing_list
 msgid "Product"
 msgstr "Producto"
 
