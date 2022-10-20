@@ -73,7 +73,6 @@ class StockMove(models.Model):
     )
     remaining_amount = fields.Integer(
         string="Remaining amount",
-        store=True,
         compute="_compute_remaining_amount",
         readonly=True
     )
