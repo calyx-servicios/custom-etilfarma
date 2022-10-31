@@ -14,8 +14,7 @@
                             <div class="page">
                                 <h1 style="margin-bottom:50px" class="bg-primary text-center align-items-center">PACKING LIST</h1>
                                 <h4>
-                                    <span>PACKING LIST: </span>
-                                    <span t-field="o.packing_list_number"/>
+                                    <span>PACKING LIST: PL</span><span t-field="o.seq"/>
                                 </h4>    
                                 <h4>
                                     <span>REF: </span>
@@ -25,7 +24,7 @@
                                 <thead>
                                     <tr>
                                         <th t-if="o.origin"><strong>SALE ORDER</strong></th>
-                                        <th><strong>STATE</strong></th>
+                                        <th><strong>OC CUSTOMER</strong></th>
                                         <th><strong>SHIPPING DATE</strong></th>
                                         <th><strong>CONTAINER</strong></th>
                                     </tr>
@@ -36,7 +35,7 @@
                                             <span t-field="o.origin"/>
                                         </td>
                                         <td>
-                                            <span t-field="o.state"/>
+                                            <span t-field="o.sale_id.customer_purchase_order"/>
                                         </td>
                                         <td>
                                             <span t-field="o.sale_id.estimated_shipping_date" t-options='{"format": "dd/MM/yyyy"}'/>
@@ -51,26 +50,24 @@
                                 <div class="row">
                                     <div class="col-xs-4">
                                         <div t-if="o.picking_type_id.code=='outgoing' and o.partner_id">
-                                            <h5><strong>SOLD TO: </strong></h5>
+                                            <h5><strong>BILLED TO: </strong></h5>
                                             <div>
-                                                <span><strong>Importer: </strong></span>
                                                 <span t-field="o.partner_id.parent_id.name"/>
                                             </div>    
                                             <div>
-                                                <span><strong>Address: </strong></span>
                                                 <span t-field="o.partner_id.parent_id.street"/>
                                             </div> 
                                             <div>
-                                                <span><strong>City: </strong></span>
                                                 <span t-field="o.partner_id.parent_id.city"/>
                                             </div> 
                                             <div>
-                                                <span><strong>Postal Code: </strong></span>
                                                 <span t-field="o.partner_id.parent_id.zip"/>
                                             </div> 
                                             <div>
-                                                <span><strong>Country: </strong></span>
                                                 <span t-field="o.partner_id.parent_id.country_id.name"/>
+                                            </div> 
+                                            <div>
+                                                <span t-field="o.partner_id.parent_id.main_id_number"/>
                                             </div> 
                                         </div>
                                     </div>
@@ -78,45 +75,43 @@
                                         <div>
                                             <h5><strong>SEND TO: </strong></h5>
                                             <div>
-                                                <span><strong>Addressee: </strong></span>
                                                 <span t-field="o.partner_id.name"/>
                                             </div>
                                             <div>
-                                                <span><strong>Address: </strong></span>
                                                 <span t-field="o.partner_id.street"/>
                                             </div>
                                             <div>
-                                                <span><strong>City: </strong></span>
                                                 <span t-field="o.partner_id.city"/>
                                             </div>
                                             <div>
-                                                <span><strong>Postal Code: </strong></span>
                                                 <span t-field="o.partner_id.zip"/>
                                             </div>
                                             <div>
-                                                <span><strong>Country: </strong></span>
                                                 <span t-field="o.partner_id.country_id.name"/>
+                                            </div>
+                                            <div>
+                                              <t t-if="o.partner_id.main_id_number">
+                                                <span t-field="o.partner_id.main_id_number"/>
+                                              </t>
+                                              <t t-else="">
+                                                  <span t-field="o.partner_id.parent_id.main_id_number"/>
+                                              </t>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-xs-4">
                                         <div>
-                                            <h5><strong>SHIPPING: </strong></h5>
                                             <div>
-                                                <span><strong>Sale Condition: </strong></span>
+                                                <span><strong>Incoterm: </strong></span>
                                                 <span t-field="o.incoterm"/>
                                             </div>
                                             <div>
-                                                <span><strong>Address: </strong></span>
+                                                <span><strong>Conveyance: </strong></span>
                                                 <span t-field="o.shipping"/>
                                             </div>
                                             <div>
                                                 <span><strong>Carrier: </strong></span> 
                                                 <span t-field="o.carrier"/>
-                                            </div>
-                                            <div>
-                                                <span><strong>Delivery Term: </strong></span>
-                                                <span t-field="o.delivery_term"/>
                                             </div>
                                             <div>
                                                 <span><strong>Place of Delivery: </strong></span>
@@ -127,21 +122,20 @@
                                 </div>
                                 <br/>                                                              
                                 <br/>
-                                <table class="table table-condensed" t-if="o.move_line_ids">
+                                <table class="table table-condensed" t-if="o.move_line_ids" id="table-en">
                                   <t t-set="has_barcode" t-value="any([move_lines.product_id and move_lines.product_id.sudo().barcode or move_lines.package_id for move_lines in o.move_line_ids])"/>
                                   <t t-set="has_serial_number" t-value="o.move_line_ids.filtered(lambda ml: ml.lot_id or ml.lot_name)" groups="stock.group_production_lot"/>
                                   <thead>
                                     <tr>
                                         <th>Item</th>
-                                        <th>NMC</th>
                                         <th width="15%">Product</th>
-                                        <th>Origen</th>
-                                        <th>Quantity</th>
+                                        <th>Presentation</th>
                                         <th>Pallet Type</th>
                                         <th>Quantity of Pallets</th>
                                         <th>Quantity of Packages</th>
-                                        <th>Net Weight</th>
-                                        <th>Gross Weight</th>
+                                        <th>Net Weight (KG)</th>
+                                        <th>Gross Weight (KG)</th>
+                                        <th>Gross Weight With Pallet (KG)</th>
                                     </tr>
                                   </thead>
                                   <tbody>
@@ -150,19 +144,11 @@
                                                 <span t-field="move.stock_move_line_seq"/>
                                             </td>
                                             <td>
-                                                <span t-field="move.product_nmc_code"/>
-                                            </td>
-                                            <td>
                                                 <span t-field="move.product_id.display_name"/><br/>
                                                 <span t-field="move.product_id.description_picking"/>
                                             </td>
                                             <td>
-                                                <span t-field="move.product_id.country_id.name"/>
-                                            </td>
-                                            <td>
-                                                <span t-if="move.product_qty" t-field="move.product_qty"/>
-                                                <span t-if="not move.product_qty" t-esc="move.product_uom._compute_quantity(move.quantity_done, move.product_id.uom_id, rounding_method='HALF-UP')"/>
-                                                <span t-field="move.product_id.uom_id" groups="product.group_uom"/>
+                                                <span t-field="move.packaging"/>
                                             </td>
                                             <td>
                                                 <span t-field="move.pallet_type.name"/>
@@ -179,14 +165,15 @@
                                             <td>
                                                 <span t-field="move.gross_weight"/>
                                             </td>
+                                            <td>
+                                                <span t-field="move.gross_weight_pallet"/>
+                                            </td>
                                         </tr>
                                     </tbody>
                                     <tfoot>
                                         <td/>
                                         <td/>
                                         <td/>
-                                        <td/>
-                                        <td />
                                         <td><strong>Grand Total</strong></td>
                                         <td> 
                                             <span t-esc="sum(move.pallet_qty for move in o.move_lines)"/>
@@ -200,8 +187,16 @@
                                         <td> 
                                             <span t-esc="sum(move.gross_weight for move in o.move_lines)"/>
                                         </td>
+                                        <td> 
+                                            <span t-esc="sum(move.gross_weight_pallet for move in o.move_lines)"/>
+                                        </td>
                                     </tfoot>
                                 </table>
+                                <div class="row ml-2">
+                                  <h4>
+                                    <span t-field="o.observations" />                                    
+                                  </h4>
+                                </div>
                             </div>
                         </t>
                     </t>
@@ -223,8 +218,7 @@
                             <div class="page">
                                 <h1 style="margin-bottom:50px" class="bg-primary text-center align-items-center">LISTA DE EMPAQUE</h1>
                                 <h4>
-                                    <span>LISTA DE EMPAQUE: </span>
-                                    <span t-field="o.packing_list_number"/>
+                                    <span>LISTA DE EMPAQUE: PL</span><span t-field="o.seq"/>
                                 </h4>    
                                 <h4>
                                     <span>REF: </span>
@@ -234,7 +228,7 @@
                                 <thead>
                                     <tr>
                                         <th t-if="o.origin"><strong>ORDEN DE VENTA</strong></th>
-                                        <th><strong>ESTADO</strong></th>
+                                        <th><strong>OC CLIENTE</strong></th>
                                         <th><strong>FECHA DE ENVÍO</strong></th>
                                         <th><strong>CONTENEDOR</strong></th>
                                     </tr>
@@ -245,7 +239,7 @@
                                             <span t-field="o.origin"/>
                                         </td>
                                         <td>
-                                            <span t-field="o.state"/>
+                                            <span t-field="o.sale_id.customer_purchase_order"/>
                                         </td>
                                         <td>
                                             <span t-field="o.sale_id.estimated_shipping_date" t-options='{"format": "dd/MM/yyyy"}'/>
@@ -260,72 +254,68 @@
                                 <div class="row">
                                     <div class="col-xs-4">
                                         <div t-if="o.picking_type_id.code=='outgoing' and o.partner_id">
-                                            <h5><strong>VENDIDO A: </strong></h5>
+                                            <h5><strong>FACTURADO A: </strong></h5>
                                             <div>
-                                                <span><strong>Importador: </strong></span>
                                                 <span t-field="o.partner_id.parent_id.name"/>
                                             </div>    
                                             <div>
-                                                <span><strong>Dirección: </strong></span>
                                                 <span t-field="o.partner_id.parent_id.street"/>
                                             </div> 
                                             <div>
-                                                <span><strong>Ciudad: </strong></span>
                                                 <span t-field="o.partner_id.parent_id.city"/>
                                             </div> 
                                             <div>
-                                                <span><strong>Codigo Postal: </strong></span>
                                                 <span t-field="o.partner_id.parent_id.zip"/>
                                             </div> 
                                             <div>
-                                                <span><strong>Pais: </strong></span>
                                                 <span t-field="o.partner_id.parent_id.country_id.name"/>
                                             </div> 
+                                            <div>
+                                                <span t-field="o.partner_id.parent_id.main_id_number"/>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-xs-4">
                                         <div>
-                                            <h5><strong>ENVIAR A: </strong></h5>
+                                            <h5><strong>ENVIADO A: </strong></h5>
                                             <div>
-                                                <span><strong>Destinatario: </strong></span>
                                                 <span t-field="o.partner_id.name"/>
                                             </div>
                                             <div>
-                                                <span><strong>Dirección: </strong></span>
                                                 <span t-field="o.partner_id.street"/>
                                             </div>
                                             <div>
-                                                <span><strong>Ciudad: </strong></span>
                                                 <span t-field="o.partner_id.city"/>
                                             </div>
                                             <div>
-                                                <span><strong>Codigo Postal: </strong></span>
                                                 <span t-field="o.partner_id.zip"/>
                                             </div>
                                             <div>
-                                                <span><strong>Pais: </strong></span>
                                                 <span t-field="o.partner_id.country_id.name"/>
+                                            </div>
+                                            <div>
+                                              <t t-if="o.partner_id.main_id_number">
+                                                <span t-field="o.partner_id.main_id_number"/>
+                                              </t>
+                                              <t t-else="">
+                                                  <span t-field="o.partner_id.parent_id.main_id_number"/>
+                                              </t>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-xs-4">
                                         <div>
-                                            <h5><strong>ENVÍO: </strong></h5>
                                             <div>
-                                                <span><strong>Condición de venta: </strong></span>
+                                                <span><strong>Icoterm: </strong></span>
                                                 <span t-field="o.incoterm"/>
                                             </div>
                                             <div>
-                                                <span><strong>Dirección: </strong></span>
+                                                <span><strong>Medio de Transporte: </strong></span>
                                                 <span t-field="o.shipping"/>
                                             </div>
                                             <div>
-                                                <span><strong>Portador: </strong></span> 
+                                                <span><strong>Transportista: </strong></span> 
                                                 <span t-field="o.carrier"/>
-                                            </div>
-                                            <div>
-                                                <span><strong>Plazo de entrega: </strong></span>
-                                                <span t-field="o.delivery_term"/>
                                             </div>
                                             <div>
                                                 <span><strong>Lugar de entrega: </strong></span>
@@ -336,21 +326,20 @@
                                 </div>
                                 <br/>                                                              
                                 <br/>
-                                <table class="table table-condensed" t-if="o.move_line_ids">
+                                <table class="table table-condensed" t-if="o.move_line_ids" id="table-es">
                                   <t t-set="has_barcode" t-value="any([move_lines.product_id and move_lines.product_id.sudo().barcode or move_lines.package_id for move_lines in o.move_line_ids])"/>
                                   <t t-set="has_serial_number" t-value="o.move_line_ids.filtered(lambda ml: ml.lot_id or ml.lot_name)" groups="stock.group_production_lot"/>
                                   <thead>
                                     <tr>
                                         <th>Item</th>
-                                        <th>NMC</th>
                                         <th width="15%">Producto</th>
-                                        <th>Origen</th>
-                                        <th>Cantidad</th>
+                                        <th>Presentación</th>
                                         <th>Tipo de Pallet</th>
                                         <th>Cantidad de Pallets</th>
                                         <th>Cantidad de Bultos</th>
-                                        <th>Peso Neto</th>
-                                        <th>Peso Bruto</th>
+                                        <th>Peso Neto (KG)</th>
+                                        <th>Peso Bruto  (KG)</th>
+                                        <th>Peso Bruto con Pallet  (KG)</th>
                                     </tr>
                                   </thead>
                                   <tbody>
@@ -358,20 +347,13 @@
                                             <td>
                                                 <span t-field="move.stock_move_line_seq"/>
                                             </td>
-                                            <td>
-                                                <span t-field="move.product_nmc_code"/>
-                                            </td>
+
                                             <td>
                                                 <span t-field="move.product_id.display_name"/><br/>
                                                 <span t-field="move.product_id.description_picking"/>
                                             </td>
                                             <td>
-                                                <span t-field="move.product_id.country_id.name"/>
-                                            </td>
-                                            <td>
-                                                <span t-if="move.product_qty" t-field="move.product_qty"/>
-                                                <span t-if="not move.product_qty" t-esc="move.product_uom._compute_quantity(move.quantity_done, move.product_id.uom_id, rounding_method='HALF-UP')"/>
-                                                <span t-field="move.product_id.uom_id" groups="product.group_uom"/>
+                                                <span t-field="move.packaging"/>
                                             </td>
                                             <td>
                                                 <span t-field="move.pallet_type.name"/>
@@ -388,11 +370,12 @@
                                             <td>
                                                 <span t-field="move.gross_weight"/>
                                             </td>
+                                            <td>
+                                                <span t-field="move.gross_weight_pallet"/>
+                                            </td>
                                         </tr>
                                   </tbody>
                                   <tfoot>
-                                    <td/>
-                                    <td/>
                                     <td/>
                                     <td/>
                                     <td />
@@ -409,8 +392,16 @@
                                     <td> 
                                         <span t-esc="sum(move.gross_weight for move in o.move_lines)"/>
                                     </td>
+                                    <td> 
+                                        <span t-esc="sum(move.gross_weight_pallet for move in o.move_lines)"/>
+                                    </td>
                                 </tfoot>
                                 </table>
+                                <div class="row ml-2">
+                                  <h4>
+                                    <span t-field="o.observations" />                                    
+                                  </h4>
+                                </div>
                             </div>
                         </t>
                     </t>

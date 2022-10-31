@@ -18,9 +18,9 @@ class StockMove(models.Model):
     origin = fields.Char(
         string="Source Document",
     )
-    partner_id = fields.Many2one(
+    partner_client_id = fields.Many2one(
         'res.partner', 
-        'Partner', 
+        'Client', 
     )
     delivery_date = fields.Date(
         string="Delivery date",
@@ -71,7 +71,21 @@ class StockMove(models.Model):
         string="Quantity Done",
         related="sale_line_id.product_uom_qty",
     )
+    remaining_amount = fields.Integer(
+        string="Remaining amount",
+        compute="_compute_remaining_amount",
+        readonly=True
+    )
+    order_priority = fields.Integer(
+        string="Order of priority",
+        store=True
+    )
 
+    @api.depends('remaining_amount')
+    def _compute_remaining_amount(self):
+        for rec in self:
+            rec.remaining_amount = rec.sale_line_id.product_uom_qty - rec.sale_line_id.qty_delivered
+    
     @api.depends('origin')
     def get_link_action(self):
         base_url = base_url = http.request.env['ir.config_parameter'].get_param('web.base.url')
