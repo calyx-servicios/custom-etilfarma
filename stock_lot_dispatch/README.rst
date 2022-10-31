@@ -16,14 +16,14 @@ Stock's Lot & Dispatch
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-calyx--servicios%2Fcalyx-lightgray.png?logo=github
-    :target: https://github.com/calyx-servicios/calyx.git
-    :alt: calyx-servicios/calyx.git
+    :target: https://github.com/calyx-servicios/custom-etilfarma.git
+    :alt: calyx-servicios/custom-etilfarma.git
 
 |badge1| |badge2| |badge3|
 
 .. !!! Description must be max 2-3 paragraphs, and is required.
 
-This module extends the functionality of ... to support ... and to allow you to ...
+TThis module allow the visualization of the dispatch, lot and life date of the returned products.
 
 **Table of contents**
 
@@ -35,19 +35,7 @@ This module extends the functionality of ... to support ... and to allow you to 
 Install
 =======
 
-Do this ...
-
-.. !!! Configuration: This file is optional, it should explain how to configure the module before using it; it is aimed at advanced users. To configure this module, you need to:
-
-Configure
-=========
-
-Go to ...
-
-Usage
-=====
-
-1. Go to ...
+Install the module
 
 Known issues / Roadmap
 ======================
@@ -72,10 +60,7 @@ Contributors
 
 * `Calyx Servicios S.A. <https://odoo.calyx-cloud.com.ar/>`_
   
-  * Federico Gregori
-  * Cristian Paradiso
-  * Gabriela Perez
-  * Marco Oegg
+  * Luciano Baleani
 
 Maintainers
 ~~~~~~~~~~~
@@ -89,4 +74,4 @@ This module is maintained by Calyx Servicios S.A.
 CALYX SERVICIOS S.A. is part of the PGK Consultores economic group, member of an important global network, a world organization.
 The PGK Consultores group is one of the 20 largest consultant-studios in Argentina with nearly 300 professionals.
 
-This module is part of the `Calyx <https://github.com/calyx-servicios/calyx.git>`_ project on GitHub.
+This module is part of the `Etilfarma <https://github.com/calyx-servicios/custom-etilfarma.git>`_ project on GitHub.
