@@ -23,7 +23,7 @@ Stock's Lot & Dispatch
 
 .. !!! Description must be max 2-3 paragraphs, and is required.
 
-TThis module allow the visualization of the dispatch, lot and life date of the returned products.
+This module allow the visualization of the dispatch, lot and life date of the returned products.
 
 **Table of contents**
 
