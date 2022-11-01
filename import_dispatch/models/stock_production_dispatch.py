@@ -17,7 +17,7 @@ class ProductionDispatch(models.Model):
     
     name = fields.Char(
         'Import Dispatch',
-        required=True, help="Unique Import Dispatch")
+         help="Unique Import Dispatch")
     ref = fields.Char('Internal Reference')
     product_id = fields.Many2one(
         'product.product', 'Product',
