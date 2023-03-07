@@ -17,4 +17,7 @@
         "bin": [],
     },
     "depends": ["account_padron_retention_perception"],
+    "data": [
+        "views/account_validate_perception_control.xml",
+    ],
 }

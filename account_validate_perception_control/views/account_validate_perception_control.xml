@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="account_validate_perception_control_form" model="ir.ui.view">
+    <field name="name">Account Invoice View</field>
+    <field name="model">account.invoice</field>
+    <field name="inherit_id" ref="account.invoice_supplier_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//button[@name='action_invoice_open']" position="after">
+            <button name="control_perception" type="object" string="Control Perception" groups="account_padron_retention_perception.padron_retention_perception_responsible_group" />   
+        </xpath>
+    </field>
+  </record>
+</odoo>
