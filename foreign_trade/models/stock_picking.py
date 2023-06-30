@@ -1,5 +1,6 @@
 from odoo import fields, models, api
 
+
 class PalletType(models.Model):
     _name = "pallet.type"
 
@@ -15,7 +16,7 @@ class StockPicking(models.Model):
     )
     incoterm = fields.Char(
         string = "Incoterm",
-        related = "sale_id.incoterm_id.code"    
+        related = "sale_id.incoterm_id.code"
     )
     shipping = fields.Char(
         string = "Shipping",
@@ -62,7 +63,7 @@ class StockMove(models.Model):
     packaging = fields.Char(
         string="Packaging",
         related="sale_line_id.product_attr_value_id.name"
-    )    
+    )
     stock_move_line_seq = fields.Integer(
         string="Item",
         related="sale_line_id.order_line_seq"
@@ -93,7 +94,7 @@ class StockMove(models.Model):
         sring="Pallet Type",
         comodel_name="pallet.type"
     )
-     
+
     @api.depends('net_weight','pallet_qty','pallet_type')
     def _compute_gross_weigth(self):
         for rec in self:

@@ -37,7 +37,7 @@ class StockMoveLine(models.Model):
     @api.onchange('dispatch_id')
     def onchange_dispatch_id(self):
         self.life_date = self.dispatch_id.lot_id.life_date
-        
+
     @api.onchange("product_id")
     def _get_lot_by_product(self):
         names = []
@@ -56,7 +56,7 @@ class StockMoveLine(models.Model):
 
     lot_filter = fields.Many2many(
         'stock.production.lot')
-        
+
     @api.onchange("lot_id")
     def _get_dispatch_by_product(self):
         names = []
@@ -67,7 +67,7 @@ class StockMoveLine(models.Model):
                 lot_ids = self.env["stock.production.lot"].search([("product_id", "=", rec.product_id.id),("name", "=", rec.lot_id.name)])
                 for dispatch_id in dispatch_ids:
                     for lot_id in lot_ids:
-                        if dispatch_id.id == lot_id.dispatch_id.id: 
+                        if dispatch_id.id == lot_id.dispatch_id.id:
                             if dispatch_id.name not in names:
                                 if self.picking_type_code != 'outgoing':
                                     filter_ids.append(lot_id.id)
@@ -75,8 +75,8 @@ class StockMoveLine(models.Model):
                                 elif lot_id.product_qty > 0:
                                     filter_ids.append(lot_id.id)
                                     names.append(lot_id.name)
-                    
-                    
+
+
             rec.dispatch_filter = [(6,0, filter_ids)]
 
     dispatch_filter = fields.Many2many(

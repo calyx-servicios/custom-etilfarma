@@ -2,7 +2,7 @@
 {
     "name": "Import Dispatch",
     "summary": """
-    This module adds the dispatch field which is related to lots. with the aim of being 
+    This module adds the dispatch field which is related to lots. with the aim of being
     able to have several lots with the same name but with different dispatches
     """,
     "author": "Calyx Servicios S.A.",
@@ -10,7 +10,7 @@
     "website": "http://odoo.calyx-cloud.com.ar/",
     "license": "AGPL-3",
     "category": "Inventory",
-    "version": "11.0.1.0.0",
+    "version": "11.0.1.1.0",
     "development_status": "Production/Stable",
     "application": False,
     "installable": True,
