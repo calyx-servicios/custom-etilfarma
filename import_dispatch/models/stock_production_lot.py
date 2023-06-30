@@ -1,6 +1,7 @@
 from odoo import models, fields,api, _
 from odoo.exceptions import UserError, ValidationError
 
+
 class StockProductionLot(models.Model):
     _inherit = 'stock.production.lot'
 
@@ -19,7 +20,7 @@ class StockProductionLot(models.Model):
             if lot_id.dispatch_id.name and lot_id.dispatch_id.name == dispatch.name:
                 raise ValidationError(_('The combination of serial number and product must be unique !'))
         return super(StockProductionLot, self).create(vals)
-    
+
     _sql_constraints = [
         ('name_ref_uniq', 'Check(1=1)', 'The combination of serial number and product must be unique !'),
     ]
