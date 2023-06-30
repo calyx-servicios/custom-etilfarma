@@ -24,8 +24,8 @@ class SaleOrderLine(models.Model):
     @api.onchange("product_attr_value_id")
     def _onchange_product_attr_value_id(self):
         """
-            Set the product_id field based in variable option selected 
-            in the product_attr_value_id (packaging) field 
+            Set the product_id field based in variable option selected
+            in the product_attr_value_id (packaging) field
             and in the product_tmpl_id field.
         """
         for record in self:
@@ -52,7 +52,7 @@ class SaleOrderLine(models.Model):
     @api.onchange("product_tmpl_id")
     def _onchange_product_tmpl_id(self):
         """
-            Check if the product has variants if doesn't 
+            Check if the product has variants if doesn't
             set the normal product_id
             Add a dinamic domain in the product_attr_value_id based in the
             product template.
@@ -81,7 +81,7 @@ class SaleOrderLine(models.Model):
             domain = [("id", "in", values_ids)]
 
         return {"domain": {"product_attr_value_id": domain}}
-    
+
     order_line_seq = fields.Integer(
         compute='_compute_get_order_line_seq',
         store=True,
@@ -95,23 +95,33 @@ class SaleOrderLine(models.Model):
         compute="_available_product_attribute",
     )
     product_attr_value_id = fields.Many2one(
-        comodel_name="product.attribute.value", 
-        string="Packaging", 
+        comodel_name="product.attribute.value",
+        string="Packaging",
         # related="product_id.product_attr_value_id",
     )
 
     lot_filter = fields.Many2many(
-        'stock.production.lot')
-    
+        'stock.production.lot',
+        relation='sale_order_line_lot_filter_rel',
+        column1='lot_filter',
+        column2='sale_order_line',
+        string='Lot Filter'
+    )
+
     dispatch_filter = fields.Many2many(
-        'stock.production.lot')
+        'stock.production.dispatch',
+        relation='sale_order_line_dispatch_filter_rel',
+        column1='sale_order_line',
+        column2='dispatch_filter',
+        string='Dispatch Filter'
+    )
 
     @api.onchange("line_dispatch_name")
     def _get_lot_by_dispatch(self):
         # import wdb
         # wdb.set_trace()
         if self.loot_name and self.line_dispatch_name:
-            self.loot_name = self.line_dispatch_name.lot_id
+            self.loot_name = self.line_dispatch_name.lot_id.id
 
     product_nmc = fields.Char(string="HS Code", related="product_id.product_nmc")
     country_id = fields.Char(string="Origin", required=True, related="product_tmpl_id.country_id.name")
@@ -126,11 +136,11 @@ class SaleOrderLine(models.Model):
     product_uom_qty = fields.Float(digits=(12,2))
     maker_id = fields.Char(string="Maker", required=True, related="product_tmpl_id.maker_id")
     default_code = fields.Char(string="Internal Reference", required=True, related="product_id.default_code")
-    
+
 
 # class StockQuant(models.Model):
 #     _inherit = 'stock.quant'
-    
+
 #     dispatch_id = fields.Many2one(
 #         'stock.production.dispatch',
 #         related='lot_id.dispatch_id'
