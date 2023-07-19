@@ -1,6 +1,6 @@
-===========
-Module Name
-===========
+========================
+Account Purchase Request
+========================
 
 .. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
    !! This module add the Purchase Request in the  !! 
