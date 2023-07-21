@@ -1,0 +1,41 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* account_purchase_request
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-07-18 20:04+0000\n"
+"PO-Revision-Date: 2023-07-18 20:04+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: account_purchase_request
+#: model:ir.actions.act_window,help:account_purchase_request.purchase_request_tree_view_acc
+msgid "Click to create a quotation that will be converted into a purchase order."
+msgstr "Haga clic para crear un presupuesto que se convertirá en un Requerimiento de Compra."
+
+#. module: account_purchase_request
+#: model:ir.ui.view,arch_db:account_purchase_request.purchase_request_acc_view
+msgid "Purchase Request"
+msgstr "Requerimiento de compra"
+
+#. module: account_purchase_request
+#: model:ir.actions.act_window,name:account_purchase_request.purchase_request_tree_view_acc
+#: model:ir.ui.menu,name:account_purchase_request.menu_action_purchase_request_tree
+msgid "Purchase Requests"
+msgstr "Requerimientos de compra"
+
+#. module: account_purchase_request
+#: model:ir.actions.act_window,help:account_purchase_request.purchase_request_tree_view_acc
+msgid "Use this menu to search within your purchase requests by\n"
+"                references, vendor, products, etc. For each purchase order,\n"
+"                you can track the related discussion with the vendor, control\n"
+"                the products received and control the vendor bills."
+msgstr "Utilice este menu para buscar los Requerimientos de Compra creados\n."
+
